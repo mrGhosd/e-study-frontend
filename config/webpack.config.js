@@ -4,8 +4,10 @@ var util = require('util');
 var path = require('path');
 var jquery = require('jquery');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 var bowerRoot = path.join(__dirname, "../bower_components");
 var BowerWebpackPlugin = require("bower-webpack-plugin");
+
 var htmlLoader = [
     'file-loader?name=[path][name].[ext]',
     'template-html-loader?' + [
@@ -43,10 +45,13 @@ module.exports = {
     },
     plugins: [
         new BowerWebpackPlugin({
-            modulesDirectories: ["bower_components"],
-            manifestFiles:      "bower.json",
+            modulesDirectories: [bowerRoot],
+            manifestFiles:      path.join(__dirname, "bower.json"),
             includes:           /.*/
         }),
+        new webpack.ResolverPlugin(
+            new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(path.join(__dirname, "../bower.json"), ["main"])
+        ),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
     ],
@@ -54,6 +59,7 @@ module.exports = {
         alias: {
             angular: path.join(bowerRoot, '/angular')
         },
+        root: bowerRoot,
         extensions: ['', '.js', '.html', '.js', '.scss'],
         modulesDirectories: ['web_modules', 'node_modules', '../app']
     },
