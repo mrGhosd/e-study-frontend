@@ -1,4 +1,6 @@
 import './index.html';
-import angular from 'angular';
+import 'css/main.scss';
+require('../bower_components/bootstrap');
+var angular = require('../bower_components/angular/index');
 
 angular.module('estudy', []);

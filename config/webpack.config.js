@@ -2,7 +2,10 @@ var webpack = require('webpack');
 var pkg = require('../package.json');
 var util = require('util');
 var path = require('path');
+var jquery = require('jquery');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var bowerRoot = path.join(__dirname, "../bower_components");
+var BowerWebpackPlugin = require("bower-webpack-plugin");
 var htmlLoader = [
     'file-loader?name=[path][name].[ext]',
     'template-html-loader?' + [
@@ -39,10 +42,18 @@ module.exports = {
         filename: 'bundle.js'
     },
     plugins: [
+        new BowerWebpackPlugin({
+            modulesDirectories: ["bower_components"],
+            manifestFiles:      "bower.json",
+            includes:           /.*/
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
     ],
     resolve: {
+        alias: {
+            angular: path.join(bowerRoot, '/angular')
+        },
         extensions: ['', '.js', '.html', '.js', '.scss'],
         modulesDirectories: ['web_modules', 'node_modules', '../app']
     },
@@ -51,7 +62,16 @@ module.exports = {
             { test: /\.js?$/, loaders: ['babel-loader?experimental'], exclude: /node_modules/ },
             { test: /\.html$/, loader: 'raw' },
             { test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/, loader: 'file'},
-            {test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')}
+            {
+                test: /\.scss$/,
+                loaders: ["style", "css", "sass"]
+            },
+            { test: /bootstrap\/js\//, loader: 'imports?jQuery=jquery' },
+            {test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')},
+            { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,   loader: "url?limit=10000&mimetype=application/font-woff" },
+            { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=application/octet-stream" },
+            { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file" },
+            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=image/svg+xml" }
         ]
     },
     devServer:{
