@@ -1,0 +1,32 @@
+{
+  "name": "estudy-frontend",
+  "version": "1.0.0",
+  "description": "Front-end part for estudy project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "config": {
+    "buildDir": "./app",
+    "devHost": "localhost",
+    "devPort": 9000
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "alt": "^0.17.3",
+    "angular": "^1.4.7",
+    "angular-ui-router": "^0.2.15",
+    "babel-core": "^5.8.25",
+    "babel-loader": "^5.3.2",
+    "babel-runtime": "^5.8.25",
+    "bootstrap": "^3.3.5",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "raw-loader": "^0.5.1",
+    "scss-loader": "0.0.1",
+    "style-loader": "^0.12.4",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.0"
+  }
+}
