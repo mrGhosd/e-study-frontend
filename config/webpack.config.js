@@ -7,6 +7,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var bowerRoot = path.join(__dirname, "../bower_components");
 var BowerWebpackPlugin = require("bower-webpack-plugin");
+var WebPackAngularTranslate = require("webpack-angular-translate");
 
 var htmlLoader = [
     'file-loader?name=[path][name].[ext]',
@@ -54,7 +55,8 @@ module.exports = {
         }),
         new ExtractTextPlugin("bootstrap.css"),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+        new WebPackAngularTranslate.Plugin()
     ],
     module: {
         preLoaders: [
@@ -70,7 +72,8 @@ module.exports = {
             { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,   loader: "url?limit=10000&mimetype=application/font-woff" },
             { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=application/octet-stream" },
             { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file" },
-            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=image/svg+xml" }
+            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=image/svg+xml" },
+            { test: /\.json$/, exclude: /node_modules/, loaders: ['json-loader'] }
         ]
     },
     devServer:{

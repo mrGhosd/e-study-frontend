@@ -1,3 +1,5 @@
+var en = require('../localization/en.json');
+var ru = require('../localization/ru.json');
 routing.$inject = ['$urlRouterProvider', '$locationProvider', '$translateProvider'];
 
 export default function routing($urlRouterProvider, $locationProvider, $translateProvider) {
@@ -6,13 +8,9 @@ export default function routing($urlRouterProvider, $locationProvider, $translat
         requireBase: false
     });
     $urlRouterProvider.otherwise('/');
+    console.log($translateProvider);
 
-    $translateProvider.translations('en', {
-        auth: {
-            "sign_in": "Sign in",
-            "sign_up": "Sign_up",
-            "sign_out": "Sign out"
-        }
-    });
+    $translateProvider.translations('en', en);
+    $translateProvider.translations('ru', ru);
     $translateProvider.preferredLanguage('en');
 }
