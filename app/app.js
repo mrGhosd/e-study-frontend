@@ -12,9 +12,10 @@ import rangy from 'rangy';
 
 import routes from 'app.config';
 import home from 'home/index';
+import users from 'users/main'
 
 import './index.html';
 import 'css/main.scss';
 
-angular.module('estudy', [uirouter, home])
+angular.module('estudy', [uirouter, home, users])
     .config(routes);
