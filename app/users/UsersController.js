@@ -1,4 +1,4 @@
-export default class UsersController{
+export default class UsersController {
     constructor(){
 
     }
