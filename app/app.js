@@ -10,5 +10,5 @@ import './index.html';
 import 'css/main.scss';
 
 console.log(bootstrap);
-angular.module('estudy', [uirouter])
+angular.module('estudy', [uirouter, home, users])
     .config(routes);
