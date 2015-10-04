@@ -1,3 +1,16 @@
-<div class="header">
-    <h1>This is header!!</h1>
+<div class="navbar navbar-inverse navbar-fixed-top" ng-controller="HeaderController">
+    <div class="container-fluid">
+        <div class="navbar-header"></div>
+        <div class="navbar-collapse collapse btn-actions pull-right">
+            <div class="current-locale">
+                <a data-remote="true" ng-click="changeLocale()" class="btn btn-primary">{{ locale }}</a>
+            </div>
+            <div class="current-user-info" ng-show="signedIn()">
+
+            </div>
+            <a data-remote="true" class="btn btn-primary" ng-click="signIn()">{{'auth.sign_in' | translate}}</a>
+            <a data-remote="true" class="btn btn-info" ng-click="signUp()">{{'auth.sign_up' | translate}}</a>
+            <a data-remote="true" class="btn btn-danger" ui-sref="sign_in" ng-click="logout()">{{'auth.sign_out' | translate}}</a>
+        </div>
+    </div>
 </div>
