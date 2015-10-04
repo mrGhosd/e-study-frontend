@@ -1,0 +1,6 @@
+<ul class="nav nav-sidebar" ng-controller="NavigationController">
+    <li  ng-class="{active: isActive('/sign_in')}"><a href="#/sign_in">Log In</a></li>
+    <li  ng-class="{active: isActive('/sign_up')}"><a href="#/sign_up">Register</a></li>
+    <li  ng-class="{active: isActive('/profile')}"><a ui-sref="profile">{{'nav.profile' | translate}}</a></li>
+    <li  ng-class="{active: isActive('/users')}"><a ui-sref="users">{{'nav.users' | translate}}</a></li>
+</ul>
