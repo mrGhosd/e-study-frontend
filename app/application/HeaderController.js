@@ -4,8 +4,8 @@ export default class HeaderController{
         this.$scope = $scope;
         this.locale = I18n.currentLocale();
         this.$translate = $translate;
-        console.log(this.$translate);
     }
+
     changeLocale(){
         let lang = (this.$translate.use() === 'en' ) ? 'ru' : 'en';
         this.$translate.use((this.$translate.use() === 'en' ) ? 'ru' : 'en');

@@ -8,7 +8,6 @@ export default function routing($urlRouterProvider, $locationProvider, $translat
         requireBase: false
     });
     $urlRouterProvider.otherwise('/');
-    console.log($translateProvider);
 
     $translateProvider.translations('en', en);
     $translateProvider.translations('ru', ru);

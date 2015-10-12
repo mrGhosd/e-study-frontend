@@ -3,5 +3,9 @@
     "sign_in": "Sign in",
     "sign_up": "Sign_up",
     "sign_out": "Sign out"
+  },
+  "nav": {
+    "profile": "Profile",
+    "users": "Users"
   }
 }

@@ -1,4 +1,4 @@
-class User{
+export default class User{
     constuctor(attributes){
         setAttributes(attributes);
     }
@@ -11,14 +11,14 @@ class User{
 
     humanizedDate(date){
         let newDate = new Date(date);
-        let time = [newDate.getHours(), newDate.getMinutes(), newDate.getSeconds()];
-        let date = [newDate.getDate(), newDate.getMonth() + 1, newDate.getFullYear()];
-        return time.join(":") + " " + date.join(".");
+        let timeSeparated = [newDate.getHours(), newDate.getMinutes(), newDate.getSeconds()];
+        let dateSeparated = [newDate.getDate(), newDate.getMonth() + 1, newDate.getFullYear()];
+        return timeSeparated.join(":") + " " + dateSeparated.join(".");
     }
 
     humanizedOnlyDate(date){
         let newDate = new Date(date);
-        let date = [newDate.getDate(), newDate.getMonth() + 1, newDate.getFullYear()];
-        return date.join(".");
+        let dateSeparated = [newDate.getDate(), newDate.getMonth() + 1, newDate.getFullYear()];
+        return dateSeparated.join(".");
     }
 }

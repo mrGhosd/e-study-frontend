@@ -1,4 +1,33 @@
+import User from 'users/user.model'
+import angular from 'angular';
 
+export default class UsersService{
+    constructor($http, $q){
+        this.$http = $http;
+        this.$q = $q;
+        this.object = {
+            users: [],
+            searchResults: []
+        }
+    }
+
+    getAll(){
+        let def = this.$q.defer();
+        this.$http.get('http://localhost:3000/users.json')
+            .success((data) => {
+                console.log(data);
+                let newUsers = [];
+                for(let i = 0; i < data.users.length; i++){
+                    let user = new User(data[i]);
+                    newUsers.push(user);
+                }
+                def.resolve(newUsers);
+                angular.copy(newUsers, this.object.users);
+            })
+    }
+}
+
+UsersService.$inject = ['$httpProvider', '$qProvider'];
 //angular.module('estudy').factory('users', [ '$http', '$q', function($http, $q){
 //    // service body
 //    var object = {

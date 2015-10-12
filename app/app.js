@@ -11,7 +11,7 @@ import NavigationController from './navigation/NavigationController'
 import HeaderController from './application/HeaderController'
 import './index.html';
 import 'css/main.scss';
-console.log(angularTranslate);
+
 angular.module('estudy', [uirouter, angularTranslate, home, users])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
