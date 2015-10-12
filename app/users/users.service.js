@@ -10,20 +10,19 @@ export default class UsersService{
             searchResults: []
         }
     }
-
     getAll(){
         let def = this.$q.defer();
-        this.$http.get('http://localhost:3000/users.json')
+        this.$http.get('http://localhost:3000/users.json/')
             .success((data) => {
-                console.log(data);
                 let newUsers = [];
                 for(let i = 0; i < data.users.length; i++){
-                    let user = new User(data[i]);
+                    let user = new User(data.users[i]);
                     newUsers.push(user);
                 }
                 def.resolve(newUsers);
                 angular.copy(newUsers, this.object.users);
-            })
+            });
+        return def.promise;
     }
 }
 

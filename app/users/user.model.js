@@ -1,11 +1,11 @@
 export default class User{
-    constuctor(attributes){
-        setAttributes(attributes);
+    constructor(attributes){
+        this.setAttributes(attributes);
     }
 
     setAttributes(attributes){
-        for(let i = 0; i < attributes.length; i++){
-            this[key] = attributes[key];
+        for(let attr in attributes){
+            this[attr] = attributes[attr];
         }
     }
 
