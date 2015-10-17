@@ -24,6 +24,14 @@ export default class UsersService{
             });
         return def.promise;
     }
+
+    get(id){
+        let def = this.$q.defer();
+        $http.get('http://localhost:3000/users/' + id + '.json').then(function(res){
+            def.resolve(new User(res.data.user));
+        });
+        return def.promise;
+    };
 }
 
 UsersService.$inject = ['$httpProvider', '$qProvider'];
