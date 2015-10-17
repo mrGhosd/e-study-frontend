@@ -7,12 +7,12 @@ export default function routes($stateProvider, $http, $q) {
     $stateProvider
         .state('users', {
             url: '/users',
-            templateUrl: require('./users.html'),
+            templateUrl: "/users/users.html",
             controller: 'UsersController as userCtrl'
         })
         .state('user', {
             url: '/users/:id',
-            templateUrl: require('./user.html'),
+            templateUrl: '/users/user.html',
             controller: 'UserController as userCtrl'
         });
 }
