@@ -1,18 +1,25 @@
-import UserService from 'users/users.service'
+'use strict';
 
 routes.$inject = ['$stateProvider', '$httpProvider', '$qProvider'];
 
-export default function routes($stateProvider, $http, $q) {
-    const userService = new UserService($http, $q);
+export function routes($stateProvider, $http, $q) {
     $stateProvider
         .state('users', {
             url: '/users',
             templateUrl: "/users/users.html",
-            controller: 'UsersController as userCtrl'
+            controller: 'UsersController'
         })
         .state('user', {
             url: '/users/:id',
             templateUrl: '/users/user.html',
-            controller: 'UserController as userCtrl'
+            controller: 'UserController',
+            resolve: {
+                user: ['$http', '$stateParams', 'UserService', ($http, $stateParams, UserService) => {
+                    return UserService.getUser($stateParams.id);
+                    //return $http.get(`http://localhost:3000/users/${$stateParams.id}.json`);
+                    //console.log(UsersService);
+                    //return UserService.getUser($stateParams.id);
+                }]
+            }
         });
 }

@@ -1,8 +1,8 @@
 import User from 'users/user.model'
 import angular from 'angular';
 
-export default class UsersService{
-    constructor($http, $q){
+export default class UsersService {
+    constructor($http, $q) {
         this.$http = $http;
         this.$q = $q;
         this.object = {
@@ -10,12 +10,13 @@ export default class UsersService{
             searchResults: []
         }
     }
-    getAll(){
+
+    getAll() {
         let def = this.$q.defer();
         this.$http.get('http://localhost:3000/users.json/')
             .success((data) => {
                 let newUsers = [];
-                for(let i = 0; i < data.users.length; i++){
+                for (let i = 0; i < data.users.length; i++) {
                     let user = new User(data.users[i]);
                     newUsers.push(user);
                 }
@@ -25,16 +26,16 @@ export default class UsersService{
         return def.promise;
     }
 
-    get(id){
+    getUser(id) {
         let def = this.$q.defer();
-        $http.get('http://localhost:3000/users/' + id + '.json').then(function(res){
+        this.$http.get(`http://localhost:3000/users/${id}.json`).then(function (res) {
+            console.log(res);
             def.resolve(new User(res.data.user));
         });
         return def.promise;
-    };
-}
+    }
 
-UsersService.$inject = ['$httpProvider', '$qProvider'];
+}
 //angular.module('estudy').factory('users', [ '$http', '$q', function($http, $q){
 //    // service body
 //    var object = {

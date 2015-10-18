@@ -63,7 +63,7 @@ module.exports = {
             { test: /\.js$/, loader: 'baggage?[file].html' }
         ],
         loaders: [
-            { test: /\.js?$/, loaders: ['babel-loader?experimental'], exclude: /node_modules/ },
+            { test: /\.js?$/, loaders: ['babel-loader?experimental' ], exclude: /node_modules/ },
             { test: /\.html$/, loader: "ngtemplate?relativeTo="+path.join(__dirname, "../app")+"/!html" },
             { test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/, loader: 'file'},
             { test: /\.scss$/, loaders: ["style", "css", "sass"] },
