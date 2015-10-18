@@ -2,7 +2,8 @@
   "auth": {
     "sign_in": "Авторизация",
     "sign_up": "Регистрация",
-    "sign_out": "Выйти"
+    "sign_out": "Выйти",
+    "password_recovery": "Восстановление пароля"
   },
   "users": {
     "search_button": "Поиск"
