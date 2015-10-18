@@ -64,7 +64,7 @@ module.exports = {
         ],
         loaders: [
             { test: /\.js?$/, loaders: ['babel-loader?experimental' ], exclude: /node_modules/ },
-            { test: /\.html$/, loader: "ngtemplate?relativeTo="+path.join(__dirname, "../app")+"/!html" },
+            { test: /\.html$/, loader: "raw"},
             { test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/, loader: 'file'},
             { test: /\.scss$/, loaders: ["style", "css", "sass"] },
             { test: /bootstrap\/js\//, loader: 'imports?jQuery=jquery' },
