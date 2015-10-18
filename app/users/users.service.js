@@ -29,8 +29,21 @@ export default class UsersService {
     getUser(id) {
         let def = this.$q.defer();
         this.$http.get(`http://localhost:3000/users/${id}.json`).then(function (res) {
-            console.log(res);
             def.resolve(new User(res.data.user));
+        });
+        return def.promise;
+    }
+
+    search(query){
+        let def = this.$q.defer();
+        const params = {object: "user", query: query};
+        this.$http.get('http://localhost:3000/search.json', {params: params}).success(function(data){
+            let newUsers = [];
+            for(var i = 0; i < data.search.length; i++){
+                let user = new User(data.search[i]);
+                newUsers.push(user);
+            }
+            def.resolve(newUsers);
         });
         return def.promise;
     }

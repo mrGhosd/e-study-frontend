@@ -1,4 +1,14 @@
 <h1>Users list</h1>
+<div class="search-form">
+    <form class="form" ng-submit="usr.search()">
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="search" class="form-control" ng-change="usr.dynamicSearch()" ng-model="searchField"/>
+            </div>
+        </div>
+        <input type="submit" value="{{ 'users.search_button' | translate }}" class="btn btn-info"/>
+    </form>
+</div>
 <div ng-repeat="user in users" class="user-item panel panel-primary">
     <div class="panel-heading">
         <span><a ui-sref="user({id: user.id})" >{{ user.correctNaming() }}</a></span>

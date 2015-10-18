@@ -8,6 +8,7 @@ export function routes($stateProvider, $http, $q) {
             url: '/users',
             template: require("./users.html"),
             controller: 'UsersController',
+            controllerAs: 'usr',
             resolve: {
                 users: ['UserService', (UserService) =>{
                     return UserService.getAll();

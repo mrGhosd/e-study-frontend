@@ -3,5 +3,8 @@
     "sign_in": "Авторизация",
     "sign_up": "Регистрация",
     "sign_out": "Выйти"
+  },
+  "users": {
+    "search_button": "Поиск"
   }
 }
