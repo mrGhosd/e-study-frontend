@@ -1,12 +1,12 @@
 export default class AuthorizationController{
-    constructor($scope, $state, $modal, $modalInstance, currentTab, UserService){
+    constructor($scope, $state, $modal, $modalInstance, currentTab, UserService, AuthService){
         this.$scope = $scope;
         this.$state = $state;
         this.$modal = $modal;
         this.$modalInstance = $modalInstance;
         this.currentTab = currentTab;
         this.userService = UserService;
-
+        this.authService = AuthService;
         this.$scope.modalView = {};
         this.modalView = {};
         if(currentTab === 'reg'){
@@ -40,6 +40,10 @@ export default class AuthorizationController{
         this.modalTitle = title;
         this.modalView.currentForm = form;
     };
+
+    login(){
+        this.authService.login();
+    }
 }
 
 //angular.module("estudy")

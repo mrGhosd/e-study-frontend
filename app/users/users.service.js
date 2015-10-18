@@ -28,7 +28,7 @@ export default class UsersService {
 
     getUser(id) {
         let def = this.$q.defer();
-        this.$http.get(`http://localhost:3000/users/${id}.json`).then(function (res) {
+        this.$http.get(`http://localhost:3000/users/${id}.json`).then((res) => {
             def.resolve(new User(res.data.user));
         });
         return def.promise;
@@ -37,7 +37,7 @@ export default class UsersService {
     search(query){
         let def = this.$q.defer();
         const params = {object: "user", query: query};
-        this.$http.get('http://localhost:3000/search.json', {params: params}).success(function(data){
+        this.$http.get('http://localhost:3000/search.json', {params: params}).success((data) => {
             let newUsers = [];
             for(var i = 0; i < data.search.length; i++){
                 let user = new User(data.search[i]);
@@ -45,6 +45,17 @@ export default class UsersService {
             }
             def.resolve(newUsers);
         });
+        return def.promise;
+    }
+
+    login(user){
+        let def = this.$q.defer();
+        const params = {user: user};
+        this.$http.post('http://localhost:3000/users/sign_in.json', params)
+            .success((res) => {
+                console.log(res);
+                def.resolve(new User(res.user));
+            });
         return def.promise;
     }
 

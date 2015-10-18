@@ -14,6 +14,7 @@ import AuthorizationController from './modal_windows/AuthorizationController';
 import './index.html';
 import 'css/main.scss';
 
+
 angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
