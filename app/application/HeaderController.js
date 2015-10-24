@@ -32,7 +32,6 @@ export default class HeaderController{
             animation: true,
             templateUrl: require('../modal_windows/auth_window.html'),
             controller: 'AuthorizationController as modalView',
-            size: 'lg',
             resolve: {
                 currentTab: function () {
                     return "reg";

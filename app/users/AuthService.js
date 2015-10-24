@@ -11,4 +11,8 @@ export default class AuthService{
            console.log(error, xhr);
         });
     }
+
+    register(user){
+        return this.userService.register(user);
+    }
 }

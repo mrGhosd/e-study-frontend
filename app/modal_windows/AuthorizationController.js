@@ -14,7 +14,6 @@ export default class AuthorizationController{
         } else if(currentTab == 'auth'){
             this.activeTabAuth = true;
         }
-        console.log(this);
     }
 
     cancel(){
@@ -22,18 +21,15 @@ export default class AuthorizationController{
     }
 
     defineCurrentForm(){
-        let object = this.modalView;
-        if (object.hasOwnProperty("currentForm")) {
-            let form;
-            if (this.activeTabAuth) {
-                form = this.modalView.authForm;
-            } else if(this.activeTabReg) {
-                form = this.modalView.regForm;
-            } else {
-                form = this.modalView.restoreForm;
-            }
-            this.modalView.currentForm = form;
+        let form;
+        if (this.activeTabAuth) {
+            form = this.modalView.authForm;
+        } else if(this.activeTabReg) {
+            form = this.modalView.regForm;
+        } else {
+            form = this.modalView.restoreForm;
         }
+        this.modalView.currentForm = form;
     }
 
     setCurrentViewDetails(title, form){
@@ -43,6 +39,22 @@ export default class AuthorizationController{
 
     login(){
         this.authService.login();
+    }
+
+    register(){
+        const params = { email: this.regForm.email,
+        password: this.regForm.password,
+        password_confirmation: this.regForm.password_confirmation };
+        this.authService.register(params)
+        .then((response) => {
+            $modalInstance.dismiss('cancel');
+        })
+        .catch((error) => {
+            this.regForm.$submitted = true;
+            this.regForm.$errors = error;
+            this.regForm.$invalid = true;
+            this.regForm.$valid = false;
+        });
     }
 }
 

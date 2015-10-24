@@ -13,7 +13,7 @@ export default class UsersService {
 
     getAll() {
         let def = this.$q.defer();
-        this.$http.get('http://localhost:3000/users.json/')
+        this.$http.get('http://localhost:3000/api/v0/users.json/')
             .success((data) => {
                 let newUsers = [];
                 for (let i = 0; i < data.users.length; i++) {
@@ -28,7 +28,7 @@ export default class UsersService {
 
     getUser(id) {
         let def = this.$q.defer();
-        this.$http.get(`http://localhost:3000/users/${id}.json`).then((res) => {
+        this.$http.get(`http://localhost:3000/api/v0/users/${id}.json`).then((res) => {
             def.resolve(new User(res.data.user));
         });
         return def.promise;
@@ -37,7 +37,7 @@ export default class UsersService {
     search(query){
         let def = this.$q.defer();
         const params = {object: "user", query: query};
-        this.$http.get('http://localhost:3000/search.json', {params: params}).success((data) => {
+        this.$http.get('http://localhost:3000/api/v0/search.json', {params: params}).success((data) => {
             let newUsers = [];
             for(var i = 0; i < data.search.length; i++){
                 let user = new User(data.search[i]);
@@ -51,10 +51,23 @@ export default class UsersService {
     login(user){
         let def = this.$q.defer();
         const params = {user: user};
-        this.$http.post('http://localhost:3000/users/sign_in.json', params)
+        this.$http.post('http://localhost:3000/api/sign_in.json', params)
             .success((res) => {
                 console.log(res);
                 def.resolve(new User(res.user));
+            });
+        return def.promise;
+    }
+
+    register(user){
+        let def = this.$q.defer();
+        const params = {user: user};
+        this.$http.post('http://localhost:3000/api/registrations', params)
+            .success((res) => {
+                def.resolve(new User(res.user));
+            })
+            .error((error) => {
+                def.reject(error);
             });
         return def.promise;
     }

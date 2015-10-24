@@ -11,6 +11,7 @@ import I18n from 'i18n-js';
 import NavigationController from './navigation/NavigationController'
 import HeaderController from './application/HeaderController'
 import AuthorizationController from './modal_windows/AuthorizationController';
+import ApiRequest from 'api/ApiRequest';
 import './index.html';
 import 'css/main.scss';
 
@@ -19,5 +20,6 @@ angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, us
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)
+    .service(ApiRequest)
     .config(config);
 

@@ -5,4 +5,5 @@ import routing from './home.routes';
 import HomeController from './home.controller';
 
 export default angular.module('home', [uirouter])
-    .config(routing).controller('HomeController', HomeController).name;
+    .controller('HomeController', HomeController)
+    .config(routing).name;
