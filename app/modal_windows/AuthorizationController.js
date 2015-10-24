@@ -14,6 +14,7 @@ export default class AuthorizationController{
         } else if(currentTab == 'auth'){
             this.activeTabAuth = true;
         }
+        console.log(this.authService);
     }
 
     cancel(){
@@ -38,7 +39,18 @@ export default class AuthorizationController{
     };
 
     login(){
-        this.authService.login();
+        const params = { email: this.authForm.email,
+        password: this.authForm.password };
+        this.authService.login(params)
+        .then((response) => {
+            this.$modalInstance.dismiss('cancel');
+        })
+        .catch((error) => {
+            this.authForm.$submitted = true;
+            this.authForm.$errors = error;
+            this.authForm.$invalid = true;
+            this.authForm.$valid = false;
+        });
     }
 
     register(){
@@ -47,7 +59,7 @@ export default class AuthorizationController{
         password_confirmation: this.regForm.password_confirmation };
         this.authService.register(params)
         .then((response) => {
-            $modalInstance.dismiss('cancel');
+            this.$modalInstance.dismiss('cancel');
         })
         .catch((error) => {
             this.regForm.$submitted = true;

@@ -50,11 +50,13 @@ export default class UsersService {
 
     login(user){
         let def = this.$q.defer();
-        const params = {user: user};
-        this.$http.post('http://localhost:3000/api/sign_in.json', params)
+        const params = {session: user};
+        this.$http.post('http://localhost:3000/api/sessions', params)
             .success((res) => {
-                console.log(res);
                 def.resolve(new User(res.user));
+            })
+            .error((error) => {
+                def.reject(error);
             });
         return def.promise;
     }

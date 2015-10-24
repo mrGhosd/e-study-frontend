@@ -5,10 +5,10 @@ export default class AuthService{
     }
 
     login(user){
-        this.userService.login(user).then((data) => {
-            console.log(data);
-        }).catch((error, xhr) => {
-           console.log(error, xhr);
+        return this.userService.login(user)
+        .then((user) => {
+            this.currentUser = user;
+            console.log(this.currentUser);
         });
     }
 
