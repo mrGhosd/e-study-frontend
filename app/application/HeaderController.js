@@ -1,11 +1,16 @@
 import I18n from 'i18n-js';
 
 export default class HeaderController{
-    constructor($scope, $translate, $modal){
+    constructor($scope, $translate, $modal, AuthService){
         this.$modal = $modal;
         this.$scope = $scope;
         this.locale = I18n.currentLocale();
         this.$translate = $translate;
+        this.AuthService = AuthService;
+    }
+
+    signedIn(){
+        return this.AuthService.signedIn;
     }
 
     changeLocale(){

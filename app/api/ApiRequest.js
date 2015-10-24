@@ -32,3 +32,5 @@ export default class ApiRequest{
         return `http://${this.host}:${this.port}/api/${this.version}}/${url}}`;
     }
 }
+
+export default angular.module('estudy.api', []).service('ApiRequest', ApiRequest).name;

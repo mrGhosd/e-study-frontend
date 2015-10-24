@@ -14,7 +14,6 @@ export default class AuthorizationController{
         } else if(currentTab == 'auth'){
             this.activeTabAuth = true;
         }
-        console.log(this.authService);
     }
 
     cancel(){
