@@ -10,7 +10,7 @@ export default class HeaderController{
     }
 
     signedIn(){
-        return this.AuthService.signedIn;
+        return this.AuthService.isSignedIn;
     }
 
     changeLocale(){

@@ -6,16 +6,18 @@ export default class AuthService{
         this.$window = $window;
     }
 
-    currentUser(){
+    getCurrentUser(){
         let user = this.currentUser || JSON.parse(this.$window.sessionStorage['current_user']);
         if(user){
             this.signedIn = true;
             return user;
+        } else {
+            return false;
         }
     }
 
-    signedIn(){
-        return this.signedIn;
+    get isSignedIn(){
+        return this.getCurrentUser() ? true : false;
     }
 
     login(user){
