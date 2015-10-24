@@ -2,9 +2,10 @@ import User from 'users/user.model'
 import angular from 'angular';
 
 export default class UsersService {
-    constructor($http, $q) {
+    constructor($http, $q, ApiRequest) {
         this.$http = $http;
         this.$q = $q;
+        this.ApiRequest = ApiRequest;
         this.object = {
             users: [],
             searchResults: []
@@ -13,11 +14,11 @@ export default class UsersService {
 
     getAll() {
         let def = this.$q.defer();
-        this.$http.get('http://localhost:3000/api/v0/users.json/')
-            .success((data) => {
+        this.ApiRequest.get('/users.json/', {})
+            .then((response) => {
                 let newUsers = [];
-                for (let i = 0; i < data.users.length; i++) {
-                    let user = new User(data.users[i]);
+                for (let i = 0; i < response.data.users.length; i++) {
+                    let user = new User(response.data.users[i]);
                     newUsers.push(user);
                 }
                 def.resolve(newUsers);
@@ -51,7 +52,7 @@ export default class UsersService {
     login(user){
         let def = this.$q.defer();
         const params = {session: user};
-        this.$http.post('http://localhost:3000/api/sessions', params)
+        this.ApiRequest.signIn(params)
             .success((res) => {
                 def.resolve(new User(res.user));
             })
@@ -71,6 +72,31 @@ export default class UsersService {
             .error((error) => {
                 def.reject(error);
             });
+        return def.promise;
+    }
+
+    signOut(){
+        let def = this.$q.defer();
+        this.ApiRequest.signOut()
+        .then((response) => {
+            def.resolve(response);
+        })
+        .catch((error) => {
+            def.reject(error)
+        });
+        return def.promise;
+    }
+
+    currentUser(token){
+        let def = this.$q.defer();
+        const params = {session: token};
+        this.$http.get('http://localhost:3000/api/sessions/current', {params: params})
+        .success((response) => {
+            def.resolve(new User(response.user));
+        })
+        .error((error) => {
+            def.reject(error);
+        });
         return def.promise;
     }
 

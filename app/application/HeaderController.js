@@ -7,6 +7,10 @@ export default class HeaderController{
         this.locale = I18n.currentLocale();
         this.$translate = $translate;
         this.AuthService = AuthService;
+        this.AuthService.currentUser
+            .then((user) => {
+            console.log(user);
+        })
     }
 
     signedIn(){
@@ -44,4 +48,8 @@ export default class HeaderController{
             }
         });
     };
+
+    logout(){
+        this.AuthService.signOut();
+    }
 }

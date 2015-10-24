@@ -1,32 +1,32 @@
 export default class AuthService{
     constructor(UserService, $window){
         this.userService = UserService;
-        this.currentUser = {};
         this.signedIn = false;
         this.$window = $window;
     }
 
-    getCurrentUser(){
-        let user = this.currentUser || JSON.parse(this.$window.sessionStorage['current_user']);
-        if(user){
-            this.signedIn = true;
-            return user;
-        } else {
-            return false;
-        }
+    get isSignedIn(){
+        return this.$window.sessionStorage['remember_token'] ? true : false;
     }
 
-    get isSignedIn(){
-        return this.getCurrentUser() ? true : false;
-    }
+    get currentUser(){
+        const token = this.$window.sessionStorage['remember_token'];
+        console.log(token);
+        return this.userService.currentUser(token)
+        .then((response) => {
+            return response;
+        })
+        .catch((error) => {
+            return error;
+        })
+}
+
 
     login(user){
         return this.userService.login(user)
-        .then((user) => {
-            this.$window.sessionStorage['current_user'] = JSON.stringify(user);
+        .then((response) => {
+            this.$window.sessionStorage['remember_token'] = response.remember_token;
             this.signedIn = true;
-            this.currentUser = user;
-            console.log(this.currentUser);
         });
     }
 
@@ -34,7 +34,15 @@ export default class AuthService{
         return this.userService.register(user)
         .then((response) => {
             this.signedIn = true;
-            this.currentUser = user;
         });
+    }
+
+    signOut(){
+        return this.userService.signOut()
+            .then((response) => {
+                this.signedIn = false;
+                delete this.$window.sessionStorage.remember_token;
+                console.log(this.$window.sessionStorage['remember_token']);
+            });
     }
 }
