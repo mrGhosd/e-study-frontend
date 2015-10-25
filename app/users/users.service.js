@@ -65,13 +65,25 @@ export default class UsersService {
     register(user){
         let def = this.$q.defer();
         const params = {user: user};
-        this.$http.post('http://localhost:3000/api/registrations', params)
+        this.ApiRequest.signUp(params)
             .success((res) => {
                 def.resolve(new User(res.user));
             })
             .error((error) => {
                 def.reject(error);
             });
+        return def.promise;
+    }
+
+    update(id, user){
+        let def = this.$q.defer();
+        this.ApiRequest.put('/users/' + id + '.json', user)
+        .success((res) => {
+            def.resolve(new User(res.user));
+        })
+        .error((error) => {
+            def.reject(error);
+        });
         return def.promise;
     }
 

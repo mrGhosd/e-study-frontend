@@ -32,6 +32,17 @@ export default class ApiRequest{
         });
     }
 
+    put(url, parameters){
+        parameters.remember_token = this.$window.sessionStorage['remember_token'];
+        return this.$http.put(this.correctUrl(url), parameters)
+        .success((response) => {
+            return response;
+        })
+        .error((error) => {
+            return error;
+        });
+    }
+
     signIn(params){
         return this.$http.post(this.sessionsPath, params)
             .success((res) => {

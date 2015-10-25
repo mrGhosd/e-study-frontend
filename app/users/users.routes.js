@@ -1,9 +1,9 @@
 'use strict';
 import User from 'users/user.model'
 
-routes.$inject = ['$stateProvider', '$httpProvider', '$qProvider'];
+routes.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-export function routes($stateProvider, $http, $q) {
+export function routes($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('profile', {
             url: '/profile',
@@ -21,7 +21,7 @@ export function routes($stateProvider, $http, $q) {
         .state('edit_profile', {
             url: '/profile/edit',
             template: require("./form.html"),
-            controller: 'UserFormController',
+            controller: 'UserFormController as profile',
             resolve: {
                 user: ['AuthService', (AuthService) =>{
                    return AuthService.currentUser;
@@ -57,4 +57,6 @@ export function routes($stateProvider, $http, $q) {
                 }
             }
         });
+
+        //$urlRouterProvider.otherwise('sign_in');
 }

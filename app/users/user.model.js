@@ -10,11 +10,11 @@ export default class User{
     }
 
     correctNaming(){
-        if(this.surname && this.name){
-            if(this.secondname){
-                return this.surname + " " + this.name + " " + this.secondname;
+        if(this.last_name && this.first_name){
+            if(this.middle_name){
+                return this.last_name + " " + this.first_name + " " + this.middle_name;
             }
-            return this.surname + " " + this.name;
+            return this.last_name + " " + this.first_name;
         } else {
             return this.email;
         }

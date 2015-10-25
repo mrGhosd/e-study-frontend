@@ -1,11 +1,11 @@
-<form ng-submit="update()" name="userForm" class="form-horizontal">
+<form ng-submit="profile.update()" name="userForm" class="form-horizontal">
     <fieldset>
         <div class="row">
             <div class="col-md-8">
                 <div class="form-group" ng-class="{ 'has-error': userForm.$submitted && userForm.$errors.surname }">
                     <label class="control-label col-md-4">{{ 'users.surname' | translate }}</label>
                     <div class="col-md-6">
-                        <input type="text" class="form-control"  placeholder="Surname" ng-model="user.surname" required>
+                        <input type="text" class="form-control"  placeholder="Surname" ng-model="user.last_name" required>
                         <div ng-if="userForm.$submitted && userForm.$errors.surname" class="error">
                             <p ng-repeat="error in userForm.$errors.surname">
                                 {{error}}
@@ -16,7 +16,7 @@
                 <div class="form-group" ng-class="{ 'has-error': userForm.$submitted && userForm.$errors.name }">
                     <label class="control-label col-md-4"> {{ 'users.name' | translate }} </label>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" placeholder="Name" ng-model="user.name" required>
+                        <input type="text" class="form-control" placeholder="Name" ng-model="user.first_name" required>
                         <div ng-if="userForm.$submitted && userForm.$errors.name" class="error">
                             <p ng-repeat="error in userForm.$errors.name">
                                 {{error}}
@@ -27,7 +27,7 @@
                 <div class="form-group" ng-class="{ 'has-error': userForm.$submitted && userForm.$errors.secondname }">
                     <label class="control-label col-md-4">{{ 'users.secondname' | translate }}</label>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" placeholder="Second name" ng-model="user.secondname" required>
+                        <input type="text" class="form-control" placeholder="Second name" ng-model="user.middle_name" required>
                         <div ng-if="userForm.$submitted && userForm.$errors.secondname" class="error">
                             <p ng-repeat="error in userForm.$errors.secondname">
                                 {{error}}
