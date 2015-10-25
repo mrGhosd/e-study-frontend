@@ -15,8 +15,8 @@ import ApiRequest from 'api/ApiRequest';
 import ngFileUpload from 'ng-file-upload';
 import './index.html';
 import 'css/main.scss';
-console.log(ngFileUpload);
-angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users, ApiRequest])
+;
+angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users, ApiRequest, ngFileUpload])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)

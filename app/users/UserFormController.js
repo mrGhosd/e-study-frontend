@@ -1,11 +1,12 @@
 export default class UserFormController {
-    constructor($scope, $state, user, $filter, UserService){
+    constructor($scope, $state, user, $filter, UserService, Upload){
         this.user = user;
         this.$scope = $scope;
         this.$filter = $filter;
         this.UserService = UserService;
         this.$state = $state;
         $scope.user = user;
+        this.Upload = Upload;
         if($scope.user.hasOwnProperty("date_of_birth")){
             $scope.user.date_of_birth = new Date($filter("date")(Date.now(), 'yyyy-MM-dd'));
         }
@@ -23,7 +24,7 @@ export default class UserFormController {
             description: user.description
         }};
         if(user.image){
-            userParams.image = {
+            userParams.user.image = {
                 imageable_type: "User",
                 id: user.image.id
             };
@@ -37,12 +38,15 @@ export default class UserFormController {
             this.$scope.userForm.$errors = errors;
             this.$scope.userForm.$invalid = true;
         });
-        //users.update(user.id, userParams).success(function(data){
-        //    $state.go('user', {id: data.user.id});
-        //}).error(function(errors){
-        //    $scope.userForm.$submitted = true;
-        //    $scope.userForm.$errors = errors;
-        //    $scope.userForm.$invalid = true;
-        //});
+    }
+
+    upload(file){
+        this.Upload.upload({
+            url: 'http://localhost:3000/api/v0/images',
+            fields: {'imageable_type': "User"},
+            file: file
+        }).success( (data, status, headers, config) => {
+            this.$scope.user.image = data;
+        })
     }
 }

@@ -36,6 +36,11 @@ li.active{
 .error{
   color: #FF0000;
 }
+.info-list{
+  div, a{
+    display: inline;
+  }
+}
 form.auth-form,
 form.reg-form,
 form.restore-form{

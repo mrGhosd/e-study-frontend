@@ -57,6 +57,4 @@ export function routes($stateProvider, $urlRouterProvider) {
                 }
             }
         });
-
-        //$urlRouterProvider.otherwise('sign_in');
 }
