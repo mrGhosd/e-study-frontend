@@ -18,6 +18,11 @@ export function routes($stateProvider, $http, $q) {
                 }
             }
         })
+        .state('edit_profile', {
+            url: '/profile/edit',
+            template: require("./form.html"),
+            controller: 'UserFormController'
+        })
         .state('users', {
             url: '/users',
             template: require("./users.html"),
