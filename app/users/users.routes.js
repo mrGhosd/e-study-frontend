@@ -21,7 +21,12 @@ export function routes($stateProvider, $http, $q) {
         .state('edit_profile', {
             url: '/profile/edit',
             template: require("./form.html"),
-            controller: 'UserFormController'
+            controller: 'UserFormController',
+            resolve: {
+                user: ['AuthService', (AuthService) =>{
+                   return AuthService.currentUser;
+                }]
+            }
         })
         .state('users', {
             url: '/users',

@@ -12,10 +12,10 @@ import NavigationController from './navigation/NavigationController'
 import HeaderController from './application/HeaderController'
 import AuthorizationController from './modal_windows/AuthorizationController';
 import ApiRequest from 'api/ApiRequest';
+import ngFileUpload from 'ng-file-upload';
 import './index.html';
 import 'css/main.scss';
-
-
+console.log(ngFileUpload);
 angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users, ApiRequest])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
