@@ -6,6 +6,7 @@
     "password_recovery": "Восстановление пароля"
   },
   "users": {
-    "search_button": "Поиск"
+    "search_button": "Поиск",
+    "profile": "Профиль"
   }
 }

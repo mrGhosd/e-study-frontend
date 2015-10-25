@@ -13,9 +13,9 @@ export function routes($stateProvider, $http, $q) {
                 user: ['AuthService', '$location', (AuthService, $location) => {
                     return AuthService.currentUser;
                 }],
-                profile: ['$state', ($state) => {
+                profile: () => {
                     return true;
-                }]
+                }
             }
         })
         .state('users', {
@@ -41,7 +41,10 @@ export function routes($stateProvider, $http, $q) {
             resolve: {
                 user: ['$stateParams', 'UserService', ($stateParams, UserService) => {
                     return UserService.getUser($stateParams.id);
-                }]
+                }],
+                profile: () => {
+                    return false;
+                }
             }
         });
 }

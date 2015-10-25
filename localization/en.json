@@ -12,6 +12,7 @@
     "users": "Users"
   },
   "users": {
-    "search_button": "Search"
+    "search_button": "Search",
+    "profile": "Profile"
   }
 }
