@@ -25,18 +25,14 @@ export default class AuthService{
     login(user){
         return this.userService.login(user)
         .then((response) => {
-                this.$window.sessionStorage['remember_token'] = response.remember_token;
-                this.signedIn = true;
-                this.$rootScope.$broadcast('signedIn');
+            this.receiveUserData(response);
         });
     }
 
     register(user){
         return this.userService.register(user)
         .then((response) => {
-                this.$window.sessionStorage['remember_token'] = response.remember_token;
-                this.signedIn = true;
-                this.$rootScope.$broadcast('signedIn');
+            this.receiveUserData(response);
         });
     }
 
@@ -46,5 +42,11 @@ export default class AuthService{
                 this.signedIn = false;
                 delete this.$window.sessionStorage.remember_token;
             });
+    }
+
+    receiveUserData(response){
+        this.$window.sessionStorage['remember_token'] = response.remember_token;
+        this.signedIn = true;
+        this.$rootScope.$broadcast('signedIn');
     }
 }
