@@ -1,12 +1,14 @@
 export default class UserFormController {
-    constructor($scope, $state, user, $filter, UserService, Upload){
+    constructor($scope, $rootScope, $state, user, $filter, UserService, Upload, AuthService){
         this.user = user;
         this.$scope = $scope;
+        this.$rootScope = $rootScope;
         this.$filter = $filter;
         this.UserService = UserService;
         this.$state = $state;
         $scope.user = user;
         this.Upload = Upload;
+        this.AuthService = AuthService;
         if($scope.user.hasOwnProperty("date_of_birth")){
             $scope.user.date_of_birth = new Date($filter("date")(Date.now(), 'yyyy-MM-dd'));
         }
@@ -14,7 +16,6 @@ export default class UserFormController {
 
     update(){
         let user = this.$scope.user;
-        console.log(user);
         let userParams = { user: {
             last_name: user.last_name,
             first_name: user.first_name,
@@ -31,6 +32,7 @@ export default class UserFormController {
         }
         this.UserService.update(user.id, userParams)
         .then((data) => {
+            this.$rootScope.$broadcast('profileUpdated', data);
             this.$state.go('user', {id: data.id});
         })
         .catch((errors) => {
@@ -41,11 +43,13 @@ export default class UserFormController {
     }
 
     upload(file){
+        console.log(file);
         this.Upload.upload({
             url: 'http://localhost:3000/api/v0/images',
             fields: {'imageable_type': "User"},
             file: file
         }).success( (data, status, headers, config) => {
+            console.log(data);
             this.$scope.user.image = data;
         })
     }

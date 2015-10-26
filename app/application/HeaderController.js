@@ -13,6 +13,9 @@ export default class HeaderController{
                     this.user = user;
                 })
         });
+        $rootScope.$on('profileUpdated', (event, args) =>{
+            this.user = args;
+        });
 
         if($window.sessionStorage['remember_token']){
             this.AuthService.currentUser

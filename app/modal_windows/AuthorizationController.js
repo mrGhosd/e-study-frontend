@@ -1,6 +1,7 @@
 export default class AuthorizationController{
-    constructor($scope, $state, $modal, $modalInstance, currentTab, UserService, AuthService){
+    constructor($scope, $rootScope, $state, $modal, $modalInstance, currentTab, UserService, AuthService){
         this.$scope = $scope;
+        this.$rootScope = $rootScope;
         this.$state = $state;
         this.$modal = $modal;
         this.$modalInstance = $modalInstance;

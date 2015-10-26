@@ -11,8 +11,7 @@ export default class AuthService{
     }
 
     get currentUser(){
-        const token = this.$window.sessionStorage['remember_token'];
-        return this.userService.currentUser(token)
+        return this.userService.currentUser()
         .then((response) => {
             return response;
         })
@@ -20,7 +19,6 @@ export default class AuthService{
             return error;
         })
     }
-
 
     login(user){
         return this.userService.login(user)

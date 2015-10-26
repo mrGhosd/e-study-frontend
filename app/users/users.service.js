@@ -99,14 +99,13 @@ export default class UsersService {
         return def.promise;
     }
 
-    currentUser(token){
+    currentUser(){
         let def = this.$q.defer();
-        const params = {session: token};
-        this.$http.get('http://localhost:3000/api/sessions/current', {params: params})
-        .success((response) => {
-            def.resolve(new User(response.user));
+        this.ApiRequest.currentUser()
+        .then((response) => {
+            def.resolve(new User(response.data.user));
         })
-        .error((error) => {
+        .catch((error) => {
             def.reject(error);
         });
         return def.promise;
