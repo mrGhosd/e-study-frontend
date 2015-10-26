@@ -1,9 +1,10 @@
 export default class AuthService{
-    constructor(UserService, $window, $rootScope){
+    constructor(UserService, $window, $rootScope, $http){
         this.userService = UserService;
         this.signedIn = false;
         this.$window = $window;
         this.$rootScope = $rootScope;
+        this.$http = $http;
     }
 
     get isSignedIn(){
@@ -39,6 +40,7 @@ export default class AuthService{
             .then((response) => {
                 this.signedIn = false;
                 delete this.$window.sessionStorage.remember_token;
+                this.$rootScope.$broadcast('signedOut');
             });
     }
 

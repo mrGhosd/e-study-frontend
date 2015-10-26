@@ -15,11 +15,23 @@ import ApiRequest from 'api/ApiRequest';
 import ngFileUpload from 'ng-file-upload';
 import './index.html';
 import 'css/main.scss';
-;
+
 angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users, ApiRequest, ngFileUpload])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)
     .service(ApiRequest)
-    .config(config);
+    .config(config)
+    .run(($rootScope, AuthService, $location, $state) => {
+        $rootScope.$on('signedIn', (event, args) => {
+            if($state.current.name === 'user'){
+                $state.go('profile');
+            }
+        });
+        $rootScope.$on('signedOut', (event, args) => {
+            if($state.current.name === 'profile'){
+                $state.go('users');
+            }
+        });
+    });
 
