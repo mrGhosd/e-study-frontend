@@ -105,9 +105,6 @@ export default class UsersService {
         .then((response) => {
             def.resolve(new User(response.data.user));
         })
-        .catch((error) => {
-            def.reject(error);
-        });
         return def.promise;
     }
 

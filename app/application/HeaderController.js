@@ -51,7 +51,7 @@ export default class HeaderController{
     signUp(){
         let modalInstance = this.$modal.open({
             animation: true,
-            templateUrl: require('../modal_windows/auth_window.html'),
+            template: require('../modal_windows/auth_window.html'),
             controller: 'AuthorizationController as modalView',
             resolve: {
                 currentTab: function () {

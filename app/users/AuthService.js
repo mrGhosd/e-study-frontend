@@ -1,10 +1,14 @@
+import User from 'users/user.model.js';
+
 export default class AuthService{
-    constructor(UserService, $window, $rootScope, $http){
+    constructor(UserService, $window, $rootScope, $http, $q, ApiRequest){
         this.userService = UserService;
         this.signedIn = false;
         this.$window = $window;
         this.$rootScope = $rootScope;
         this.$http = $http;
+        this.$q = $q;
+        this.ApiRequest = ApiRequest;
     }
 
     get isSignedIn(){
@@ -12,13 +16,15 @@ export default class AuthService{
     }
 
     get currentUser(){
-        return this.userService.currentUser()
-        .then((response) => {
-            return response;
+        let def = this.$q.defer();
+        this.ApiRequest.currentUser()
+        .then((res) => {
+            def.resolve(new User(res.user));
         })
         .catch((error) => {
-            return error;
-        })
+            def.reject(error);
+        });
+        return def.promise;
     }
 
     login(user){

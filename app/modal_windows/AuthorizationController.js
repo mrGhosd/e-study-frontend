@@ -15,6 +15,7 @@ export default class AuthorizationController{
         } else if(currentTab == 'auth'){
             this.activeTabAuth = true;
         }
+        this.defineCurrentForm();
     }
 
     cancel(){
@@ -24,11 +25,11 @@ export default class AuthorizationController{
     defineCurrentForm(){
         let form;
         if (this.activeTabAuth) {
-            form = this.modalView.authForm;
+            if(this.authForm) form = this.authForm;
         } else if(this.activeTabReg) {
-            form = this.modalView.regForm;
+            if(this.regForm) form = this.regForm;
         } else {
-            form = this.modalView.restoreForm;
+            if(this.restoreForm) form = this.restoreForm;
         }
         this.modalView.currentForm = form;
     }

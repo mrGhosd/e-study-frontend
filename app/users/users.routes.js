@@ -9,8 +9,9 @@ export function routes($stateProvider, $urlRouterProvider) {
             url: '/profile',
             template: require('./user.html'),
             controller: 'UserController',
+            signedIn: true,
             resolve: {
-                user: ['AuthService', '$location', (AuthService, $location) => {
+                user: ['AuthService', '$location', '$state', (AuthService, $location, $state) => {
                     return AuthService.currentUser;
                 }],
                 profile: () => {

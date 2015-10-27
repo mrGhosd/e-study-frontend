@@ -12,6 +12,7 @@ import NavigationController from './navigation/NavigationController'
 import HeaderController from './application/HeaderController'
 import AuthorizationController from './modal_windows/AuthorizationController';
 import ApiRequest from 'api/ApiRequest';
+import ErrorsModalController from './modal_windows/errors/ErrorsModalController';
 import ngFileUpload from 'ng-file-upload';
 import './index.html';
 import 'css/main.scss';
@@ -20,9 +21,9 @@ angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, us
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)
-    .service(ApiRequest)
+    .controller('ErrorsModalController', ErrorsModalController)
     .config(config)
-    .run(($rootScope, AuthService, $location, $state) => {
+    .run(($rootScope, AuthService, $location, $state, $modal) => {
         $rootScope.$on('signedIn', (event, args) => {
             if($state.current.name === 'user'){
                 $state.go('profile');
@@ -33,5 +34,25 @@ angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, us
                 $state.go('users');
             }
         });
+        $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
+            event.preventDefault();
+            if(fromState.name !== ""){
+                $state.go(fromState.name);
+            } else {
+                if(toState.name === 'profile'){
+                    $state.go('users');
+                }
+            }
+            $modal.open({
+                animation: true,
+                template: require('./modal_windows/errors/errors_modal.html'),
+                controller: 'ErrorsModalController as modal',
+                resolve: {
+                    error: () => {
+                        return "errors.401";
+                    }
+                }
+            });
+        })
     });
 

@@ -50,7 +50,7 @@ export default class ApiRequest{
             return response;
         })
         .catch((error) => {
-            return error;
+            throw error;
         })
     }
 

@@ -14,5 +14,8 @@
   "users": {
     "search_button": "Search",
     "profile": "Profile"
+  },
+  "errors": {
+    "401": "You must authenticate before continue"
   }
 }
