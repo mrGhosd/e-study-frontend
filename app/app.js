@@ -31,17 +31,21 @@ angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, us
                 $state.go('profile');
             }
         });
+        
         $rootScope.$on('signedOut', (event, args) => {
             if($state.current.name === 'profile'){
                 $state.go('users');
             }
         });
+
         $rootScope.$on('$stateChangeStart', (event, viewConfig) => {
             usSpinnerService.spin('main-spinner');
         });
+
         $rootScope.$on('$stateChangeSuccess', (event) => {
             usSpinnerService.stop('main-spinner');
         });
+
         $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
             usSpinnerService.stop('main-spinner');
             event.preventDefault();
