@@ -13,6 +13,7 @@ import HeaderController from './application/HeaderController'
 import AuthorizationController from './modal_windows/AuthorizationController';
 import ApiRequest from 'api/ApiRequest';
 import ErrorsModalController from './modal_windows/errors/ErrorsModalController';
+
 import ngFileUpload from 'ng-file-upload';
 import './index.html';
 import 'css/main.scss';

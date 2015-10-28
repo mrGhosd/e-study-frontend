@@ -1,8 +1,11 @@
 export default class ErrorsModalController{
-    constructor($modal, error){
+    constructor($modal, $modalInstance, error){
         this.$modal = $modal;
+        this.$modalInstance = $modalInstance;
         this.text = error;
     }
-}
 
-export default angular.module('estudy.errors', []).controller('ErrorsModalController', ErrorsModalController).name;
+    close(){
+        this.$modalInstance.dismiss('cancel');
+    }
+}
