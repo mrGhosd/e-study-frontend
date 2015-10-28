@@ -13,7 +13,6 @@ import HeaderController from './application/HeaderController'
 import AuthorizationController from './modal_windows/AuthorizationController';
 import ApiRequest from 'api/ApiRequest';
 import ErrorsModalController from './modal_windows/errors/ErrorsModalController';
-import { SpinnerService } from './application/SpinnerService.js';
 import angularSpinner from 'angular-spinner';
 import ngFileUpload from 'ng-file-upload';
 import './index.html';
@@ -25,9 +24,8 @@ angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, us
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)
     .controller('ErrorsModalController', ErrorsModalController)
-    .service('SpinnerService', SpinnerService)
     .config(config)
-    .run(($rootScope, AuthService, $location, $state, $modal) => {
+    .run(($rootScope, AuthService, $location, $state, $modal,  usSpinnerService) => {
         $rootScope.$on('signedIn', (event, args) => {
             if($state.current.name === 'user'){
                 $state.go('profile');
@@ -38,7 +36,14 @@ angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, us
                 $state.go('users');
             }
         });
+        $rootScope.$on('$stateChangeStart', (event, viewConfig) => {
+            usSpinnerService.spin('main-spinner');
+        });
+        $rootScope.$on('$stateChangeSuccess', (event) => {
+            usSpinnerService.stop('main-spinner');
+        });
         $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
+            usSpinnerService.stop('main-spinner');
             event.preventDefault();
             if(fromState.name !== ""){
                 $state.go(fromState.name);
