@@ -19,7 +19,7 @@ export default class AuthService{
         let def = this.$q.defer();
         this.ApiRequest.currentUser()
         .then((res) => {
-            def.resolve(new User(res.user));
+            def.resolve(new User(res.data.user));
         })
         .catch((error) => {
             def.reject(error);

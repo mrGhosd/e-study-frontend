@@ -13,16 +13,19 @@ import HeaderController from './application/HeaderController'
 import AuthorizationController from './modal_windows/AuthorizationController';
 import ApiRequest from 'api/ApiRequest';
 import ErrorsModalController from './modal_windows/errors/ErrorsModalController';
-
+import { SpinnerService } from './application/SpinnerService.js';
+import angularSpinner from 'angular-spinner';
 import ngFileUpload from 'ng-file-upload';
 import './index.html';
 import 'css/main.scss';
 
-angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users, ApiRequest, ngFileUpload])
+
+angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users, ApiRequest, ngFileUpload, angularSpinner.name])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)
     .controller('ErrorsModalController', ErrorsModalController)
+    .service('SpinnerService', SpinnerService)
     .config(config)
     .run(($rootScope, AuthService, $location, $state, $modal) => {
         $rootScope.$on('signedIn', (event, args) => {
