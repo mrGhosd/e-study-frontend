@@ -39,7 +39,7 @@ export default class UserFormController {
             this.$state.go('user', {id: data.id});
         })
         .catch((errors) => {
-            this.Notification.info('errors.profile_update');
+            this.Notification.alert('errors.profile_update');
             this.$scope.userForm.$submitted = true;
             this.$scope.userForm.$errors = errors;
             this.$scope.userForm.$invalid = true;
