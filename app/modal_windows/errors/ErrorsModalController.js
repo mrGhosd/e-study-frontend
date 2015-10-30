@@ -2,7 +2,8 @@ export default class ErrorsModalController{
     constructor($modal, $modalInstance, error){
         this.$modal = $modal;
         this.$modalInstance = $modalInstance;
-        this.text = error;
+        this.title = `${error}.title`;
+        this.text = `${error}.text`;
     }
 
     close(){

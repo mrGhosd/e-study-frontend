@@ -16,6 +16,9 @@
     "profile": "Profile"
   },
   "errors": {
-    "401": "You must authenticate before continue"
+    "401": {
+      "title": "Unauthorized",
+      "text": "You must authenticate before continue"
+    }
   }
 }

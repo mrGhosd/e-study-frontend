@@ -15,17 +15,20 @@ import ApiRequest from 'api/ApiRequest';
 import ErrorsModalController from './modal_windows/errors/ErrorsModalController';
 import angularSpinner from 'angular-spinner';
 import ngFileUpload from 'ng-file-upload';
+import Notification from './modal_windows/Notification';
 import './index.html';
 import 'css/main.scss';
 
 
-angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users, ApiRequest, ngFileUpload, angularSpinner.name])
+angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users,
+    ApiRequest, ngFileUpload, angularSpinner.name])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)
     .controller('ErrorsModalController', ErrorsModalController)
+    .service('Notification', Notification)
     .config(config)
-    .run(($rootScope, AuthService, $location, $state, $modal,  usSpinnerService) => {
+    .run(($rootScope, AuthService, $location, $state, $modal,  usSpinnerService, Notification) => {
         $rootScope.$on('signedIn', (event, args) => {
             if($state.current.name === 'user'){
                 $state.go('profile');
@@ -56,16 +59,7 @@ angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, us
                     $state.go('users');
                 }
             }
-            $modal.open({
-                animation: true,
-                template: require('./modal_windows/errors/errors_modal.html'),
-                controller: 'ErrorsModalController as modal',
-                resolve: {
-                    error: () => {
-                        return "errors.401";
-                    }
-                }
-            });
+            Notification.alert('errors.401');
         })
     });
 
