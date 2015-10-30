@@ -12,7 +12,7 @@ export default class Notification {
     }
 
     showModal(message, type){
-        this.$modal.open({
+        const modalWindow = this.$modal.open({
             animation: true,
             template: require('./notification_modal.html'),
             controller: 'NotificationsController as modal',
@@ -25,5 +25,8 @@ export default class Notification {
                 }
             }
         });
+        setTimeout(() => {
+            modalWindow.dismiss('cancel');
+        }, 2000)
     }
 }
