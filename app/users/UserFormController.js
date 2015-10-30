@@ -1,5 +1,6 @@
 export default class UserFormController {
-    constructor($scope, $rootScope, $state, user, $filter, UserService, Upload, AuthService){
+    constructor($scope, $rootScope, $state, user,
+                $filter, UserService, Upload, AuthService, Notification){
         this.user = user;
         this.$scope = $scope;
         this.$rootScope = $rootScope;
@@ -8,6 +9,7 @@ export default class UserFormController {
         this.$state = $state;
         $scope.user = user;
         this.Upload = Upload;
+        this.Notification = Notification;
         this.AuthService = AuthService;
         if($scope.user.hasOwnProperty("date_of_birth")){
             $scope.user.date_of_birth = new Date($filter("date")(Date.now(), 'yyyy-MM-dd'));
@@ -32,10 +34,12 @@ export default class UserFormController {
         }
         this.UserService.update(user.id, userParams)
         .then((data) => {
+            this.Notification.info('notifications.profile_update');
             this.$rootScope.$broadcast('profileUpdated', data);
             this.$state.go('user', {id: data.id});
         })
         .catch((errors) => {
+            this.Notification.info('errors.profile_update');
             this.$scope.userForm.$submitted = true;
             this.$scope.userForm.$errors = errors;
             this.$scope.userForm.$invalid = true;

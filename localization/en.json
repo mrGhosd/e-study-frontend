@@ -19,6 +19,16 @@
     "401": {
       "title": "Unauthorized",
       "text": "You must authenticate before continue"
+    },
+    "profile_update": {
+      "title": "Error",
+      "text": "Unforutanetelly, your profile wasn't updated. Please try later"
+    }
+  },
+  "notifications": {
+    "profile_update": {
+      "title": "Success",
+      "text": "You profile was succesfully updated"
     }
   }
 }

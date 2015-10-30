@@ -3,8 +3,8 @@ export default class Notification {
         this.$modal = $modal;
     }
 
-    info(){
-
+    info(message){
+        this.showModal(message, "message");
     }
 
     alert(error){
@@ -27,6 +27,6 @@ export default class Notification {
         });
         setTimeout(() => {
             modalWindow.dismiss('cancel');
-        }, 2000)
+        }, 3000);
     }
 }
