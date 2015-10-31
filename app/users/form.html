@@ -70,8 +70,8 @@
                 <div ng-class="{'image-placeholder': !user.image.file.hasOwnProperty('url')}" ngf-drop="upload($file)">
                     <img ng-src="{{ user.avatarURL() }}" height="200" width="200" ng-if="user.image.file.hasOwnProperty('url')"/>
                 </div>
-                <input type="file" ngf-select="profile.upload($file)" ng-model="user.image" name="image"
-                       accept="image/*" ngf-max-size="10MB" value="{{user.image}}" >
+                <input type="file" ngf-select="profile.upload($file)" ng-model="user.files" name="image"
+                       accept="image/*" ngf-max-size="10MB" value="{{user.image }}}" >
             </div>
         </div>
     </fieldset>

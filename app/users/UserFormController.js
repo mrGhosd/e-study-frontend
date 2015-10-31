@@ -1,13 +1,13 @@
 export default class UserFormController {
     constructor($scope, $rootScope, $state, user,
                 $filter, UserService, Upload, AuthService, Notification){
-        this.user = user;
         this.$scope = $scope;
         this.$rootScope = $rootScope;
         this.$filter = $filter;
         this.UserService = UserService;
         this.$state = $state;
         $scope.user = user;
+        console.log(user);
         this.Upload = Upload;
         this.Notification = Notification;
         this.AuthService = AuthService;
@@ -47,13 +47,11 @@ export default class UserFormController {
     }
 
     upload(file){
-        console.log(file);
         this.Upload.upload({
             url: 'http://localhost:3000/api/v0/images',
             fields: {'imageable_type': "User"},
             file: file
         }).success( (data, status, headers, config) => {
-            console.log(data);
             this.$scope.user.image = data;
         })
     }
