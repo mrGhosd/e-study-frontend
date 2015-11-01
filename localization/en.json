@@ -29,6 +29,10 @@
     "profile_update": {
       "title": "Success",
       "text": "You profile was succesfully updated"
+    },
+    "profile_update_image_failure": {
+      "title": "Error",
+      "text": "Uploading failed. Please try later"
     }
   }
 }

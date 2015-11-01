@@ -16,6 +16,11 @@ import NotificationsController from './modal_windows/notification/NotificationsC
 import angularSpinner from 'angular-spinner';
 import ngFileUpload from 'ng-file-upload';
 import Notification from './modal_windows/notification/Notification';
+
+import 'babel-core/polyfill';
+
+import __UtilPolyfill from 'util/polyfill';
+
 import './index.html';
 import 'css/main.scss';
 

@@ -1,4 +1,4 @@
-<form ng-submit="profile.update()" name="userForm" class="form-horizontal">
+<form ng-submit="profile.update()" name="userForm" class="form-horizontal user-form">
     <fieldset>
         <div class="row">
             <div class="col-md-8">
@@ -66,12 +66,18 @@
                     <a ui-sref="profile" class="btn btn-default">{{ 'users.cancel' | translate }}</a>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 image-block">
                 <div ng-class="{'image-placeholder': !user.image.file.hasOwnProperty('url')}" ngf-drop="upload($file)">
                     <img ng-src="{{ user.avatarURL() }}" height="200" width="200" ng-if="user.image.file.hasOwnProperty('url')"/>
+                    <p class="image-name">{{user.image.file.url.split('/').last}}</p>
                 </div>
-                <input type="file" ngf-select="profile.upload($file)" ng-model="user.files" name="image"
-                       accept="image/*" ngf-max-size="10MB" value="{{user.image }}}" >
+                <button class="btn btn-info load-image" ngf-select="profile.upload($file)" ng-model="user.files" name="image"
+                        accept="image/*" ngf-max-size="10MB" value="{{user.image }}">Upoad</button>
+                <span us-spinner spinner-key="user-form-image" class="user-form-image-spinner"></span>
+                <div class="load-images">
+                    <img ng-src="/images/successLoad.png" height="32" width="32" ng-if="profile.loadedSuccessfully"/>
+                    <img ng-src="/images/failureLoad.png" height="32" width="32" ng-if="profile.loadedFailure"/>
+                </div>
             </div>
         </div>
     </fieldset>
