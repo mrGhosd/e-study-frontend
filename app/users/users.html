@@ -18,5 +18,15 @@
         <div class="avatar">
             <img ng-src="{{user.avatarURL()}}" height="128" width="128" class="img-circle"/>
         </div>
+        <button uib-popover-template="popoverTemplate"
+        popover-title="title" type="button" class="btn btn-default">Popover With Template</button>
     </div>
 </div>
+
+<script type="text/ng-template" id="popover.html">
+    <div>PopoverTitle</div>
+    <div class="form-group">
+        <label>Popup Title:</label>
+        <textarea class="form-control"></textarea>
+    </div>
+</script>

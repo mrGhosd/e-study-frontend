@@ -23,6 +23,7 @@
   "dependencies": {
     "alt": "^0.17.3",
     "angular": "^1.4.7",
+    "angular-cookies": "^1.4.7",
     "angular-spinner": "^0.7.0",
     "angular-translate": "^2.8.1",
     "angular-ui-bootstrap": "^0.14.2",
