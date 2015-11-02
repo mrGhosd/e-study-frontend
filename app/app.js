@@ -16,6 +16,8 @@ import NotificationsController from './modal_windows/notification/NotificationsC
 import angularSpinner from 'angular-spinner';
 import ngFileUpload from 'ng-file-upload';
 import Notification from './modal_windows/notification/Notification';
+import angularCookies from 'angular-cookies';
+import ngStorage from 'ngstorage';
 
 import 'babel-core/polyfill';
 
@@ -24,16 +26,16 @@ import __UtilPolyfill from 'util/polyfill';
 import './index.html';
 import 'css/main.scss';
 
-
 angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users,
-    ApiRequest, ngFileUpload, angularSpinner.name])
+    ApiRequest, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)
     .controller('NotificationsController', NotificationsController)
     .service('Notification', Notification)
     .config(config)
-    .run(($rootScope, AuthService, $location, $state, $modal,  usSpinnerService, Notification) => {
+    .run(($rootScope, AuthService, $location, $state, $modal,
+          usSpinnerService, Notification, $cookies) => {
         $rootScope.$on('signedIn', (event, args) => {
             if($state.current.name === 'user'){
                 $state.go('profile');
@@ -65,6 +67,6 @@ angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, us
                 }
             }
             Notification.alert('errors.401');
-        })
+        });
     });
 

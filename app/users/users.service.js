@@ -54,7 +54,7 @@ export default class UsersService {
         const params = {session: user};
         this.ApiRequest.signIn(params)
             .success((res) => {
-                def.resolve(new User(res.user));
+                def.resolve(res);
             })
             .error((error) => {
                 def.reject(error);

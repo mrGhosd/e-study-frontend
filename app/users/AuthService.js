@@ -1,7 +1,7 @@
 import User from 'users/user.model.js';
 
 export default class AuthService{
-    constructor(UserService, $window, $rootScope, $http, $q, ApiRequest){
+    constructor(UserService, $window, $rootScope, $http, $q, ApiRequest, $cookies, $localStorage, $sessionStorage){
         this.userService = UserService;
         this.signedIn = false;
         this.$window = $window;
@@ -9,10 +9,14 @@ export default class AuthService{
         this.$http = $http;
         this.$q = $q;
         this.ApiRequest = ApiRequest;
+        this.$cookies = $cookies;
+        this.$localStorage = $localStorage;
+        this.$sessionStorage = $sessionStorage;
+        console.log($cookies);
     }
 
     get isSignedIn(){
-        return this.$window.sessionStorage['remember_token'] ? true : false;
+        return this.$sessionStorage.remember_token || this.$localStorage.remember_token ? true : false;
     }
 
     get currentUser(){
@@ -46,12 +50,15 @@ export default class AuthService{
             .then((response) => {
                 this.signedIn = false;
                 delete this.$window.sessionStorage.remember_token;
+                this.$cookies.remove('remember_token');
                 this.$rootScope.$broadcast('signedOut');
             });
     }
 
     receiveUserData(response){
-        this.$window.sessionStorage['remember_token'] = response.remember_token;
+        console.log(response.remember_token);
+        this.$sessionStorage.remember_token = response.remember_token;
+        this.$localStorage.remember_token  = response.remember_token;
         this.signedIn = true;
         this.$rootScope.$broadcast('signedIn');
     }

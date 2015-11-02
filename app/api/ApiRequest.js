@@ -1,11 +1,15 @@
 export default class ApiRequest{
-    constructor($http, $q, $window){
+    constructor($http, $q, $window, $cookies, $localStorage, $sessionStorage){
         this.$http = $http;
         this.$q = $q;
         this.host = "localhost";
         this.port = "3000";
         this.version = "v0";
         this.$window = $window;
+        this.$cookies = $cookies;
+        this.$localStorage = $localStorage;
+        this.$sessionStorage = $sessionStorage;
+        console.log($localStorage, $sessionStorage);
         this.sessionsPath = `http://${this.host}:${this.port}/api/sessions`;
         this.currentUserPath = `http://${this.host}:${this.port}/api/sessions/current`;
     }
@@ -85,7 +89,7 @@ export default class ApiRequest{
     }
 
     setToken(){
-        const token = this.$window.sessionStorage.remember_token;
+        const token = this.$sessionStorage.remember_token || this.$localStorage.remember_token;
         this.$http.defaults.headers.common = {
             estudyauthtoken: token
         }

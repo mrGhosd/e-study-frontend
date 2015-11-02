@@ -17,7 +17,7 @@ export default class HeaderController{
             this.user = args;
         });
 
-        if($window.sessionStorage['remember_token']){
+        if(this.AuthService.isSignedIn){
             this.AuthService.currentUser
                 .then((user) => {
                     this.user = user;
