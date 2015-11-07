@@ -66,10 +66,10 @@ export default class UsersService {
         let def = this.$q.defer();
         const params = {user: user};
         this.ApiRequest.signUp(params)
-            .success((res) => {
-                def.resolve(new User(res.user));
+            .then((res) => {
+                def.resolve(res.data);
             })
-            .error((error) => {
+            .catch((error) => {
                 def.reject(error);
             });
         return def.promise;
@@ -104,7 +104,7 @@ export default class UsersService {
         this.ApiRequest.currentUser()
         .then((response) => {
             def.resolve(new User(response.data.user));
-        })
+        });
         return def.promise;
     }
 

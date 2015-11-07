@@ -12,7 +12,6 @@ export default class AuthService{
         this.$cookies = $cookies;
         this.$localStorage = $localStorage;
         this.$sessionStorage = $sessionStorage;
-        console.log($cookies);
     }
 
     get isSignedIn(){
@@ -40,7 +39,7 @@ export default class AuthService{
 
     register(user){
         return this.userService.register(user)
-        .then((response) => {
+        .then( (response) => {
             this.receiveUserData(response);
         });
     }
@@ -49,14 +48,13 @@ export default class AuthService{
         return this.userService.signOut()
             .then((response) => {
                 this.signedIn = false;
-                delete this.$window.sessionStorage.remember_token;
-                this.$cookies.remove('remember_token');
+                delete this.$sessionStorage.remember_token;
+                delete this.$localStorage.remember_token;
                 this.$rootScope.$broadcast('signedOut');
             });
     }
 
     receiveUserData(response){
-        console.log(response.remember_token);
         this.$sessionStorage.remember_token = response.remember_token;
         this.$localStorage.remember_token  = response.remember_token;
         this.signedIn = true;

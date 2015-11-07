@@ -10,7 +10,7 @@
                 <a data-remote="true" ng-click="head.changeLocale()" class="btn btn-primary">{{ head.locale }}</a>
             </div>
             <a data-remote="true" ng-show="!head.signedIn()" class="btn btn-primary" ng-click="head.signIn()">{{'auth.sign_in' | translate}}</a>
-            <a data-remote="true" ng-show="!head.signedIn()" class="btn btn-info" ng-click="head.signUp()">{{'auth.sign_up' | translate}}</a>
+            <a data-remote="true" ng-show="!head.signedIn()" class="btn btn-info" ng-click="head.signUp()"> {{'auth.sign_up' | translate}}</a>
             <a data-remote="true" ng-show="head.signedIn()" class="btn btn-danger" ng-click="head.logout()">{{'auth.sign_out' | translate}}</a>
         </div>
     </div>

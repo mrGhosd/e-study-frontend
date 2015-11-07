@@ -59,14 +59,16 @@ angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, us
         $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
             usSpinnerService.stop('main-spinner');
             event.preventDefault();
-            if(fromState.name !== ""){
-                $state.go(fromState.name);
-            } else {
-                if(toState.name === 'profile'){
-                    $state.go('users');
+            if(error.status === 401) {
+                if (fromState.name !== "") {
+                    $state.go(fromState.name);
+                } else {
+                    if (toState.name === 'profile') {
+                        $state.go('users');
+                    }
                 }
+                Notification.alert('errors.401');
             }
-            Notification.alert('errors.401');
         });
     });
 

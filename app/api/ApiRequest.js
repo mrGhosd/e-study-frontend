@@ -9,8 +9,8 @@ export default class ApiRequest{
         this.$cookies = $cookies;
         this.$localStorage = $localStorage;
         this.$sessionStorage = $sessionStorage;
-        console.log($localStorage, $sessionStorage);
         this.sessionsPath = `http://${this.host}:${this.port}/api/sessions`;
+        this.registrationPath = `http://${this.host}:${this.port}/api/registrations`;
         this.currentUserPath = `http://${this.host}:${this.port}/api/sessions/current`;
     }
 
@@ -65,7 +65,7 @@ export default class ApiRequest{
                 return res;
             })
             .error((error) => {
-                return error;
+                throw error;
             });
     }
 
@@ -80,8 +80,15 @@ export default class ApiRequest{
             });
     }
 
-    signUp(){
-
+    signUp(params){
+        this.setToken();
+        return this.$http.post(this.registrationPath, params)
+            .success((res) => {
+                return res;
+            })
+            .error((error) => {
+                throw error;
+            });
     }
 
     correctUrl(url){
