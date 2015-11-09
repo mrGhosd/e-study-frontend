@@ -3,7 +3,7 @@
         <div class="form-group"  ng-class="{ 'has-error': modalView.regForm.$submitted && modalView.regForm.$errors.email}">
             <label class="control-label col-md-4">{{'auth.email' | translate}}</label>
             <div class="col-md-6">
-                <input type="email" class="form-control"  placeholder="Email" ng-model="modalView.regForm.email" required>
+                <input type="email" class="form-control"  placeholder="{{'auth.email' | translate}}" ng-model="modalView.regForm.email" required>
                 <div ng-if="modalView.regForm.$submitted && modalView.regForm.$errors.email" class="error">
                     <span ng-repeat="error in modalView.regForm.$errors.email">
                         {{error}}
@@ -15,7 +15,8 @@
         <div class="form-group"  ng-class="{ 'has-error': modalView.regForm.$submitted && modalView.regForm.$errors.password}">
             <label class="control-label col-md-4">{{'auth.password' | translate}}</label>
             <div class="col-md-6">
-                <input type="password" class="form-control" placeholder="Password" ng-model="modalView.regForm.password" required>
+                <input type="password" class="form-control" placeholder="{{'auth.password' | translate}}"
+                       ng-model="modalView.regForm.password" required>
                 <div ng-if="modalView.regForm.$submitted && modalView.regForm.$errors.password" class="error">
                     <span ng-repeat="error in modalView.regForm.$errors.password">
                         {{error}}
@@ -27,7 +28,8 @@
         <div class="form-group"  ng-class="{ 'has-error': modalView.regForm.$submitted && modalView.regForm.$errors.password_confirmation}">
             <label class="control-label col-md-4">{{'auth.password_confirmation' | translate}}</label>
             <div class="col-md-6">
-                <input type="password" class="form-control" placeholder="Password" ng-model="modalView.regForm.password_confirmation" required>
+                <input type="password" class="form-control" placeholder="{{'auth.password_confirmation' | translate}}"
+                       ng-model="modalView.regForm.password_confirmation" required>
                 <div ng-if="modalView.regForm.$submitted && modalView.regForm.$errors.password_confirmation" class="error">
                     <span ng-repeat="error in modalView.regForm.$errors.password_confirmation">
                         {{error}}

@@ -5,7 +5,10 @@
     "sign_out": "Sign out",
     "password_recovery": "Password recovery",
     "cancel": "Cancel",
-    "send": "Send"
+    "send": "Send",
+    "email": "Email",
+    "password": "Password",
+    "password_confirmation": "Password confirmation"
   },
   "nav": {
     "profile": "Profile",
