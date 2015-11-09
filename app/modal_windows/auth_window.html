@@ -3,10 +3,12 @@
 </div>
 <div class="modal-body">
     <uib-tabset>
-        <uib-tab active="activeTabAuth" select="modalView.setCurrentViewDetails('auth.sign_in', modalView.authForm)" heading="{{'auth.sign_in' | translate}}">
+        <uib-tab active="modalView.activeTabAuth"
+            select="modalView.setCurrentViewDetails('auth.sign_in', modalView.authForm)" heading="{{'auth.sign_in' | translate}}">
             <div ng-include="'/modal_windows/login.html'"></div>
         </uib-tab>
-        <uib-tab active="activeTabReg" select="modalView.setCurrentViewDetails('auth.sign_up', modalView.regForm)" heading="{{'auth.sign_up' | translate}}">
+        <uib-tab active="modalView.activeTabReg"
+            select="modalView.setCurrentViewDetails('auth.sign_up', modalView.regForm)" heading="{{'auth.sign_up' | translate}}">
             <div ng-include="'/modal_windows/registration.html'"></div>
         </uib-tab>
         <uib-tab select="modalView.setCurrentViewDetails('auth.password_recovery')" heading="{{'auth.password_recovery' | translate}}">
