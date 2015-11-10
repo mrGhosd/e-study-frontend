@@ -27,68 +27,32 @@ export default class ApiRequest{
 
     post(url, parameters){
         this.setToken();
-        return this.$http.post(this.correctUrl(url), parameters)
-        .success((response) => {
-            return response;
-        })
-        .error((error) => {
-            return error;
-        });
+        return this.$http.post(this.correctUrl(url), parameters);
     }
 
     put(url, parameters){
         this.setToken();
-        return this.$http.put(this.correctUrl(url), parameters)
-        .success((response) => {
-            return response;
-        })
-        .error((error) => {
-            return error;
-        });
+        return this.$http.put(this.correctUrl(url), parameters);
     }
 
     currentUser(){
         this.setToken();
-        return this.$http.get(this.currentUserPath)
-        .then((response) => {
-            return response;
-        })
-        .catch((error) => {
-            throw error;
-        })
+        return this.$http.get(this.currentUserPath);
     }
 
     signIn(params){
         this.setToken();
-        return this.$http.post(this.sessionsPath, params)
-            .success((res) => {
-                return res;
-            })
-            .error((error) => {
-                throw error;
-            });
+        return this.$http.post(this.sessionsPath, params);
     }
 
     signOut(){
         this.setToken();
-        return this.$http.delete(this.sessionsPath)
-            .success((response) => {
-                return response;
-            })
-            .error((error) => {
-                return error;
-            });
+        return this.$http.delete(this.sessionsPath);
     }
 
     signUp(params){
         this.setToken();
-        return this.$http.post(this.registrationPath, params)
-            .success((res) => {
-                return res;
-            })
-            .error((error) => {
-                throw error;
-            });
+        return this.$http.post(this.registrationPath, params);
     }
 
     correctUrl(url){
