@@ -16,7 +16,12 @@
   },
   "users": {
     "search_button": "Search",
-    "profile": "Profile"
+    "profile": "Profile",
+    "email": "Email",
+    "last_name": "Last name",
+    "first_name": "First name",
+    "middle_name": "Middle name",
+    "date_of_birth": "Birthday"
   },
   "errors": {
     "401": {
