@@ -1,6 +1,7 @@
 // Karma configuration
 // Generated on Tue Nov 17 2015 00:48:20 GMT+0300 (MSK)
-
+var webpackConfig = require('./config/webpack.config');
+webpackConfig.entry = {};
 module.exports = function(config) {
   config.set({
 
@@ -15,10 +16,10 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'app/app.js',
       'node_modules/angular/angular.js',
       'node_modules/angular-ui-router/build/angular-ui-router.js',
       'node_modules/angular-mocks/angular-mocks.js',
+      'app/app.js',
       'app/**/*.js',
       'specs/**/*.js'
     ],
@@ -28,7 +29,6 @@ module.exports = function(config) {
     exclude: [
         'app/home/*.js',
         'app/app.config.js',
-        'app/app.js',
         'app/bundle.js',
         'app/util/*.js'
     ],
@@ -37,6 +37,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'node_modules/angular': ['webpack'],
       'specs/**/*.spec.js': ['webpack'],
       '**/*.html': ['ng-html2js'],
       '**/*.js': ['webpack', 'coverage']
@@ -67,12 +68,11 @@ module.exports = function(config) {
     },
 
     plugins: [
-      'webpack',
-      'karma-webpack',
-      'karma-jasmine',
-      'karma-chrome-launcher',
-      'karma-ng-html2js-preprocessor',
-      'karma-coverage',
+      require('karma-webpack'),
+      require('karma-jasmine'),
+      require('karma-chrome-launcher'),
+      require('karma-ng-html2js-preprocessor'),
+      require('karma-coverage'),
       'ng-html2js'
     ],
 
@@ -98,6 +98,8 @@ module.exports = function(config) {
     browsers: ['Chrome'],
 
     webpack: {
+      devtool: 'inline-source-map',
+      modulesDirectories: ['web_modules', 'node_modules', '../app'],
       module: {
         loaders: [
           { test: /\.js?$/, loaders: ['babel-loader?experimental' ], exclude: /node_modules/},

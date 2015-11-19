@@ -76,6 +76,9 @@ module.exports = {
             { test: /\.json$/, exclude: /node_modules/, loaders: ['json-loader'] }
         ]
     },
+    node: {
+        fs: "empty"
+    },
     devServer:{
         contentBase: path.resolve(pkg.config.buildDir),
         hot: true,
