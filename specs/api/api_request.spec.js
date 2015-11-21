@@ -3,15 +3,18 @@ describe('ApiRequest', function(){
 
     var apiRequest = null;
     var httpBackend = null;
+    var usersList = null;
+    var createUser  = null;
 
     beforeEach(inject(function(ApiRequest, $httpBackend){
         httpBackend = $httpBackend;
         apiRequest = ApiRequest;
     }));
 
-    //beforeEach(function(){
-    //    httpBackend.whenGET("tours/travels.html").respond(200);
-    //});
+    beforeEach(function(){
+       usersList = httpBackend.whenGET("http://localhost:3000/api/v0/users");
+       createUser = httpBackend.whenPOST("http://localhost:3000/api/v0/users");
+    });
 
     describe("Initial value", function(){
         it("check that service exists", function() {
@@ -19,28 +22,43 @@ describe('ApiRequest', function(){
         });
     });
 
-    //describe('GET request', function(){
-    //    it("make a get request", function(){
-    //        httpBackend.expectGET("https://api.parse.com/1/classes/Tour").respond(200);
-    //        apiRequest.get('/Tour');
-    //        httpBackend.flush();
-    //    });
-    //});
+    describe('GET request', function(){
+       it("make a GET request", function(){
+           var serverUsers = [];
+           var users = [{id: 1, first_name: "Ololo"}, {id: 2, last_name: "Hui"}];
+           usersList.respond(200, users);
+           apiRequest.get('/users').then(function(response){
+             serverUsers = response.data;
+           });
+           httpBackend.flush();
+           expect(serverUsers).toEqual(users);
+       });
+    });
+
+    describe('POST request', function(){
+       it("make a post request", function(){
+           var serverUser = {};
+           var user = {id: 1, first_name: "hue"};
+           createUser.respond(200, user);
+           apiRequest.post('/users').then(function(response) {
+             serverUser = response.data;
+           });
+           httpBackend.flush();
+           expect(serverUser).toEqual(user);
+       });
+    });
     //
-    //describe('POST request', function(){
-    //    it("make a post request", function(){
-    //        httpBackend.expectPOST("https://api.parse.com/1/classes/Tour").respond(200);
-    //        apiRequest.post('/Tour');
-    //        httpBackend.flush();
-    //    });
-    //});
-    //
-    //describe('PUT request', function(){
-    //    it("make a put request", function(){
-    //        var tour = {objectId: 1, name: "Ololo"};
-    //        httpBackend.expectPUT("https://api.parse.com/1/classes/Tour/"+tour.objectId).respond(200);
-    //        apiRequest.put('/Tour/'+tour.objectId);
-    //        httpBackend.flush();
-    //    });
-    //});
+    describe('PUT request', function(){
+       it("make a put request", function(){
+           var serverUser = {};
+           var user = {objectId: 1, name: "Ololo"};
+           user.name = "Hui";
+           httpBackend.whenPUT("http://localhost:3000/api/v0/users/"+user.objectId).respond(200);
+           apiRequest.put('/users/'+user.objectId).then(function(response){
+             serverUser = response;
+           });
+           httpBackend.flush();
+           expect(serverUser).toEqual(user);
+       });
+    });
 });
