@@ -53,9 +53,9 @@ describe('ApiRequest', function(){
            var serverUser = {};
            var user = {objectId: 1, name: "Ololo"};
            user.name = "Hui";
-           httpBackend.whenPUT("http://localhost:3000/api/v0/users/"+user.objectId).respond(200);
+           httpBackend.whenPUT("http://localhost:3000/api/v0/users/"+user.objectId).respond(200, user);
            apiRequest.put('/users/'+user.objectId).then(function(response){
-             serverUser = response;
+             serverUser = response.data;
            });
            httpBackend.flush();
            expect(serverUser).toEqual(user);
