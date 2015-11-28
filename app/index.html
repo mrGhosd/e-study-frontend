@@ -6,15 +6,16 @@
     <script src="/bundle.js"></script>
 </head>
 <body ng-app="estudy">
-<div ng-include="'/application/header.html'"></div>
-<div class="container-fluid main-content">
-    <span us-spinner spinner-key="main-spinner"></span>
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar" ng-include="'/navigation/navigation.html'"></div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main mainContentView">
-            <ui-view></ui-view>
-        </div>
-    </div>
-</div>
+  <notify ng-show="showDirective"> </notify>
+  <div ng-include="'/application/header.html'"></div>
+  <div class="container-fluid main-content">
+      <span us-spinner spinner-key="main-spinner"></span>
+      <div class="row">
+          <div class="col-sm-3 col-md-2 sidebar" ng-include="'/navigation/navigation.html'"></div>
+          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main mainContentView">
+              <ui-view></ui-view>
+          </div>
+      </div>
+  </div>
 </body>
 </html>

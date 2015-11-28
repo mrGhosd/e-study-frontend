@@ -16,6 +16,7 @@ import ngFileUpload from 'ng-file-upload';
 import Notification from './modal_windows/notification/Notification';
 import angularCookies from 'angular-cookies';
 import ngStorage from 'ngstorage';
+import NotificationDirective from './modal_windows/notification/NotificationDirective';
 
 import 'babel-core/polyfill';
 
@@ -25,7 +26,7 @@ import './index.html';
 import 'css/main.scss';
 
 angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users,
-    ApiRequest, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name])
+    ApiRequest, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name, NotificationDirective])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)
@@ -69,4 +70,3 @@ angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, us
             }
         });
     });
-
