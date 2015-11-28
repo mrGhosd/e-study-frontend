@@ -4,14 +4,19 @@ describe('Notification', function(){
     var httpBackend = null;
     var notification = null;
     var modal = null;
+    var Angular = null;
 
     beforeEach(inject(function(Notification, $httpBackend, $modal) {
         httpBackend = $httpBackend;
         notification = Notification;
         modal = $modal;
         notification.modal = $modal;
-        spyOn(modal, 'open').and.callThrough();
+        spyOn(notification, 'postMessage').and.callThrough();
     }));
+
+    beforeEach(function() {
+      notification.registerDOM(angular.element("<div></div>"));
+    });
 
     describe("Initial value", function() {
         it("check that service exists", function() {
@@ -30,14 +35,14 @@ describe('Notification', function(){
     describe("info", function() {
       it("called the 'open' method", function() {
         notification.info("Test");
-        expect(modal.open).toHaveBeenCalled();
+        expect(notification.postMessage).toHaveBeenCalled();
       });
     });
 
     describe("alert", function() {
       it("called the 'open' method", function() {
         notification.alert("Test");
-        expect(modal.open).toHaveBeenCalled();
+        expect(notification.postMessage).toHaveBeenCalled();
       });
     });
 });

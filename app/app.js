@@ -11,7 +11,6 @@ import NavigationController from './navigation/NavigationController'
 import HeaderController from './application/HeaderController'
 import AuthorizationController from './modal_windows/AuthorizationController';
 import ApiRequest from 'api/ApiRequest';
-import NotificationsController from './modal_windows/notification/NotificationsController';
 import angularSpinner from 'angular-spinner';
 import ngFileUpload from 'ng-file-upload';
 import Notification from './modal_windows/notification/Notification';
@@ -30,7 +29,6 @@ angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, us
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)
-    .controller('NotificationsController', NotificationsController)
     .service('Notification', Notification)
     .config(config)
     .run(($rootScope, AuthService, $location, $state, $modal,
