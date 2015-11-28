@@ -2,6 +2,7 @@ import angular from 'angular';
 
 function notify() {
   return {
+    transclude:true,
     scope: {
       class: '=',
       message: '='

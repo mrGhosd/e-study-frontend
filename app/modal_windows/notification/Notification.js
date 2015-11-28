@@ -1,6 +1,9 @@
 export default class Notification {
-    constructor($modal) {
+    constructor($modal, $compile, $rootScope) {
         this.$modal = $modal;
+        this.$compile = $compile;
+        this.$rootScope = $rootScope;
+        this.domElement = null;
     }
 
     info(message){
@@ -9,6 +12,20 @@ export default class Notification {
 
     alert(error){
         this.showModal(error, "error");
+    }
+
+    postMessage(message, time, klass) {
+      let template = require('./test_directive.html');
+      let newScope = this.$rootScope.$new();
+      const title = `${message}.title`;
+      const text = `${message}.text`;
+      newScope.title = title;
+      newScope.text = text;
+      this.domElement.append(this.$compile(template)(newScope));
+    }
+
+    registerDOM(element) {
+      this.domElement = element;
     }
 
     showModal(message, type){

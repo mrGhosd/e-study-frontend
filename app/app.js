@@ -5,6 +5,7 @@ import angularBootstrap from 'angular-ui-bootstrap';
 import config from 'app.config';
 import home from 'home/index';
 import users from 'users/main';
+import notifications from 'modal_windows/notification/index';
 import I18n from 'i18n-js';
 import NavigationController from './navigation/NavigationController'
 import HeaderController from './application/HeaderController'
@@ -26,7 +27,7 @@ import './index.html';
 import 'css/main.scss';
 
 angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users,
-    ApiRequest, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name, NotificationDirective])
+    ApiRequest, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name, notifications])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)
@@ -66,7 +67,7 @@ angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, us
                         $state.go('users');
                     }
                 }
-                Notification.alert('errors.401');
+                Notification.postMessage('errors.401', 1000, 'alert');
             }
         });
     });
