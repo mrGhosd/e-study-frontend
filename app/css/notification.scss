@@ -1,18 +1,20 @@
 .notification-bar {
   position:absolute;
-  top:2em;
+  top:3em;
   right:2em;
   width:12em;
+  font-size: 24px;
+  z-index: 10000;
 
   .notification-message {
       min-height: 1.5em;
       margin-top:3px;
       opacity:0;
       width:100%;
+      color: black;
       text-align:center;
-      background-color:cornflowerblue;
-      color:white;
-      border: solid 1px transparent;
+      background-color: #f5f0f0;
+      border: solid 1px #c8c8c8;
       -webkit-transition:opacity 1s ease-in-out;
       -moz-transition:opacity 1s ease-in-out;
       -o-transition:opacity 1s ease-in-out;
@@ -21,13 +23,58 @@
       -moz-border-radius:5px;
       -o-border-radius:5px;
       border-radius:5px;
-      padding:3px;
+
+      .closeMessage {
+        color: black;
+        display: block;
+        line-height: 39px;
+        margin-right: 10px;
+        text-decoration: none;
+      }
+
+      .header {
+        border-bottom: 2px solid #c8c8c8;
+        padding: 10px;
+      }
+      .body {
+        padding: 20px;
+      }
+
+      &.error {
+        .closeMessage {
+          color: white;
+        }
+
+        .header {
+          background-color: #c9302c;
+          background-image: url("../images/error-icon.png");
+          background-position: 15px center;
+          background-repeat: no-repeat;
+          color: white;
+        }
+      }
+
+      &.message {
+        .closeMessage {
+          color: white;
+        }
+
+        .header {
+          background-color: #337ab7;
+          background-image: url("../images/info-icon.png");
+          background-position: 15px center;
+          background-repeat: no-repeat;
+          color: white;
+        }
+      }
+
   }
+
   .notification-message.show { opacity:1; }
   .notification-message.red { background-color:red; }
   .notification-message > a {float:right; color:white;}
   .notification-message > div { font-size:smaller; }
-  .notification-message:hover { border: solid 1px white; }
+  .notification-message:hover { border: solid 1px #e8e4ec; }
 
 }
 

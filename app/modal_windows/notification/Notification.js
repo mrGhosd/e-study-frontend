@@ -7,44 +7,26 @@ export default class Notification {
     }
 
     info(message){
-        this.showModal(message, "message");
+        this.postMessage(message, 2500, "message");
     }
 
-    alert(error){
-        this.showModal(error, "error");
+    alert(error, time){
+        this.postMessage(error, 2500, "error");
     }
 
     postMessage(message, time, klass) {
-      let template = require('./test_directive.html');
+      let template = require('./notification_view.html');
       let newScope = this.$rootScope.$new();
       const title = `${message}.title`;
       const text = `${message}.text`;
       newScope.title = title;
       newScope.text = text;
       newScope.time = time;
+      newScope.klass = klass;
       this.domElement.append(this.$compile(template)(newScope));
     }
 
     registerDOM(element) {
       this.domElement = element;
-    }
-
-    showModal(message, type){
-        const modalWindow = this.$modal.open({
-            animation: true,
-            template: require('./notification_modal.html'),
-            controller: 'NotificationsController as modal',
-            resolve: {
-                message: () => {
-                    return message;
-                },
-                type: () => {
-                    return type;
-                }
-            }
-        });
-        setTimeout(() => {
-            modalWindow.dismiss('cancel');
-        }, 3000);
     }
 }

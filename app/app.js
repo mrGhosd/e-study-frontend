@@ -17,7 +17,6 @@ import ngFileUpload from 'ng-file-upload';
 import Notification from './modal_windows/notification/Notification';
 import angularCookies from 'angular-cookies';
 import ngStorage from 'ngstorage';
-import NotificationDirective from './modal_windows/notification/NotificationDirective';
 
 import 'babel-core/polyfill';
 
@@ -67,7 +66,7 @@ angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, us
                         $state.go('users');
                     }
                 }
-                Notification.postMessage('errors.401', 1000, 'alert');
+                Notification.alert('errors.401');
             }
         });
     });
