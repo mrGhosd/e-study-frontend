@@ -21,6 +21,7 @@ export default class Notification {
       const text = `${message}.text`;
       newScope.title = title;
       newScope.text = text;
+      newScope.time = time;
       this.domElement.append(this.$compile(template)(newScope));
     }
 

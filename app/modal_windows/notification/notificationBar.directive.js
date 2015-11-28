@@ -10,5 +10,3 @@ export default function notificationBar (Notification) {
         }
     }
 }
-
-// export default angular.module('estudy.notification', []).directive('notificationBar', notificationBar).name;

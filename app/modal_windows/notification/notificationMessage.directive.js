@@ -8,6 +8,7 @@ export default function notificationMessage($timeout) {
       transclude:true,
       template: "<a href=\"javascript:void(0)\" ng-click=\"close()\">x</a><div ng-transclude></div>",
       link: function(scope, el, attr) {
+        console.log("1");
           var promiseToEnd,
               promiseToDestroy;
           //ugly hack to get css styling to be interpreted correctly by browser.  Blech!
@@ -42,5 +43,3 @@ export default function notificationMessage($timeout) {
       }
   }
 }
-
-// export default angular.module('estudy.notification', []).directive('notificationMessage', notificationMessage).name;
