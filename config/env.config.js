@@ -1,7 +1,7 @@
 module.exports = {
   development: {
     host: "localhost",
-    port: 9000
+    port: 3000
   },
   production: {
 

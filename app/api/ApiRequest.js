@@ -1,16 +1,20 @@
+import envConfig from '../../config/env.config.js';
+
 export default class ApiRequest{
     constructor($http, $q, $window, $cookies, $localStorage, $sessionStorage){
-        this.$http = $http;
-        this.$q = $q;
-        this.setEnvData();
-        this.version = "v0";
-        this.$window = $window;
-        this.$cookies = $cookies;
-        this.$localStorage = $localStorage;
-        this.$sessionStorage = $sessionStorage;
-        this.sessionsPath = `http://${this.host}:${this.port}/api/sessions`;
-        this.registrationPath = `http://${this.host}:${this.port}/api/registrations`;
-        this.currentUserPath = `http://${this.host}:${this.port}/api/sessions/current`;
+      this.$http = $http;
+      this.$q = $q;
+      console.log(envConfig[process.env.NODE_ENV].host);
+      this.host = envConfig[process.env.NODE_ENV].host;
+      this.port = envConfig[process.env.NODE_ENV].port;
+      this.version = "v0";
+      this.$window = $window;
+      this.$cookies = $cookies;
+      this.$localStorage = $localStorage;
+      this.$sessionStorage = $sessionStorage;
+      this.sessionsPath = `http://${this.host}:${this.port}/api/sessions`;
+      this.registrationPath = `http://${this.host}:${this.port}/api/registrations`;
+      this.currentUserPath = `http://${this.host}:${this.port}/api/sessions/current`;
     }
 
     get(url, parameters){
@@ -63,13 +67,6 @@ export default class ApiRequest{
         this.$http.defaults.headers.common = {
             estudyauthtoken: token
         }
-    }
-
-    setEnvData() {
-      if (process.env.NODE_ENV == 'development') {
-        this.host = "localhost";
-        this.port = "3000";
-      }
     }
 }
 
