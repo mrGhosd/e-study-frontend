@@ -4,7 +4,6 @@ export default class ApiRequest{
     constructor($http, $q, $window, $cookies, $localStorage, $sessionStorage){
       this.$http = $http;
       this.$q = $q;
-      console.log(envConfig[process.env.NODE_ENV].host);
       this.host = envConfig[process.env.NODE_ENV].host;
       this.port = envConfig[process.env.NODE_ENV].port;
       this.version = "v0";

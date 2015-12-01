@@ -17,7 +17,7 @@ export default class HeaderController{
             this.user = args;
         });
 
-        if(this.AuthService.isSignedIn){
+        if(this.AuthService.isSignedIn()){
             this.AuthService.currentUser
                 .then((user) => {
                     this.user = user;
@@ -25,8 +25,8 @@ export default class HeaderController{
         }
     }
 
-    signedIn(){
-        return this.AuthService.isSignedIn;
+    signedIn() {
+        return this.AuthService.isSignedIn();
     }
 
     changeLocale(){

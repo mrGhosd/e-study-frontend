@@ -14,7 +14,7 @@ export default class AuthService{
         this.$sessionStorage = $sessionStorage;
     }
 
-    get isSignedIn(){
+    isSignedIn(){
         return this.$sessionStorage.remember_token || this.$localStorage.remember_token ? true : false;
     }
 

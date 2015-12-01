@@ -3,6 +3,10 @@ module.exports = {
     host: "localhost",
     port: 3000
   },
+  test: {
+    host: "localhost",
+    port: 3000
+  },
   production: {
 
   }

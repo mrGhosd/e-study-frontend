@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run webpack",
     "start": "NODE_ENV='development' node dev-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV='test' karma start"
   },
   "config": {
     "buildDir": "./app",
