@@ -56,7 +56,8 @@ module.exports = {
         new ExtractTextPlugin("bootstrap.css"),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
-        new WebPackAngularTranslate.Plugin()
+        new WebPackAngularTranslate.Plugin(),
+        new webpack.EnvironmentPlugin("NODE_ENV")
     ],
     module: {
         preLoaders: [

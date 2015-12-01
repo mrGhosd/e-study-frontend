@@ -2,8 +2,7 @@ export default class ApiRequest{
     constructor($http, $q, $window, $cookies, $localStorage, $sessionStorage){
         this.$http = $http;
         this.$q = $q;
-        this.host = "localhost";
-        this.port = "3000";
+        this.setEnvData();
         this.version = "v0";
         this.$window = $window;
         this.$cookies = $cookies;
@@ -64,6 +63,13 @@ export default class ApiRequest{
         this.$http.defaults.headers.common = {
             estudyauthtoken: token
         }
+    }
+
+    setEnvData() {
+      if (process.env.NODE_ENV == 'development') {
+        this.host = "localhost";
+        this.port = "3000";
+      }
     }
 }
 
