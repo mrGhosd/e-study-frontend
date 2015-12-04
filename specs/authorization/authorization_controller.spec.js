@@ -12,6 +12,7 @@ describe("AuthorizationController", function() {
   var qService = null;
   var timeout = null;
   var signInUser = null;
+  var signUpUser = null;
 
   beforeEach(angular.mock.module('estudy'));
 
@@ -132,12 +133,98 @@ describe("AuthorizationController", function() {
           controller.login();
         });
 
-        it("dismiss window after success sign in", function() {
+        it("set errors from server to form object", function() {
           signInUser.respond(422, errors);
           rootScope.$digest();
           expect(controller.authForm.$errors).toEqual(errors);
         });
 
+      })
+    });
+
+    describe("register()", function() {
+      var state = null;
+      var currentUser = null;
+
+      beforeEach(inject(function($controller, $httpBackend, $rootScope, AuthService, $modal, $q, $timeout, $state) {
+            rootScope = $rootScope;
+            httpBackend = $httpBackend;
+            scope = rootScope.$new();
+            authService = AuthService;
+            modal = $modal;
+            qService = $q;
+            state = $state;
+            modalInstance = modal.open({
+              template: "<div></div>",
+              controller: 'AuthorizationController as modalView',
+              resolve: {
+                currentTab: function() {
+                  return 'reg';
+                }
+              }
+             });
+            spyOn(modalInstance, 'dismiss');
+            timeout = $timeout;
+            controller = $controller('AuthorizationController', {
+              $scope: scope,
+              $modalInstance: modalInstance,
+              authService: authService,
+              currentTab: 'reg',
+              regForm: regForm,
+              authForm: authForm
+            });
+        }));
+
+      beforeEach(function() {
+        httpBackend.whenGET("http://localhost:3000/api/sessions/current").respond(200);
+        signUpUser = httpBackend.whenPOST("http://localhost:3000/api/registrations");
+      });
+
+      it("call authService register method", function() {
+        spyOn(authService, 'register').and.returnValue(qService.when({token: 12345}));
+        controller.regForm = regForm;
+        controller.defineCurrentForm();
+        controller.register();
+        expect(authService.register).toHaveBeenCalled();
+      });
+
+      describe("with valid attributes", function() {
+        beforeEach(function() {
+          spyOn(authService, 'register').and.returnValue(qService.when({token: 12345}));
+          controller.regForm = regForm;
+          controller.defineCurrentForm();
+          controller.register();
+        });
+
+        it("dismiss window after success sign up", function() {
+          signUpUser.respond(200, {token: 12345});
+          rootScope.$digest();
+          expect(modalInstance.dismiss).toHaveBeenCalled();
+        });
+
+        it("change state to /profile", function() {
+          spyOn(state, 'go');
+          signUpUser.respond(200, {token: 12345});
+          rootScope.$digest();
+          expect(state.go).toHaveBeenCalledWith('profile');
+        });
+      });
+
+      describe("with invalid attributes", function() {
+        var errors = {email: "can't be empty"};
+
+        beforeEach(function() {
+          spyOn(authService, 'register').and.returnValue(qService.reject({data: errors}));
+          controller.regForm = {email: "", password: "", password_confirmation: ""};
+          controller.defineCurrentForm();
+          controller.register();
+        });
+
+        it("set server errors to registration form", function() {
+          signUpUser.respond(422, {data: errors});
+          rootScope.$digest();
+          expect(controller.regForm.$errors).toEqual(errors);
+        });
       })
     });
 });
