@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npm run webpack",
-    "start": "NODE_ENV='development' node dev-server",
+    "start": "NODE_ENV=development node dev-server",
     "test": "NODE_ENV='test' karma start"
   },
   "config": {
@@ -71,7 +71,8 @@
     "url-loader": "^0.5.6",
     "webpack": "^1.12.2",
     "webpack-angular-translate": "0.0.4",
-    "webpack-dev-server": "^1.12.0"
+    "webpack-dev-server": "^1.12.0",
+    "ng-annotate-webpack-plugin": "^0.1.2"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.7",
@@ -88,7 +89,6 @@
     "karma-sourcemap-loader": "^0.3.6",
     "karma-spec-reporter": "0.0.22",
     "karma-webpack": "^1.7.0",
-    "ng-annotate-webpack-plugin": "^0.1.2",
     "ng-html2js": "^2.0.0"
   }
 }

@@ -8,6 +8,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var bowerRoot = path.join(__dirname, "../bower_components");
 var BowerWebpackPlugin = require("bower-webpack-plugin");
 var WebPackAngularTranslate = require("webpack-angular-translate");
+var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 var htmlLoader = [
     'file-loader?name=[path][name].[ext]',
@@ -21,7 +22,6 @@ var htmlLoader = [
 ].join('!');
 var entry = {
     app: [
-        'webpack/hot/dev-server',
         './app.js'
     ]
 };
@@ -57,7 +57,8 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         new WebPackAngularTranslate.Plugin(),
-        new webpack.EnvironmentPlugin("NODE_ENV")
+        new webpack.EnvironmentPlugin("NODE_ENV"),
+        new ngAnnotatePlugin({add: true})
     ],
     module: {
         preLoaders: [
