@@ -1,16 +1,16 @@
-set 'hosts',          ['deploy@188.226.234.24']
-set 'repository',     'git@github.com:mrGhosd/e-study.git'
+set 'hosts',          ['deploy@188.226.234.24:4321']
+set 'repository',     'https://github.com/mrGhosd/e-study-frontend.git'
 set 'branch',         'master'
 
-envKit 'prod', ->
-  set 'hosts', ['deploy@188.226.234.24']
+envKit 'production', ->
+  set 'hosts', ['deploy@188.226.234.24:4321']
   set 'env', 'production'
 
 envKit 'development', ->
   set 'env', 'production'
 
 
-set 'deployTo',       '/home/deploy/client/'
+set 'deployTo',       '/home/deploy/client'
 set 'releaseName',    (new Date()).toJSON().replace(/\:|\-/g, '').replace(/\T/g, '-').replace(/\..+$/, '')
 set 'keepReleases',   3
 
