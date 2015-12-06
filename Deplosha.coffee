@@ -18,16 +18,13 @@ set 'timeStartDeploy', (new Date().getTime() / 1000)
 
 
 namespace 'deploy', ->
-  task 'update', (done) -> sequence 'prepare', 'updateCode', 'config', 'build', 'symlink', done
+  task 'update', (done) -> sequence 'prepare', 'updateCode', 'build', 'symlink', done
 
   task 'build', (done) ->
     run """
     cd #{deplosha.releasePath};
-    NODE_ENV=production npm run build
+    NODE_ENV=production npm build
     """, done
-
-  task 'config', (done) ->
-    run "cp #{deplosha.sharedPath}/webpack.config.js #{deplosha.releasePath}/app/webpack.config.js", done
 
   task 'restart', (done) ->
     run "echo 'Deploy not need restart'"
