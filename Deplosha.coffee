@@ -10,7 +10,7 @@ envKit 'development', ->
   set 'env', 'production'
 
 
-set 'deployTo',       '/home/deploy/client'
+set 'deployTo',       '/home/deploy/client/'
 set 'releaseName',    (new Date()).toJSON().replace(/\:|\-/g, '').replace(/\T/g, '-').replace(/\..+$/, '')
 set 'keepReleases',   3
 
@@ -21,7 +21,7 @@ namespace 'deploy', ->
   task 'update', (done) -> sequence 'prepare', 'updateCode', 'build', 'symlink', done
 
   task 'build', (done) ->
-    run "cd #{deplosha.releasePath}; NODE_ENV=production npm build", done
+    run "cd #{deplosha.releasePath}; NODE_ENV=production npm run build", done
 
   task 'restart', (done) ->
     run "echo 'Deploy not need restart'"
