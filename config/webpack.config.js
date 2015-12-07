@@ -10,6 +10,7 @@ var BowerWebpackPlugin = require("bower-webpack-plugin");
 var WebPackAngularTranslate = require("webpack-angular-translate");
 var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
+var jsBundle = path.join('js', util.format('bundle.js'));
 var DEV = process.env.NODE_ENV === 'development';
 
 var htmlLoader = [
@@ -27,14 +28,17 @@ var entry = {
         './app.js'
     ]
 };
-entry.app.push(
+
+if (DEV) {
+  entry.app.push(
     util.format(
-        'webpack-dev-server/client?http://%s:%d',
-        pkg.config.devHost,
-        pkg.config.devPort
+      'webpack-dev-server/client?http://%s:%d',
+      pkg.config.devHost,
+      pkg.config.devPort
     )
-);
-entry.app.push('webpack/hot/dev-server');
+  );
+  entry.app.push('webpack/hot/dev-server');
+}
 
 module.exports = {
     context: path.join(__dirname, '../app'),
@@ -42,12 +46,13 @@ module.exports = {
     publicPath: '',
     entry: entry,
     output: {
-        path: __dirname + '/app',
+        path: path.resolve(pkg.config.buildDir),
         publicPath: '/',
-        filename: 'bundle.js'
+        filename: jsBundle,
+        pathinfo: false
     },
     resolve: {
-        extensions: ['', '.js', '.html', '.js', '.scss'],
+        extensions: ['', '.js', '.html', '.scss'],
         modulesDirectories: ['web_modules', 'node_modules', '../app']
     },
     plugins: [
@@ -63,11 +68,8 @@ module.exports = {
         new ngAnnotatePlugin({add: true})
     ],
     module: {
-        preLoaders: [
-            { test: /\.js$/, loader: 'baggage?[file].html' }
-        ],
         loaders: [
-            { test: /\.js?$/, loaders: ['babel-loader?experimental' ], exclude: /node_modules/ },
+            { test: /\.js?$/, loaders: ['babel' ], exclude: /node_modules/ },
             { test: /\.html$/, loader: "raw"},
             { test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/, loader: 'file'},
             { test: /\.scss$/, loaders: ["style", "css", "sass"] },
