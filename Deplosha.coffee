@@ -1,5 +1,5 @@
 set 'hosts',          ['deploy@188.226.234.24:4321']
-set 'repository',     'https://github.com/mrGhosd/e-study-frontend.git'
+set 'repository',     'git@github.com:mrGhosd/e-study-frontend.git'
 set 'branch',         'master'
 
 envKit 'production', ->
@@ -21,10 +21,7 @@ namespace 'deploy', ->
   task 'update', (done) -> sequence 'prepare', 'updateCode', 'build', 'symlink', done
 
   task 'build', (done) ->
-    run """
-    cd #{deplosha.releasePath};
-    NODE_ENV=production npm build
-    """, done
+    run "cd #{deplosha.releasePath}; NODE_ENV=production npm build", done
 
   task 'restart', (done) ->
     run "echo 'Deploy not need restart'"

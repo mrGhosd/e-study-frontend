@@ -10,6 +10,8 @@ var BowerWebpackPlugin = require("bower-webpack-plugin");
 var WebPackAngularTranslate = require("webpack-angular-translate");
 var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
+var DEV = process.env.NODE_ENV === 'development';
+
 var htmlLoader = [
     'file-loader?name=[path][name].[ext]',
     'template-html-loader?' + [
