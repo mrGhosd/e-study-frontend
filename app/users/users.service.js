@@ -29,7 +29,7 @@ export default class UsersService {
 
     getUser(id) {
         let def = this.$q.defer();
-        this.$http.get(`http://localhost:3000/api/v0/users/${id}.json`).then((res) => {
+        this.ApiRequest.get(`/users/${id}.json`).then((res) => {
             def.resolve(new User(res.data.user));
         });
         return def.promise;
@@ -38,7 +38,7 @@ export default class UsersService {
     search(query){
         let def = this.$q.defer();
         const params = {object: "user", query: query};
-        this.$http.get('http://localhost:3000/api/v0/search.json', {params: params}).success((data) => {
+        this.ApiRequest.get('/search.json', params).success((data) => {
             let newUsers = [];
             for(var i = 0; i < data.search.length; i++){
                 let user = new User(data.search[i]);

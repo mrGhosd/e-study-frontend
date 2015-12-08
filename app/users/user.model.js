@@ -1,6 +1,10 @@
+import envConfig from '../../config/env.config.js';
+
 export default class User{
     constructor(attributes){
         this.setAttributes(attributes);
+        this.host = envConfig[process.env.NODE_ENV].host;
+        this.port = envConfig[process.env.NODE_ENV].port;
     }
 
     setAttributes(attributes){
@@ -34,6 +38,6 @@ export default class User{
     }
 
     avatarURL(){
-        return this.image ? `http://localhost:3000${this.image.file.url}` : '/images/empty-user.png';
+        return this.image ? `http://${this.host}:${this.port}${this.image.file.url}` : '/images/empty-user.png';
     }
 }
