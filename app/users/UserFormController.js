@@ -16,7 +16,7 @@ export default class UserFormController {
         this.setDefaultLoadNotifications();
         this.host = envConfig[process.env.NODE_ENV].host;
         this.port = envConfig[process.env.NODE_ENV].port;
-        this.imageUrl = `http://${host}:${port}/api/v0/images`;
+        this.imageUrl = `http://${this.host}:${this.port}/api/v0/images`;
         if($scope.user.hasOwnProperty("date_of_birth")){
             $scope.user.date_of_birth = new Date($filter("date")(Date.now(), 'yyyy-MM-dd'));
         }
