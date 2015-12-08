@@ -9,6 +9,6 @@ module.exports = {
   },
   production: {
     host: "188.226.234.24",
-    port: 80
+    port: 81
   }
 }
