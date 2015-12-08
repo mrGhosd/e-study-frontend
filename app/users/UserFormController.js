@@ -56,7 +56,7 @@ export default class UserFormController {
         this.setDefaultLoadNotifications();
         this.usSpinnerService.spin('user-form-image');
         this.Upload.upload({
-            url: 'http://localhost:3000/api/v0/images',
+            url: this.imageUrl,
             fields: {'imageable_type': "User"},
             file: file
         }).then( (object) => {
