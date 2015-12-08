@@ -60,7 +60,7 @@ export default class AuthorizationController{
         password_confirmation: this.regForm.password_confirmation };
         this.authService.register(params)
         .then((response) => {
-            this.$state.go('profile');
+            this.$state.go('edit_profile');
             this.$modalInstance.dismiss('cancel');
         })
         .catch((error) => {
