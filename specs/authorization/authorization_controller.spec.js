@@ -202,11 +202,11 @@ describe("AuthorizationController", function() {
           expect(modalInstance.dismiss).toHaveBeenCalled();
         });
 
-        it("change state to /profile", function() {
+        it("change state to /edit_profile", function() {
           spyOn(state, 'go');
           signUpUser.respond(200, {token: 12345});
           rootScope.$digest();
-          expect(state.go).toHaveBeenCalledWith('profile');
+          expect(state.go).toHaveBeenCalledWith('edit_profile');
         });
       });
 
