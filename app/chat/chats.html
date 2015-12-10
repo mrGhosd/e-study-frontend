@@ -1,15 +1,15 @@
 <div class="chatroom">
   <div class="dialogs-list">
-    <div class="chat-dialog" ng-repeat="user in chat.users">
+    <a class="chat-dialog" ng-repeat="user in chat.users" ng-click="chat.selectDialog()">
       <div class="image">
         <img ng-src="{{user.avatarURL()}}" height="60" width="60" class="img-circle" />
       </div>
       <div class="user-name">{{user.correctNaming()}}</div>
-    </div>
+    </a>
   </div>
   <div class="messages-list">
     <div class="message-form">
-      <form ng-submit="createMessage()">
+      <form ng-submit="chat.createMessage()">
         <textarea ng-model="chat.message"></textarea>
         <input type="submit" class="btn btn-info" value="Send" />
       </form>

@@ -28,6 +28,10 @@
 
 .main-content{
   margin-top: 50px;
+
+  .main.mainContentView {
+    margin-top: 15px;
+  }
 }
 li.active{
   background-color: lightgreen;
