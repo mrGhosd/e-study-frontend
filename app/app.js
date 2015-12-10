@@ -19,6 +19,7 @@ import ngFileUpload from 'ng-file-upload';
 import Notification from './modal_windows/notification/Notification';
 import angularCookies from 'angular-cookies';
 import ngStorage from 'ngstorage';
+import autoComplete from 'angucomplete-alt';
 
 import 'babel-core/polyfill';
 

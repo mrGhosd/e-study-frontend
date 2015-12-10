@@ -1,11 +1,25 @@
 <div class="chatroom">
   <div class="dialogs-list">
-    <a class="chat-dialog" ng-repeat="user in chat.users" ng-click="chat.selectDialog()">
-      <div class="image">
-        <img ng-src="{{user.avatarURL()}}" height="60" width="60" class="img-circle" />
-      </div>
-      <div class="user-name">{{user.correctNaming()}}</div>
+    <a class="chat-dialog" ng-repeat="chat in chat.chats" ng-click="chat.selectDialog()">
+
     </a>
+    <div class="chat-form" ng-show="{{chat.chats.length < 1}}">
+      <h3>У вас нет ни одного чата</h3>
+      <form ng-submit="chat.createChat()">
+        <input type="text" ng-model="chat.selectedUser"
+        placeholder="Choose users"
+        uib-typeahead="user as user.fullName for user in chat.users | filter:{fullName:$viewValue}"
+        typeahead-template-url="customTemplate.html" class="form-control"
+        typeahead-on-select= "chat.selectUser($item, $model, $label)"
+        ng-change="chat.changeInputValue()">
+        <script type="text/ng-template" id="customTemplate.html">
+          <a ng-click="selectUserEvent()">
+              <img ng-src="{{match.model.avatarURL()}}" height="50" width="50" class="img-circle" >
+              <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
+          </a>
+        </script>
+      </form>
+    </div>
   </div>
   <div class="messages-list">
     <div class="message-form">

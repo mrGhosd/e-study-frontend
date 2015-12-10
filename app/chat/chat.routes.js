@@ -1,5 +1,3 @@
-'use strict';
-
 routes.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 export function routes($stateProvider, $urlRouterProvider) {
@@ -8,10 +6,9 @@ export function routes($stateProvider, $urlRouterProvider) {
             url: '/chats',
             template: require('./chats.html'),
             controller: 'ChatListController as chat',
-            signedIn: true,
             resolve: {
-                users: ['UserService', (UserService) => {
-                    return UserService.getAll();
+                chats: ['ChatFactory', (ChatFactory) => {
+                    return ChatFactory.getAll();
                 }]
             }
         })
