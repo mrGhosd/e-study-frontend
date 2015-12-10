@@ -2,6 +2,7 @@
 @import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 @import 'user';
 @import 'notification';
+@import 'chat';
 
 .btn-actions{
   margin-top:5px;
@@ -26,7 +27,7 @@
 }
 
 .main-content{
-  margin-top: 75px;
+  margin-top: 50px;
 }
 li.active{
   background-color: lightgreen;

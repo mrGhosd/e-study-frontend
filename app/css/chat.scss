@@ -1,0 +1,18 @@
+.chatroom {
+  display: flex;
+
+  .dialogs-list {
+    width: 30%;
+    border-right: 2px solid #c8c8c8;
+    height: 100%;
+
+    .chat-dialog {
+      display: flex;
+
+      div {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+}

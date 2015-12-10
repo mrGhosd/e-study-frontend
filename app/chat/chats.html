@@ -1,1 +1,18 @@
-<div>Chat list</div>
+<div class="chatroom">
+  <div class="dialogs-list">
+    <div class="chat-dialog" ng-repeat="user in chat.users">
+      <div class="image">
+        <img ng-src="{{user.avatarURL()}}" height="60" width="60" class="img-circle" />
+      </div>
+      <div class="user-name">{{user.correctNaming()}}</div>
+    </div>
+  </div>
+  <div class="messages-list">
+    <div class="message-form">
+      <form ng-submit="createMessage()">
+        <textarea ng-model="chat.message"></textarea>
+        <input type="submit" class="btn btn-info" value="Send" />
+      </form>
+    </div>
+  </div>
+</div>

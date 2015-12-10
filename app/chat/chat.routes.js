@@ -7,7 +7,7 @@ export function routes($stateProvider, $urlRouterProvider) {
         .state('chats', {
             url: '/chats',
             template: require('./chats.html'),
-            controller: 'ChatListController',
+            controller: 'ChatListController as chat',
             signedIn: true,
             resolve: {
                 users: ['UserService', (UserService) => {
