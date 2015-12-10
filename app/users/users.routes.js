@@ -12,7 +12,7 @@ export function routes($stateProvider, $urlRouterProvider) {
             signedIn: true,
             resolve: {
                 user: ['AuthService', '$location', '$state', (AuthService, $location, $state) => {
-                    return AuthService.currentUser;
+                    return AuthService.currentUser();
                 }],
                 profile: () => {
                     return true;
@@ -25,7 +25,7 @@ export function routes($stateProvider, $urlRouterProvider) {
             controller: 'UserFormController as profile',
             resolve: {
                 user: ['AuthService', (AuthService) =>{
-                   return AuthService.currentUser;
+                   return AuthService.currentUser();
                 }]
             }
         })
@@ -45,7 +45,7 @@ export function routes($stateProvider, $urlRouterProvider) {
             template: require('./user.html'),
             controller: 'UserController',
             onEnter: ['$state', '$stateParams', '$location', 'AuthService', function($state, $stateParams, $location, AuthService) {
-                AuthService.currentUser.then((data) => {
+                AuthService.currentUser().then((data) => {
                     if(data.id == $stateParams.id) $location.path('/profile').replace("user", new User(data));
                 })
             }],

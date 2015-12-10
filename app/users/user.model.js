@@ -3,8 +3,6 @@ import envConfig from '../../config/env.config.js';
 export default class User{
     constructor(attributes){
         this.setAttributes(attributes);
-        this.host = envConfig[process.env.NODE_ENV].host;
-        this.port = envConfig[process.env.NODE_ENV].port;
     }
 
     setAttributes(attributes){
@@ -38,6 +36,8 @@ export default class User{
     }
 
     avatarURL(){
-        return this.image ? `http://${this.host}:${this.port}${this.image.file.url}` : '/images/empty-user.png';
+        const hostName = envConfig[process.env.NODE_ENV].host;
+        const portName = envConfig[process.env.NODE_ENV].port;
+        return this.image ? `http://${this.hostName}:${this.portName}${this.image.file.url}` : '/images/empty-user.png';
     }
 }

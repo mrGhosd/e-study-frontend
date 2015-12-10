@@ -4,16 +4,16 @@ export default class ApiRequest{
     constructor($http, $q, $window, $cookies, $localStorage, $sessionStorage){
       this.$http = $http;
       this.$q = $q;
-      this.host = envConfig[process.env.NODE_ENV].host;
-      this.port = envConfig[process.env.NODE_ENV].port;
+      this.hostName = envConfig[process.env.NODE_ENV].host;
+      this.portName = envConfig[process.env.NODE_ENV].port;
       this.version = "v0";
       this.$window = $window;
       this.$cookies = $cookies;
       this.$localStorage = $localStorage;
       this.$sessionStorage = $sessionStorage;
-      this.sessionsPath = `http://${this.host}:${this.port}/api/sessions`;
-      this.registrationPath = `http://${this.host}:${this.port}/api/registrations`;
-      this.currentUserPath = `http://${this.host}:${this.port}/api/sessions/current`;
+      this.sessionsPath = `http://${this.hostName}:${this.porttName}/api/sessions`;
+      this.registrationPath = `http://${this.hostName}:${this.portName}/api/registrations`;
+      this.currentUserPath = `http://${this.hostName}:${this.portName}/api/sessions/current`;
     }
 
     get(url, parameters){
@@ -58,7 +58,7 @@ export default class ApiRequest{
     }
 
     correctUrl(url){
-        return `http://${this.host}:${this.port}/api/${this.version}${url}`;
+        return `http://${this.hostName}:${this.portName}/api/${this.version}${url}`;
     }
 
     setToken(){

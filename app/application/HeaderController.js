@@ -8,7 +8,7 @@ export default class HeaderController{
         this.$translate = $translate;
         this.AuthService = AuthService;
         $rootScope.$on('signedIn', () => {
-            this.AuthService.currentUser
+            this.AuthService.currentUser()
                 .then((user) => {
                     this.user = user;
                 })
@@ -18,7 +18,7 @@ export default class HeaderController{
         });
 
         if(this.AuthService.isSignedIn()){
-            this.AuthService.currentUser
+            this.AuthService.currentUser()
                 .then((user) => {
                     this.user = user;
                 })

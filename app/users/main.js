@@ -7,6 +7,7 @@ import UserController from './UserController.js';
 import UserFormController from './UserFormController';
 import UserService from 'users/users.service';
 import AuthService from 'users/AuthService';
+import User from 'users/user.model';
 
 export default angular.module('estudy.users', [uirouter])
     .controller('UsersController', UsersController)

@@ -1,4 +1,4 @@
-import User from 'users/user.model.js';
+import User from './user.model';
 
 export default class AuthService{
     constructor(UserService, $window, $rootScope, $http, $q, ApiRequest, $cookies, $localStorage, $sessionStorage){
@@ -18,7 +18,7 @@ export default class AuthService{
         return this.$sessionStorage.remember_token || this.$localStorage.remember_token ? true : false;
     }
 
-    get currentUser(){
+    currentUser(){
         let def = this.$q.defer();
         this.ApiRequest.currentUser()
         .then((res) => {
