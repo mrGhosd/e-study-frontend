@@ -1,7 +1,7 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 
-import {routes} from './users.routes.js';
+import { routes } from './users.routes.js';
 import UsersController from './UsersController.js';
 import UserController from './UserController.js';
 import UserFormController from './UserFormController';

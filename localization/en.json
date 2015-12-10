@@ -12,7 +12,8 @@
   },
   "nav": {
     "profile": "Profile",
-    "users": "Users"
+    "users": "Users",
+    "chats": "Messages"
   },
   "users": {
     "search_button": "Search",

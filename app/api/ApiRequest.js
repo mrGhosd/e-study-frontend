@@ -11,7 +11,7 @@ export default class ApiRequest{
       this.$cookies = $cookies;
       this.$localStorage = $localStorage;
       this.$sessionStorage = $sessionStorage;
-      this.sessionsPath = `http://${this.hostName}:${this.porttName}/api/sessions`;
+      this.sessionsPath = `http://${this.hostName}:${this.portName}/api/sessions`;
       this.registrationPath = `http://${this.hostName}:${this.portName}/api/registrations`;
       this.currentUserPath = `http://${this.hostName}:${this.portName}/api/sessions/current`;
     }

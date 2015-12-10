@@ -3,8 +3,11 @@ import uirouter from 'angular-ui-router';
 import angularTranslate from 'angular-translate';
 import angularBootstrap from 'angular-ui-bootstrap';
 import config from 'app.config';
+
 import home from 'home/index';
 import users from 'users/main';
+import chat from 'chat/index';
+
 import notifications from 'modal_windows/notification/index';
 import I18n from 'i18n-js';
 import NavigationController from './navigation/NavigationController'
@@ -24,8 +27,8 @@ import __UtilPolyfill from 'util/polyfill';
 import './index.html';
 import 'css/main.scss';
 
-angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users,
-    ApiRequest, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name, notifications])
+angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users, chat,
+   ApiRequest, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name, notifications])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)
