@@ -1,10 +1,14 @@
 export default class ChatListController {
-  constructor($scope, chats, UserService) {
+  constructor($scope, chats, UserService, currentUser, ChatFactory) {
     this.chats = chats;
+    this.currentUser = currentUser;
     this.users = [];
+    this.chatUsers = [];
     this.UserService = UserService;
     this.$scope = $scope;
     this.$scope.selected = undefined;
+    this.selectedUser = null;
+    this.ChatFactory = ChatFactory;
   }
 
   changeInputValue() {
@@ -18,10 +22,32 @@ export default class ChatListController {
   }
 
   selectUserEvent() {
-    console.log(this.selectedUser);
   }
 
   selectUser($item, $model, $label) {
-    console.log($item, $model, $label);
+    let elementIsUniq = true;
+    for(const item of this.chatUsers) {
+      if (item.id === $model.id) {
+        elementIsUniq = false;
+      }
+    }
+    if (elementIsUniq){
+      this.chatUsers.push($model);
+    }
+    this.selectedUser = null;
+  }
+
+  removeNewMember($index) {
+    this.chatUsers.splice($index, 1);
+  }
+
+  createChat() {
+    this.chatUsers.push(this.currentUser.id);
+    let users = this.chatUsers.map((user) => user.id);
+    const params = { users };
+    this.ChatFactory.create(params)
+    .then((response) => {
+      console.log(response);
+    });
   }
 }

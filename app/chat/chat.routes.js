@@ -9,7 +9,10 @@ export function routes($stateProvider, $urlRouterProvider) {
             resolve: {
                 chats: ['ChatFactory', (ChatFactory) => {
                     return ChatFactory.getAll();
+                }],
+                currentUser: ['AuthService', (AuthService) => {
+                  return AuthService.currentUser();
                 }]
-            }
+            },
         })
 }

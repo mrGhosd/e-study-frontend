@@ -44,7 +44,7 @@ angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, us
         });
 
         $rootScope.$on('signedOut', (event, args) => {
-            if($state.current.name === 'profile'){
+            if($state.current.name === 'profile' || ($state.current.name === 'chats'){
                 $state.go('users');
             }
         });

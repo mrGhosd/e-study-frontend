@@ -12,4 +12,13 @@ export default class ChatFactory {
     });
     return def.promise;
   }
+
+  create(params) {
+    let def = this.$q.defer();
+    this.ApiRequest.post('/chats', {chat: params})
+    .then((response) => {
+      def.resolve(response.data.chats);
+    });
+    return def.promise;
+  }
 }
