@@ -28,4 +28,13 @@ export default class ChatFactory {
     });
     return def.promise;
   }
+
+  get(id) {
+    let def = this.$q.defer();
+    this.ApiRequest.get(`/chats/${id}`)
+    .then((response) => {
+      def.resolve(new Chat(response.data.chats));
+    });
+    return def.promise;
+  }
 }

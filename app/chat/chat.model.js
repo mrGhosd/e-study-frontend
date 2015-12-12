@@ -2,8 +2,10 @@ import User from '../users/user.model'
 
 export default class Chat {
   constructor(params){
+    this.id = params.id;
     this.users = params.users;
     this.updatedAt = params.updated_at;
+    this.messages = params.messages;
   }
 
   getName() {
