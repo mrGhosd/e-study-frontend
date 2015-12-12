@@ -1,11 +1,4 @@
 <div class="chatroom">
   <div class="dialog-list" ng-include="'/chat/dialog_list.html'"></div>
-  <div class="messages-list">
-    <div class="message-form">
-      <form ng-submit="chat.createMessage()">
-        <textarea ng-model="chat.message"></textarea>
-        <input type="submit" class="btn btn-info" value="Send" />
-      </form>
-    </div>
-  </div>
+  <div class="dialog-list" ng-include="'/chat/dialog_window.html'"></div>
 </div>

@@ -1,6 +1,6 @@
 <div class="dialogs-list"
 ng-controller="ChatListController as dialog" ng-init="dialog.setChatList(chat)">
-  <div class="chat-dialog" ng-repeat="cht in dialog.chats" ng-click="dialog.testAction()">
+  <div class="chat-dialog" ng-repeat="cht in dialog.chats" ng-click="dialog.selectChat(cht)">
     <div class="chat-image">
       <img ng-src={{cht.getImageURL()}} height="60" width="60"  />
     </div>

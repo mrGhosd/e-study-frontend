@@ -47,7 +47,7 @@ export default class ChatListController {
     });
   }
 
-  testAction() {
-    console.log("3");
+  selectChat(chat) {
+    this.rootScope.$broadcast('chatWasSelected', chat);
   }
 }
