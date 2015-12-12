@@ -7,11 +7,11 @@ export function routes($stateProvider, $urlRouterProvider) {
             template: require('./chats.html'),
             controller: 'ChatListController as chat',
             resolve: {
-                chats: ['ChatFactory', (ChatFactory) => {
-                    return ChatFactory.getAll();
-                }],
                 currentUser: ['AuthService', (AuthService) => {
                   return AuthService.currentUser();
+                }],
+                chats: ['ChatFactory', (ChatFactory) => {
+                    return ChatFactory.getAll();
                 }]
             },
         })

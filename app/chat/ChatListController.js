@@ -1,7 +1,7 @@
 export default class ChatListController {
   constructor($scope, chats, UserService, currentUser, ChatFactory) {
-    this.chats = chats;
     this.currentUser = currentUser;
+    this.chats = chats.map((chat) => chat.setUsersArrayForUser(this.currentUser));
     this.users = [];
     this.chatUsers = [];
     this.UserService = UserService;
@@ -19,9 +19,6 @@ export default class ChatListController {
       });
       this.users = response;
     });
-  }
-
-  selectUserEvent() {
   }
 
   selectUser($item, $model, $label) {
@@ -49,5 +46,9 @@ export default class ChatListController {
     .then((response) => {
       console.log(response);
     });
+  }
+
+  testAction() {
+    console.log("3");
   }
 }

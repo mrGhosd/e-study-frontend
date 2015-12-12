@@ -88,7 +88,7 @@ module.exports = {
     devServer:{
         contentBase: path.resolve(pkg.config.buildDir),
         hot: true,
-        noInfo: true,
+        quiet: true,
         inline: true,
         stats: { colors: true },
         historyApiFallback: true

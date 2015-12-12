@@ -1,3 +1,5 @@
+import Chat from './chat.model.js';
+
 export default class ChatFactory {
   constructor(ApiRequest, $q) {
     this.ApiRequest = ApiRequest;
@@ -8,7 +10,12 @@ export default class ChatFactory {
     let def = this.$q.defer();
     this.ApiRequest.get('/chats')
     .then((response) => {
-      def.resolve(response.data.chats);
+      let newChats = [];
+      for (const obj of response.data.chats) {
+        const chat = new Chat(obj);
+        newChats.push(chat);
+      }
+      def.resolve(newChats);
     });
     return def.promise;
   }

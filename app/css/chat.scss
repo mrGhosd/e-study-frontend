@@ -8,10 +8,16 @@
 
     .chat-dialog {
       display: flex;
+      flex-direction: row;
+      width: 100%;
 
-      div {
-        display: flex;
-        flex-direction: row;
+      &:hover {
+        cursor: pointer;
+        background-color: #b5cbd6;
+      }
+
+      .chat-info{
+        flex-direction: column;
       }
     }
   }

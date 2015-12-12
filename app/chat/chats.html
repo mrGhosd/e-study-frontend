@@ -1,8 +1,14 @@
 <div class="chatroom">
   <div class="dialogs-list">
-    <a class="chat-dialog" ng-repeat="chat in chat.chats" ng-click="chat.selectDialog()">
-
-    </a>
+    <div class="chat-dialog" ng-repeat="cht in chat.chats" ng-click="chat.testAction()">
+      <div class="chat-image">
+        <img ng-src={{cht.getImageURL()}} height="60" width="60"  />
+      </div>
+      <div class="chat-info">
+        <div class="chat-title">{{cht.getName()}}</div>
+        <div class="chat-last-update">{{cht.updatedAt}}</div>
+      </div>
+    </div>
     <div class="chat-form" ng-show="{{chat.chats.length < 1}}">
       <h3>У вас нет ни одного чата</h3>
       <div class="new-chat-users">
@@ -12,7 +18,7 @@
         </div>
       </div>
       <script type="text/ng-template" id="customTemplate.html">
-        <a ng-click="selectUserEvent()">
+        <a>
             <img ng-src="{{match.model.avatarURL()}}" height="50" width="50" class="img-circle" >
             <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
         </a>
