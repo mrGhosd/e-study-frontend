@@ -1,14 +1,13 @@
 export default class ChatListController {
-  constructor($scope, chats, UserService, currentUser, ChatFactory) {
-    this.currentUser = currentUser;
-    this.chats = chats.map((chat) => chat.setUsersArrayForUser(this.currentUser));
+  constructor($rootScope) {
     this.users = [];
     this.chatUsers = [];
-    this.UserService = UserService;
-    this.$scope = $scope;
-    this.$scope.selected = undefined;
-    this.selectedUser = null;
-    this.ChatFactory = ChatFactory;
+    this.rootScope = $rootScope;
+  }
+
+  setChatList(chat) {
+    this.currentUser = chat.currentUser;
+    this.chats = chat.chats.map((chat) => chat.setUsersArrayForUser(this.currentUser));
   }
 
   changeInputValue() {
