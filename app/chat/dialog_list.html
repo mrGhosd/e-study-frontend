@@ -9,8 +9,8 @@ ng-controller="ChatListController as dialog" ng-init="dialog.setChatList(chat)">
       <div class="chat-last-update">{{cht.updatedAt}}</div>
     </div>
   </div>
-  <div class="chat-form" ng-show="{{dialog.chats.length < 1}}">
-    <h3>У вас нет ни одного чата</h3>
+  <div class="chat-form" >
+    <h3 ng-show="{{dialog.chats.length < 1}}">У вас нет ни одного чата</h3>
     <div class="new-chat-users">
       <div class="new-chat-member" ng-repeat="user in dialog.chatUsers">
         <p>{{user.correctNaming()}}</p>
