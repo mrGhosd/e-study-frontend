@@ -4,6 +4,7 @@ export default class MessageFormController {
     this.MessageFactory = MessageFactory;
     this.currentDialog = null;
     $rootScope.$on('messagesListWasReceived', (event, args) => {
+      console.log(args);
       this.currentDialog = args;
       this.showForm = true;
     });
@@ -22,6 +23,8 @@ export default class MessageFormController {
         text: this.message
       }
     };
+
+    console.log(message);
 
     this.MessageFactory.create(message)
     .then((message) => {

@@ -12,7 +12,7 @@ export default class MessageListController {
       this.ChatFactory.get(args.id)
       .then((response) => {
         this.currentDialog = response;
-        this.rootScope.$broadcast('messagesListWasReceived');
+        this.rootScope.$broadcast('messagesListWasReceived', this.currentDialog);
       });
     });
 
@@ -29,7 +29,6 @@ export default class MessageListController {
   }
 
   setDataFromParentController(data) {
-    console.log(data);
     this.currentUser = data.currentUser;
   }
 
