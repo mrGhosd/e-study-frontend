@@ -8,7 +8,6 @@ export default class Chat {
     this.updatedAt = params.updated_at;
     this.messages = params.messages;
     this.parseChatMessags();
-    console.log(this.messages);
   }
 
   parseChatMessags() {

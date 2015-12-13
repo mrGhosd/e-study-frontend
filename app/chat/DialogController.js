@@ -1,17 +1,27 @@
+import Message from './message.model';
+
 export default class DialogController {
-  constructor($rootScope, ChatFactory, MessageFactory) {
+  constructor($rootScope, ChatFactory, MessageFactory, WebSockets) {
     this.ChatFactory = ChatFactory;
     this.MessageFactory = MessageFactory;
     this.rootScope = $rootScope;
     this.currentDialog = null;
-
+    this.WebSockets = WebSockets;
     this.rootScope.$on('chatWasSelected', (event, args) => {
       this.ChatFactory.get(args.id)
       .then((response) => {
         this.currentDialog = response;
-        console.log(this.currentDialog);
       });
     });
+
+    this.WebSockets.on('rtchange', (event, data) => {
+      const message = new Message(data);
+      this.currentDialog.messages.push(message);
+    });
+  }
+
+  handleSockets(event, args) {
+    // console.log
   }
 
   setDataFromParentController(data) {
@@ -30,7 +40,6 @@ export default class DialogController {
     this.MessageFactory.create(message)
     .then((message) => {
       this.message = '';
-      console.log(message);
       this.currentDialog.messages.push(message);
     });
 

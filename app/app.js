@@ -19,10 +19,8 @@ import ngFileUpload from 'ng-file-upload';
 import Notification from './modal_windows/notification/Notification';
 import angularCookies from 'angular-cookies';
 import ngStorage from 'ngstorage';
-import autoComplete from 'angucomplete-alt';
-
+import WebSockets from './sockets/socket.io.factory';
 import 'babel-core/polyfill';
-
 import __UtilPolyfill from 'util/polyfill';
 
 import './index.html';
@@ -34,6 +32,7 @@ angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, us
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)
     .service('Notification', Notification)
+    .service('WebSockets', WebSockets)
     .config(config)
     .run(($rootScope, AuthService, $location, $state, $modal,
           usSpinnerService, Notification, $cookies) => {
