@@ -1,4 +1,4 @@
-<div class="messages-list"
+<div class="messages-list-data"
 ng-controller="DialogController as dialog"
 ng-init="dialog.setDataFromParentController(chat)">
   <div class="messages-list" ng-if="dialog.currentDialog">
@@ -8,15 +8,16 @@ ng-init="dialog.setDataFromParentController(chat)">
     <div class="message-item" ng-class="{current_user: msg.user.id === dialog.currentUser.id}"
       ng-repeat="msg in dialog.currentDialog.messages">
       <div class="message-image">
-        <img ng-src="{{::msg.messageImage()}}" class="img-circle" height="50" width="50" />
+        <img ng-src="{{::msg.messageImage()}}" class="img-circle" height="45" width="45" />
       </div>
       <div class="message-text">{{::msg.text}}</div>
+      <div class="message-created-at">{{::msg.createdAt}}</div>
     </div>
   </div>
-  <div class="message-form">
-    <form ng-submit="dialog.createMessage()">
-      <textarea ng-model="dialog.message" class="form-control"></textarea>
-      <input type="submit" class="btn btn-info" value="Send" />
-    </form>
-  </div>
+</div>
+<div class="message-form">
+  <form ng-submit="dialog.createMessage()">
+    <textarea ng-model="dialog.message" class="form-control"></textarea>
+    <input type="submit" class="btn btn-info" value="Send" />
+  </form>
 </div>

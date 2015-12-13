@@ -1,16 +1,52 @@
-.messages-list {
-  .message-item {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 20px;
+.messages-list-wrapper{
+  display: flex;
+  flex-direction: column;
 
-    &.current_user {
+  .messages-list-data, .message-form {
+    flex-shrink: 15;
+  }
+
+  .messages-list-data {
+    max-height: 500px;
+    overflow: hidden;
+
+    &:hover {
+      overflow: auto;
     }
   }
 
-  .messsage-form {
-    width: 100%;
+  .messages-list {
+    display: flex;
+    flex-direction: column;
+
+    .message-item {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 20px;
+
+      &.current_user {
+      }
+
+      .message-text {
+        font-size: 15px;
+        vertical-align: center;
+      }
+
+      .message-created-at {
+        flex: 1;
+        flex-direction: row-reverse;
+        display: flex;
+        font-style: italic;
+      }
+    }
+  }
+
+  .message-form {
     padding: 20px;
     background-color: #a4bdc4;
+
+    input[type='submit'] {
+      margin-top: 10px;
+    }
   }
 }

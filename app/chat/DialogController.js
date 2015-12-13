@@ -1,7 +1,7 @@
 import Message from './message.model';
 
 export default class DialogController {
-  constructor($rootScope, ChatFactory, MessageFactory, WebSockets) {
+  constructor($rootScope, ChatFactory, MessageFactory, WebSockets, $window) {
     this.ChatFactory = ChatFactory;
     this.MessageFactory = MessageFactory;
     this.rootScope = $rootScope;
@@ -16,7 +16,9 @@ export default class DialogController {
 
     this.WebSockets.on('rtchange', (event, data) => {
       const message = new Message(data);
-      this.currentDialog.messages.push(message);
+      if (message.userId !== this.currentUser.id){
+        this.currentDialog.messages.push(message);
+      }
     });
   }
 
