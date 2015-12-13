@@ -11,6 +11,7 @@ import MessageList from './message_list.directive';
 import MessageFormController from './MessageFormController';
 import MessageFormDirective from './message_form.directive';
 
+
 export default angular.module('estudy.chat', [uirouter])
       .controller('ChatsController', ChatsController)
       .controller('ChatListController', ChatListController)
