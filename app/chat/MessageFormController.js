@@ -1,6 +1,12 @@
 export default class MessageFormController {
-  constructor($rootScope, ChatFactory, MessageFactory) {
-
+  constructor($scope, $rootScope, ChatFactory, MessageFactory) {
+    this.showForm = false;
+    this.MessageFactory = MessageFactory;
+    this.currentDialog = null;
+    $rootScope.$on('messagesListWasReceived', (event, args) => {
+      this.currentDialog = args;
+      this.showForm = true;
+    });
   }
 
   setDataFromParentController(data) {
@@ -8,7 +14,7 @@ export default class MessageFormController {
     this.currentDialog = data.currentDialog;
   }
 
-  reateMessage() {
+  createMessage() {
     const message = {
       message: {
         user_id: this.currentUser.id,
@@ -26,5 +32,9 @@ export default class MessageFormController {
       console.log(errors);
     });
 
+  }
+
+  setData(chat) {
+    console.log(chat);
   }
 }

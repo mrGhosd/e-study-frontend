@@ -1,0 +1,7 @@
+<div class="message-form" ng-show="ctrl.showForm">
+  <form ng-submit="ctrl.createMessage()">
+    <textarea msd-elastic ng-model="ctrl.message"
+    class="form-control"></textarea>
+    <input type="submit" class="btn btn-info" value="Send" />
+  </form>
+</div>

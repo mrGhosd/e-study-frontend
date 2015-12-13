@@ -1,9 +1,4 @@
 <div class="messages-list-wrapper">
-  <message-list></message-list>
-  <div class="message-form">
-    <form ng-submit="dialog.createMessage()">
-      <textarea ng-model="dialog.message" class="form-control"></textarea>
-      <input type="submit" class="btn btn-info" value="Send" />
-    </form>
-  </div>
+  <message-list current-user="chat.currentUser"></message-list>
+  <message-form current-user="chat.currentUser"></message-form>
 </div>

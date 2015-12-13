@@ -7,7 +7,9 @@ export default class Chat {
     this.users = params.users;
     this.updatedAt = params.updated_at;
     this.messages = params.messages;
-    this.parseChatMessags();
+    if (this.messages) {
+      this.parseChatMessags();
+    }
   }
 
   parseChatMessags() {

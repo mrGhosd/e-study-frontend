@@ -9,6 +9,7 @@ import MessageListController from './MessageListController';
 import MessageFactory from './message.factory';
 import MessageList from './message_list.directive';
 import MessageFormController from './MessageFormController';
+import MessageFormDirective from './message_form.directive';
 
 export default angular.module('estudy.chat', [uirouter])
       .controller('ChatsController', ChatsController)
@@ -18,5 +19,6 @@ export default angular.module('estudy.chat', [uirouter])
       .service('ChatFactory', ChatFactory)
       .service('MessageFactory', MessageFactory)
       .directive('messageList', MessageList)
+      .directive('messageForm', MessageFormDirective)
       .config(routes)
       .name;

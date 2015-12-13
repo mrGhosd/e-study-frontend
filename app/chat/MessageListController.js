@@ -9,13 +9,11 @@ export default class MessageListController {
     this.messages = null;
     this.WebSockets = WebSockets;
     this.rootScope.$on('chatWasSelected', (event, args) => {
-      this.currentDialog = args;
-      this.messages = this.currentDialog.messages;
-      $scope.messages = this.currentDialog.messages;
-      // this.ChatFactory.get(args.id)
-      // .then((response) => {
-      //   this.currentDialog = response;
-      // });
+      this.ChatFactory.get(args.id)
+      .then((response) => {
+        this.currentDialog = response;
+        this.rootScope.$broadcast('messagesListWasReceived');
+      });
     });
 
     this.WebSockets.on('rtchange', (event, data) => {

@@ -7,7 +7,9 @@ export default function messageListDirective() {
     restrict: "E",
     replace: true,
     template: template,
-    scope: true,
+    scope: {
+        currentUser: '@'
+    },
     bindToController: true,
     controller: MessageListController,
     controllerAs: "ctrl",
