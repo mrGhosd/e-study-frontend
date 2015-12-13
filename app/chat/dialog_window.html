@@ -5,14 +5,17 @@ ng-init="dialog.setDataFromParentController(chat)">
     <div ng-if="dialog.currentDialog.messages.length < 1">
       В данном диалоге еще нет сообщений
     </div>
-    <div class="message-item"
-     ng-repeat"message in dialog.currentDialog.messages">
-
+    <div class="message-item" ng-class="{current_user: msg.user.id === dialog.currentUser.id}"
+      ng-repeat="msg in dialog.currentDialog.messages">
+      <div class="message-image">
+        <img ng-src="{{msg.messageImage()}}" class="img-circle" height="50" width="50" />
+      </div>
+      <div class="message-text">{{msg.text}}</div>
     </div>
   </div>
   <div class="message-form">
     <form ng-submit="dialog.createMessage()">
-      <textarea ng-model="dialog.message"></textarea>
+      <textarea ng-model="dialog.message" class="form-control"></textarea>
       <input type="submit" class="btn btn-info" value="Send" />
     </form>
   </div>

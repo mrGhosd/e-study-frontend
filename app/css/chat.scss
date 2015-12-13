@@ -1,6 +1,14 @@
 .chatroom {
   display: flex;
 
+  .dialog-list-wrapper {
+    width: 25%;
+  }
+
+  .messages-list-wrapper {
+    width: 55%;
+  }
+
   .dialogs-list {
     border-right: 2px solid #c8c8c8;
     height: 100%;

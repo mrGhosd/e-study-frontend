@@ -1,0 +1,16 @@
+.messages-list {
+  .message-item {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+
+    &.current_user {
+    }
+  }
+
+  .messsage-form {
+    width: 100%;
+    padding: 20px;
+    background-color: #a4bdc4;
+  }
+}

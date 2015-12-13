@@ -1,4 +1,5 @@
-import User from '../users/user.model'
+import User from '../users/user.model';
+import Message from './message.model';
 
 export default class Chat {
   constructor(params){
@@ -6,6 +7,17 @@ export default class Chat {
     this.users = params.users;
     this.updatedAt = params.updated_at;
     this.messages = params.messages;
+    this.parseChatMessags();
+    console.log(this.messages);
+  }
+
+  parseChatMessags() {
+    let messages = [];
+    this.messages.forEach((item) => {
+      const msg = new Message(item);
+      messages.push(msg);
+    });
+    this.messages = messages;
   }
 
   getName() {
