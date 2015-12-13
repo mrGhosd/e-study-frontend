@@ -5,14 +5,18 @@ import { routes } from './chat.routes.js';
 import ChatListController from './ChatListController';
 import ChatsController from './ChatsController';
 import ChatFactory from './chat.factory.js';
-import DialogController from './DialogController';
+import MessageListController from './MessageListController';
 import MessageFactory from './message.factory';
+import MessageList from './message_list.directive';
+import MessageFormController from './MessageFormController';
 
 export default angular.module('estudy.chat', [uirouter])
       .controller('ChatsController', ChatsController)
       .controller('ChatListController', ChatListController)
-      .controller('DialogController', DialogController)
+      .controller('MessageListController', MessageListController)
+      .controller('MessageFormController', MessageFormController)
       .service('ChatFactory', ChatFactory)
       .service('MessageFactory', MessageFactory)
+      .directive('messageList', MessageList)
       .config(routes)
       .name;

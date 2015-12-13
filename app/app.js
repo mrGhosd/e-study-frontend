@@ -22,12 +22,13 @@ import ngStorage from 'ngstorage';
 import WebSockets from './sockets/socket.io.factory';
 import 'babel-core/polyfill';
 import __UtilPolyfill from 'util/polyfill';
-
+import angularElastic from 'angular-elastic';
 import './index.html';
 import 'css/main.scss';
 
 angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users, chat,
-   ApiRequest, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name, notifications])
+   ApiRequest, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name,
+   notifications, angularElastic])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)

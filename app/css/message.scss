@@ -2,22 +2,31 @@
   display: flex;
   flex-direction: column;
 
-  .messages-list-data, .message-form {
-    flex-shrink: 15;
+  .messages-list-data {
+    display: flex;
+    flex-direction: column;
   }
 
-  .messages-list-data {
-    height: 43em;
-    overflow: hidden;
+  .message-form {
+    padding: 20px;
+    background-color: #a4bdc4;
+    bottom: 10px;
 
-    &:hover {
-      overflow: auto;
+    input[type='submit'] {
+      margin-top: 10px;
     }
   }
 
   .messages-list {
     display: flex;
     flex-direction: column;
+    height: 58vh;
+    overflow: hidden;
+    flex-grow: 1;
+
+    &:hover {
+      overflow: auto;
+    }
 
     .message-item {
       display: flex;
@@ -38,15 +47,6 @@
         display: flex;
         font-style: italic;
       }
-    }
-  }
-
-  .message-form {
-    padding: 20px;
-    background-color: #a4bdc4;
-
-    input[type='submit'] {
-      margin-top: 10px;
     }
   }
 }
