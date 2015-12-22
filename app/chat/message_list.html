@@ -1,12 +1,12 @@
 <div class="messages-list" >
-  <div class="message-item" ng-repeat="msg in ctrl.currentDialog.messages">
+  <div class="message-item" ng-repeat="msg in ctrl.messages">
     <div class="message-image">
       <img ng-src="{{::msg.messageImage()}}" class="img-circle" height="45" width="45" />
     </div>
     <div class="message-text">{{::msg.text}}</div>
     <div class="message-created-at">{{::msg.createdAt}}</div>
   </div>
-  <div ng-if="ctrl.currentDialog.messages.length < 1">
+  <div ng-if="ctrl.messages.length < 1">
     В данном диалоге еще нет сообщений
   </div>
 </div>

@@ -6,7 +6,8 @@ export default function messageFormDirective() {
     restrict: "E",
     replace: true,
     scope: {
-      currentUser: '='
+      currentUser: '=',
+      chat: "="
     },
     template: template,
     bindToController: true,

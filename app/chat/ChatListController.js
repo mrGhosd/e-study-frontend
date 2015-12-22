@@ -1,6 +1,7 @@
 export default class ChatListController {
-  constructor($rootScope, usSpinnerService) {
+  constructor($rootScope, usSpinnerService, $state) {
     this.users = [];
+    this.$state = $state;
     this.usSpinnerService = usSpinnerService;
     this.chatUsers = [];
     this.rootScope = $rootScope;
@@ -53,6 +54,7 @@ export default class ChatListController {
 
   selectChat(chat) {
     this.usSpinnerService.spin('load-messages-spinner');
-    this.rootScope.$broadcast('chatWasSelected', chat);
+    this.$state.go('chats.chat', {id: chat.id});
+    // this.rootScope.$broadcast('chatWasSelected', chat);
   }
 }
