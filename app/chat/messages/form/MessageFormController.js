@@ -1,7 +1,6 @@
 export default class MessageFormController {
   constructor($scope, $rootScope, ChatFactory, MessageFactory) {
     this.MessageFactory = MessageFactory;
-    console.log(this);
   }
 
   createMessage() {
@@ -12,7 +11,7 @@ export default class MessageFormController {
         text: this.message
       }
     };
-    
+
     this.MessageFactory.create(message)
     .then((message) => {
       this.message = '';

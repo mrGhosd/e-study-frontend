@@ -1,5 +1,5 @@
 import User from '../users/user.model';
-import Message from './message.model';
+import Message from './messages/message.model';
 
 export default class Chat {
   constructor(params){

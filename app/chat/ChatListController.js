@@ -53,8 +53,9 @@ export default class ChatListController {
   }
 
   selectChat(chat) {
-    this.usSpinnerService.spin('load-messages-spinner');
-    this.$state.go('chats.chat', {id: chat.id});
-    // this.rootScope.$broadcast('chatWasSelected', chat);
+    if (this.$state.params.id != chat.id) {
+      this.usSpinnerService.spin('load-messages-spinner');
+      this.$state.go('chats.chat', {id: chat.id});
+    }
   }
 }
