@@ -17,7 +17,7 @@ export function routes($stateProvider, $urlRouterProvider) {
         })
         .state('chats.chat', {
           url: '/:id',
-          template: require('./dialog_window.html'),
+          template: require('./messages/messages.html'),
           resolve: {
             chat: ['ChatFactory', '$stateParams', (ChatFactory, $stateParams) => {
               return ChatFactory.get($stateParams.id);
