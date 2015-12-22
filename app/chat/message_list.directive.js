@@ -11,15 +11,13 @@ export default function messageListDirective() {
     template: template,
     scope: {
         currentUser: '=',
-        chat: "@",
-        messages: "="
+        chat: "="
     },
     bindToController: true,
     controller: MessageListController,
     controllerAs: "ctrl",
     link: function($scope, element) {
       $scope.$watchCollection('messages', function (newValue) {
-        console.log(newValue);
         if (newValue) {
           $(element).scrollTop($(element)[0].scrollHeight);
         }

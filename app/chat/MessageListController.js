@@ -7,6 +7,9 @@ export default class MessageListController {
     this.rootScope = $rootScope;
     this.WebSockets = WebSockets;
 
+    //need for updating for messages list
+    $scope.messages = this.chat.messages;
+
     this.WebSockets.on('rtchange', (event, data) => {
       const message = new Message(data);
       if (message.userId !== this.currentUser.id){

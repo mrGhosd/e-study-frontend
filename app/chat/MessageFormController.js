@@ -12,9 +12,7 @@ export default class MessageFormController {
         text: this.message
       }
     };
-
-    console.log(message);
-
+    
     this.MessageFactory.create(message)
     .then((message) => {
       this.message = '';
@@ -24,9 +22,5 @@ export default class MessageFormController {
       console.log(errors);
     });
 
-  }
-
-  setData(chat) {
-    console.log(chat);
   }
 }
