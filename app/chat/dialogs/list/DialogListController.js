@@ -1,4 +1,4 @@
-export default class ChatListController {
+export default class DialogListController {
   constructor($rootScope, usSpinnerService, $state) {
     this.users = [];
     this.$state = $state;

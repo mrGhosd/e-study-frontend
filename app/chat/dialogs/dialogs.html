@@ -1,13 +1,2 @@
-<div class="dialogs-list"
-ng-controller="ChatListController as dialog" ng-init="dialog.setChatList(chat)">
-  <div class="chat-dialog" ng-repeat="cht in dialog.chats" ng-click="dialog.selectChat(cht)">
-    <div class="chat-image">
-      <img ng-src={{cht.getImageURL()}} height="60" width="60"  />
-    </div>
-    <div class="chat-info">
-      <div class="chat-title">{{cht.getName()}}</div>
-      <div class="chat-last-update">{{cht.updatedAt}}</div>
-    </div>
-  </div>
-</div>
+<dialog-list chats="chat.chats"></dialog-list>
 <dialog-form currentUser="dialog.currentUser"></dialog-form>
