@@ -1,6 +1,6 @@
-import Chat from './chat.model.js';
+import Chat from './dialog.model.js';
 
-export default class ChatFactory {
+export default class DialogFactory {
   constructor(ApiRequest, $q) {
     this.ApiRequest = ApiRequest;
     this.$q = $q;

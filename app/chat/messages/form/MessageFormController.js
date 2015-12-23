@@ -1,5 +1,5 @@
 export default class MessageFormController {
-  constructor($scope, $rootScope, ChatFactory, MessageFactory) {
+  constructor($scope, $rootScope, MessageFactory) {
     this.MessageFactory = MessageFactory;
   }
 

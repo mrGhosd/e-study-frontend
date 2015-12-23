@@ -1,7 +1,7 @@
-import User from '../users/user.model';
-import Message from './messages/message.model';
+import User from '../../users/user.model';
+import Message from '../messages/message.model';
 
-export default class Chat {
+export default class Dialog {
   constructor(params){
     this.id = params.id;
     this.users = params.users;

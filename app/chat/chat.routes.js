@@ -10,8 +10,8 @@ export function routes($stateProvider, $urlRouterProvider) {
                 currentUser: ['AuthService', (AuthService) => {
                   return AuthService.currentUser();
                 }],
-                chats: ['ChatFactory', (ChatFactory) => {
-                    return ChatFactory.getAll();
+                chats: ['DialogFactory', (DialogFactory) => {
+                    return DialogFactory.getAll();
                 }]
             },
         })
@@ -19,8 +19,8 @@ export function routes($stateProvider, $urlRouterProvider) {
           url: '/:id',
           template: require('./messages/messages.html'),
           resolve: {
-            chat: ['ChatFactory', '$stateParams', (ChatFactory, $stateParams) => {
-              return ChatFactory.get($stateParams.id);
+            chat: ['DialogFactory', '$stateParams', (DialogFactory, $stateParams) => {
+              return DialogFactory.get($stateParams.id);
             }]
           },
           controller: ($scope, chat, currentUser) => {

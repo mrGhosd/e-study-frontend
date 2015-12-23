@@ -1,4 +1,7 @@
 <div class="chatroom">
-  <div class="dialog-list-wrapper" ng-include="'/chat/dialogs/dialogs.html'"></div>
+  <div class="dialog-list-wrapper">
+    <dialog-list chats="chat.chats"></dialog-list>
+    <dialog-form currentUser="chat.currentUser"></dialog-form>
+  </div>
   <ui-view class="messages-list-wrapper"></ui-view>
 </div>

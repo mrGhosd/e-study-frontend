@@ -1,9 +1,9 @@
 import Message from '../message.model';
 
 export default class MessageListController {
-  constructor($scope, $rootScope, ChatFactory, MessageFactory,
+  constructor($scope, $rootScope, DialogFactory, MessageFactory,
     WebSockets, usSpinnerService) {
-    this.ChatFactory = ChatFactory;
+    this.DialogFactory = DialogFactory;
     this.MessageFactory = MessageFactory;
     this.rootScope = $rootScope;
     this.WebSockets = WebSockets;

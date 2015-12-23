@@ -1,4 +1,4 @@
-import Chat from '../chat.model';
+import Chat from '../dialogs/dialog.model';
 import User from '../../users/user.model';
 
 export default class Message {
