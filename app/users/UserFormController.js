@@ -16,7 +16,7 @@ export default class UserFormController {
         this.setDefaultLoadNotifications();
         this.host = envConfig[process.env.NODE_ENV].host;
         this.port = envConfig[process.env.NODE_ENV].port;
-        this.imageUrl = `http://${this.host}:${this.port}/api/v0/images`;
+        this.imageUrl = `http://${this.host}:${this.port}/api/v0/attaches`;
         if($scope.user.hasOwnProperty("date_of_birth")){
             $scope.user.date_of_birth = new Date($filter("date")(Date.now(), 'yyyy-MM-dd'));
         }
@@ -34,7 +34,7 @@ export default class UserFormController {
         }};
         if(user.image){
             userParams.user.image = {
-                imageable_type: "User",
+                attachable_type: "User",
                 id: user.image.id
             };
         }
@@ -57,7 +57,7 @@ export default class UserFormController {
         this.usSpinnerService.spin('user-form-image');
         this.Upload.upload({
             url: this.imageUrl,
-            fields: {'imageable_type': "User"},
+            fields: {'attachable_type': "User", 'type': "Image"},
             file: file
         }).then( (object) => {
             this.$scope.user.image = object.data;
