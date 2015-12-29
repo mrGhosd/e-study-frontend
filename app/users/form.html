@@ -72,7 +72,7 @@
                     <p class="image-name">{{user.image.file.url.split('/').last}}</p>
                 </div>
                 <button class="btn btn-info load-image" ngf-select="profile.upload($file)" ng-model="user.files" name="image"
-                        accept="image/*" ngf-max-size="10MB" value="{{user.image }}">Upoad</button>
+                        accept="image/*" ngf-max-size="10MB" value="{{user.image }}">Upload</button>
                 <span us-spinner spinner-key="user-form-image" class="user-form-image-spinner"></span>
                 <div class="load-images">
                     <img ng-src="/images/successLoad.png" height="32" width="32" ng-if="profile.loadedSuccessfully"/>

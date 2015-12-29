@@ -2,6 +2,15 @@
   <form ng-submit="ctrl.createMessage()">
     <textarea msd-elastic ng-model="ctrl.message"
     class="form-control"></textarea>
+    <!-- <div ng-class="{'image-placeholder': !ctrl.message.file.hasOwnProperty('url')}" ngf-drop="upload($file)">
+        <img ng-src="{{ ctrl.file.file.url }}" height="200" width="200" ng-if="ctrl.message.file.hasOwnProperty('url')"/>
+        <p class="image-name">{{user.image.file.url.split('/').last}}</p>
+    </div> -->
+    <div ng-repeat="attach in ctrl.attaches">
+      {{attach.name}}
+    </div>
+    <button class="btn btn-info load-image"
+    ngf-select="ctrl.upload($files)" ngf-max-size="10MB" multiple>Upload</button>
     <input type="submit" class="btn btn-info" value="Send" />
   </form>
 </div>
