@@ -2,4 +2,34 @@
   <div ng-if="ctrl.isImage" class="attach-image">
     <img ng-src="{{attachURL}}" height="60" width="60" />
   </div>
+
+  <div ng-if="ctrl.isDoc" class="attach-doc">
+    <a ng-href="{{attachURL}}">
+      <img ng-src="/images/doc.png" height="60" width="60" />
+    </a>
+  </div>
+
+  <div ng-if="ctrl.isTable" class="attach-table">
+    <a ng-href="{{attachURL}}">
+      <img ng-src="/images/table.png" height="60" width="60" />
+    </a>
+  </div>
+
+  <div ng-if="ctrl.isZip" class="attach-zip">
+    <a ng-href="{{attachURL}}">
+      <img ng-src="/images/zip.png" height="60" width="60" />
+    </a>
+  </div>
+
+  <div ng-if="ctrl.isPresentation" class="attach-presentation">
+    <a ng-href="{{attachURL}}">
+      <img ng-src="/images/presentation.png" height="60" width="60" />
+    </a>
+  </div>
+
+  <div ng-if="ctrl.isAttach" class="attach">
+    <a ng-href="{{attachURL}}">
+      <img ng-src="/images/attach.png" height="60" width="60" />
+    </a>
+  </div>
 </div>

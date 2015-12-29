@@ -6,9 +6,14 @@ export default class AttachesController {
       const portName = envConfig[process.env.NODE_ENV].port;
       $scope.attachURL = `http://${hostName}:${portName}${this.attach.file.file.url}`;
       $scope.fileType = this.attach.type;
-      $scope.isImage = $scope.fileType === 'Image';
       this.attachURL = $scope.attachURL;
       this.fileType = $scope.fileType;
-      this.isImage = $scope.isImage;
+      this.isImage = $scope.fileType === 'Image';
+      this.isDoc = $scope.fileType === 'Doc';
+      this.isZip = $scope.fileType === 'Zip';
+      this.isTable = $scope.fileType === 'Table';
+      this.isAttach = $scope.fileType === 'Attach' || $scope.fileType == null;
+      this.isPresentation = $scope.fileType === 'Presentation';
+      console.log(this.attachURL);
     }
 }

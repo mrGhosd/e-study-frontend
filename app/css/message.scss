@@ -41,7 +41,15 @@
         vertical-align: center;
 
         .message-text {
-          
+
+        }
+
+        .message-attachments {
+          display: flex;
+          flex-direction: row;
+
+          .attach-item {
+          }
         }
       }
 
