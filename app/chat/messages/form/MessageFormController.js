@@ -17,10 +17,9 @@ export default class MessageFormController {
       this.attaches = files;
       this.attaches.map((attach) => {
         const params = this.setAttachableParams(attach);
-        console.log(params);
         this.Upload.upload(params).then( (object) => {
+          this.attaches = [];
           this.loadedAttaches.push(object);
-          console.log(this.loadedAttaches);
         },
         (error) => {
             this.usSpinnerService.stop('user-form-image');
@@ -46,8 +45,26 @@ export default class MessageFormController {
 
   setAttachType(attach){
     let type = "";
+    
     if (attach.type.match(/image/)) {
       type = "Image";
+    }
+    else if(attach.type.match(/pdf/)) {
+      type = "Pdf";
+    }
+    else if(attach.type.match(/msword/)
+    || attach.type.match(/opendocument.text/)) {
+      type = "Doc";
+    }
+    else if(attach.type.match(/ms-excel/)
+    || attach.type.match(/opendocument.spreadsheet/)) {
+      type = "Table";
+    }
+    else if(attach.type.match(/zip/)) {
+      type = "Zip";
+    }
+    else if(attach.type.match(/ms-powerpoint/)) {
+      type = "Presentation";
     }
     else {
       type = "Attach";

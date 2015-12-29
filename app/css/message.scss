@@ -36,9 +36,13 @@
       &.current_user {
       }
 
-      .message-text {
+      .message-body {
         font-size: 15px;
         vertical-align: center;
+
+        .message-text {
+          
+        }
       }
 
       .message-created-at {

@@ -10,6 +10,7 @@ export default class MessageListController {
     this.usSpinnerService = usSpinnerService;
     //need for updating for messages list
     $scope.messages = this.chat.messages;
+    console.log(this.chat.messages);
 
     this.usSpinnerService.stop('load-messages-spinner');
     this.WebSockets.on('rtchange', (event, data) => {

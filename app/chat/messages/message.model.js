@@ -3,12 +3,12 @@ import User from '../../users/user.model';
 
 export default class Message {
   constructor(parameters) {
-    console.log(parameters);
     this.id = parameters.id;
     this.userId = parameters.user.id;
     this.text = parameters.text;
     this.createdAt = this.humanizedDate(parameters.created_at);
     this.user = new User(parameters.user);
+    this.attaches = parameters.attaches;
   }
 
   messageImage() {
