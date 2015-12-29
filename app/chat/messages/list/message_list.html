@@ -6,7 +6,9 @@
     <div class="message-body">
       <div class="message-text">{{::msg.text}}</div>
       <div class="message-attachments">
-        <attaches attach="attach" ng-repeat="attach in msg.attaches" />
+        <div ng-repeat="attach in msg.attaches" class="attach-item">
+          <attaches attach="attach"></attaches>
+        </div>
       </div>
     </div>
     <div class="message-created-at">{{::msg.createdAt}}</div>
