@@ -1,7 +1,8 @@
 export default class DialogFormController {
-  constructor($rootScope, usSpinnerService, $state, DialogFactory) {
+  constructor($rootScope, usSpinnerService, $state, DialogFactory, UserService) {
     this.users = [];
     this.$state = $state;
+    this.UserService = UserService;
     this.usSpinnerService = usSpinnerService;
     this.chatUsers = [];
     this.DialogFactory = DialogFactory;
@@ -9,7 +10,7 @@ export default class DialogFormController {
   }
 
   createChat() {
-    this.chatUsers.push(this.currentUser.id);
+    this.chatUsers.push(this.currentUser);
     let users = this.chatUsers.map((user) => user.id);
     const params = { users };
     this.DialogFactory.create(params)

@@ -17,7 +17,7 @@
     placeholder="Choose users"
     uib-typeahead="user as user.fullName for user in ctrl.users | filter:{fullName:$viewValue}"
     typeahead-template-url="customTemplate.html" class="form-control"
-    typeahead-on-select= "chat.selectUser($item, $model, $label)"
+    typeahead-on-select= "ctrl.selectUser($item, $model, $label)"
     ng-change="ctrl.changeInputValue()">
     <input type="submit" class="btn btn-success" value="Create" />
   </form>

@@ -1,6 +1,8 @@
 import template from "./dialog_list.html";
 import DialogListController from "./DialogListController";
 
+dialogListDirective.$inject = [];
+
 export default function dialogListDirective() {
   return {
     restrict: "E",

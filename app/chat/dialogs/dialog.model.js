@@ -22,8 +22,7 @@ export default class Dialog {
   }
 
   getName() {
-    console.log(this.users);
-    return this.users.first.correctNaming();
+    return this.users.map((user) => user.correctNaming() ).join(", ");
   }
 
   getImageURL() {
