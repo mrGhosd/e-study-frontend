@@ -4,6 +4,7 @@ import User from '../../users/user.model';
 export default class Message {
   constructor(parameters) {
     this.id = parameters.id;
+    this.chatId = parameters.chat_id;
     this.userId = parameters.user.id;
     this.text = parameters.text;
     this.createdAt = this.humanizedDate(parameters.created_at);

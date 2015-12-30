@@ -12,6 +12,7 @@ export default class AuthService{
         this.$cookies = $cookies;
         this.$localStorage = $localStorage;
         this.$sessionStorage = $sessionStorage;
+        this.currentUserValue = null;
     }
 
     isSignedIn(){
@@ -22,7 +23,9 @@ export default class AuthService{
         let def = this.$q.defer();
         this.ApiRequest.currentUser()
         .then((res) => {
-            def.resolve(new User(res.data.user));
+            const user = new User(res.data.user);
+            this.currentUserValue = user;
+            def.resolve(user);
         })
         .catch((error) => {
             def.reject(error);
