@@ -18,8 +18,6 @@
         <div class="avatar">
             <img ng-src="{{user.avatarURL()}}" height="128" width="128" class="img-circle"/>
         </div>
-        <button uib-popover-template="popoverTemplate"
-        popover-title="New message" type="button" class="btn btn-default">Write a message</button>
-        <div ng-include="'/users/_popover_panel.html'" />
+        <message-popover user="user" />
     </div>
 </div>
