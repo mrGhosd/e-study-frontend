@@ -1,8 +1,10 @@
 import io from 'socket.io-client';
+import envConfig from '../../config/env.config.js';
 
 export default class WebSockets {
   constructor($rootScope) {
-    this.socket = io.connect("http://127.0.0.1:5001");
+    const hostName = envConfig[process.env.NODE_ENV].host;
+    this.socket = io.connect(`http://${hostName}:5001`);
     this.rootScope = $rootScope;
   }
 

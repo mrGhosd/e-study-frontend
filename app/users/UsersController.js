@@ -5,7 +5,7 @@ export default class UsersController {
         this.userFactory = UserService;
         this.$scope = $scope;
         $scope.users = users;
-        $scope.popoverTemplate = "popover.html";
+        $scope.popoverTemplate = "/users/popover.html";
     }
 
     search(){
