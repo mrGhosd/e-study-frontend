@@ -1,11 +1,14 @@
 <div class="dialogs-list">
   <div class="chat-dialog" ng-repeat="cht in ctrl.chats" ng-click="ctrl.selectChat(cht)">
     <div class="chat-image">
-      <img ng-src={{cht.getImageURL()}} height="60" width="60"  />
+      <img ng-src={{::cht.getImageURL()}} height="60" width="60"  />
     </div>
     <div class="chat-info">
-      <div class="chat-title">{{cht.getName()}}</div>
-      <div class="chat-last-update">{{cht.updatedAt}}</div>
+      <div class="chat-title">{{::cht.getName()}}</div>
+      <div class="chat-last-update">{{::cht.updatedAt}}</div>
+    </div>
+    <div class="chat-actions">
+      <a ng-click="ctrl.destroy(cht, $index)">X</a>
     </div>
   </div>
 </div>

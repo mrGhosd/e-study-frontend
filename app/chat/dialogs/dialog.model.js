@@ -22,6 +22,7 @@ export default class Dialog {
   }
 
   getName() {
+    console.log(this.users);
     return this.users.first.correctNaming();
   }
 
