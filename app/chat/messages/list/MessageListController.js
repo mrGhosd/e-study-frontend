@@ -13,7 +13,7 @@ export default class MessageListController {
 
     this.usSpinnerService.stop('load-messages-spinner');
     this.WebSockets.on('rtchange', (event, data) => {
-      const message = new Message(data);
+      const message = new Message(data.obj);
       if (message.userId !== this.currentUser.id){
         this.chat.messages.push(message);
       }

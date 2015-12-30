@@ -80,8 +80,6 @@ export default class MessageFormController {
       }
     };
 
-    console.log(message);
-
     this.MessageFactory.create(message)
     .then((message) => {
       this.message = '';
