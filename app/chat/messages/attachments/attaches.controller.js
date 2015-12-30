@@ -14,6 +14,5 @@ export default class AttachesController {
       this.isTable = $scope.fileType === 'Table';
       this.isAttach = $scope.fileType === 'Attach' || $scope.fileType == null;
       this.isPresentation = $scope.fileType === 'Presentation';
-      console.log(this.attachURL);
     }
 }

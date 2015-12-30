@@ -58,7 +58,7 @@ module.exports = {
     plugins: [
         new webpack.ProvidePlugin({
             $: "jquery",
-            jQuery: "jquery"
+            jQuery: "jquery",
         }),
         new ExtractTextPlugin("bootstrap.css"),
         new webpack.HotModuleReplacementPlugin(),

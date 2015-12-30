@@ -13,12 +13,10 @@ export default class MessageFormController {
 
   upload(files){
     if (files != null) {
-      console.log(files);
       this.attaches = files;
       this.attaches.map((attach) => {
         const params = this.setAttachableParams(attach);
         this.Upload.upload(params).then( (object) => {
-          this.attaches = [];
           this.loadedAttaches.push(object);
         },
         (error) => {
@@ -45,7 +43,7 @@ export default class MessageFormController {
 
   setAttachType(attach){
     let type = "";
-    
+
     if (attach.type.match(/image/)) {
       type = "Image";
     }
@@ -81,6 +79,8 @@ export default class MessageFormController {
         attaches: this.loadedAttaches
       }
     };
+
+    console.log(message);
 
     this.MessageFactory.create(message)
     .then((message) => {
