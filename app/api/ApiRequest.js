@@ -37,6 +37,11 @@ export default class ApiRequest{
         return this.$http.put(this.correctUrl(url), parameters);
     }
 
+    delete (url, parameters) {
+        this.setToken();
+        return this.$http.delete(this.correctUrl(url), parameters);
+    }
+
     currentUser(){
         this.setToken();
         return this.$http.get(this.currentUserPath);

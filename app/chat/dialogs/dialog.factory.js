@@ -37,4 +37,13 @@ export default class DialogFactory {
     });
     return def.promise;
   }
+
+  destroy(id) {
+    let def = this.$q.defer();
+    this.ApiRequest.delete(`/chats/${id}`)
+    .then((response) => {
+      def.resolve(response);
+    });
+    return def.promise;
+  }
 }
