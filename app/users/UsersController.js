@@ -30,23 +30,4 @@ export default class UsersController {
             this.$scope.users = data;
         });
     }
-
-    sendMessage(user) {
-      const message = {
-        message: {
-          user_id: this.AuthService.currentUserValue.id,
-          text: this.short_message,
-          users: [user.id, this.AuthService.currentUserValue.id]
-        }
-      };
-
-      this.MessageFactory.create(message)
-      .then((message) => {
-        console.log(message);
-        this.$state.go('chats.chat', {id: message.chatId});
-      })
-      .catch((errors) => {
-        console.log(errors);
-      });
-    }
 }
