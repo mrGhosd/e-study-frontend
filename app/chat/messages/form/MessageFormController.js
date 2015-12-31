@@ -17,7 +17,8 @@ export default class MessageFormController {
       this.attaches.map((attach) => {
         const params = this.setAttachableParams(attach);
         this.Upload.upload(params).then( (object) => {
-          this.loadedAttaches.push(object);
+          console.log(object);
+          this.loadedAttaches.push(object.data.attaches);
         },
         (error) => {
             this.usSpinnerService.stop('user-form-image');
@@ -82,12 +83,11 @@ export default class MessageFormController {
     this.MessageFactory.create(message)
     .then((message) => {
       this.message = '';
-      this.attaches = [];
+      this.loadedAttaches = [];
       this.chat.messages.push(message);
     })
     .catch((errors) => {
       this.errors = errors;
     });
-
   }
 }

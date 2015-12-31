@@ -13,6 +13,9 @@ export default function messageFormDirective() {
     template: template,
     bindToController: true,
     controllerAs: "ctrl",
-    controller: MessageFormController
+    controller: MessageFormController,
+    link: function(scope, element) {
+      $(element).find('.textarea-data').focus();
+    }
   };
 }

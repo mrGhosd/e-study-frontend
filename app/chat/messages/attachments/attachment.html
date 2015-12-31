@@ -27,6 +27,12 @@
     </a>
   </div>
 
+  <div ng-if="ctrl.isPdf" class="attach">
+    <a ng-href="{{attachURL}}">
+      <img ng-src="/images/pdf.png" height="60" width="60" />
+    </a>
+  </div>
+
   <div ng-if="ctrl.isAttach" class="attach">
     <a ng-href="{{attachURL}}">
       <img ng-src="/images/attach.png" height="60" width="60" />

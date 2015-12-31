@@ -15,6 +15,33 @@
     input[type='submit'] {
       margin-top: 10px;
     }
+
+    .textarea-wrapper {
+      background-color: #fff;
+      display: flex;
+      flex-direction: row;
+      .textarea-main-views{
+        width: 100%;
+        min-height: 100px;
+
+        .textarea-data {
+          min-height: 70px;
+          width: 100%;
+
+          &:focus {
+            border: none;
+          }
+        }
+
+        .textarea-attachments {
+          padding: 10px;
+
+          .attach-item {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
   }
 
   .messages-list {
