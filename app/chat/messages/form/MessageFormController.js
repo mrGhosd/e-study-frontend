@@ -79,7 +79,6 @@ export default class MessageFormController {
         attaches: this.loadedAttaches
       }
     };
-
     this.MessageFactory.create(message)
     .then((message) => {
       this.message = '';
@@ -87,7 +86,7 @@ export default class MessageFormController {
       this.chat.messages.push(message);
     })
     .catch((errors) => {
-      console.log(errors);
+      this.errors = errors;
     });
 
   }

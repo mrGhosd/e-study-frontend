@@ -11,6 +11,9 @@ export default class MessageFactory {
     this.ApiRequest.post('/messages', params)
     .then((response) => {
       def.resolve(new Message(response.data.message));
+    })
+    .catch((errors) => {
+      def.reject(errors);
     });
     return def.promise;
   }

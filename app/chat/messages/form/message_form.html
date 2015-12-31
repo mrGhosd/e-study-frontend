@@ -12,5 +12,10 @@
     <button class="btn btn-info load-image"
     ngf-select="ctrl.upload($files)" ngf-max-size="10MB" multiple>Upload</button>
     <input type="submit" class="btn btn-info" value="Send" />
+    <div class="error" ng-if="ctrl.errors">
+      <p ng-repeat="error in ctrl.errors">
+        {{error.text.first}}
+      </p>
+    </div>
   </form>
 </div>

@@ -28,6 +28,9 @@ export default class DialogListController {
     event.stopPropagation();
     this.DialogFactory.destroy(chat.id)
     .then((response) => {
+      if (this.$state.current.name === 'chats.chat') {
+        this.$state.go('chats');
+      }
       this.chats.splice($index, 1);
     });
   }
