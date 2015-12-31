@@ -7,15 +7,17 @@ export default class DialogFormController {
     this.chatUsers = [];
     this.DialogFactory = DialogFactory;
     this.rootScope = $rootScope;
+    this.formVisible = false;
   }
 
   createChat() {
     this.chatUsers.push(this.currentUser);
     let users = this.chatUsers.map((user) => user.id);
-    const params = { users };
+    const params = { users, message: this.message };
     this.DialogFactory.create(params)
     .then((response) => {
       this.chatUsers = [];
+      this.formVisible = false;
       const dialog = response.setUsersArrayForUser(this.currentUser);
       this.chats.push(dialog);
     });
@@ -46,5 +48,9 @@ export default class DialogFormController {
       });
       this.users = response;
     });
+  }
+
+  showForm() {
+    this.formVisible  = !this.formVisible ;
   }
 }

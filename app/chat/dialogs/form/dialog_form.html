@@ -1,24 +1,28 @@
 <div class="chat-form" >
   <h3 ng-show="{{ctrl.chats.length < 1}}">У вас нет ни одного чата</h3>
-  <div class="new-chat-users">
-    <div class="new-chat-member" ng-repeat="user in ctrl.chatUsers">
-      <p>{{user.correctNaming()}}</p>
-      <a ng-click="ctrl.removeNewMember($index)">Remove</a>
+  <button class="btn btn-info" ng-click="ctrl.showForm()">Create</button>
+  <div class="form-content" ng-if="ctrl.formVisible">
+    <div class="new-chat-users">
+      <div class="new-chat-member" ng-repeat="user in ctrl.chatUsers">
+        <p>{{user.correctNaming()}}</p>
+        <a ng-click="ctrl.removeNewMember($index)">Remove</a>
+      </div>
     </div>
+    <script type="text/ng-template" id="customTemplate.html">
+      <a>
+          <img ng-src="{{match.model.avatarURL()}}" height="50" width="50" class="img-circle" >
+          <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
+      </a>
+    </script>
+    <form ng-submit="ctrl.createChat()">
+      <input type="text" ng-model="ctrl.selectedUser"
+      placeholder="Choose users"
+      uib-typeahead="user as user.fullName for user in ctrl.users | filter:{fullName:$viewValue}"
+      typeahead-template-url="customTemplate.html" class="form-control"
+      typeahead-on-select= "ctrl.selectUser($item, $model, $label)"
+      ng-change="ctrl.changeInputValue()">
+      <textarea class="message-text form-control" ng-model="ctrl.message"></textarea>
+      <input type="submit" class="btn btn-success" value="Create" />
+    </form>
   </div>
-  <script type="text/ng-template" id="customTemplate.html">
-    <a>
-        <img ng-src="{{match.model.avatarURL()}}" height="50" width="50" class="img-circle" >
-        <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
-    </a>
-  </script>
-  <form ng-submit="ctrl.createChat()">
-    <input type="text" ng-model="ctrl.selectedUser"
-    placeholder="Choose users"
-    uib-typeahead="user as user.fullName for user in ctrl.users | filter:{fullName:$viewValue}"
-    typeahead-template-url="customTemplate.html" class="form-control"
-    typeahead-on-select= "ctrl.selectUser($item, $model, $label)"
-    ng-change="ctrl.changeInputValue()">
-    <input type="submit" class="btn btn-success" value="Create" />
-  </form>
 </div>
