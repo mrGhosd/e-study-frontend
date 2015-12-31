@@ -15,7 +15,9 @@ export default class DialogFormController {
     const params = { users };
     this.DialogFactory.create(params)
     .then((response) => {
-      console.log(response);
+      this.chatUsers = [];
+      const dialog = response.setUsersArrayForUser(this.currentUser);
+      this.chats.push(dialog);
     });
   }
 

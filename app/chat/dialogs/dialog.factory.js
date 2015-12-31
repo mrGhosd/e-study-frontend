@@ -24,7 +24,7 @@ export default class DialogFactory {
     let def = this.$q.defer();
     this.ApiRequest.post('/chats', {chat: params})
     .then((response) => {
-      def.resolve(response.data.chats);
+      def.resolve(new Chat(response.data.chats));
     });
     return def.promise;
   }

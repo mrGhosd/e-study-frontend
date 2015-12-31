@@ -8,6 +8,7 @@ export default function dialogFormDirective() {
     restrict: "E",
     replace: true,
     scope: {
+      chats: "=",
       currentUser: '='
     },
     template: template,
