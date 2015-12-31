@@ -6,9 +6,6 @@ export default class DialogListController {
     this.chatUsers = [];
     this.rootScope = $rootScope;
     this.DialogFactory = DialogFactory;
-    this.rootScope.$on('messagesListWasReceived', () => {
-      this.usSpinnerService.stop('load-messages-spinner');
-    });
   }
 
   setChatList(chat) {
@@ -18,7 +15,6 @@ export default class DialogListController {
 
   selectChat(chat) {
     if (this.$state.params.id != chat.id) {
-      this.usSpinnerService.spin('load-messages-spinner');
       this.$state.go('chats.chat', {id: chat.id});
     }
   }
