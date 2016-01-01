@@ -10,9 +10,6 @@ export default class WebSockets {
 
   on(eventName, callback) {
     this.socket.on(eventName, (data) => {
-      for (const k in data) {
-        data[k] = angular.fromJson(data[k])
-      }
       this.rootScope.$apply(() => {
         callback.call(this, this.socket, angular.fromJson(data));
       });
@@ -20,13 +17,13 @@ export default class WebSockets {
   }
 
   emit(eventName, data, callback) {
-    this.socket.emit(eventName, data, () => {
-      let args = arguments;
-      this.rootScope.$apply(() => {
-        if (callback) {
-          callback.apply(this.socket, args);
-        }
-      });
-    });
+    // for (const k in data) {
+    //   data[k] = angular.fromJson(data[k])
+    // }
+    // this.rootScope.$apply(() => {
+    //   callback.apply(this.socket, data);
+    // });
+    // console.log(data);
+    this.socket.emit(eventName, data);
   }
 }

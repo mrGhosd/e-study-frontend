@@ -1,8 +1,10 @@
 import User from './user.model';
 
 export default class AuthService{
-    constructor(UserService, $window, $rootScope, $http, $q, ApiRequest, $cookies, $localStorage, $sessionStorage){
+    constructor(UserService, $window, $rootScope, $http, $q, ApiRequest,
+      $cookies, $localStorage, $sessionStorage, WebSockets){
         this.userService = UserService;
+        this.WebSockets = WebSockets;
         this.signedIn = false;
         this.$window = $window;
         this.$rootScope = $rootScope;
@@ -24,6 +26,9 @@ export default class AuthService{
         this.ApiRequest.currentUser()
         .then((res) => {
             const user = new User(res.data.user);
+            if(!this.currentUserValue) {
+              this.WebSockets.emit('user:connected', user);
+            }
             this.currentUserValue = user;
             def.resolve(user);
         })

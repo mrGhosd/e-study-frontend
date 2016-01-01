@@ -3,19 +3,28 @@ var express = require("express"),
     app = express(),
     http = require("http").createServer(app),
     io = require("socket.io").listen(http),
-    redis = require('redis').createClient();
+    redis = require('redis').createClient(),
+    _ = require('underscore');
+
+
+var chatsList = {};
+var usersList = {};
 
 //app.set("ipaddr", "188.166.99.8");
 app.set("ipaddr", env[process.env.NODE_ENV].host);
 app.set("port", 5001);
 
 redis.subscribe('rtchange');
-redis.subscribe('chat');
 
 io.on('connection', function(socket){
-    //socket.broadcast.emit('connected', "1");
     redis.on('message', function(channel, message){
-        socket.emit('rtchange', JSON.parse(message));
+      var parsedMessage = JSON.parse(message);
+
+      if (parsedMessage.action === 'chatmessage' ) {
+        parsedMessage.chat_users.forEach(function(item) {
+          socket.emit('user'+item+'chatmessage', JSON.parse(message));
+        });
+      }
     });
 });
 

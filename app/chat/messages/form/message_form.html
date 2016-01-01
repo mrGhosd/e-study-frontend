@@ -2,8 +2,7 @@
   <form>
     <div class="textarea-wrapper">
       <div class="textarea-main-views">
-        <div class="textarea-data" style="background-color: white;"
-        contenteditable="true" ng-focus="true" enter-key-press="ctrl.createMessage()" />
+        <div class="textarea-data" contenteditable ng-model="ctrl.message" enter-key-press="ctrl.createMessage()" />
         <div class="textarea-attachments">
           <div ng-repeat="attach in ctrl.loadedAttaches">
             <attaches attach="attach"></attaches>

@@ -3,6 +3,7 @@ import envConfig from '../../../../config/env.config.js';
 export default class MessageFormController {
   constructor($scope, $rootScope, MessageFactory, Upload) {
     this.MessageFactory = MessageFactory;
+    this.$scope = $scope;
     this.attaches = [];
     this.loadedAttaches = [];
     this.Upload = Upload;
@@ -17,7 +18,6 @@ export default class MessageFormController {
       this.attaches.map((attach) => {
         const params = this.setAttachableParams(attach);
         this.Upload.upload(params).then( (object) => {
-          console.log(object);
           this.loadedAttaches.push(object.data.attaches);
         },
         (error) => {
@@ -28,9 +28,6 @@ export default class MessageFormController {
         })
       });
     }
-
-      // this.setDefaultLoadNotifications();
-      // this.usSpinnerService.spin('user-form-image');
   }
 
   setAttachableParams(attach) {

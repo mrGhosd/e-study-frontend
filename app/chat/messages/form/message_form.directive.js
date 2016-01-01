@@ -1,6 +1,8 @@
 import template from "./message_form.html";
 import MessageFormController from "./MessageFormController";
 
+messageFormDirective.$inject = [];
+
 export default function messageFormDirective() {
   return {
     restrict: "E",
@@ -8,7 +10,8 @@ export default function messageFormDirective() {
     scope: {
       currentUser: '=',
       chat: "=",
-      errors: "="
+      errors: "=",
+      message: "="
     },
     template: template,
     bindToController: true,
