@@ -11,7 +11,6 @@ export default class MessageListController {
     //need for updating for messages list
     $scope.messages = this.chat.messages;
 
-    this.usSpinnerService.stop('load-messages-spinner');
     this.WebSockets.on(`user${this.currentUser.id}chatmessage`, (event, data) => {
       const message = new Message(angular.fromJson(data.obj));
       if (message.userId !== this.currentUser.id &&

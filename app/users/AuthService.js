@@ -26,10 +26,8 @@ export default class AuthService{
         this.ApiRequest.currentUser()
         .then((res) => {
             const user = new User(res.data.user);
-            if(!this.currentUserValue) {
-              this.WebSockets.emit('user:connected', user);
-            }
             this.currentUserValue = user;
+            this.$rootScope.$broadcast('currentUser', {user: user});
             def.resolve(user);
         })
         .catch((error) => {

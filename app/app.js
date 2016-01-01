@@ -36,7 +36,7 @@ angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, us
     .service('WebSockets', WebSockets)
     .config(config)
     .run(($rootScope, AuthService, $location, $state, $modal,
-          usSpinnerService, Notification, $cookies) => {
+          usSpinnerService, Notification, $cookies, WebSockets) => {
         $rootScope.$on('signedIn', (event, args) => {
             if($state.current.name === 'user'){
                 $state.go('profile');
@@ -70,5 +70,16 @@ angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, us
                 }
                 Notification.alert('errors.401');
             }
+        });
+        $rootScope.$on('currentUser', (event, args) => {
+          console.log(args);
+          WebSockets.on(`user${args.user.id}chatmessage`, (event, data) => {
+            console.log(data);
+            // const message = new Message(angular.fromJson(data.obj));
+            // if (message.userId !== this.currentUser.id &&
+            //    message.chatId === this.chat.id){
+            //   this.chat.messages.push(message);
+            // }
+          });
         });
     });
