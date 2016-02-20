@@ -7,6 +7,7 @@ export default class AuthService{
         this.WebSockets = WebSockets;
         this.signedIn = false;
         this.$window = $window;
+        console.log(ApiRequest);
         this.$rootScope = $rootScope;
         this.$http = $http;
         this.$q = $q;
@@ -23,7 +24,7 @@ export default class AuthService{
 
     currentUser(){
         let def = this.$q.defer();
-        this.ApiRequest.currentUser()
+        this.ApiRequest.get('/sessions/current', {})
         .then((res) => {
             const user = new User(res.data.user);
             this.currentUserValue = user;

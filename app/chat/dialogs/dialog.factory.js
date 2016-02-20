@@ -40,7 +40,7 @@ export default class DialogFactory {
 
   destroy(id) {
     let def = this.$q.defer();
-    this.ApiRequest.delete(`/chats/${id}`)
+    this.ApiRequest.destroy(`/chats/${id}`)
     .then((response) => {
       def.resolve(response);
     });

@@ -49,32 +49,6 @@ export default class UsersService {
         return def.promise;
     }
 
-    login(user){
-        let def = this.$q.defer();
-        const params = {session: user};
-        this.ApiRequest.signIn(params)
-            .success((res) => {
-                def.resolve(res);
-            })
-            .error((error) => {
-                def.reject(error);
-            });
-        return def.promise;
-    }
-
-    register(user){
-        let def = this.$q.defer();
-        const params = {user: user};
-        this.ApiRequest.signUp(params)
-            .then((res) => {
-                def.resolve(res.data);
-            })
-            .catch((error) => {
-                def.reject(error);
-            });
-        return def.promise;
-    }
-
     update(id, user){
         let def = this.$q.defer();
         this.ApiRequest.put('/users/' + id + '.json', user)
@@ -86,26 +60,4 @@ export default class UsersService {
         });
         return def.promise;
     }
-
-    signOut(){
-        let def = this.$q.defer();
-        this.ApiRequest.signOut()
-        .then((response) => {
-            def.resolve(response);
-        })
-        .catch((error) => {
-            def.reject(error)
-        });
-        return def.promise;
-    }
-
-    currentUser(){
-        let def = this.$q.defer();
-        this.ApiRequest.currentUser()
-        .then((response) => {
-            def.resolve(new User(response.data.user));
-        });
-        return def.promise;
-    }
-
 }
