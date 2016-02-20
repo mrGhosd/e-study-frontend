@@ -10,6 +10,7 @@ export default class HeaderController{
         $rootScope.$on('signedIn', () => {
             this.AuthService.currentUser()
                 .then((user) => {
+                  console.log(user);
                     this.user = user;
                 })
         });
