@@ -60,7 +60,7 @@ export default class UserFormController {
             fields: {'attachable_type': "User", 'type': "Image"},
             file: file
         }).then( (object) => {
-            this.$scope.user.image = object.data;
+            this.$scope.user.image = object.data.attach;
             this.usSpinnerService.stop('user-form-image');
             this.loadedSuccessfully = true;
             this.loadedFailure = false;
