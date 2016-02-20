@@ -25,7 +25,7 @@ var htmlLoader = [
 ].join('!');
 var entry = {
     app: [
-        './app.js'
+        'app.js'
     ]
 };
 
@@ -44,11 +44,11 @@ module.exports = {
     context: path.join(__dirname, '../app'),
     devtool: 'inline-source-map',
     publicPath: '',
-    entry: entry,
+    entry: './app.js',
     output: {
         path: path.resolve(pkg.config.buildDir),
         publicPath: '/',
-        filename: jsBundle,
+        filename: 'bundle.js',
         pathinfo: false
     },
     resolve: {
@@ -81,9 +81,6 @@ module.exports = {
             { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=image/svg+xml" },
             { test: /\.json$/, exclude: /node_modules/, loaders: ['json-loader'] }
         ]
-    },
-    node: {
-        fs: "empty"
     },
     devServer:{
         contentBase: path.resolve(pkg.config.buildDir),
