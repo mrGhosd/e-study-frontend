@@ -4,7 +4,7 @@ export default class AttachesController {
     constructor($scope) {
       const hostName = envConfig[process.env.NODE_ENV].host;
       const portName = envConfig[process.env.NODE_ENV].port;
-      $scope.attachURL = `http://${hostName}:${portName}${this.attach.file.file.url}`;
+      $scope.attachURL = `http://${hostName}:${portName}${this.attach.url}`;
       $scope.fileType = this.attach.type;
       this.attachURL = $scope.attachURL;
       this.fileType = $scope.fileType;

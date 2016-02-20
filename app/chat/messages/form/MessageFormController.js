@@ -18,7 +18,7 @@ export default class MessageFormController {
       this.attaches.map((attach) => {
         const params = this.setAttachableParams(attach);
         this.Upload.upload(params).then( (object) => {
-          this.loadedAttaches.push(object.data.attaches);
+          this.loadedAttaches.push(object.data.attach);
         },
         (error) => {
             this.usSpinnerService.stop('user-form-image');
