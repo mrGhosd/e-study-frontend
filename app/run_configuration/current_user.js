@@ -1,4 +1,4 @@
-export default function ($rootScope, WebSockets) {
+export function currentUser($rootScope, WebSockets) {
   $rootScope.$on('currentUser', (event, args) => {
     WebSockets.on(`user${args.user.id}chatmessage`, (event, data) => {
       console.log(data);

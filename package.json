@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "$(npm bin)/webpack --colors --progress --config ./config/webpack.config",
-    "start": "NODE_ENV=development node dev-server ./config/webpack.config",
+    "start": "NODE_ENV=development node dev-server ./config/webpack.config --hot --inline",
     "poststart": "NODE_ENV=development forever start realtime/server.js",
     "sockets": "NODE_ENV=development forever start realtime/server.js",
     "test": "NODE_ENV='test' karma start"

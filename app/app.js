@@ -25,7 +25,7 @@ import __UtilPolyfill from 'util/polyfill';
 import angularElastic from 'angular-elastic';
 import './index.html';
 import 'css/main.scss';
-import runConfig from 'run_config/index';
+import runConfig from 'run_configuration/index';
 
 angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users, chat,
    ApiRequest, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name,
