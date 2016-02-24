@@ -37,10 +37,10 @@ export default class AuthService{
         return def.promise;
     }
 
-    login(user){
-        return this.userService.login(user)
+    login(session){
+        return this.ApiRequest.post("/sessions", { session })
         .then((response) => {
-            this.receiveUserData(response);
+            this.receiveUserData(response.data);
         });
     }
 
@@ -62,6 +62,7 @@ export default class AuthService{
     }
 
     receiveUserData(response){
+        console.log(response);
         this.$sessionStorage.remember_token = response.remember_token;
         this.$localStorage.remember_token  = response.remember_token;
         this.signedIn = true;

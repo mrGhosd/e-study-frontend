@@ -14,7 +14,7 @@ export default class ApiRequest{
     }
 
     get(url, parameters){
-        return this.request(url, "GET", {params: parameters});
+        return this.request(url, "GET", parameters);
     }
 
     post(url, parameters){
@@ -36,12 +36,13 @@ export default class ApiRequest{
     request(url, method, parameters) {
       const token = this.$sessionStorage.remember_token || this.$localStorage.remember_token;
       this.$http.defaults.headers.common = {
-          estudyauthtoken: token
+          estudyauthtoken: token,
+          'Content-Type': 'application/json'
       }
       return this.$http({
         method: method,
         url: this.correctUrl(url),
-        params: parameters
+        data: parameters
       });
     }
 }
