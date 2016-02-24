@@ -52,6 +52,10 @@ export default class ApiRequest{
       }
       return this.$http(request);
     }
+
+    urlForAttach(url) {
+      return `http://${this.hostName}:${this.portName}${url}`;
+    }
 }
 
 export default angular.module('estudy.api', []).service('ApiRequest', ApiRequest).name;

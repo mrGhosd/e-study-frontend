@@ -37,7 +37,7 @@ angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, us
     .service('WebSockets', WebSockets)
     .config(config)
     .run(($rootScope, AuthService, $location, $state, $modal,
-          usSpinnerService, Notification, $cookies, WebSockets) => {
+          usSpinnerService, Notification, $cookies, WebSockets, PopupMessage) => {
             runConfig($rootScope, AuthService, $location, $state, $modal,
-                  usSpinnerService, Notification, $cookies, WebSockets);
+                  usSpinnerService, Notification, $cookies, WebSockets, PopupMessage);
     });
