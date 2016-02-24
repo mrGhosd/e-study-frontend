@@ -45,20 +45,20 @@ export default class AuthService{
     }
 
     register(user){
-        return this.userService.register(user)
+        return this.ApiRequest.post("/registrations", user)
         .then( (response) => {
             this.receiveUserData(response);
         });
     }
 
     signOut(){
-        return this.userService.signOut()
-            .then((response) => {
-                this.signedIn = false;
-                delete this.$sessionStorage.remember_token;
-                delete this.$localStorage.remember_token;
-                this.$rootScope.$broadcast('signedOut');
-            });
+      return this.ApiRequest.destroy("/sessions")
+          .then((response) => {
+              this.signedIn = false;
+              delete this.$sessionStorage.remember_token;
+              delete this.$localStorage.remember_token;
+              this.$rootScope.$broadcast('signedOut');
+      });
     }
 
     receiveUserData(response){

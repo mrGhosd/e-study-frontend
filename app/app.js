@@ -25,6 +25,7 @@ import __UtilPolyfill from 'util/polyfill';
 import angularElastic from 'angular-elastic';
 import './index.html';
 import 'css/main.scss';
+import runConfig from 'run_config/index';
 
 angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users, chat,
    ApiRequest, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name,
@@ -37,49 +38,6 @@ angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, us
     .config(config)
     .run(($rootScope, AuthService, $location, $state, $modal,
           usSpinnerService, Notification, $cookies, WebSockets) => {
-        $rootScope.$on('signedIn', (event, args) => {
-            if($state.current.name === 'user'){
-                $state.go('profile');
-            }
-        });
-
-        $rootScope.$on('signedOut', (event, args) => {
-            if($state.current.name === 'profile'){
-                $state.go('users');
-            }
-        });
-
-        $rootScope.$on('$stateChangeStart', (event, viewConfig) => {
-            usSpinnerService.spin('main-spinner');
-        });
-
-        $rootScope.$on('$stateChangeSuccess', (event) => {
-            usSpinnerService.stop('main-spinner');
-        });
-
-        $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
-            usSpinnerService.stop('main-spinner');
-            event.preventDefault();
-            if(error.status === 401) {
-                if (fromState.name !== "") {
-                    $state.go(fromState.name);
-                } else {
-                    if (toState.name === 'profile') {
-                        $state.go('users');
-                    }
-                }
-                Notification.alert('errors.401');
-            }
-        });
-        $rootScope.$on('currentUser', (event, args) => {
-          console.log(args);
-          WebSockets.on(`user${args.user.id}chatmessage`, (event, data) => {
-            console.log(data);
-            // const message = new Message(angular.fromJson(data.obj));
-            // if (message.userId !== this.currentUser.id &&
-            //    message.chatId === this.chat.id){
-            //   this.chat.messages.push(message);
-            // }
-          });
-        });
+            runConfig($rootScope, AuthService, $location, $state, $modal,
+                  usSpinnerService, Notification, $cookies, WebSockets);
     });

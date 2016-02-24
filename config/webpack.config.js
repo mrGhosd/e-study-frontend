@@ -25,7 +25,7 @@ var htmlLoader = [
 ].join('!');
 var entry = {
     app: [
-        'app.js'
+        './app.js'
     ]
 };
 
