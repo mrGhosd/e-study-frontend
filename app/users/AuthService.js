@@ -7,7 +7,6 @@ export default class AuthService{
         this.WebSockets = WebSockets;
         this.signedIn = false;
         this.$window = $window;
-        console.log(ApiRequest);
         this.$rootScope = $rootScope;
         this.$http = $http;
         this.$q = $q;

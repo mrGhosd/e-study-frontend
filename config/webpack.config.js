@@ -3,6 +3,8 @@ var pkg = require('../package.json');
 var util = require('util');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var WebPackAngularTranslate = require("webpack-angular-translate");
+var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 var DEV = process.env.NODE_ENV === 'development';
 var jsBundle = path.join('js', util.format('bundle.js'));
 
@@ -35,7 +37,7 @@ module.exports = {
       new ExtractTextPlugin("bootstrap.css"),
       new webpack.HotModuleReplacementPlugin(),
       // new webpack.NoErrorsPlugin(),
-      // new WebPackAngularTranslate.Plugin(),
+      new WebPackAngularTranslate.Plugin(),
       new webpack.EnvironmentPlugin("NODE_ENV"),
       // new ngAnnotatePlugin({add: true})
   ],
