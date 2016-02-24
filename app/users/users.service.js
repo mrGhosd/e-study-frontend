@@ -38,7 +38,7 @@ export default class UsersService {
     search(query){
         let def = this.$q.defer();
         const params = {object: "user", query: query};
-        this.ApiRequest.get('/search.json', params).success((data) => {
+        this.ApiRequest.get('/search', params).success((data) => {
             let newUsers = [];
             for(var i = 0; i < data.search.length; i++){
                 let user = new User(data.search[i]);

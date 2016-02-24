@@ -35,15 +35,22 @@ export default class ApiRequest{
 
     request(url, method, parameters) {
       const token = this.$sessionStorage.remember_token || this.$localStorage.remember_token;
+      let request = {
+        method: method,
+        url: this.correctUrl(url)
+      };
+      if (method === "GET") {
+        request.params = parameters
+      }
+      else {
+        request.data = parameters
+      }
+
       this.$http.defaults.headers.common = {
           estudyauthtoken: token,
           'Content-Type': 'application/json'
       }
-      return this.$http({
-        method: method,
-        url: this.correctUrl(url),
-        data: parameters
-      });
+      return this.$http(request);
     }
 }
 
