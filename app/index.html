@@ -6,7 +6,6 @@
 </head>
 <body ng-app="estudy">
   <div class="notification-bar"></div>
-  <div class="popup-bar"></div>
   <div ng-include="'/application/header.html'"></div>
   <div class="container-fluid main-content">
       <span us-spinner spinner-key="main-spinner"></span>
@@ -16,6 +15,7 @@
               <ui-view></ui-view>
           </div>
       </div>
+      <div class="popup-bar"></div>
   </div>
   <script src="/bundle.js"></script>
 </body>
