@@ -14,12 +14,12 @@ export default class PopupMessage {
       let template = require('./popup_message.html');
       let newScope = this.$rootScope.$new();
       const classMessage = new Message(message);
-      newScope.text = message.text;
+      newScope.text = classMessage.getText();
       newScope.avatarUrl = classMessage.messageImage();
-      newScope.time = 1500;
+      newScope.time = 2000;
       let audio = new Audio(newMessageSound);
       audio.play();
-      console.log(audio);
+      console.log(newScope.text);
       this.domElement.append(this.$compile(template)(newScope));
     }
 

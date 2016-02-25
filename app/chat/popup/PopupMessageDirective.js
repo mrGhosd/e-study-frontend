@@ -6,7 +6,7 @@ export default function popupMessageDirective($timeout) {
   return {
     restrict:"C",
       transclude:true,
-      template: "<a href=\"javascript:void(0)\" class=\"closeMessage\" ng-click=\"close()\">x</a><div ng-transclude></div>",
+      template: "<a href=\"javascript:void(0)\" class=\"closeMessage\" ng-click=\"close()\">x</a><div class=\"message-body\" ng-transclude></div>",
       link: function(scope, el, attr) {
           var promiseToEnd,
               promiseToDestroy;

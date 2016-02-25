@@ -6,7 +6,7 @@ import { currentUser } from './current_user';
 
 export default function($rootScope, AuthService, $location, $state, $modal,
       usSpinnerService, Notification, $cookies, WebSockets, PopupMessage) {
-      currentUser($rootScope, WebSockets, PopupMessage, AuthService);
+      currentUser($rootScope, WebSockets, PopupMessage, AuthService, $state);
       onSignedIn($rootScope, $state);
       onSignOut($rootScope);
       onStateChange($rootScope, usSpinnerService);

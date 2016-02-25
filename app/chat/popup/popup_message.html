@@ -1,6 +1,6 @@
 <div class="popup-message" time={{time}}>
-  <div class="user">
-    <img src={{avatarUrl}} height="40" width="40" />
+  <div class="user-view">
+    <img src={{avatarUrl}} height="60" width="60" />
   </div>
-  <div class="body">{{text | translate}}</div>
+  <div class="body" ng-bind-html="text"></div>
 </div>

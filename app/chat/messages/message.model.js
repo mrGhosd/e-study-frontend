@@ -22,4 +22,15 @@ export default class Message {
       let dateSeparated = [newDate.getDate(), newDate.getMonth() + 1, newDate.getFullYear()];
       return timeSeparated.join(":") + " " + dateSeparated.join(".");
   }
+
+  getText() {
+    let text = "";
+    if (this.text.length >= 100) {
+      text = this.text.substr(0, 99) + "...";
+    }
+    else {
+      text = this.text;
+    }
+    return text;
+  }
 }
