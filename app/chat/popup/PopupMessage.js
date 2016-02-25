@@ -1,3 +1,6 @@
+import Message from 'chat/messages/message.model';
+import newMessageSound from 'sounds/new_message.mp3';
+
 export default class PopupMessage {
     constructor($modal, $compile, $rootScope, ApiRequest) {
         this.$modal = $modal;
@@ -7,25 +10,16 @@ export default class PopupMessage {
         this.ApiRequest = ApiRequest;
     }
 
-    info(message){
-        this.postMessage(message, 2500, "message");
-    }
-
-    alert(error, time){
-        this.postMessage(error, 2500, "error");
-    }
-
     postMessage(message) {
       let template = require('./popup_message.html');
       let newScope = this.$rootScope.$new();
-      console.log(message);
-      // const title = `${message}.title`;
-      // const text = `${message}.text`;
-      // newScope.title = title;
+      const classMessage = new Message(message);
       newScope.text = message.text;
-      newScope.avatarUrl = this.ApiRequest.urlForAttach(message.user.image.url);
+      newScope.avatarUrl = classMessage.messageImage();
       newScope.time = 1500;
-      // newScope.klass = klass;
+      let audio = new Audio(newMessageSound);
+      audio.play();
+      console.log(audio);
       this.domElement.append(this.$compile(template)(newScope));
     }
 

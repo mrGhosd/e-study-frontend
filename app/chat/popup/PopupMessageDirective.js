@@ -1,8 +1,8 @@
 import angular from 'angular';
 
-popupMessage.$inject = ['$timeout'];
+popupMessageDirective.$inject = ['$timeout'];
 
-export default function popupMessage($timeout) {
+export default function popupMessageDirective($timeout) {
   return {
     restrict:"C",
       transclude:true,
@@ -11,6 +11,7 @@ export default function popupMessage($timeout) {
           var promiseToEnd,
               promiseToDestroy;
           //ugly hack to get css styling to be interpreted correctly by browser.  Blech!
+          console.log(scope, el, attr);
           $timeout(function() {
           	el.addClass("show");
           }, 1);
@@ -20,6 +21,7 @@ export default function popupMessage($timeout) {
           };
 
           function cancelTimeouts() {
+            console.log(promiseToEnd, promiseToDestroy);
               if(promiseToDestroy) {
                   $timeout.cancel(promiseToDestroy);
                   promiseToDestroy = undefined;

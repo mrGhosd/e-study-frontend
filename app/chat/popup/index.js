@@ -6,6 +6,6 @@ import PopupMessageDirective from './PopupMessageDirective';
 
 export default angular.module('chat.popup', [])
                .directive('popupBar', popupBar)
-               .directive('popupMessageDirective', PopupMessageDirective)
+               .directive('popupMessage', PopupMessageDirective)
                .service('PopupMessage', popupMessage)
                .name;

@@ -45,7 +45,7 @@ module.exports = {
       loaders: [
         { test: /\.js?$/, loaders: ['babel-loader' ], exclude: /node_modules/ },
         { test: /\.html$/, loader: "raw"},
-        { test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/, loader: 'file'},
+        { test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|mp3)$/, loader: 'file'},
         { test: /\.scss$/, loaders: ["style", "css", "sass"] },
         { test: /bootstrap\/js\//, loader: 'imports?jQuery=jquery' },
         { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css?sourceMap!postcss')},

@@ -35,7 +35,7 @@ export default class User{
         return dateSeparated.join(".");
     }
 
-    avatarURL(){
+    avatarURL() {
         const hostName = envConfig[process.env.NODE_ENV].host;
         const portName = envConfig[process.env.NODE_ENV].port;
         return this.image ? `http://${hostName}:${portName}${this.image.url}` : '/images/empty-user.png';
