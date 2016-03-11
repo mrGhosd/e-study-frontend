@@ -35,6 +35,27 @@ export default class User{
         return dateSeparated.join(".");
     }
 
+    isOnline() {
+      let status = '';
+      let diffSeconds = this.getDateDiffInSeconds();
+
+      if (diffSeconds > 60) {
+        status = 'Offline';
+      }
+      else {
+        status = 'Online';
+      }
+      return status;
+    }
+
+    getDateDiffInSeconds() {
+      let date = new Date(this.last_sign_in_at);
+      let currentDate = new Date();
+      let timeDiff = Math.abs(date.getTime() - currentDate.getTime());
+      let diffSeconds = Math.ceil(timeDiff / (1000 * 60));
+      return diffSeconds;
+    }
+
     avatarURL() {
         const hostName = envConfig[process.env.NODE_ENV].host;
         const portName = envConfig[process.env.NODE_ENV].port;
