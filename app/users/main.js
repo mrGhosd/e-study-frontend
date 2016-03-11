@@ -9,8 +9,9 @@ import UserService from 'users/users.service';
 import AuthService from 'users/AuthService';
 import User from 'users/user.model';
 import EnterKeyPressDirective from './enter_key_press.directive';
+import userStatus from './status';
 
-export default angular.module('estudy.users', [uirouter])
+export default angular.module('estudy.users', [uirouter, userStatus])
     .controller('UsersController', UsersController)
     .controller('UserController', UserController)
     .controller('UserFormController', UserFormController)

@@ -18,7 +18,7 @@
         <div class="avatar">
             <img ng-src="{{user.avatarURL()}}" height="128" width="128" class="img-circle"/>
         </div>
-        <span>{{user.isOnline()}}</span>
+        <user-status user="user" />
         <message-popover user="user" />
     </div>
 </div>

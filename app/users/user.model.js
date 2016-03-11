@@ -38,14 +38,14 @@ export default class User{
     isOnline() {
       let status = '';
       let diffSeconds = this.getDateDiffInSeconds();
-
-      if (diffSeconds > 60) {
-        status = 'Offline';
-      }
-      else {
-        status = 'Online';
-      }
-      return status;
+      return diffSeconds < 60;
+      // if (diffSeconds > 60) {
+      //   status = 'Offline';
+      // }
+      // else {
+      //   status = <img ng-src='/images/apple_icon.png'/> + 'Online';
+      // }
+      // return status;
     }
 
     getDateDiffInSeconds() {
