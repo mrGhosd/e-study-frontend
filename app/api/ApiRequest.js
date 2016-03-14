@@ -35,6 +35,8 @@ export default class ApiRequest{
 
     request(url, method, parameters) {
       const token = this.$sessionStorage.remember_token || this.$localStorage.remember_token;
+      let userLocale = navigator.language || navigator.userLanguage;
+
       let request = {
         method: method,
         url: this.correctUrl(url)
@@ -48,6 +50,7 @@ export default class ApiRequest{
 
       this.$http.defaults.headers.common = {
           estudyauthtoken: token,
+          locale: userLocale,
           'Content-Type': 'application/json'
       }
       return this.$http(request);
