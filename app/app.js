@@ -7,6 +7,7 @@ import config from 'app.config';
 import home from 'home/index';
 import users from 'users/main';
 import chat from 'chat/index';
+import autocomplete from 'util/autocomplete/index';
 
 import notifications from 'modal_windows/notification/index';
 import I18n from 'i18n-js';
@@ -30,7 +31,7 @@ import angularSanitize from 'angular-sanitize';
 
 angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users, chat,
    ApiRequest, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name,
-   notifications, angularElastic, angularSanitize])
+   notifications, angularElastic, angularSanitize, autocomplete])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)
