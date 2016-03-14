@@ -3,7 +3,8 @@
     "sign_in": "Авторизация",
     "sign_up": "Регистрация",
     "sign_out": "Выйти",
-    "password_recovery": "Восстановление пароля"
+    "password_recovery": "Восстановление пароля",
+    "country": "Страна"
   },
   "users": {
     "search_button": "Поиск",

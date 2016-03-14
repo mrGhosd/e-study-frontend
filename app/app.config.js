@@ -11,7 +11,8 @@ export default function routing($urlRouterProvider, $locationProvider, $translat
     });
     $urlRouterProvider.otherwise('/');
 
+    let userLocale = navigator.language || navigator.userLanguage;
     $translateProvider.translations('en', en);
     $translateProvider.translations('ru', ru);
-    $translateProvider.preferredLanguage('en');
+    $translateProvider.preferredLanguage(userLocale);
 }
