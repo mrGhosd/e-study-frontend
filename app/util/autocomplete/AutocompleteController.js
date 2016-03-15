@@ -1,14 +1,20 @@
 export default class AutocompleteController {
-  constructor($scope) {
+  constructor($scope, ApiRequest) {
+    this.ApiRequest = ApiRequest;
     this.$scope = $scope;
     this.text = "";
+    this.objects = [];
   }
 
   handleInput() {
-    console.log(this.onChangeInput);
-    // this.onChangeInput.call(this, this.text).then((response) => {
-    //   console.log(response);
-    // });
-    // console.log(this.$scope, this.text);
+    if (this.onChangeInput !== null) {
+      this.onChangeInput.call(this, this.text).then((response) => {
+        this.objects = response.data.search;
+      });
+    }
+  }
+
+  select($index) {
+    this.onChose(this.objects[$index]);
   }
 }

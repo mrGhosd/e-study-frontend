@@ -1,3 +1,8 @@
 <div class="autocomplete">
   <input type="text" ng-model="ctrl.text" ng-change="ctrl.handleInput()" />
+  <div class="dropdown-list">
+    <div ng-click="ctrl.select($index)" ng-repeat="item in ctrl.objects">
+      {{item.name}}
+    </div>
+  </div>
 </div>

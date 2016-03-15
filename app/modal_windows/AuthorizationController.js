@@ -27,6 +27,10 @@ export default class AuthorizationController {
       return this.countryService.search;
     }
 
+    selectCountry(country) {
+      console.log(country);
+    }
+
     defineCurrentForm(){
         let form;
         if (this.activeTabAuth) {
