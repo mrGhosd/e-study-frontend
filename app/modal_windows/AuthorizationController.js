@@ -1,6 +1,8 @@
 export default class AuthorizationController{
-    constructor($scope, $rootScope, $state, $modal, $modalInstance, currentTab, UserService, AuthService){
+    constructor($scope, $rootScope, $state, $modal, $modalInstance,
+      currentTab, UserService, AuthService, Country){
         this.$scope = $scope;
+        this.Country = Country;
         this.$rootScope = $rootScope;
         this.$state = $state;
         this.$modal = $modal;
@@ -23,7 +25,7 @@ export default class AuthorizationController{
     }
 
     findCountry() {
-      return "1";
+      return this.Country.search();
     }
 
     defineCurrentForm(){

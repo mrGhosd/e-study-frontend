@@ -8,6 +8,7 @@ import home from 'home/index';
 import users from 'users/main';
 import chat from 'chat/index';
 import autocomplete from 'util/autocomplete/index';
+import countries from 'countries/index';
 
 import notifications from 'modal_windows/notification/index';
 import I18n from 'i18n-js';
