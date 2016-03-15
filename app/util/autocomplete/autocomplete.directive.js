@@ -9,11 +9,12 @@ export default function autocompleteDirective() {
     replace: true,
     scope: {
       onChangeInput: '=',
-      onChose: '='
+      onChose: '=',
+      objectKey: '='
     },
     template: template,
     bindToController: true,
-    controllerAs: "ctrl",
-    controller: AutocompleteController
+    controller: AutocompleteController,
+    controllerAs: "ctrl"
   };
 }

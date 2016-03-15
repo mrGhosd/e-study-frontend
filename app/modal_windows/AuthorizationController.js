@@ -17,6 +17,7 @@ export default class AuthorizationController {
         } else if(currentTab == 'auth'){
             this.activeTabAuth = true;
         }
+        this.objectSelect = "";
     }
 
     cancel(){
@@ -28,7 +29,8 @@ export default class AuthorizationController {
     }
 
     selectCountry(country) {
-      console.log(country);
+      this.objectSelect = country;
+      console.log(this.objectSelect);
     }
 
     defineCurrentForm(){
