@@ -27,12 +27,14 @@ import __UtilPolyfill from 'util/polyfill';
 import angularElastic from 'angular-elastic';
 import './index.html';
 import 'css/main.scss';
+import 'angular-material/angular-material.scss';
 import runConfig from 'run_configuration/index';
 import angularSanitize from 'angular-sanitize';
+import angularMaterial from 'angular-material';
 
 angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users, chat,
    ApiRequest, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name,
-   notifications, angularElastic, angularSanitize, autocomplete, countries])
+   notifications, angularElastic, angularSanitize, autocomplete, countries, angularMaterial])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)
