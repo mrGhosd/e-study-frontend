@@ -5,7 +5,10 @@ export default class AutocompleteController {
   }
 
   handleInput() {
-    console.log(this);
-    console.log(this.text);
+    console.log(this.onChangeInput);
+    // this.onChangeInput.call(this, this.text).then((response) => {
+    //   console.log(response);
+    // });
+    // console.log(this.$scope, this.text);
   }
 }

@@ -1,8 +1,7 @@
-export default class AuthorizationController{
+export default class AuthorizationController {
     constructor($scope, $rootScope, $state, $modal, $modalInstance,
-      currentTab, UserService, AuthService, Country){
+      currentTab, UserService, AuthService, CountryService){
         this.$scope = $scope;
-        this.Country = Country;
         this.$rootScope = $rootScope;
         this.$state = $state;
         this.$modal = $modal;
@@ -10,6 +9,7 @@ export default class AuthorizationController{
         this.currentTab = currentTab;
         this.userService = UserService;
         this.authService = AuthService;
+        this.countryService = CountryService;
         this.$scope.modalView = {};
         this.modalView = {};
         if(currentTab === 'reg'){
@@ -17,7 +17,6 @@ export default class AuthorizationController{
         } else if(currentTab == 'auth'){
             this.activeTabAuth = true;
         }
-        this.test = 'test';
     }
 
     cancel(){
@@ -25,7 +24,7 @@ export default class AuthorizationController{
     }
 
     findCountry() {
-      return this.Country.search();
+      return this.countryService.search;
     }
 
     defineCurrentForm(){
