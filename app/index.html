@@ -4,19 +4,25 @@
     <meta charset="UTF-8">
     <title>Estudy</title>
 </head>
-<body ng-app="estudy">
+<body ng-app="estudy" layout="column">
   <div class="notification-bar"></div>
-  <div ng-include="'/application/header.html'"></div>
-  <div class="container-fluid main-content">
-      <span us-spinner spinner-key="main-spinner"></span>
-      <div class="row">
-          <div class="col-sm-3 col-md-2 sidebar" ng-include="'/navigation/navigation.html'"></div>
-          <div class="col-sm-9 col-md-10 main mainContentView">
-              <ui-view></ui-view>
-          </div>
-      </div>
-      <div class="popup-bar"></div>
+
+  <md-toolbar>
+    <div ng-include="'/application/header.html'"></div>
+  </md-toolbar>
+
+  <div class="container" layout="row" flex>
+    <md-sidebar md-is-locked-open="true" class="md-whiteframe-4dp">
+      <div class="col-sm-3 col-md-2 sidebar" ng-include="'/navigation/navigation.html'"></div>
+    </md-sidebar>
+
+    <md-content flex>
+      <ui-view></ui-view>
+    </md-content>
   </div>
+
+
+  <div class="popup-bar"></div>
   <script src="/bundle.js"></script>
 </body>
 </html>

@@ -25,7 +25,7 @@ import 'babel-core/polyfill';
 import __UtilPolyfill from 'util/polyfill';
 import angularElastic from 'angular-elastic';
 import './index.html';
-import 'css/main.scss';
+// import 'css/main.scss';
 import 'angular-material/angular-material.scss';
 import runConfig from 'run_configuration/index';
 import angularSanitize from 'angular-sanitize';
