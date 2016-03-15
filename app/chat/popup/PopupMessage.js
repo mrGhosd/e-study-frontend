@@ -2,8 +2,7 @@ import Message from 'chat/messages/message.model';
 import newMessageSound from 'sounds/new_message.mp3';
 
 export default class PopupMessage {
-    constructor($modal, $compile, $rootScope, ApiRequest) {
-        this.$modal = $modal;
+    constructor($compile, $rootScope, ApiRequest) {
         this.$compile = $compile;
         this.$rootScope = $rootScope;
         this.domElement = null;

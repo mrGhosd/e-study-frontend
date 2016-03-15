@@ -1,7 +1,6 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 import angularTranslate from 'angular-translate';
-import angularBootstrap from 'angular-ui-bootstrap';
 import config from 'app.config';
 
 import home from 'home/index';
@@ -32,7 +31,7 @@ import runConfig from 'run_configuration/index';
 import angularSanitize from 'angular-sanitize';
 import angularMaterial from 'angular-material';
 
-angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users, chat,
+angular.module('estudy', [uirouter, angularTranslate, home, users, chat,
    ApiRequest, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name,
    notifications, angularElastic, angularSanitize, autocomplete, countries, angularMaterial])
     .controller('NavigationController', NavigationController)
@@ -41,8 +40,8 @@ angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, us
     .service('Notification', Notification)
     .service('WebSockets', WebSockets)
     .config(config)
-    .run(($rootScope, AuthService, $location, $state, $modal,
+    .run(($rootScope, AuthService, $location, $state,
           usSpinnerService, Notification, $cookies, WebSockets, PopupMessage) => {
-            runConfig($rootScope, AuthService, $location, $state, $modal,
+            runConfig($rootScope, AuthService, $location, $state,
                   usSpinnerService, Notification, $cookies, WebSockets, PopupMessage);
     });

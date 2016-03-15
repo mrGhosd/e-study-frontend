@@ -1,6 +1,5 @@
 export default class Notification {
-    constructor($modal, $compile, $rootScope) {
-        this.$modal = $modal;
+    constructor($compile, $rootScope) {
         this.$compile = $compile;
         this.$rootScope = $rootScope;
         this.domElement = null;
