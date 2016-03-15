@@ -14,7 +14,6 @@ import notifications from 'modal_windows/notification/index';
 import I18n from 'i18n-js';
 import NavigationController from './navigation/NavigationController'
 import HeaderController from './application/HeaderController'
-import AuthorizationController from './modal_windows/AuthorizationController';
 import ApiRequest from 'api/ApiRequest';
 import angularSpinner from 'angular-spinner';
 import ngFileUpload from 'ng-file-upload';
@@ -40,7 +39,6 @@ angular.module('estudy', [uirouter, angularTranslate, home, users, chat,
    notifications, angularElastic, angularSanitize, autocomplete, countries, angularMaterial])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
-    .controller('AuthorizationController', AuthorizationController)
     .service('Notification', Notification)
     .service('WebSockets', WebSockets)
     .config(config)

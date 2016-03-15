@@ -1,8 +1,16 @@
-<md-dialog aria-label="List dialog">
+<md-dialog aria-label="List dialog" ng-controller="AuthorizationController as auth">
+  <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Authorization</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="auth.close()">
+          <md-icon md-font-icon="fa fa-times" class="fa" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
   <md-dialog-content>
-    Dialog
+    {{auth.test}}
   </md-dialog-content>
   <md-dialog-actions>
-    <md-button ng-click="closeDialog()" class="md-primary">Close Dialog</md-button>
   </md-dialog-actions>
 </md-dialog>

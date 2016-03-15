@@ -3,11 +3,13 @@ import AuthorizationController from 'authorization/AuthorizationController';
 import template from 'authorization/authorization_view.html';
 
 export default class HeaderController{
-    constructor($scope, $translate, AuthService, $rootScope, $window, $mdDialog){
+    constructor($scope, $translate, AuthService, $rootScope, $window,
+      $mdDialog, $mdMedia){
         this.$scope = $scope;
         this.locale = I18n.currentLocale();
         this.$translate = $translate;
         this.$mdDialog = $mdDialog;
+        this.$mdMedia = $mdMedia;
         this.AuthService = AuthService;
         $rootScope.$on('signedIn', () => {
             this.AuthService.currentUser()
@@ -33,12 +35,14 @@ export default class HeaderController{
     }
 
     showAuthDialog(ev) {
+      let useFullScreen = this.$mdMedia('sm') || this.$mdMedia('xs')
       this.$mdDialog.show({
         controller: AuthorizationController,
         template: template,
         parent: angular.element(document.body),
         targetEvent: ev,
-        clickOutsideToClose:true
+        clickOutsideToClose:true,
+        fullscreen: useFullScreen
       })
     }
 
