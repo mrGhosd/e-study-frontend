@@ -1,59 +1,68 @@
-//require('bootstrap-webpack')
-@import '../../node_modules/bootstrap/dist/css/bootstrap.css';
-@import 'user';
-@import 'notification';
-@import 'chat';
-@import 'message';
-@import 'dialog';
-@import 'popup_message';
-@import 'colors';
-
-.btn-actions{
-  margin-top:5px;
+////require('bootstrap-webpack')
+//@import '../../node_modules/bootstrap/dist/css/bootstrap.css';
+//@import 'user';
+//@import 'notification';
+//@import 'chat';
+//@import 'message';
+//@import 'dialog';
+//@import 'popup_message';
+//@import 'colors';
+//
+//.btn-actions{
+//  margin-top:5px;
+//}
+//
+//.ta-editor.form-control.myform1-height, .ta-scroll-window.form-control.wysiwyg-editor {
+//  min-height: 100px;
+//  height: auto;
+//  overflow: auto;
+//  font-family: inherit;
+//  font-size: 100%;
+//}
+//
+//.form-control.wysiwyg-editor > .ta-bind {
+//  height: auto;
+//  min-height: 100px;
+//  padding: 6px 12px;
+//}
+//.navbar.navbar-inverse.navbar-fixed-top.ng-scope{
+//  background-color: #FFCC00;
+//  border: none;
+//}
+//
+//.main-content{
+//  margin-top: 50px;
+//
+//  .main.mainContentView {
+//    margin-top: 15px;
+//  }
+//}
+//li.active{
+//  background-color: lightgreen;
+//  color: white;
+//  a:focus{
+//    background-color: lightgreen;
+//  }
+//}
+//.error{
+//  color: #FF0000;
+//}
+//.info-list{
+//  div, a{
+//    display: inline;
+//  }
+//}
+//form.auth-form,
+//form.reg-form,
+//form.restore-form{
+//  margin-top:20px;
+//}
+md-icon.fa {
+  display: block;
+  padding: 0px;
+  font-size: 29px;
 }
 
-.ta-editor.form-control.myform1-height, .ta-scroll-window.form-control.wysiwyg-editor {
-  min-height: 100px;
-  height: auto;
-  overflow: auto;
-  font-family: inherit;
-  font-size: 100%;
-}
-
-.form-control.wysiwyg-editor > .ta-bind {
-  height: auto;
-  min-height: 100px;
-  padding: 6px 12px;
-}
-.navbar.navbar-inverse.navbar-fixed-top.ng-scope{
-  background-color: #FFCC00;
-  border: none;
-}
-
-.main-content{
-  margin-top: 50px;
-
-  .main.mainContentView {
-    margin-top: 15px;
-  }
-}
-li.active{
-  background-color: lightgreen;
-  color: white;
-  a:focus{
-    background-color: lightgreen;
-  }
-}
-.error{
-  color: #FF0000;
-}
-.info-list{
-  div, a{
-    display: inline;
-  }
-}
-form.auth-form,
-form.reg-form,
-form.restore-form{
-  margin-top:20px;
+md-toolbar.app-header {
+  background-color: #FFC107;
 }
