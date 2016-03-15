@@ -1,10 +1,13 @@
 import I18n from 'i18n-js';
+import AuthorizationController from 'authorization/AuthorizationController';
+import template from 'authorization/authorization_view.html';
 
 export default class HeaderController{
-    constructor($scope, $translate, AuthService, $rootScope, $window){
+    constructor($scope, $translate, AuthService, $rootScope, $window, $mdDialog){
         this.$scope = $scope;
         this.locale = I18n.currentLocale();
         this.$translate = $translate;
+        this.$mdDialog = $mdDialog;
         this.AuthService = AuthService;
         $rootScope.$on('signedIn', () => {
             this.AuthService.currentUser()
@@ -29,37 +32,21 @@ export default class HeaderController{
         return this.AuthService.isSignedIn();
     }
 
+    showAuthDialog(ev) {
+      this.$mdDialog.show({
+        controller: AuthorizationController,
+        template: template,
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true
+      })
+    }
+
     changeLocale(){
         let lang = (this.$translate.use() === 'en' ) ? 'ru' : 'en';
         this.$translate.use((this.$translate.use() === 'en' ) ? 'ru' : 'en');
         this.locale = lang;
     }
-
-    signIn(){
-        let modalInstance = this.$modal.open({
-                animation: true,
-                template: require('../modal_windows/auth_window.html'),
-                controller: 'AuthorizationController as modalView',
-                resolve: {
-                    currentTab: function () {
-                        return "auth";
-                    }
-                }
-        });
-    }
-
-    signUp(){
-        let modalInstance = this.$modal.open({
-            animation: true,
-            template: require('../modal_windows/auth_window.html'),
-            controller: 'AuthorizationController as modalView',
-            resolve: {
-                currentTab: function () {
-                    return "reg";
-                }
-            }
-        });
-    };
 
     logout(){
         this.AuthService.signOut();

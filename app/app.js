@@ -8,6 +8,7 @@ import users from 'users/main';
 import chat from 'chat/index';
 import autocomplete from 'util/autocomplete/index';
 import countries from 'countries/index';
+import authorization from 'authorization/index';
 
 import notifications from 'modal_windows/notification/index';
 import I18n from 'i18n-js';
@@ -34,6 +35,7 @@ import angularSanitize from 'angular-sanitize';
 import angularMaterial from 'angular-material';
 
 angular.module('estudy', [uirouter, angularTranslate, home, users, chat,
+   authorization,
    ApiRequest, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name,
    notifications, angularElastic, angularSanitize, autocomplete, countries, angularMaterial])
     .controller('NavigationController', NavigationController)
