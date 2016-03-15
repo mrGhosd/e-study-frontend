@@ -15,11 +15,15 @@ export default class AuthorizationController{
         } else if(currentTab == 'auth'){
             this.activeTabAuth = true;
         }
-        this.defineCurrentForm();
+        this.test = 'test';
     }
 
     cancel(){
         this.$modalInstance.dismiss('cancel');
+    }
+
+    findCountry() {
+      return "1";
     }
 
     defineCurrentForm(){
@@ -37,7 +41,7 @@ export default class AuthorizationController{
     setCurrentViewDetails(title, form){
         this.modalTitle = title;
         this.modalView.currentForm = form;
-    };
+    }
 
     login(){
         const params = { email: this.authForm.email,
@@ -53,6 +57,8 @@ export default class AuthorizationController{
             this.authForm.$valid = false;
         });
     }
+
+
 
     register(){
         const params = { email: this.regForm.email,

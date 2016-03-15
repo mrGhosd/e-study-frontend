@@ -1,7 +1,7 @@
 import template from "./autocomplete.html";
 import AutocompleteController from "./AutocompleteController";
 
-AutocompleteController.$inject = [];
+autocompleteDirective.$inject = [];
 
 export default function autocompleteDirective() {
   return {

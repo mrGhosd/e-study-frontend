@@ -1,20 +1,8 @@
 <div class="modal-header">
-    <h3 class="modal-title">{{modalView.modalTitle | translate}}</h3>
+    <h3 class="modal-title">{{'auth.sign_in' | translate}}</h3>
 </div>
 <div class="modal-body">
-    <uib-tabset>
-        <uib-tab active="modalView.activeTabAuth"
-            select="modalView.setCurrentViewDetails('auth.sign_in', modalView.authForm)" heading="{{'auth.sign_in' | translate}}">
-            <div ng-include="'/modal_windows/login.html'"></div>
-        </uib-tab>
-        <uib-tab active="modalView.activeTabReg"
-            select="modalView.setCurrentViewDetails('auth.sign_up', modalView.regForm)" heading="{{'auth.sign_up' | translate}}">
-            <div ng-include="'/modal_windows/registration.html'"></div>
-        </uib-tab>
-        <uib-tab select="modalView.setCurrentViewDetails('auth.password_recovery')" heading="{{'auth.password_recovery' | translate}}">
-            <div ng-include="'/modal_windows/_restore_password.html'"></div>
-        </uib-tab>
-    </uib-tabset>
+  <autocomplete on-change-input="modalView.findCountry()" />
 </div>
 <div class="modal-footer">
     <a href="/users/auth/facebook" data-remote="true" class="facebook oauth-link"><img src="/images/facebook24.png" height="30" width="30"/></a>
@@ -27,4 +15,3 @@
         <img src="/images/instagram12.png" height="30" width="30"/>
     </a>
 </div>
-
