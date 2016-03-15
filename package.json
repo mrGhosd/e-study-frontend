@@ -54,6 +54,7 @@
     "express": "^4.13.3",
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.4",
+    "font-awesome": "^4.5.0",
     "forever": "^0.15.1",
     "html-loader": "^0.3.0",
     "i18n": "^0.5.0",

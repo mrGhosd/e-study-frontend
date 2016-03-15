@@ -26,6 +26,8 @@ import __UtilPolyfill from 'util/polyfill';
 import angularElastic from 'angular-elastic';
 import './index.html';
 // import 'css/main.scss';
+import 'font-awesome/scss/font-awesome.scss';
+import 'font-awesome/fonts/FontAwesome.otf';
 import 'angular-material/angular-material.scss';
 import runConfig from 'run_configuration/index';
 import angularSanitize from 'angular-sanitize';
