@@ -11,14 +11,22 @@ export default class AuthorizationController {
   }
 
   querySearch(query) {
+    return this.searchData(query);
+  }
+
+  searchByPhone(query) {
+    return this.searchData(query);
+  }
+
+  selectedItemChange(item) {
+    this.selectedCountry = this.selectedPhone = item;
+  }
+
+  searchData(query) {
     let def = this.$q.defer();
     this.CountryService.search(query).then((response) => {
       def.resolve(response);
     });
     return def.promise;
-  }
-
-  selectedItemChange(item) {
-    this.selectedCountry = item;
   }
 }
