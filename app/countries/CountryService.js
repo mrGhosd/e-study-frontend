@@ -7,6 +7,9 @@ export default class CountryService {
   search(query) {
     const params = {object: "country", query: query};
 
-    return this.ApiRequest.get('/search', params);
+    return this.ApiRequest.get('/search', params)
+    .then((response) => {
+      return response.data.search;
+    });
   }
 }
