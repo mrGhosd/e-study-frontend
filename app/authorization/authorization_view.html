@@ -2,7 +2,11 @@
   <md-toolbar>
       <div class="md-toolbar-tools">
         <h2>Authorization</h2>
-        <span flex></span>
+        <span flex>
+          <md-progress-circular md-mode="indeterminate"
+          class="md-accent" ng-show="auth.isLoading">
+        </md-progress-circular>
+        </span>
         <md-button class="md-icon-button" ng-click="auth.close()">
           <md-icon md-font-icon="fa fa-times" class="fa" aria-label="Close dialog"></md-icon>
         </md-button>

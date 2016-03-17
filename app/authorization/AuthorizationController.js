@@ -5,6 +5,7 @@ export default class AuthorizationController {
     this.$mdDialog = $mdDialog;
     this.CountryService = CountryService;
     this.isFirstStep = true;
+    this.isLoading = false;
   }
 
   close() {
@@ -24,6 +25,7 @@ export default class AuthorizationController {
   }
 
   nextStep() {
+    this.isLoading = true;
     this.isFirstStep = false;
   }
 
