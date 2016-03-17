@@ -4,6 +4,7 @@ export default class AuthorizationController {
     this.$scope = $scope;
     this.$mdDialog = $mdDialog;
     this.CountryService = CountryService;
+    this.isFirstStep = true;
   }
 
   close() {
@@ -20,6 +21,10 @@ export default class AuthorizationController {
 
   selectedItemChange(item) {
     this.selectedCountry = this.selectedPhone = item;
+  }
+
+  nextStep() {
+    this.isFirstStep = false;
   }
 
   searchData(query) {
