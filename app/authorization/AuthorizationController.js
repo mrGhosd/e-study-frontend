@@ -1,3 +1,4 @@
+import { getBrowserName } from 'util/browser';
 export default class AuthorizationController {
   constructor($scope, $q, $mdDialog, CountryService) {
     this.$q = $q;
@@ -27,6 +28,7 @@ export default class AuthorizationController {
   nextStep() {
     this.isLoading = true;
     this.isFirstStep = false;
+    console.log(getBrowserName());
   }
 
   searchData(query) {
