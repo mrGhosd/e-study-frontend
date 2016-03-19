@@ -61,10 +61,13 @@ export default class AuthService{
     }
 
     receiveUserData(response){
-        console.log(response);
         this.$sessionStorage.remember_token = response.remember_token;
         this.$localStorage.remember_token  = response.remember_token;
         this.signedIn = true;
         this.$rootScope.$broadcast('signedIn');
+    }
+
+    setPhone(params) {
+      return this.ApiRequest.post('/sessions/sms_code', { auth: params });
     }
 }
