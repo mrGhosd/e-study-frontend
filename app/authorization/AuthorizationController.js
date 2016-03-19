@@ -10,7 +10,7 @@ export default class AuthorizationController {
     this.isFirstStep = true;
     this.isLoading = false;
     this.selectedCountry = this.selectedPhone = "";
-    this.errors = {};
+    this.errors = this.userInfo = {};
   }
 
   close() {
@@ -38,9 +38,11 @@ export default class AuthorizationController {
     };
 
     this.AuthService.setPhone(params)
-    .then(() => {
+    .then((response) => {
       this.isFirstStep = false;
       this.isLoading = false;
+      this.userInfo = response.data.user;
+      console.log(this.userInfo);
     })
     .catch((response) => {
       this.isLoading = false;

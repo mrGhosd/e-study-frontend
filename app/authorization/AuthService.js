@@ -1,4 +1,4 @@
-import User from './user.model';
+import User from 'users/user.model';
 
 export default class AuthService{
     constructor(UserService, $window, $rootScope, $http, $q, ApiRequest,

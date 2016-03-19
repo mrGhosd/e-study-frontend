@@ -13,8 +13,14 @@
       </div>
     </md-toolbar>
   <md-dialog-content>
-    <div ng-show="auth.isFirstStep" ng-include="'/authorization/phone_number_view.html'"></div>
-    <div ng-hide="auth.isFirstStep" ng-include="'/authorization/phone_code_view.html'"></div>
+    <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="Sign in">
+          <div ng-include="'authorization/sign_in_view.html'"></div>
+        </md-tab>
+        <md-tab label="Sign up">
+          <div ng-include="'authorization/sign_up_view.html'"></div>
+        </md-tab>
+    </md-tabs>
   </md-dialog-content>
   <md-dialog-actions>
   </md-dialog-actions>
