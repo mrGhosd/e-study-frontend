@@ -1,4 +1,5 @@
 import { getBrowserName, getOSName, getBrowserVersion, getOSVersion } from 'util/browser';
+
 export default class AuthorizationController {
   constructor($scope, $q, $mdDialog, CountryService, AuthService) {
     this.$q = $q;
@@ -8,6 +9,8 @@ export default class AuthorizationController {
     this.AuthService = AuthService;
     this.isFirstStep = true;
     this.isLoading = false;
+    this.selectedCountry = this.selectedPhone = "";
+    this.errors = {};
   }
 
   close() {
@@ -33,10 +36,15 @@ export default class AuthorizationController {
       phone_code: this.selectedPhone.phone_code,
       phone: this.phoneNumber
     };
+
     this.AuthService.setPhone(params)
     .then(() => {
       this.isFirstStep = false;
       this.isLoading = false;
+    })
+    .catch((response) => {
+      this.isLoading = false;
+      this.phoneCodeForm.$error = response.data.errors;
     });
   }
 

@@ -1,4 +1,4 @@
-<form>
+<form name="auth.phoneCodeForm">
   <div>
     <md-autocomplete
       md-selected-item="auth.selectedCountry"
@@ -48,6 +48,11 @@
     <md-input-container>
       <label>Phone number</label>
       <input ng-model="auth.phoneNumber" type="tel">
+      <div ng-messages="auth.phoneCodeForm.$error" multiple md-auto-hide="false">
+        <div ng-message="phone">
+          <div ng-repeat="item in auth.phoneCodeForm.$error.phone">{{item}}</div>
+        </div>
+      </div>
     </md-input-container>
   </div>
 </div>

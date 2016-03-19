@@ -31,6 +31,7 @@
     "angular-cookies": "^1.4.7",
     "angular-elastic": "^2.5.0",
     "angular-material": "^1.0.6",
+    "angular-messages": "^1.5.2",
     "angular-oauth2": "^3.0.1",
     "angular-query-string": "^1.0.0",
     "angular-sanitize": "^1.5.0",

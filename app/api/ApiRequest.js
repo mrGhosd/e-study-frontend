@@ -35,7 +35,7 @@ export default class ApiRequest{
 
     request(url, method, parameters) {
       const token = this.$sessionStorage.remember_token || this.$localStorage.remember_token;
-      let userLocale = navigator.language || navigator.userLanguage;
+      let userLocale = this.getCorrectLocaleValue();
 
       let request = {
         method: method,
@@ -58,6 +58,14 @@ export default class ApiRequest{
 
     urlForAttach(url) {
       return `http://${this.hostName}:${this.portName}${url}`;
+    }
+
+    getCorrectLocaleValue() {
+      let locale = navigator.language || navigator.userLanguage;
+      if (locale.length > 2) {
+        return locale.substring(0,2);
+      }
+      return locale;
     }
 }
 

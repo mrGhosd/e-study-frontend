@@ -12,6 +12,7 @@ import authorization from 'authorization/index';
 
 import notifications from 'modal_windows/notification/index';
 import I18n from 'i18n-js';
+import angularMessages from 'angular-messages';
 import NavigationController from './navigation/NavigationController'
 import HeaderController from './application/HeaderController'
 import ApiRequest from 'api/ApiRequest';
@@ -36,7 +37,8 @@ import angularMaterial from 'angular-material';
 angular.module('estudy', [uirouter, angularTranslate, home, users, chat,
    authorization,
    ApiRequest, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name,
-   notifications, angularElastic, angularSanitize, autocomplete, countries, angularMaterial])
+   notifications, angularElastic, angularSanitize, autocomplete,
+   countries, angularMaterial, angularMessages])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
     .service('Notification', Notification)
