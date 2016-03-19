@@ -20,6 +20,11 @@
           </span>
         </span>
       </md-item-template>
+      <div ng-messages="auth.phoneCodeForm.$error" multiple md-auto-hide="false">
+        <div ng-message="country">
+          <div ng-repeat="item in auth.phoneCodeForm.$error.country">{{item}}</div>
+        </div>
+      </div>
   </md-autocomplete>
   </div>
   <div layout="row" flex>
@@ -43,6 +48,11 @@
             </span>
           </span>
         </md-item-template>
+        <div ng-messages="auth.phoneCodeForm.$error" multiple md-auto-hide="false">
+          <div ng-message="phone_code">
+            <div ng-repeat="item in auth.phoneCodeForm.$error.phone_code">{{item}}</div>
+          </div>
+        </div>
     </md-autocomplete>
   <div>
     <md-input-container>
