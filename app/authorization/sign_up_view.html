@@ -1,1 +1,31 @@
-<div>Sign up</div>
+<form name="auth.signUpForm">
+  <div>
+    <md-input-container layout="row">
+      <label>{{ 'auth.email' | translate }}</label>
+      <input ng-model="auth.regEmail" type="tel">
+      <div ng-messages="auth.signInForm.$error" multiple md-auto-hide="false">
+        <div ng-message="email">
+          <div ng-repeat="item in auth.signInForm.$error.email">{{item}}</div>
+        </div>
+      </div>
+    </md-input-container>
+    <md-input-container layout="row">
+      <label>{{ 'auth.password' | translate }}</label>
+      <input ng-model="auth.regPassword" type="tel">
+      <div ng-messages="auth.signUpForm.$error" multiple md-auto-hide="false">
+        <div ng-message="password">
+          <div ng-repeat="item in auth.signUpForm.$error.password">{{item}}</div>
+        </div>
+      </div>
+    </md-input-container>
+    <md-input-container layout="row">
+      <label>{{ 'auth.password_confirmation' | translate }}</label>
+      <input ng-model="auth.regPasswordConfirmation" type="tel">
+      <div ng-messages="auth.signUpForm.$error" multiple md-auto-hide="false">
+        <div ng-message="password">
+          <div ng-repeat="item in auth.signUpForm.$error.password_confirmation">{{item}}</div>
+        </div>
+      </div>
+    </md-input-container>
+  </div>
+</form>

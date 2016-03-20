@@ -36,28 +36,16 @@ export default class HeaderController{
     }
 
     showAuthDialog(ev) {
-      // this.$scope.tab = 1;
-      let useFullScreen = this.$mdMedia('sm') || this.$mdMedia('xs')
-      this.$mdDialog.show({
-        controller: AuthorizationController,
-        template: template,
-        parent: angular.element(document.body),
-        targetEvent: ev,
-        clickOutsideToClose:true,
-        fullscreen: useFullScreen,
-        bindToController: true,
-        resolve: {
-          tab: () => {
-            return 0;
-          }
-        }
-      })
+      this.$mdDialog.show(this.tabParams(ev, 0));
     }
 
     showRegDialog(ev) {
-      // this.$scope.tab = 2;
+      this.$mdDialog.show(this.tabParams(ev, 1));
+    }
+
+    tabParams(ev, selectedTab) {
       let useFullScreen = this.$mdMedia('sm') || this.$mdMedia('xs')
-      this.$mdDialog.show({
+      return {
         controller: 'AuthorizationController',
         template: template,
         // scope: this.$scope,
@@ -68,10 +56,10 @@ export default class HeaderController{
         bindToController: true,
         resolve: {
           tab: () => {
-            return 1;
+            return selectedTab;
           }
         }
-      })
+      };
     }
 
     changeLocale(){
