@@ -11,6 +11,11 @@
     "password": "Пароль",
     "password_confirmation": "Подтверждение пароля"
   },
+  "nav": {
+    "profile": "Профиль",
+    "users": "Пользователи",
+    "chats": "Сообщения"
+  },
   "users": {
     "search_button": "Поиск",
     "profile": "Профиль"

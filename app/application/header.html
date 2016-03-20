@@ -7,7 +7,10 @@
       <md-icon md-font-icon="fa fa-user-plus" class="fa"></md-icon>
     </md-button>
   </div>
-  <div class="authorized-header" ng-show="head.authPresent">
+  <div class="authorized-header" ng-show="head.authPresent" layout="row">
+    <div class="user-info">
+      <img height="45" width="45" ng-src="{{head.user.avatarURL()}}" class="md-avatar" />
+    </div>
     <md-button class="md-fab md-mini md-warn" ng-click="head.signOut($event)">
       <md-icon md-font-icon="fa fa-sign-out" class="fa"></md-icon>
     </md-button>
