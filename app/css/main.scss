@@ -70,3 +70,15 @@ md-toolbar.app-header {
 md-tab-content form {
   padding: 10px;
 }
+md-content {
+  padding: 30px;
+}
+a{
+    text-decoration: none;
+}
+
+md-list-item.active {
+  a {
+    color: lightgreen;
+  }
+}

@@ -1,5 +1,19 @@
-<ul class="nav nav-sidebar" ng-controller="NavigationController as navCtrl">
+<md-list flex="50" flex ng-controller="NavigationController as navCtrl">
+  <md-list-item ng-show="navCtrl.isSignedIn()" ng-class="{active: navCtrl.isActive('/profile')}">
+    <md-icon md-font-icon="fa fa-user" class="md-avatar"></md-icon>
+    <a ui-sref="profile">{{'nav.profile' | translate}}</a>
+  </md-list-item>
+  <md-list-item ng-class="{active: navCtrl.isActive('/users')}">
+    <md-icon md-font-icon="fa fa-users" class="md-avatar"></md-icon>
+    <a ui-sref="users">{{'nav.users' | translate}}</a>
+  </md-list-item>
+  <md-list-item ng-show="navCtrl.isSignedIn()" ng-class="{active: navCtrl.isActive('/chats')}">
+    <md-icon md-font-icon="fa fa-comment" class="md-avatar"></md-icon>
+    <a ui-sref="chats">{{'nav.chats' | translate}}</a>
+  </md-item>
+</md-list>
+<!-- <ul class="nav nav-sidebar" ng-controller="NavigationController as navCtrl">
     <li ng-show="navCtrl.isSignedIn()"  ng-class="{active: navCtrl.isActive('/profile')}"><a ui-sref="profile">{{'nav.profile' | translate}}</a></li>
     <li ng-class="{active: navCtrl.isActive('/users')}"><a ui-sref="users">{{'nav.users' | translate}}</a></li>
     <li ng-show="navCtrl.isSignedIn()" ng-class="{active: navCtrl.isActive('/chats')}"><a ui-sref="chats">{{'nav.chats' | translate}}</a></li>
-</ul>
+</ul> -->
