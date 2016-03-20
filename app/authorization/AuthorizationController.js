@@ -14,8 +14,8 @@ export default class AuthorizationController {
     this.errors = this.userInfo = {};
     // this.tab = this.auth.tab;
     if (this.tab) {
-      selectedTab = this.tab;
-      $scope.tab = selectedTab;
+      selectedTab = this.tab - 1;
+      this.$scope.tab = selectedTab;
     }
   }
 
@@ -64,6 +64,20 @@ export default class AuthorizationController {
     return def.promise;
   }
 
+  signIn() {
+    const params = {
+      email: this.authEmail,
+      password: this.authPassword
+    };
+    this.AuthService.login(params).then(() => {
+      this.$mdDialog.cancel();
+    });
+  }
+
+  signup() {
+    console.log(this.regForm);
+  }
+
   authorize() {
     const browser = {
       app_name: getBrowserName(),
@@ -71,5 +85,14 @@ export default class AuthorizationController {
       platform: getOSName(),
       platform_version: getOSVersion()
     };
+  }
+
+  sendData() {
+    if(this.$scope.tab){
+        this.signUp();
+    }
+    else {
+      this.signIn();
+    }
   }
 }

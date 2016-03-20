@@ -15,18 +15,19 @@ export default class HeaderController{
         $rootScope.$on('signedIn', () => {
             this.AuthService.currentUser()
                 .then((user) => {
-                  console.log(user);
+                    this.authPresent = true;
                     this.user = user;
                 })
         });
         $rootScope.$on('profileUpdated', (event, args) =>{
             this.user = args;
         });
-
+        console.log(this.AuthService.isSignedIn());
         if(this.AuthService.isSignedIn()){
             this.AuthService.currentUser()
                 .then((user) => {
                     this.user = user;
+                    this.authPresent = true;
                 })
         }
     }
@@ -36,11 +37,11 @@ export default class HeaderController{
     }
 
     showAuthDialog(ev) {
-      this.$mdDialog.show(this.tabParams(ev, 0));
+      this.$mdDialog.show(this.tabParams(ev, 1));
     }
 
     showRegDialog(ev) {
-      this.$mdDialog.show(this.tabParams(ev, 1));
+      this.$mdDialog.show(this.tabParams(ev, 2));
     }
 
     tabParams(ev, selectedTab) {
@@ -48,7 +49,6 @@ export default class HeaderController{
       return {
         controller: 'AuthorizationController',
         template: template,
-        // scope: this.$scope,
         parent: angular.element(document.body),
         targetEvent: ev,
         clickOutsideToClose:true,
@@ -68,7 +68,8 @@ export default class HeaderController{
         this.locale = lang;
     }
 
-    logout(){
+    signOut(){
         this.AuthService.signOut();
+        this.authPresent = false;
     }
 }

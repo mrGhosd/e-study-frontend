@@ -1,6 +1,6 @@
 export function onChangeStateError($rootScope, $state, Notification) {
   $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
-      usSpinnerService.stop('main-spinner');
+      // usSpinnerService.stop('main-spinner');
       event.preventDefault();
       if(error.status === 401) {
           if (fromState.name !== "") {

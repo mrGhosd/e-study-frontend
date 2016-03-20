@@ -11,7 +11,7 @@
     </md-input-container>
     <md-input-container layout="row">
       <label>{{ 'auth.password' | translate }}</label>
-      <input ng-model="auth.authPassword" type="tel">
+      <input ng-model="auth.authPassword" type="password">
       <div ng-messages="auth.signInForm.$error" multiple md-auto-hide="false">
         <div ng-message="password">
           <div ng-repeat="item in auth.signInForm.$error.password">{{item}}</div>

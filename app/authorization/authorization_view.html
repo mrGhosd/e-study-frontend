@@ -13,7 +13,7 @@
       </div>
     </md-toolbar>
   <md-dialog-content>
-    <md-tabs md-center-tabs="true" md-stretch-tabs="never" md-dynamic-height md-border-bottom md-selected="tab">
+    <md-tabs md-center-tabs="true" md-selected="tab" md-stretch-tabs="never" md-dynamic-height md-border-bottom>
         <md-tab label="{{'auth.sign_in' | translate}}">
           <div ng-include="'authorization/sign_in_view.html'"></div>
         </md-tab>
@@ -23,7 +23,7 @@
     </md-tabs>
   </md-dialog-content>
   <md-dialog-actions>
-    <md-button class="md-raised md-primary">{{'auth.send' | translate}}</md-button>
+    <md-button class="md-raised md-primary" ng-click="auth.sendData()">{{'auth.send' | translate}}</md-button>
     <md-button class="md-raised"  ng-click="auth.close()">{{'auth.cancel' | translate}}</md-button>
   </md-dialog-actions>
 </md-dialog>
