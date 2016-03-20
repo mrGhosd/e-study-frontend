@@ -4,7 +4,12 @@
     "sign_up": "Регистрация",
     "sign_out": "Выйти",
     "password_recovery": "Восстановление пароля",
-    "country": "Страна"
+    "country": "Страна",
+    "cancel": "Отмена",
+    "send": "Отправить",
+    "email": "Электронная почта",
+    "password": "Пароль",
+    "password_confirmation": "Подтверждение пароля"
   },
   "users": {
     "search_button": "Поиск",

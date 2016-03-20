@@ -1,6 +1,5 @@
 export default class CountryService {
   constructor (ApiRequest) {
-    console.log(ApiRequest);
     this.ApiRequest = ApiRequest;
   }
 

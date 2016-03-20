@@ -6,6 +6,7 @@ export default class HeaderController{
     constructor($scope, $translate, AuthService, $rootScope, $window,
       $mdDialog, $mdMedia){
         this.$scope = $scope;
+        this.$rootScope = $rootScope;
         this.locale = I18n.currentLocale();
         this.$translate = $translate;
         this.$mdDialog = $mdDialog;
@@ -35,6 +36,7 @@ export default class HeaderController{
     }
 
     showAuthDialog(ev) {
+      // this.$scope.tab = 1;
       let useFullScreen = this.$mdMedia('sm') || this.$mdMedia('xs')
       this.$mdDialog.show({
         controller: AuthorizationController,
@@ -42,7 +44,33 @@ export default class HeaderController{
         parent: angular.element(document.body),
         targetEvent: ev,
         clickOutsideToClose:true,
-        fullscreen: useFullScreen
+        fullscreen: useFullScreen,
+        bindToController: true,
+        resolve: {
+          tab: () => {
+            return 0;
+          }
+        }
+      })
+    }
+
+    showRegDialog(ev) {
+      // this.$scope.tab = 2;
+      let useFullScreen = this.$mdMedia('sm') || this.$mdMedia('xs')
+      this.$mdDialog.show({
+        controller: 'AuthorizationController',
+        template: template,
+        // scope: this.$scope,
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true,
+        fullscreen: useFullScreen,
+        bindToController: true,
+        resolve: {
+          tab: () => {
+            return 1;
+          }
+        }
       })
     }
 

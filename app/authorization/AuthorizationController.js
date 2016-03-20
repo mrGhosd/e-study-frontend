@@ -1,5 +1,7 @@
 import { getBrowserName, getOSName, getBrowserVersion, getOSVersion } from 'util/browser';
 
+let selectedTab;
+
 export default class AuthorizationController {
   constructor($scope, $q, $mdDialog, CountryService, AuthService) {
     this.$q = $q;
@@ -9,8 +11,12 @@ export default class AuthorizationController {
     this.AuthService = AuthService;
     this.isFirstStep = true;
     this.isLoading = false;
-    this.selectedCountry = this.selectedPhone = "";
     this.errors = this.userInfo = {};
+    // this.tab = this.auth.tab;
+    if (this.tab) {
+      selectedTab = this.tab;
+      $scope.tab = selectedTab;
+    }
   }
 
   close() {

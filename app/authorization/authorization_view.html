@@ -13,11 +13,11 @@
       </div>
     </md-toolbar>
   <md-dialog-content>
-    <md-tabs md-dynamic-height md-border-bottom>
-        <md-tab label="Sign in">
+    <md-tabs md-dynamic-height md-border-bottom md-selected="tab">
+        <md-tab label="{{'auth.sign_in' | translate}}">
           <div ng-include="'authorization/sign_in_view.html'"></div>
         </md-tab>
-        <md-tab label="Sign up">
+        <md-tab label="{{'auth.sign_up' | translate}}">
           <div ng-include="'authorization/sign_up_view.html'"></div>
         </md-tab>
     </md-tabs>
