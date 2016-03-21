@@ -1,13 +1,18 @@
 <h1>Users list</h1>
-<div class="search-form">
-    <form class="form" ng-submit="usr.search()">
+<div class="search-form" layout-gt-sm="row">
+
+  <md-input-container>
+    <label>{{'users.search_label' | translate}}</label>
+    <input type="search" ng-model="searchField" ng-change="usr.dynamicSearch()">
+  </md-input-container>
+    <!-- <form class="form" ng-submit="usr.search()">
         <div class="form-group">
             <div class="col-md-10">
                 <input type="search" class="form-control" ng-change="usr.dynamicSearch()" ng-model="searchField"/>
             </div>
         </div>
         <input type="submit" value="{{ 'users.search_button' | translate }}" class="btn btn-info"/>
-    </form>
+    </form> -->
 </div>
 <div flex-xs layout="column"  class="users-list panel panel-primary">
   <md-card ng-repeat="user in users">

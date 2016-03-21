@@ -18,6 +18,7 @@
   },
   "users": {
     "search_button": "Поиск",
+    "search_label": "Поиск...",
     "profile": "Профиль"
   }
 }
