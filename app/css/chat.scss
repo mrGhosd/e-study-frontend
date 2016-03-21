@@ -1,57 +1,63 @@
-.chatroom {
-  display: flex;
+//.chatroom {
+//  display: flex;
+//
+//  .dialog-list-wrapper {
+//    width: 25%;
+//    border-right: 2px solid #c8c8c8;
+//  }
+//
+//  .messages-list-wrapper {
+//    width: 65%;
+//  }
+//
+//  .dialogs-list {
+//    height: 100%;
+//
+//    .chat-dialog {
+//      display: flex;
+//      flex-direction: row;
+//      width: 100%;
+//
+//      &:hover {
+//        cursor: pointer;
+//        background-color: #b5cbd6;
+//      }
+//
+//      .chat-info{
+//        flex-direction: column;
+//      }
+//    }
+//  }
+//
+//  .custom-popup-wrapper {
+//    position: absolute;
+//    top: 100%;
+//    left: 0;
+//    z-index: 1000;
+//    display: none;
+//    background-color: #f9f9f9;
+//  }
+//
+//  .custom-popup-wrapper > .message {
+//    padding: 10px 20px;
+//    border-bottom: 1px solid #ddd;
+//    color: #868686;
+//  }
+//
+//  .custom-popup-wrapper > .dropdown-menu {
+//    position: static;
+//    float: none;
+//    display: block;
+//    min-width: 160px;
+//    background-color: transparent;
+//    border: none;
+//    border-radius: 0;
+//    box-shadow: none;
+//  }
+//}
 
-  .dialog-list-wrapper {
-    width: 25%;
-    border-right: 2px solid #c8c8c8;
-  }
-
-  .messages-list-wrapper {
-    width: 65%;
-  }
-
-  .dialogs-list {
-    height: 100%;
-
-    .chat-dialog {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-
-      &:hover {
-        cursor: pointer;
-        background-color: #b5cbd6;
-      }
-
-      .chat-info{
-        flex-direction: column;
-      }
-    }
-  }
-
-  .custom-popup-wrapper {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1000;
-    display: none;
-    background-color: #f9f9f9;
-  }
-
-  .custom-popup-wrapper > .message {
-    padding: 10px 20px;
-    border-bottom: 1px solid #ddd;
-    color: #868686;
-  }
-
-  .custom-popup-wrapper > .dropdown-menu {
-    position: static;
-    float: none;
-    display: block;
-    min-width: 160px;
-    background-color: transparent;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-  }
+.dialogs-list {
+  //height: 60px;
+  //width: 60px;
+  //margin-right: 20px;
 }

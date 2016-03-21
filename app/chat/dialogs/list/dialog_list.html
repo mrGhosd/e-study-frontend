@@ -1,5 +1,28 @@
-<div class="dialogs-list">
-  <div class="chat-dialog" ng-repeat="cht in ctrl.chats" ng-click="ctrl.selectChat(cht)">
+<div class="dialogs-list" flex>
+  <md-list>
+    <md-list-item ng-repeat="cht in ctrl.chats" ng-click="ctrl.selectChat(cht)">
+      <img ng-src={{::cht.getImageURL()}} height="80" />
+      <div layout="column">
+        <span class="chat-title">{{::cht.getName()}}</span>
+        <span class="chat-last-update">{{::cht.updatedAt}}</span>
+      </div>
+    </md-list-item>
+  </md-list>
+  <!-- <md-card ng-repeat="cht in ctrl.chats" flex>
+    <md-card-title>
+      <md-card-avatar>
+        <img ng-src={{::cht.getImageURL()}} height="60" width="60" class="md-user-avatar" />
+      </md-card-avatar>
+      <md-card-title-text>
+          <div class="chat-title">{{::cht.getName()}}</div>
+          <div class="chat-last-update">{{::cht.updatedAt}}</div>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+    </md-card-content>
+  </md-card> -->
+
+  <!-- <div class="chat-dialog" ng-repeat="cht in ctrl.chats" ng-click="ctrl.selectChat(cht)">
     <div class="chat-image">
       <img ng-src={{::cht.getImageURL()}} height="60" width="60"  />
     </div>
@@ -10,5 +33,5 @@
     <div class="chat-actions">
       <a ng-click="ctrl.destroy(cht, $index)">X</a>
     </div>
-  </div>
+  </div> -->
 </div>

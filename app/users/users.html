@@ -5,14 +5,6 @@
     <label>{{'users.search_label' | translate}}</label>
     <input type="search" ng-model="searchField" ng-change="usr.dynamicSearch()">
   </md-input-container>
-    <!-- <form class="form" ng-submit="usr.search()">
-        <div class="form-group">
-            <div class="col-md-10">
-                <input type="search" class="form-control" ng-change="usr.dynamicSearch()" ng-model="searchField"/>
-            </div>
-        </div>
-        <input type="submit" value="{{ 'users.search_button' | translate }}" class="btn btn-info"/>
-    </form> -->
 </div>
 <div flex-xs layout="column"  class="users-list panel panel-primary">
   <md-card ng-repeat="user in users">
@@ -31,15 +23,4 @@
     <md-card-content>
     </md-card-content>
   </md-card>
-    <!-- <div class="panel-heading">
-        <span><a ui-sref="user({id: user.id})" >{{ user.correctNaming() }}</a></span>
-        <span class="pull-right">{{user.humanizedDate(user.created_at) }}</span>
-    </div>
-    <div class="panel-body">
-        <div class="avatar">
-            <img ng-src="{{user.avatarURL()}}" height="128" width="128" class="img-circle"/>
-        </div>
-        <user-status user="user" />
-        <message-popover user="user" />
-    </div> -->
 </div>
