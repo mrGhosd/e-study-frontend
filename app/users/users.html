@@ -9,8 +9,24 @@
         <input type="submit" value="{{ 'users.search_button' | translate }}" class="btn btn-info"/>
     </form>
 </div>
-<div ng-repeat="user in users" class="user-item panel panel-primary">
-    <div class="panel-heading">
+<div flex-xs layout="column"  class="users-list panel panel-primary">
+  <md-card ng-repeat="user in users">
+    <md-card-title>
+      <md-card-avatar>
+        <img ng-src="{{user.avatarURL()}}" height="60" width="60" class="md-user-avatar">
+      </md-card-avatar>
+      <md-card-title-text>
+        <div layout="row">
+          <span class="md-headline">{{user.correctNaming()}}</span>
+          <user-status user="user" />
+        </div>
+        <span class="md-subhead">{{user.humanizedDate(user.created_at) }}</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+    </md-card-content>
+  </md-card>
+    <!-- <div class="panel-heading">
         <span><a ui-sref="user({id: user.id})" >{{ user.correctNaming() }}</a></span>
         <span class="pull-right">{{user.humanizedDate(user.created_at) }}</span>
     </div>
@@ -20,5 +36,5 @@
         </div>
         <user-status user="user" />
         <message-popover user="user" />
-    </div>
+    </div> -->
 </div>
