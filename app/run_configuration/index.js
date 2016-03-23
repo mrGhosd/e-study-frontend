@@ -8,7 +8,7 @@ export default function($rootScope, AuthService, $location, $state, $modal,
       usSpinnerService, Notification, $cookies, WebSockets, PopupMessage) {
       currentUser($rootScope, WebSockets, PopupMessage, AuthService, $state);
       onSignedIn($rootScope, $state);
-      onSignOut($rootScope);
+      onSignOut($state, $rootScope);
       onStateChange($rootScope, usSpinnerService);
       onChangeStateError($rootScope, $state, Notification);
 }
