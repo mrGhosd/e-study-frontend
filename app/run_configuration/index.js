@@ -10,5 +10,5 @@ export default function($rootScope, AuthService, $location, $state, $modal,
       onSignedIn($rootScope, $state);
       onSignOut($state, $rootScope);
       onStateChange($rootScope, usSpinnerService);
-      onChangeStateError($rootScope, $state, Notification);
+      onChangeStateError($rootScope, $state, Notification, usSpinnerService);
 }
