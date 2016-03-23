@@ -1,32 +1,26 @@
-<form class="form-horizontal auth-form" name="modalView.authForm">
+<form class="form-horizontal auth-form" ng-submit="modalView.login()" name="modalView.authForm">
     <fieldset>
       <div class="form-group" ng-class="{ 'has-error':modalView.authForm.$submitted && modalView.authForm.$errors }">
-          <label class="control-label col-md-4">{{'auth.country' | translate}}</label>
+          <label class="control-label col-md-4">{{'auth.email' | translate}}</label>
           <div class="col-md-6">
-              <autocomplete onChangeInput="'awdaw'" />
+              <input type="email" class="form-control"  placeholder="{{'auth.email' | translate}}"
+                     ng-model="modalView.authForm.email" required>
           </div>
       </div>
-        <!-- <div class="form-group" ng-class="{ 'has-error':modalView.authForm.$submitted && modalView.authForm.$errors }">
-            <label class="control-label col-md-4">{{'auth.email' | translate}}</label>
-            <div class="col-md-6">
-                <input type="email" class="form-control"  placeholder="{{'auth.email' | translate}}"
-                       ng-model="modalView.authForm.email" required>
-            </div>
-        </div>
-        <div class="form-group" ng-class="{ 'has-error': modalView.authForm.$submitted && modalView.authForm.$errors}">
-            <label class="control-label col-md-4">{{'auth.password' | translate}}</label>
-            <div class="col-md-6">
-                <input type="password" class="form-control" placeholder="{{'auth.password' | translate}}"
-                       ng-model="modalView.authForm.password" required>
-            </div>
-        </div>
-        <div class="form-actions pull-right col-md-5">
-            <input type="submit" class="btn btn-primary" value="{{'auth.sign_in' | translate}}" ng-disabled="!modalView.authForm.$valid">
-            <button class="btn btn-warning" type="button" ng-click="modalView.cancel()">{{'auth.cancel' | translate}}</button>
-        </div>
+      <div class="form-group" ng-class="{ 'has-error': modalView.authForm.$submitted && modalView.authForm.$errors}">
+          <label class="control-label col-md-4">{{'auth.password' | translate}}</label>
+          <div class="col-md-6">
+              <input type="password" class="form-control" placeholder="{{'auth.password' | translate}}"
+                     ng-model="modalView.authForm.password" required>
+          </div>
+      </div>
+      <div class="form-actions pull-right col-md-5">
+        <input type="submit" class="btn btn-primary" value="{{'auth.sign_in' | translate}}" ng-disabled="!modalView.authForm.$valid">
+        <button class="btn btn-warning" type="button" ng-click="modalView.cancel()">{{'auth.cancel' | translate}}</button>
+      </div>
 
-        <div ng-if="modalView.authForm.$submitted && modalView.authForm.$errors" class="pull-right error">
-            {{modalView.authForm.$errors}}
-        </div> -->
+      <div ng-if="modalView.authForm.$submitted && modalView.authForm.$errors" class="pull-right error">
+          {{modalView.authForm.$errors}}
+      </div>
     </fieldset>
 </form>

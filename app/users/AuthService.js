@@ -1,4 +1,6 @@
 import User from './user.model';
+import { getBrowserName, getBrowserVersion, getOSName, getOSVersion } from 'util/browser';
+
 
 export default class AuthService{
     constructor(UserService, $window, $rootScope, $http, $q, ApiRequest,
@@ -37,6 +39,7 @@ export default class AuthService{
     }
 
     login(session){
+        session.authorization = this.authData();
         return this.ApiRequest.post("/sessions", { session })
         .then((response) => {
             this.receiveUserData(response.data);
@@ -44,7 +47,8 @@ export default class AuthService{
     }
 
     register(user){
-        return this.ApiRequest.post("/registrations", user)
+        user.authorization = this.authData();
+        return this.ApiRequest.post("/registrations", { user })
         .then( (response) => {
             this.receiveUserData(response);
         });
@@ -61,10 +65,19 @@ export default class AuthService{
     }
 
     receiveUserData(response){
-        console.log(response);
-        this.$sessionStorage.remember_token = response.remember_token;
-        this.$localStorage.remember_token  = response.remember_token;
+        this.$sessionStorage.remember_token = response.token;
+        this.$localStorage.remember_token  = response.token;
         this.signedIn = true;
         this.$rootScope.$broadcast('signedIn');
+    }
+
+    authData() {
+      return {
+        platform: getOSName(),
+        platform_version: getOSVersion(),
+        app_name: getBrowserName(),
+        app_version: getBrowserVersion(),
+        provider: "Estudy"
+      };
     }
 }

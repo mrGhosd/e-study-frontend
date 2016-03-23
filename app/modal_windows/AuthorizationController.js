@@ -53,6 +53,7 @@ export default class AuthorizationController {
     login(){
         const params = { email: this.authForm.email,
         password: this.authForm.password };
+        console.log(params);
         this.authService.login(params)
         .then((response) => {
             this.$modalInstance.dismiss('cancel');
