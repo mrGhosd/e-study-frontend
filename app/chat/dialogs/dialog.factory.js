@@ -1,15 +1,21 @@
 import Chat from './dialog.model.js';
+import envConfig from '../../../config/env.config.js';
 
 export default class DialogFactory {
   constructor(ApiRequest, $q) {
     this.ApiRequest = ApiRequest;
     this.$q = $q;
+    this.hostName = envConfig[process.env.NODE_ENV].chat_host;
+    this.portName = envConfig[process.env.NODE_ENV].chat_port;
+    this.fullUrl = `http://${this.hostName}:${this.portName}`;
   }
 
   getAll() {
+    let url = `${this.fullUrl}/chats`;
     let def = this.$q.defer();
-    this.ApiRequest.get('/chats')
+    this.ApiRequest.plainRequest(url, "GET")
     .then((response) => {
+      console.log(response);
       let newChats = [];
       for (const obj of response.data.chats) {
         const chat = new Chat(obj);

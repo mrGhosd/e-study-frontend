@@ -59,6 +59,11 @@ export default class User{
     avatarURL() {
         const hostName = envConfig[process.env.NODE_ENV].host;
         const portName = envConfig[process.env.NODE_ENV].port;
-        return this.image ? `http://${hostName}:${portName}${this.image.url}` : '/images/empty-user.png';
+        if (this.imageData) {
+          return `http://${hostName}:${portName}${this.imageData.image.url}`
+        }
+        else {
+          return this.image ? `http://${hostName}:${portName}${this.image.url}` : '/images/empty-user.png';
+        }
     }
 }

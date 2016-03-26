@@ -34,12 +34,21 @@ export default class ApiRequest{
     }
 
     request(url, method, parameters) {
+      return this.defaultRequest(url, method, parameters, false);
+    }
+
+    plainRequest(url, method, parameters) {
+      return this.defaultRequest(url, method, parameters, true);
+    }
+
+    defaultRequest(url, method, parameters, showFullURL) {
       const token = this.$sessionStorage.remember_token || this.$localStorage.remember_token;
       let userLocale = navigator.language || navigator.userLanguage;
+      let requestUri = showFullURL ? url : this.correctUrl(url);
 
       let request = {
         method: method,
-        url: this.correctUrl(url)
+        url: requestUri
       };
       if (method === "GET") {
         request.params = parameters

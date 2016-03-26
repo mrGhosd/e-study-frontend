@@ -4,8 +4,11 @@
       <img ng-src={{::cht.getImageURL()}} height="60" width="60"  />
     </div>
     <div class="chat-info">
+      <div class="chat-last-update">
+        <span>{{::cht.humanizedUpdatedAt()}}</span>
+      </div>
       <div class="chat-title">{{::cht.getName()}}</div>
-      <div class="chat-last-update">{{::cht.updatedAt}}</div>
+      <div class="chat-last-message" ng-bind-html="::cht.lastMessageText() | linky:'_blank'"></div>
     </div>
     <div class="chat-actions">
       <a ng-click="ctrl.destroy(cht, $index)">X</a>

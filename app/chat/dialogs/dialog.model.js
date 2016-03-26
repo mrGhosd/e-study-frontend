@@ -1,5 +1,6 @@
 import User from '../../users/user.model';
 import Message from '../messages/message.model';
+import { humanizedDateTime } from 'util/DateTimeHumanize';
 
 export default class Dialog {
   constructor(params){
@@ -39,5 +40,13 @@ export default class Dialog {
       }
     }
     return this;
+  }
+
+  lastMessageText() {
+    return this.messages.last.text.substr(0, 99);
+  }
+
+  humanizedUpdatedAt() {
+    return humanizedDateTime(this.updatedAt);
   }
 }
