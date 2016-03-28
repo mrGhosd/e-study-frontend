@@ -15,7 +15,6 @@ export default class DialogFactory {
     let def = this.$q.defer();
     this.ApiRequest.plainRequest(url, "GET")
     .then((response) => {
-      console.log(response);
       let newChats = [];
       for (const obj of response.data.chats) {
         const chat = new Chat(obj);
@@ -36,10 +35,11 @@ export default class DialogFactory {
   }
 
   get(id) {
+    let url = `${this.fullUrl}/chats/${id}`;
     let def = this.$q.defer();
-    this.ApiRequest.get(`/chats/${id}`)
+    this.ApiRequest.plainRequest(url, "GET")
     .then((response) => {
-      def.resolve(new Chat(response.data.chats));
+      def.resolve(new Chat(response.data.chat));
     });
     return def.promise;
   }

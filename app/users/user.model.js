@@ -60,7 +60,7 @@ export default class User{
         const hostName = envConfig[process.env.NODE_ENV].host;
         const portName = envConfig[process.env.NODE_ENV].port;
         if (this.imageData) {
-          return `http://${hostName}:${portName}${this.imageData.image.url}`
+          return `http://${hostName}:${portName}${this.imageData.image.url}`;
         }
         else {
           return this.image ? `http://${hostName}:${portName}${this.image.url}` : '/images/empty-user.png';
