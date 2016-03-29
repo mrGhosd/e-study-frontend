@@ -2,12 +2,12 @@ import Message from './message.model';
 import envConfig from '../../../config/env.config.js';
 
 export default class MessageFactory {
-  constructor(ApiRequest, $q) {
+  constructor(ApiRequest, $q, WebSockets) {
     this.ApiRequest = ApiRequest;
     this.$q = $q;
-    this.hostName = envConfig[process.env.NODE_ENV].chat_host;
-    this.portName = envConfig[process.env.NODE_ENV].chat_port;
-    this.fullUrl = `http://${this.hostName}:${this.portName}`;
+    const chatURL = envConfig[process.env.NODE_ENV].chat_url;
+    this.fullUrl = `http://${chatURL}`;
+    this.WebSockets = WebSockets;
   }
 
   create(params) {
@@ -15,7 +15,7 @@ export default class MessageFactory {
     let url = `${this.fullUrl}/messages`;
     this.ApiRequest.plainRequest(url, 'POST', params)
     .then((response) => {
-      console.log(response);
+      this.WebSockets.emit('chatmessage', response.data.message)
       def.resolve(new Message(response.data.message));
     })
     .catch((errors) => {

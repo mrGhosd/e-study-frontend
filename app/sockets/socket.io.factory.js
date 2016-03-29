@@ -4,7 +4,8 @@ import envConfig from '../../config/env.config.js';
 export default class WebSockets {
   constructor($rootScope) {
     const hostName = envConfig[process.env.NODE_ENV].host;
-    this.socket = io.connect(`http://${hostName}:5001`);
+    const chatURL = envConfig[process.env.NODE_ENV].chat_url;
+    this.socket = io.connect(`http://${chatURL}`);
     this.rootScope = $rootScope;
   }
 

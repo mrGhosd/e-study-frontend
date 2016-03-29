@@ -2,8 +2,7 @@ module.exports = {
   development: {
     host: "localhost",
     port: 3000,
-    chat_host: "localhost",
-    chat_port: 8080
+    chat_url: "127.0.0.1:5001"
   },
   test: {
     host: "localhost",

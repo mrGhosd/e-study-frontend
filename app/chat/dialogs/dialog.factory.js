@@ -5,9 +5,8 @@ export default class DialogFactory {
   constructor(ApiRequest, $q) {
     this.ApiRequest = ApiRequest;
     this.$q = $q;
-    this.hostName = envConfig[process.env.NODE_ENV].chat_host;
-    this.portName = envConfig[process.env.NODE_ENV].chat_port;
-    this.fullUrl = `http://${this.hostName}:${this.portName}`;
+    const chatURL = envConfig[process.env.NODE_ENV].chat_url;
+    this.fullUrl = `http://${chatURL}`;
   }
 
   getAll() {

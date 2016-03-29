@@ -59,7 +59,7 @@ export default class ApiRequest{
 
       this.$http.defaults.headers.common = {
           estudyauthtoken: token,
-          locale: userLocale,
+          locale: userLocale.substr(0, 2),
           'Content-Type': 'application/json'
       }
       return this.$http(request);
