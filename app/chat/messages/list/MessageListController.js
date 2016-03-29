@@ -12,7 +12,7 @@ export default class MessageListController {
     $scope.messages = this.chat.messages;
     this.WebSockets.on(`user${this.currentUser.id}chatmessage`, (event, data) => {
       const message = new Message(angular.fromJson(data.obj));
-      console.log(message.userId !== this.currentUser.id && message.chatId === this.chat.id);
+      console.log(message);
       if (message.userId !== this.currentUser.id &&
          message.chatId === this.chat.id){
         this.chat.messages.push(message);

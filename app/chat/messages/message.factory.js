@@ -15,7 +15,6 @@ export default class MessageFactory {
     let url = `${this.fullUrl}/messages`;
     this.ApiRequest.plainRequest(url, 'POST', params)
     .then((response) => {
-      this.WebSockets.emit('chatmessage', response.data.message)
       def.resolve(new Message(response.data.message));
     })
     .catch((errors) => {
