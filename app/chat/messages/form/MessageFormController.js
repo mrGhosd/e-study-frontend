@@ -1,12 +1,14 @@
 import envConfig from '../../../../config/env.config.js';
 
 export default class MessageFormController {
-  constructor($scope, $rootScope, MessageFactory, Upload) {
+  constructor($scope, $rootScope, MessageFactory, Upload,
+      WebSockets) {
     this.MessageFactory = MessageFactory;
     this.$scope = $scope;
     this.attaches = [];
     this.loadedAttaches = [];
     this.Upload = Upload;
+    this.WebSockets = WebSockets;
     this.host = envConfig[process.env.NODE_ENV].host;
     this.port = envConfig[process.env.NODE_ENV].port;
     this.fileUrl = `http://${this.host}:${this.port}/api/v0/attaches`;
@@ -33,7 +35,7 @@ export default class MessageFormController {
   }
 
   beginTyping() {
-    console.log("Begin typing");
+    this.WebSockets.emit('userbegintyping', { chat: this.chat, user: this.currentUser });
     clearTimeout(this.typingTimer);
     this.typingTimer = setTimeout(this.doneTyping, this.doneTypingInterval);
   }
