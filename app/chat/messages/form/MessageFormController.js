@@ -10,6 +10,8 @@ export default class MessageFormController {
     this.host = envConfig[process.env.NODE_ENV].host;
     this.port = envConfig[process.env.NODE_ENV].port;
     this.fileUrl = `http://${this.host}:${this.port}/api/v0/attaches`;
+    this.typingTimer = {};                //timer identifier
+    this.doneTypingInterval = 500;
   }
 
   upload(files){
@@ -28,6 +30,20 @@ export default class MessageFormController {
         })
       });
     }
+  }
+
+  beginTyping() {
+    console.log("Begin typing");
+    clearTimeout(this.typingTimer);
+    this.typingTimer = setTimeout(this.doneTyping, this.doneTypingInterval);
+  }
+
+  endTyping() {
+    clearTimeout(this.typingTimer);
+  }
+
+  doneTyping() {
+    console.log("End typing");
   }
 
   setAttachableParams(attach) {
