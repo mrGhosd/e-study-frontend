@@ -10,6 +10,23 @@ export default class MessageFactory {
     this.WebSockets = WebSockets;
   }
 
+  getList(params) {
+    let def = this.$q.defer();
+    let url = `${this.fullUrl}/messages`;
+    this.ApiRequest.plainRequest(url, 'GET', params)
+    .then((response) => {
+      let plainMessages = response.data.messages.resources;
+      let messages = plainMessages.map((message) => {
+        return new Message(message);
+      });
+      def.resolve(messages);
+    })
+    .catch((errors) => {
+      def.reject(errors);
+    });
+    return def.promise;
+  }
+
   create(params) {
     let def = this.$q.defer();
     let url = `${this.fullUrl}/messages`;

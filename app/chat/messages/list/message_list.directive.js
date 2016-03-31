@@ -1,11 +1,14 @@
 import _  from 'underscore';
 import MessageListController from './MessageListController';
 import template from './message_list.html';
+// import MessageFactory from '../message.factory';
 
-messageListDirective.$inject = [];
+messageListDirective.$inject = ['MessageFactory'];
 const topLoadValue = 200;
+let responseSended = false;
+let defaultPage = 1;
 
-export default function messageListDirective() {
+export default function messageListDirective(MessageFactory) {
   return {
     restrict: "E",
     replace: true,
@@ -21,7 +24,23 @@ export default function messageListDirective() {
       element.on('scroll', () => {
         let currentValue = $(element).scrollTop();
         if (currentValue <= topLoadValue) {
-            console.log(currentValue);
+          if (!responseSended) {
+            responseSended = true;
+            const params = {
+              page: ++defaultPage,
+              chat_id: $scope.ctrl.chat.id,
+              limit: 20
+            }
+            MessageFactory.getList(params).then((response) => {
+              let messages = response.reverse();
+              if (messages) {
+                  messages.map(message => $scope.messages.unshift(message));
+              }
+              setTimeout(() => {
+                responseSended = false;
+              }, 3000);
+            });
+          }
         }
       });
       $scope.$watchCollection('messages', function (newValue) {
