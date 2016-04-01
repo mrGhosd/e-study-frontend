@@ -37,7 +37,7 @@ export default class MessageFormController {
   beginTyping() {
     this.WebSockets.emit('userbegintyping', { chat: this.chat, user: this.currentUser });
     clearTimeout(this.typingTimer);
-    this.typingTimer = setTimeout(this.doneTyping, this.doneTypingInterval);
+    this.typingTimer = setTimeout(this.doneTyping.bind(this), this.doneTypingInterval);
   }
 
   endTyping() {
@@ -45,7 +45,7 @@ export default class MessageFormController {
   }
 
   doneTyping() {
-    console.log("End typing");
+    this.WebSockets.emit('userendtyping', { chat: this.chat, user: this.currentUser });
   }
 
   setAttachableParams(attach) {
@@ -87,6 +87,7 @@ export default class MessageFormController {
   }
 
   createMessage() {
+    this.WebSockets.emit('userendtyping', { chat: this.chat, user: this.currentUser });
     const message = {
       message: {
         user_id: this.currentUser.id,

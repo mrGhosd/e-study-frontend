@@ -1,10 +1,10 @@
 import _  from 'underscore';
 import MessageListController from './MessageListController';
 import template from './message_list.html';
-// import MessageFactory from '../message.factory';
 
 messageListDirective.$inject = ['MessageFactory'];
 const topLoadValue = 200;
+const messageLoadingTimeout = 2000;
 let responseSended = false;
 let defaultPage = 1;
 
@@ -38,7 +38,7 @@ export default function messageListDirective(MessageFactory) {
               }
               setTimeout(() => {
                 responseSended = false;
-              }, 3000);
+              }, messageLoadingTimeout);
             });
           }
         }
@@ -48,6 +48,13 @@ export default function messageListDirective(MessageFactory) {
           $(element).scrollTop($(element)[0].scrollHeight);
         }
       });
+
+      $scope.$watch('typing', function(val) {
+        if (val) {
+          console.log($(element)[0].scrollHeight);
+          $(element).scrollTop(0,$(element)[0].scrollHeight + 200);
+        }
+     });
     }
   };
 }

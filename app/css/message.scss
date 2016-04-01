@@ -51,7 +51,8 @@
     flex-grow: 1;
 
     &:hover {
-      overflow: auto;
+      overflow-y: auto;
+      overflow-y: hidden;
     }
 
     .message-item {

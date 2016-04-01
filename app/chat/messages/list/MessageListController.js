@@ -4,6 +4,7 @@ import User from 'users/user.model';
 export default class MessageListController {
   constructor($scope, $rootScope, DialogFactory, MessageFactory,
     WebSockets, usSpinnerService, AuthService) {
+    this.$scope = $scope;
     this.DialogFactory = DialogFactory;
     this.MessageFactory = MessageFactory;
     this.rootScope = $rootScope;
@@ -13,6 +14,7 @@ export default class MessageListController {
     $scope.messages = this.chat.messages.reverse();
     this.userTypingSocket();
     this.newMessageSocket();
+    this.userEndTyping();
   }
 
   setDataFromParentController(data) {
@@ -33,7 +35,17 @@ export default class MessageListController {
     this.WebSockets.on(`chat${this.chat.id}usertyping`, (event, data) => {
       const user = new User(angular.fromJson(data.user));
       if (user.id !== this.currentUser.id) {
-        console.log(user);
+        this.$scope.typing = `${user.correctNaming()} typing...`;
+      }
+    });
+  }
+
+  userEndTyping() {
+    this.WebSockets.on(`chat${this.chat.id}userendtyping`, (event, data) => {
+      console.log(data);
+      const user = new User(angular.fromJson(data.user));
+      if (user.id !== this.currentUser.id) {
+        this.$scope.typing = null;
       }
     });
   }

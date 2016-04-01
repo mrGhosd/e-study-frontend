@@ -13,6 +13,9 @@
     </div>
     <div class="message-created-at">{{::msg.createdAt}}</div>
   </div>
+  <div ng-if="typing !== null">
+    {{typing}}
+  </div>
   <div ng-if="messages.length < 1">
     В данном диалоге еще нет сообщений
   </div>
