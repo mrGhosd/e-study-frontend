@@ -1,6 +1,8 @@
 .messages-list-wrapper{
   display: flex;
   flex-direction: column;
+  margin-top: 10px;
+  flex: 1 100%;
 
   .messages-list-data {
     display: flex;

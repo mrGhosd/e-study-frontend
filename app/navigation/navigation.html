@@ -1,4 +1,4 @@
-<ul class="nav nav-sidebar" ng-controller="NavigationController as navCtrl">
+<ul ng-controller="NavigationController as navCtrl">
     <li ng-show="navCtrl.isSignedIn()"  ng-class="{active: navCtrl.isActive('/profile')}"><a ui-sref="profile">{{'nav.profile' | translate}}</a></li>
     <li ng-class="{active: navCtrl.isActive('/users')}"><a ui-sref="users">{{'nav.users' | translate}}</a></li>
     <li ng-show="navCtrl.isSignedIn()" ng-class="{active: navCtrl.isActive('/chats')}"><a ui-sref="chats">{{'nav.chats' | translate}}</a></li>
