@@ -17,12 +17,12 @@ export default class DialogListController {
   }
 
   setChatList(chat) {
-    this.currentUser = chat.currentUser;
     this.chats = chat.chats.map((chat) => chat.setUsersArrayForUser(this.currentUser));
   }
 
   selectChat(chat) {
     if (this.$state.params.id != chat.id) {
+      this.chatSelected = chat;
       this.$state.go('chats.chat', {id: chat.id});
     }
   }

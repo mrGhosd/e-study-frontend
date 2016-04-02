@@ -25,10 +25,6 @@
   min-height: 100px;
   padding: 6px 12px;
 }
-.navbar.navbar-inverse.navbar-fixed-top.ng-scope{
-  background-color: #FFCC00;
-  border: none;
-}
 
 li.active{
   background-color: lightgreen;
@@ -51,19 +47,50 @@ form.restore-form{
   margin-top:20px;
 }
 
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
 body {
   background-color: #f0f2f5;
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+  flex-direction: column;
+
+  .app-navbar{
+    background-color: #FFCC00;
+    border: none;
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+  }
 
   .main-content{
-    margin-top: 70px;
     display: flex;
     flex-direction: row;
+    height: 100%;
+    position: relative;
 
     .main.mainContentView {
-      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+
+      ui-view {
+        display: flex;
+        flex: 1;
+        flex-grow: 1;
+        height: 100%;
+
+        .fullHeight {
+          height: 100%;
+        }
+      }
+    }
+
+    .basePage {
+      position: absolute;
+      height: 100%;
     }
   }
 

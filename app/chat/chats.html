@@ -3,5 +3,8 @@
     <dialog-list chats="chat.chats"></dialog-list>
     <dialog-form chats="chat.chats" current-user="chat.currentUser" />
   </div>
-  <ui-view class="messages-list-wrapper"></ui-view>
+  <div class="messages-list-wrapper">
+    <ui-view></ui-view>
+    <div class="empty-messages-list"></div>
+  </div>
 </div>
