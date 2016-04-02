@@ -71,8 +71,10 @@ body {
     flex-direction: row;
     height: 100%;
     position: relative;
+    padding: 0 10em;
 
     .main.mainContentView {
+      width: 100%;
       display: flex;
       flex-direction: column;
 

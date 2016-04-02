@@ -37,3 +37,15 @@
     }
   }
 }
+
+.users-page {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 100%;
+}
+
+.user-page {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 100%;
+}
