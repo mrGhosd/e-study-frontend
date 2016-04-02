@@ -6,6 +6,9 @@
   min-width: 20em;
 
   .dialogs-list {
+    height: 100%;
+    flex: 1;
+    
     .chat-dialog {
       padding: 10px;
 
