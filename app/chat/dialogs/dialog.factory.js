@@ -9,6 +9,21 @@ export default class DialogFactory {
     this.fullUrl = `http://${chatURL}`;
   }
 
+  search() {
+    let url = `${this.fullUrl}/chats/search`;
+    let def = this.$q.defer();
+    this.ApiRequest.plainRequest(url, "GET")
+    .then((response) => {
+      let newChats = [];
+      for (const obj of response.data.chats) {
+        const chat = new Chat(obj);
+        newChats.push(chat);
+      }
+      def.resolve(newChats);
+    });
+    return def.promise;
+  }
+
   getAll() {
     let url = `${this.fullUrl}/chats`;
     let def = this.$q.defer();
@@ -17,6 +32,7 @@ export default class DialogFactory {
       let newChats = [];
       for (const obj of response.data.chats) {
         const chat = new Chat(obj);
+        console.log(response.data.chats);
         newChats.push(chat);
       }
       def.resolve(newChats);

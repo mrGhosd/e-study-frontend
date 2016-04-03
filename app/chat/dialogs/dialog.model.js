@@ -13,6 +13,10 @@ export default class Dialog {
     }
   }
 
+  parseChatUsers() {
+    
+  }
+
   parseChatMessags() {
     let messages = [];
     this.messages.forEach((item) => {

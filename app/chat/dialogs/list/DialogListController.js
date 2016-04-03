@@ -27,6 +27,13 @@ export default class DialogListController {
     }
   }
 
+  searchDialog() {
+    this.DialogFactory.search()
+    .then((chats) => {
+      this.chats = chats.map(chat => chat.setUsersArrayForUser(this.AuthService.currentUserValue))
+    });
+  }
+
   destroy(chat, $index) {
     event.preventDefault();
     event.stopPropagation();

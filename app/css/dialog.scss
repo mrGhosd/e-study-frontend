@@ -8,7 +8,11 @@
   .dialogs-list {
     height: 100%;
     flex: 1;
-    
+
+    .dialog-search-field {
+      border: none;
+    }
+
     .chat-dialog {
       padding: 10px;
 
