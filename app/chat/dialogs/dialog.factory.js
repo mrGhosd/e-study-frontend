@@ -9,10 +9,10 @@ export default class DialogFactory {
     this.fullUrl = `http://${chatURL}`;
   }
 
-  search() {
+  search(params) {
     let url = `${this.fullUrl}/chats/search`;
     let def = this.$q.defer();
-    this.ApiRequest.plainRequest(url, "GET")
+    this.ApiRequest.plainRequest(url, "GET", params)
     .then((response) => {
       let newChats = [];
       for (const obj of response.data.chats) {

@@ -9,6 +9,7 @@ export default class DialogListController {
     this.$state = $state;
     this.usSpinnerService = usSpinnerService;
     this.chatUsers = [];
+    this.defaultChats = this.chats;
     this.rootScope = $rootScope;
     this.DialogFactory = DialogFactory;
     this.WebSockets = WebSockets;
@@ -28,10 +29,18 @@ export default class DialogListController {
   }
 
   searchDialog() {
-    this.DialogFactory.search()
-    .then((chats) => {
-      this.chats = chats.map(chat => chat.setUsersArrayForUser(this.AuthService.currentUserValue))
-    });
+    if (this.searchField.length >= 1) {
+      const params = {
+        search: this.searchField
+      };
+      this.DialogFactory.search(params)
+      .then((chats) => {
+        this.chats = chats.map(chat => chat.setUsersArrayForUser(this.AuthService.currentUserValue))
+      });
+    }
+    else {
+      this.chats = this.defaultChats;
+    }
   }
 
   destroy(chat, $index) {
