@@ -43,7 +43,7 @@ export default class Dialog {
   }
 
   lastMessageText() {
-    return this.messages.last.text.substr(0, 99);
+    return this.messages.last.text.substr(0, 25) + "...";
   }
 
   humanizedUpdatedAt() {

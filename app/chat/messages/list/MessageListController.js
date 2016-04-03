@@ -3,7 +3,7 @@ import User from 'users/user.model';
 
 export default class MessageListController {
   constructor($scope, $rootScope, DialogFactory, MessageFactory,
-    WebSockets, usSpinnerService, AuthService) {
+    WebSockets, usSpinnerService, AuthService, $sce) {
     this.$scope = $scope;
     this.DialogFactory = DialogFactory;
     this.MessageFactory = MessageFactory;
@@ -11,6 +11,7 @@ export default class MessageListController {
     this.WebSockets = WebSockets;
     this.usSpinnerService = usSpinnerService;
     //need for updating for messages list
+    this.$sce = $sce;
     $scope.messages = this.chat.messages.reverse();
     this.userTypingSocket();
     this.newMessageSocket();
@@ -42,7 +43,6 @@ export default class MessageListController {
 
   userEndTyping() {
     this.WebSockets.on(`chat${this.chat.id}userendtyping`, (event, data) => {
-      console.log(data);
       const user = new User(angular.fromJson(data.user));
       if (user.id !== this.currentUser.id) {
         this.$scope.typing = null;
