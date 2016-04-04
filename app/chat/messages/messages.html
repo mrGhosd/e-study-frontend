@@ -1,4 +1,18 @@
 <div class="messages-list-wrapper">
-  <message-list current-user="currentUser" chat="chat"></message-list>
-  <message-form current-user="currentUser" chat="chat"></message-form>
+  <div class="messages-actions-form block">
+    <span uib-dropdown on-toggle="ctrl.toggled(open)">
+      <a href id="simple-dropdown" uib-dropdown-toggle>
+        Actions
+      </a>
+      <ul uib-dropdown-menu aria-labelledby="simple-dropdown">
+        <li role="menuitem"><a href="#">Action</a></li>
+        <li role="menuitem"><a href="#">Another action</a></li>
+        <li role="menuitem"><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li role="menuitem"><a href="#">Separated link</a></li>
+      </ul>
+    </span>
+  </div>
+  <message-list current-user="ctrl.currentUser" chat="ctrl.chat"></message-list>
+  <message-form current-user="ctrl.currentUser" chat="ctrl.chat"></message-form>
 </div>

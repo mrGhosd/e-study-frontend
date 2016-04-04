@@ -23,10 +23,6 @@ export function routes($stateProvider, $urlRouterProvider) {
               return DialogFactory.get($stateParams.id);
             }]
           },
-          controller: ($scope, chat, currentUser) => {
-              $scope.chat = chat;
-              $scope.currentUser = currentUser;
-          }
-
+          controller: 'MainMessagesListController as ctrl'
         })
 }
