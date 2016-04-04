@@ -31,7 +31,7 @@ export default class DialogListController {
   searchDialog() {
     if (this.searchField.length >= 1) {
       const params = {
-        search: this.searchField
+        query: this.searchField
       };
       this.DialogFactory.search(params)
       .then((chats) => {

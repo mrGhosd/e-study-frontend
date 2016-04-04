@@ -10,12 +10,12 @@ export default class DialogFactory {
   }
 
   search(params) {
-    let url = `${this.fullUrl}/chats/search`;
     let def = this.$q.defer();
-    this.ApiRequest.plainRequest(url, "GET", params)
+    this.ApiRequest.get('/search/chats', params)
     .then((response) => {
+      console.log(response.data.search);
       let newChats = [];
-      for (const obj of response.data.chats) {
+      for (const obj of response.data.search) {
         const chat = new Chat(obj);
         newChats.push(chat);
       }
