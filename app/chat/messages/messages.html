@@ -1,18 +1,15 @@
 <div class="messages-list-wrapper">
   <div class="messages-actions-form block">
-    <span uib-dropdown on-toggle="ctrl.toggled(open)">
+    <div ng-show="ctrl.showSearchForm" ng-include="'/chat/messages/search_form.html'"></div>
+    <span ng-hide="ctrl.showSearchForm" uib-dropdown on-toggle="ctrl.toggled(open)">
       <a href id="simple-dropdown" uib-dropdown-toggle>
         Actions
       </a>
       <ul uib-dropdown-menu aria-labelledby="simple-dropdown">
-        <li role="menuitem"><a href="#">Action</a></li>
-        <li role="menuitem"><a href="#">Another action</a></li>
-        <li role="menuitem"><a href="#">Something else here</a></li>
-        <li class="divider"></li>
-        <li role="menuitem"><a href="#">Separated link</a></li>
+        <li role="menuitem"><a href="#" ng-click="ctrl.optionsMenuClick('search')">Search</a></li>
       </ul>
     </span>
   </div>
-  <message-list current-user="ctrl.currentUser" chat="ctrl.chat"></message-list>
+  <message-list current-user="ctrl.currentUser" chat="chat"></message-list>
   <message-form current-user="ctrl.currentUser" chat="ctrl.chat"></message-form>
 </div>

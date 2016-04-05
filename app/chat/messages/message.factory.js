@@ -10,6 +10,21 @@ export default class MessageFactory {
     this.WebSockets = WebSockets;
   }
 
+  search(chat, params) {
+    const url = `/search/chats/${chat.id}`;
+    let def = this.$q.defer();
+    this.ApiRequest.get(url, params)
+    .then((response) => {
+      let messages = [];
+      response.data.search.forEach((item) => {
+        const msg = new Message(item);
+        messages.push(msg);
+      });
+      def.resolve(messages);
+    });
+    return def.promise;
+  }
+
   getList(params) {
     let def = this.$q.defer();
     let url = `${this.fullUrl}/messages`;

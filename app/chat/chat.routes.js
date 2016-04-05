@@ -1,3 +1,4 @@
+import MainMessagesListController from './messages/MainMessagesListController';
 routes.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 export function routes($stateProvider, $urlRouterProvider) {
@@ -18,11 +19,11 @@ export function routes($stateProvider, $urlRouterProvider) {
         .state('chats.chat', {
           url: '/:id',
           template: require('./messages/messages.html'),
+          controller: 'MainMessagesListController as ctrl',
           resolve: {
             chat: ['DialogFactory', '$stateParams', (DialogFactory, $stateParams) => {
               return DialogFactory.get($stateParams.id);
             }]
-          },
-          controller: 'MainMessagesListController as ctrl'
+          }
         })
 }

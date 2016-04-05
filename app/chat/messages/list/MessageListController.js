@@ -2,7 +2,7 @@ import Message from '../message.model';
 import User from 'users/user.model';
 
 export default class MessageListController {
-  constructor($scope, $rootScope, DialogFactory, MessageFactory,
+  constructor($scope, $state, $rootScope, DialogFactory, MessageFactory,
     WebSockets, usSpinnerService, AuthService, $sce) {
     this.$scope = $scope;
     this.DialogFactory = DialogFactory;
@@ -12,7 +12,10 @@ export default class MessageListController {
     this.usSpinnerService = usSpinnerService;
     //need for updating for messages list
     this.$sce = $sce;
-    $scope.messages = this.chat.messages.reverse();
+    console.log(this);
+    this.currentUser = AuthService.currentUserValue;
+    this.chat = this.$scope.chat;
+    $scope.messages = this.$scope.messages.reverse();
     this.userTypingSocket();
     this.newMessageSocket();
     this.userEndTyping();

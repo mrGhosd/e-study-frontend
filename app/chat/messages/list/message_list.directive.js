@@ -10,17 +10,13 @@ let defaultPage = 1;
 
 export default function messageListDirective(MessageFactory) {
   return {
-    restrict: "E",
-    replace: true,
+    restrict: "EA",
     template: template,
-    scope: {
-        currentUser: '=',
-        chat: "="
-    },
-    bindToController: true,
-    controller: MessageListController,
-    controllerAs: "ctrl",
-    link: function($scope, element) {
+    scope: false,
+    // bindToController: true,
+    // controller: MessageListController,
+    // controllerAs: "ctrl",
+    link: function($scope, element, attrs) {
       element.on('scroll', () => {
         let currentValue = $(element).scrollTop();
         if (currentValue <= topLoadValue) {
@@ -43,6 +39,7 @@ export default function messageListDirective(MessageFactory) {
           }
         }
       });
+
       $scope.$watchCollection('messages', function (newValue) {
         if (newValue) {
           $(element).scrollTop($(element)[0].scrollHeight);
@@ -51,7 +48,6 @@ export default function messageListDirective(MessageFactory) {
 
       $scope.$watch('typing', function(val) {
         if (val) {
-          console.log($(element)[0].scrollHeight);
           $(element).scrollTop(0,$(element)[0].scrollHeight + 200);
         }
      });

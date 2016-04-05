@@ -13,7 +13,6 @@ export default class DialogFactory {
     let def = this.$q.defer();
     this.ApiRequest.get('/search/chats', params)
     .then((response) => {
-      console.log(response.data.search);
       let newChats = [];
       for (const obj of response.data.search) {
         const chat = new Chat(obj);
@@ -32,7 +31,6 @@ export default class DialogFactory {
       let newChats = [];
       for (const obj of response.data.chats) {
         const chat = new Chat(obj);
-        console.log(response.data.chats);
         newChats.push(chat);
       }
       def.resolve(newChats);
