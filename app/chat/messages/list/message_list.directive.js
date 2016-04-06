@@ -1,23 +1,26 @@
 import _  from 'underscore';
 import MessageListController from './MessageListController';
 import template from './message_list.html';
+import Message from '../message.model';
+import User from 'users/user.model';
 
-messageListDirective.$inject = ['MessageFactory'];
+messageListDirective.$inject = ['MessageFactory', 'WebSockets', '$timeout', '$document'];
 const topLoadValue = 200;
 const messageLoadingTimeout = 2000;
 let responseSended = false;
 let defaultPage = 1;
 
-export default function messageListDirective(MessageFactory) {
+export default function messageListDirective(MessageFactory, WebSockets, $timeout, $document) {
   return {
-    restrict: "EA",
+    restrict: "E",
     template: template,
+    replace: true,
     scope: false,
-    // bindToController: true,
-    // controller: MessageListController,
-    // controllerAs: "ctrl",
     link: function($scope, element, attrs) {
-      element.on('scroll', () => {
+      let currentUser = $scope.ctrl.currentUser;
+      let chat = $scope.ctrl.chat;
+
+      element.on('scroll', function() {
         let currentValue = $(element).scrollTop();
         if (currentValue <= topLoadValue) {
           if (!responseSended) {
@@ -40,9 +43,33 @@ export default function messageListDirective(MessageFactory) {
         }
       });
 
+
+      WebSockets.on(`user${currentUser.id}chatmessage`, (event, data) => {
+        const message = new Message(angular.fromJson(data.obj));
+        if (message.userId !== currentUser.id &&
+           message.chatId === this.chat.id){
+          this.chat.messages.push(message);
+        }
+      });
+
+      WebSockets.on(`chat${chat.id}usertyping`, (event, data) => {
+        const user = new User(angular.fromJson(data.user));
+        if (user.id !== currentUser.id) {
+          this.$scope.typing = `${user.correctNaming()} typing...`;
+        }
+      });
+
+      WebSockets.on(`chat${chat.id}userendtyping`, (event, data) => {
+        const user = new User(angular.fromJson(data.user));
+        if (user.id !== currentUser.id) {
+          this.$scope.typing = null;
+        }
+      });
+
       $scope.$watchCollection('messages', function (newValue) {
         if (newValue) {
-          $(element).scrollTop($(element)[0].scrollHeight);
+          let scrollValue = $(element)[0].scrollHeight * 2;
+          $(element).scrollTop(100000000000);
         }
       });
 
