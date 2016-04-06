@@ -17,8 +17,8 @@ export default function messageListDirective(MessageFactory, WebSockets, $timeou
     replace: true,
     scope: false,
     link: function($scope, element, attrs) {
-      let currentUser = $scope.ctrl.currentUser;
-      let chat = $scope.ctrl.chat;
+      $scope.currentUser = $scope.ctrl.currentUser;
+      $scope.chat = $scope.ctrl.chat;
 
       element.on('scroll', function() {
         let currentValue = $(element).scrollTop();
@@ -44,25 +44,25 @@ export default function messageListDirective(MessageFactory, WebSockets, $timeou
       });
 
 
-      WebSockets.on(`user${currentUser.id}chatmessage`, (event, data) => {
+      WebSockets.on(`user${$scope.currentUser.id}chatmessage`, (event, data) => {
         const message = new Message(angular.fromJson(data.obj));
-        if (message.userId !== currentUser.id &&
-           message.chatId === this.chat.id){
-          this.chat.messages.push(message);
+        if (message.userId !== $scope.currentUser.id &&
+           message.chatId === $scope.chat.id){
+           $scope.chat.messages.push(message);
         }
       });
 
-      WebSockets.on(`chat${chat.id}usertyping`, (event, data) => {
+      WebSockets.on(`chat${$scope.chat.id}usertyping`, (event, data) => {
         const user = new User(angular.fromJson(data.user));
-        if (user.id !== currentUser.id) {
-          this.$scope.typing = `${user.correctNaming()} typing...`;
+        if (user.id !== $scope.currentUser.id) {
+          $scope.typing = `${user.correctNaming()} typing...`;
         }
       });
 
-      WebSockets.on(`chat${chat.id}userendtyping`, (event, data) => {
+      WebSockets.on(`chat${$scope.chat.id}userendtyping`, (event, data) => {
         const user = new User(angular.fromJson(data.user));
-        if (user.id !== currentUser.id) {
-          this.$scope.typing = null;
+        if (user.id !== $scope.currentUser.id) {
+          $scope.typing = null;
         }
       });
 
