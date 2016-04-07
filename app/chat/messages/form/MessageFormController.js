@@ -103,7 +103,8 @@ export default class MessageFormController {
       this.chat.messages.push(message);
     })
     .catch((errors) => {
-      this.errors = errors;
+      this.errors = errors.data.errors;
+      console.log(this.errors);
     });
   }
 }
