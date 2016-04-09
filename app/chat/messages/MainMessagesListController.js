@@ -3,7 +3,7 @@ export default class MainMessagesListController {
     this.$scope = $scope;
     this.chat = this.$scope.chat = chat;
     this.defaultChat = angular.copy(this.chat);
-    this.messages = this.$scope.messages = chat.messages;
+    this.messages = this.$scope.messages = chat.messages.reverse();
     this.currentUser = currentUser;
     this.MessageFactory = MessageFactory;
     this.showSearchForm = false;
@@ -20,7 +20,7 @@ export default class MainMessagesListController {
   disableSearchForm() {
     this.showSearchForm = false;
     this.$scope.chat = this.defaultChat;
-    this.$scope.messages = this.defaultChat.messages;
+    this.$scope.messages = this.defaultChat.messages.reverse();
   }
 
   searchMessages() {
@@ -33,7 +33,7 @@ export default class MainMessagesListController {
       let chat = this.chat;
       chat.messages = messages;
       this.chat = this.$scope.chat = chat;
-      this.messages = this.$scope.messages = messages;
+      this.messages = this.$scope.messages = messages.reverse();
     });
   }
 }
