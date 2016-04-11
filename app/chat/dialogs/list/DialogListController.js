@@ -15,14 +15,7 @@ export default class DialogListController {
     this.WebSockets = WebSockets;
     this.AuthService = AuthService;
     this.handleSockets();
-    if ($state.params.id) {
-      console.log($state);
-      this.chats.map((chat) => {
-        if(chat.id == $state.params.id) {
-            this.chatSelected = chat;
-        }
-      });
-    }
+    this.handleChatSelecting();
   }
 
   setChatList(chat) {
@@ -33,6 +26,23 @@ export default class DialogListController {
     if (this.$state.params.id != chat.id) {
       this.chatSelected = chat;
       this.$state.go('chats.chat', {id: chat.id});
+    }
+  }
+
+  handleChatSelecting() {
+    this.rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState,
+      fromParams, error) => {
+        if (toState.name === 'chats') {
+          this.chatSelected = null;
+        }
+    });
+
+    if (this.$state.params.id) {
+      this.chats.map((chat) => {
+        if(chat.id == this.$state.params.id) {
+            this.chatSelected = chat;
+        }
+      });
     }
   }
 
