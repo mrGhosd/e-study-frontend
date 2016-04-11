@@ -4,7 +4,9 @@
     <input type="text" placeholder="Search.." class="dialog-search-field"
     ng-change="ctrl.searchDialog()" ng-model="ctrl.searchField"/>
   </div>
-  <div class="chat-dialog" ng-repeat="cht in ctrl.chats" ng-click="ctrl.selectChat(cht)">
+  {{ctrl.selectedChat}}
+  <div class="chat-dialog" ng-class="{selected: ctrl.chatSelected.id === cht.id}"
+  ng-repeat="cht in ctrl.chats" ng-click="ctrl.selectChat(cht)">
     <div class="chat-image">
       <img ng-src={{::cht.getImageURL()}} height="60" width="60"  />
     </div>

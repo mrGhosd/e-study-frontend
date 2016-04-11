@@ -9,6 +9,9 @@ export function onChangeStateError($rootScope, $state, Notification, usSpinnerSe
               if (toState.name === 'profile') {
                   $state.go('users');
               }
+              if (toState.name.match(/chat/)) {
+                $state.go('users');
+              }
           }
           Notification.alert('errors.401');
       }

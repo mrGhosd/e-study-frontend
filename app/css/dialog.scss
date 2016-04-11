@@ -16,6 +16,15 @@
     .chat-dialog {
       padding: 10px;
 
+      &.selected {
+        background-color: #7293b6;
+        color: white;
+
+        a {
+          color: white;
+        }
+      }
+
       .chat-info {
         padding: 10px;
       }

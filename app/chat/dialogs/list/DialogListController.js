@@ -3,7 +3,7 @@ import Chat from 'chat/dialogs/dialog.model.js';
 import User from 'users/user.model';
 
 export default class DialogListController {
-  constructor($rootScope, usSpinnerService, $state, DialogFactory,
+  constructor($rootScope, $scope, usSpinnerService, $state, DialogFactory,
     WebSockets, AuthService) {
     this.users = [];
     this.$state = $state;
@@ -15,6 +15,14 @@ export default class DialogListController {
     this.WebSockets = WebSockets;
     this.AuthService = AuthService;
     this.handleSockets();
+    if ($state.params.id) {
+      console.log($state);
+      this.chats.map((chat) => {
+        if(chat.id == $state.params.id) {
+            this.chatSelected = chat;
+        }
+      });
+    }
   }
 
   setChatList(chat) {
