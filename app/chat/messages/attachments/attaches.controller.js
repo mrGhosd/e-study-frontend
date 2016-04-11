@@ -2,9 +2,9 @@ import envConfig from '../../../../config/env.config.js';
 
 export default class AttachesController {
     constructor($scope) {
-      const hostName = envConfig[process.env.NODE_ENV].host;
-      const portName = envConfig[process.env.NODE_ENV].port;
-      $scope.attachURL = `http://${hostName}:${portName}${this.attach.url}`;
+      this.hostName = envConfig[process.env.NODE_ENV].host;
+      this.portName = envConfig[process.env.NODE_ENV].port;
+      $scope.attachURL = this.formCorrectURL();
       $scope.fileType = this.attach.type;
       this.attachURL = $scope.attachURL;
       this.fileType = $scope.fileType;
@@ -16,4 +16,15 @@ export default class AttachesController {
       this.isAttach = $scope.fileType === 'Attach' || $scope.fileType == null;
       this.isPresentation = $scope.fileType === 'Presentation';
     }
+
+    formCorrectURL() {
+      if (!this.attach.fileData) {
+        return `http://${this.hostName}:${this.portName}${this.attach.url}`;
+      }
+      else {
+        console.log(this.attach.fileData);
+        return `http://${this.hostName}:${this.portName}${this.attach.fileData.attach.url}`;
+      }
+    }
+
 }
