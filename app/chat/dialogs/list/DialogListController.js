@@ -16,6 +16,7 @@ export default class DialogListController {
     this.AuthService = AuthService;
     this.handleSockets();
     this.handleChatSelecting();
+    this.createChat = false;
   }
 
   setChatList(chat) {
@@ -106,5 +107,9 @@ export default class DialogListController {
     chat.users = users;
 
     return chat;
+  }
+
+  renderCreateChatView() {
+    this.createChat = !this.createChat;
   }
 }

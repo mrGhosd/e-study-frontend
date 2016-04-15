@@ -7,10 +7,7 @@ export default function dialogFormDirective() {
   return {
     restrict: "E",
     replace: true,
-    scope: {
-      chats: "=",
-      currentUser: '='
-    },
+    scope: {},
     template: template,
     bindToController: true,
     controllerAs: "ctrl",

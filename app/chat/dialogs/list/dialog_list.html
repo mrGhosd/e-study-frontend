@@ -1,11 +1,12 @@
 <div class="dialogs-list block">
   <div class="search-chat-form">
-    <i>search</i>
-    <input type="text" placeholder="Search.." class="dialog-search-field"
+    <i ng-if="ctrl.createChat === false">search</i>
+    <input ng-if="ctrl.createChat === false" type="text" placeholder="Search.." class="dialog-search-field"
     ng-change="ctrl.searchDialog()" ng-model="ctrl.searchField"/>
+    <button ng-click="ctrl.renderCreateChatView()" class="toggleDialogForm">+</button>
   </div>
-  {{ctrl.selectedChat}}
-  <div class="chat-dialog" ng-class="{selected: ctrl.chatSelected.id === cht.id}"
+  <dialog-form ng-if="ctrl.createChat === true"></dialog-form>
+  <div ng-if="ctrl.createChat === false" class="chat-dialog" ng-class="{selected: ctrl.chatSelected.id === cht.id}"
   ng-repeat="cht in ctrl.chats" ng-click="ctrl.selectChat(cht)">
     <div class="chat-image">
       <img ng-src={{::cht.getImageURL()}} height="60" width="60"  />
