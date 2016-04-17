@@ -13,9 +13,6 @@ export default class User{
 
     correctNaming(){
         if(this.last_name && this.first_name){
-            if(this.middle_name){
-                return this.last_name + " " + this.first_name + " " + this.middle_name;
-            }
             return this.last_name + " " + this.first_name;
         } else {
             return this.email;
@@ -39,13 +36,6 @@ export default class User{
       let status = '';
       let diffSeconds = this.getDateDiffInSeconds();
       return diffSeconds < 60;
-      // if (diffSeconds > 60) {
-      //   status = 'Offline';
-      // }
-      // else {
-      //   status = <img ng-src='/images/apple_icon.png'/> + 'Online';
-      // }
-      // return status;
     }
 
     getDateDiffInSeconds() {
