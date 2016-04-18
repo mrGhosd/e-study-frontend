@@ -1,13 +1,15 @@
 export default class DialogFormController {
-  constructor($rootScope, usSpinnerService, $state, DialogFactory, UserService) {
+  constructor($scope, $rootScope, usSpinnerService, $state, DialogFactory, UserService) {
     this.users = [];
     this.$state = $state;
+    this.$scope = $scope;
     this.UserService = UserService;
     this.usSpinnerService = usSpinnerService;
     this.chatUsers = [];
     this.DialogFactory = DialogFactory;
     this.rootScope = $rootScope;
     this.formVisible = false;
+    this.$scope.users = [];
   }
 
   createChat() {
@@ -23,34 +25,11 @@ export default class DialogFormController {
     });
   }
 
-  selectUser($item, $model, $label) {
-    let elementIsUniq = true;
-    for(const item of this.chatUsers) {
-      if (item.id === $model.id) {
-        elementIsUniq = false;
-      }
-    }
-    if (elementIsUniq){
-      this.chatUsers.push($model);
-    }
-    this.selectedUser = null;
-  }
-
-  removeNewMember($index) {
-    this.chatUsers.splice($index, 1);
-  }
-
-  changeInputValue() {
-    this.UserService.search(this.selectedUser)
+  findUser() {
+    this.UserService.search(this.$scope.userData)
     .then((response) => {
-      response.map((user, idx) => {
-        user.fullName = user.correctNaming();
-      });
-      this.users = response;
+      console.log(response);
+      this.$scope.users = response;
     });
-  }
-
-  showForm() {
-    this.formVisible  = !this.formVisible ;
   }
 }

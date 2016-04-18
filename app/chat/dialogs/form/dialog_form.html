@@ -1,5 +1,13 @@
 <div class="chat-form" >
   Dialog form
+  <div class="textarea-data" contenteditable="true" placeholder="Find user by name or surname"
+  ng-model="userData" ng-change="ctrl.findUser()" />
+  <div class="users-list">
+    <div ng-repeat="usr in users">
+      <img ng-src="{{::usr.avatarURL()}}" height="55" width="55"/>
+      <span>{{::usr.correctNaming()}}<span>
+    </div>
+  </div>
   <!-- <h3 ng-show="{{ctrl.chats.length < 1}}">У вас нет ни одного чата</h3>
   <button class="btn btn-info" ng-click="ctrl.showForm()">Create</button>
   <div class="form-content" ng-if="ctrl.formVisible">

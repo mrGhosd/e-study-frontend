@@ -11,6 +11,9 @@ export default function dialogFormDirective() {
     template: template,
     bindToController: true,
     controllerAs: "ctrl",
-    controller: DialogFormController
+    controller: DialogFormController,
+    link: function($scope, element, attr) {
+      
+    }
   };
 }
