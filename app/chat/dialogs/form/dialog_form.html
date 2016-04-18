@@ -1,9 +1,10 @@
-<div class="chat-form" >
+<div class="dialog-form" >
   Dialog form
-  <div class="textarea-data" contenteditable="true" placeholder="Find user by name or surname"
-  ng-model="userData" ng-change="ctrl.findUser()" />
+  <div class="new-dialog-users" placeholder="Find user by name or surname">
+    <div contenteditable="true" class="search-field" ng-model="userData" ng-change="ctrl.findUser()"></div>
+  </div>
   <div class="users-list">
-    <div ng-repeat="usr in users">
+    <div class="user-dialog-item" ng-repeat="usr in users" ng-click="createChat(usr)">
       <img ng-src="{{::usr.avatarURL()}}" height="55" width="55"/>
       <span>{{::usr.correctNaming()}}<span>
     </div>

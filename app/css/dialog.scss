@@ -9,6 +9,22 @@
     height: 100%;
     flex: 1;
 
+    .dialog-form {
+      .new-dialog-users {
+        .search-field {
+          display: flex;
+        }
+      }
+      .users-list {
+        .user-dialog-item {
+          &:hover {
+            background-color: #c8c8c8;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
     .dialog-search-field {
       border: none;
     }

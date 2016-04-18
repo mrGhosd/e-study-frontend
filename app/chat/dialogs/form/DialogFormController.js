@@ -12,23 +12,11 @@ export default class DialogFormController {
     this.$scope.users = [];
   }
 
-  createChat() {
-    this.chatUsers.push(this.currentUser);
-    let users = this.chatUsers.map((user) => user.id);
-    const params = { users, message: this.message };
-    this.DialogFactory.create(params)
-    .then((response) => {
-      this.chatUsers = [];
-      this.formVisible = false;
-      const dialog = response.setUsersArrayForUser(this.currentUser);
-      this.chats.push(dialog);
-    });
-  }
-
   findUser() {
-    this.UserService.search(this.$scope.userData)
+    let searchStr = this.$scope.userData.replace(/<(?:.|\n)*?>/g, "");
+    console.log(searchStr);
+    this.UserService.search(searchStr)
     .then((response) => {
-      console.log(response);
       this.$scope.users = response;
     });
   }
