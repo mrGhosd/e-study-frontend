@@ -14,16 +14,14 @@ export default function dialogFormDirective($compile) {
     controller: DialogFormController,
     link: function($scope, element, attr) {
       let dialogUsers = angular.element(element[0].querySelector('.new-dialog-users'));
+      $scope.invitedUsers = [];
 
-      $scope.createChat = function(user) {
-        var newMember = angular.element("<div class='new-dialog-item'>" + user.correctNaming() + "<a ng-click='removeFromList()'>x</a></div>");
-        dialogUsers.append(newMember);
-        $compile(newMember)($scope);
+      $scope.addPerson = function(user) {
+        $scope.invitedUsers.push(user);
       }
 
-      $scope.removeFromList = function(user) {
-        var items = angular.element(element[0].querySelector('.new-dialog-item'));
-
+      $scope.removeUser = function(index) {
+        $scope.invitedUsers.splice(index, 1);
       }
     }
   };

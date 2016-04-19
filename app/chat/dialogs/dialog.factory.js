@@ -39,8 +39,9 @@ export default class DialogFactory {
   }
 
   create(params) {
+    let url = `${this.fullUrl}/chats`;
     let def = this.$q.defer();
-    this.ApiRequest.post('/chats', {chat: params})
+    this.ApiRequest.plainRequest(url, 'POST', {chat: params})
     .then((response) => {
       def.resolve(new Chat(response.data.chats));
     });
