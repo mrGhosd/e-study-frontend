@@ -62,10 +62,14 @@ export default class DialogFactory {
   }
 
   destroy(id) {
+    let url = `${this.fullUrl}/chats/${id}`;
     let def = this.$q.defer();
-    this.ApiRequest.destroy(`/chats/${id}`)
+    this.ApiRequest.plainRequest(url, "DELETE")
     .then((response) => {
       def.resolve(response);
+    })
+    .catch(error => {
+      def.reject(error);
     });
     return def.promise;
   }
