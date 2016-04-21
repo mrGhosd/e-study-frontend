@@ -1,16 +1,30 @@
 .dialog-list-wrapper {
-  -webkit-display: flex;
   display: flex;
   flex-direction: column;
-  justify-content: top;
   min-width: 20em;
+  max-width: 20em;
 
   .dialogs-list {
     height: 100%;
     flex: 1;
 
     .dialog-form {
+      form {
+        margin-top: 30px;
+      }
       .new-dialog-users {
+
+        .dialog-persons-field,
+        .dialog-message-field {
+          border-bottom: 1px solid #c0c0c0;
+
+          &[contenteditable=true]:empty:before {
+            content: attr(placeholder);
+            color: #c0c0c0;
+            display: block; /* For Firefox */
+          }
+        }
+
         .search-field {
           display: flex;
         }

@@ -14,7 +14,7 @@ export default class Dialog {
   }
 
   parseChatUsers() {
-    
+
   }
 
   parseChatMessags() {
@@ -47,7 +47,9 @@ export default class Dialog {
   }
 
   lastMessageText() {
-    return this.messages.last.text.substr(0, 25) + "...";
+    if (this.messages.length > 0) {
+      return this.messages.last.text.substr(0, 25) + "...";
+    }
   }
 
   humanizedUpdatedAt() {

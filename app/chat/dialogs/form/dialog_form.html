@@ -1,19 +1,29 @@
 <div class="dialog-form" >
-  Dialog form
-  <div class="new-dialog-users" placeholder="Find user by name or surname">
-    <div ng-repeat="usr in invitedUsers">
-      <span>{{::usr.correctNaming()}}</span>
-      <a ng-click="removeUser($index)">x</a>
+  <form name="ctrl.dialogForm" class="form-horizontal">
+    <div class="new-dialog-users">
+      <div class="dialog-persons-field search-field" contenteditable="true" placeholder="Input user name"
+      ng-model="userData" ng-change="ctrl.findUser()"></div>
+      <div ng-if="ctrl.dialogForm.$submitted && ctrl.dialogForm.$error.users" class="error">
+              {{ctrl.dialogForm.$error.users}}
+      </div>
+      <div ng-repeat="usr in invitedUsers">
+        <span>{{::usr.correctNaming()}}</span>
+        <a ng-click="removeUser($index)">x</a>
+      </div>
+      <div class="dialog-message-field" contenteditable="true" placeholder="First message"
+      class="search-field" ng-model="chatMessage"></div>
+      <div ng-if="ctrl.dialogForm.$submitted && ctrl.dialogForm.$error.message" class="error">
+              {{ctrl.dialogForm.$error.message}}
+      </div>
     </div>
-    <div contenteditable="true" class="search-field" ng-model="userData" ng-change="ctrl.findUser()"></div>
-  </div>
-  <div class="users-list">
-    <div class="user-dialog-item" ng-repeat="usr in users" ng-click="addPerson(usr)">
-      <img ng-src="{{::usr.avatarURL()}}" height="55" width="55"/>
-      <span>{{::usr.correctNaming()}}<span>
+    <div class="users-list">
+      <div class="user-dialog-item" ng-repeat="usr in users" ng-click="addPerson(usr)">
+        <img ng-src="{{::usr.avatarURL()}}" height="55" width="55"/>
+        <span>{{::usr.correctNaming()}}<span>
+      </div>
     </div>
-  </div>
-  <button ng-click="ctrl.createChat()">Create chat</button>
+    <button ng-click="ctrl.createChat()">Create chat</button>
+  </form>
   <!-- <h3 ng-show="{{ctrl.chats.length < 1}}">У вас нет ни одного чата</h3>
   <button class="btn btn-info" ng-click="ctrl.showForm()">Create</button>
   <div class="form-content" ng-if="ctrl.formVisible">

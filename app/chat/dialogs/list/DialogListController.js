@@ -17,6 +17,13 @@ export default class DialogListController {
     this.handleSockets();
     this.handleChatSelecting();
     this.createChat = false;
+
+    $rootScope.$on('newChatWasCreated', (event, args) => {
+      const chat = args.chat;
+      this.chats.push(chat);
+      this.createChat = false;
+      this.chatSelected = chat;
+    });
   }
 
   setChatList(chat) {

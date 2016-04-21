@@ -12,6 +12,11 @@
 
   .dialogs-list {
     height: 100%;
+    overflow: hidden;
+
+    &:hover {
+      overflow-y: scroll;
+    }
 
     .chat-dialog {
       display: flex;

@@ -8,9 +8,11 @@ export default class DialogFormController {
     this.usSpinnerService = usSpinnerService;
     this.chatUsers = [];
     this.DialogFactory = DialogFactory;
-    this.rootScope = $rootScope;
+    this.$rootScope = $rootScope;
     this.formVisible = false;
     this.$scope.users = [];
+    this.parentController = this.$scope.$parent.$parent.ctrl;
+    console.log(this.$scope);
   }
 
   findUser() {
@@ -24,13 +26,19 @@ export default class DialogFormController {
 
   createChat() {
     const users = this.$scope.invitedUsers.map(user => user.id);
-    const params = { users };
+    const params = { users, message: this.$scope.chatMessage };
+
     this.DialogFactory.create(params)
-    .then(response => {
-      console.log(response);
+    .then(dialog => {
+      const chat = dialog.setUsersArrayForUser(this.AuthService.currentUserValue);
+      this.$rootScope.$broadcast('newChatWasCreated', {chat: chat});
+      this.$state.go('chats.chat', {id: chat.id});
     })
     .catch(error => {
-      console.log(error);
+      this.dialogForm.$submitted = true;
+      this.dialogForm.$error = error.errors;
+      this.dialogForm.$invalid = true;
+      console.log(this.dialogForm);
     });
   }
 }
