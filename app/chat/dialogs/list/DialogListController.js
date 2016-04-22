@@ -90,8 +90,8 @@ export default class DialogListController {
 
   moveChats(socketObject) {
     const message = new Message(angular.fromJson(socketObject));
-    let chatsIds = this.chats.map(v => v.chatId);
-    const chatIndex = chatsIds.indexOf(message.chat_id);
+    let chatsIds = this.chats.map(v => v.id);
+    const chatIndex = chatsIds.indexOf(message.chatId);
     let chat = this.prepareChat(socketObject, message);
 
     if (chatIndex > -1) {

@@ -22,7 +22,7 @@ export default function messageListDirective(MessageFactory, WebSockets, $timeou
 
       element.on('scroll', function() {
         let currentValue = $(element).scrollTop();
-        if (currentValue <= topLoadValue) {
+        if (currentValue <= topLoadValue && $(element[0]).scrollHeight < $(element).height()) {
           if (!responseSended) {
             responseSended = true;
             const params = {
