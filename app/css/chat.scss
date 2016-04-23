@@ -35,7 +35,9 @@
       }
 
       .chat-info{
+        display: flex;
         flex-direction: column;
+        flex-grow: 1;
 
         .chat-last-update {
           display: flex;

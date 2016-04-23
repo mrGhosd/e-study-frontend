@@ -8,6 +8,7 @@ export default class Dialog {
     this.users = params.users;
     this.updatedAt = params.updated_at;
     this.messages = params.messages;
+  
     if (this.messages) {
       this.parseChatMessags();
     }
