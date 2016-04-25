@@ -10,7 +10,7 @@ export default class DialogListController {
     this.usSpinnerService = usSpinnerService;
     this.chatUsers = [];
     this.defaultChats = this.chats;
-    this.rootScope = $rootScope;
+    this.$rootScope = $rootScope;
     this.DialogFactory = DialogFactory;
     this.WebSockets = WebSockets;
     this.AuthService = AuthService;
@@ -38,7 +38,7 @@ export default class DialogListController {
   }
 
   handleChatSelecting() {
-    this.rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState,
+    this.$rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState,
       fromParams, error) => {
         if (toState.name === 'chats') {
           this.chatSelected = null;
@@ -84,8 +84,16 @@ export default class DialogListController {
   handleSockets() {
     this.WebSockets.on(`user${this.AuthService.currentUserValue.id}chatmessage`,
       (event, data) => {
+        console.log(data);
         this.moveChats(data.obj);
+        this.handleNotification(data.notification);
     });
+  }
+
+  handleNotification(notification) {
+    if (notification) {
+      this.$rootScope.$broadcast('currentUserReceiveNotification', { notification });
+    }
   }
 
   moveChats(socketObject) {
