@@ -73,4 +73,8 @@ export default class DialogFactory {
     });
     return def.promise;
   }
+
+  destroyNotification(ids) {
+    return this.ApiRequest.destroy('/notifications', ids );
+  }
 }

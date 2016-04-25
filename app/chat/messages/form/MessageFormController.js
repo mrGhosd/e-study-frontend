@@ -2,17 +2,19 @@ import envConfig from '../../../../config/env.config.js';
 
 export default class MessageFormController {
   constructor($scope, $rootScope, MessageFactory, Upload,
-      WebSockets) {
+      WebSockets, DialogFactory) {
     this.MessageFactory = MessageFactory;
     this.$scope = $scope;
+    this.$rootScope = $rootScope;
     this.attaches = [];
     this.loadedAttaches = [];
     this.Upload = Upload;
+    this.DialogFactory = DialogFactory;
     this.WebSockets = WebSockets;
     this.host = envConfig[process.env.NODE_ENV].host;
     this.port = envConfig[process.env.NODE_ENV].port;
     this.fileUrl = `http://${this.host}:${this.port}/api/v0/attaches`;
-    this.typingTimer = {};                //timer identifier
+    this.typingTimer = {};
     this.doneTypingInterval = 500;
   }
 
@@ -35,6 +37,21 @@ export default class MessageFormController {
   }
 
   beginTyping() {
+    let notificationsIds = this.currentUser.notifications.map(item => item.notificationable_id);
+    if (notificationsIds.includes(this.chat.id)) {
+      const notifications = [];
+      this.currentUser.notifications.forEach(item => {
+        if (item.notificationable_id === this.chat.id) {
+          notifications.push(item.id);
+        }
+      });
+      const params = { notifications };
+
+      this.DialogFactory.destroyNotification(params)
+      .then(notifications => {
+        this.$rootScope.$broadcast('currentUserDeleteNotifications', { chat_id: this.chat.id });
+      });
+    }
     this.WebSockets.emit('userbegintyping', { chat: this.chat, user: this.currentUser });
     clearTimeout(this.typingTimer);
     this.typingTimer = setTimeout(this.doneTyping.bind(this), this.doneTypingInterval);

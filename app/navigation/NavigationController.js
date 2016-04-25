@@ -11,6 +11,19 @@ export default class NavigationController{
           }
           this.AuthService.currentUserValue.notifications.push(args.notification);
         });
+
+        $rootScope.$on('currentUserDeleteNotifications', (event, args) => {
+          if (this.AuthService.currentUserValue.notifications) {
+            console.log(args);
+            const chat_id = args.chat_id;
+            let notifications = [];
+            this.AuthService.currentUserValue.notifications.forEach((item, index) => {
+              if (item.notificationable_id === chat_id) {
+                this.AuthService.currentUserValue.notifications.splice(index, 1);
+              }
+            });
+          }
+        });
     }
     isActive(route){
         return !!this.$state.current.url.match(route);
