@@ -6,7 +6,8 @@
     <button ng-click="ctrl.renderCreateChatView()" class="toggleDialogForm">+</button>
   </div>
   <dialog-form ng-if="ctrl.createChat === true"></dialog-form>
-  <div ng-if="ctrl.createChat === false" class="chat-dialog" ng-class="{selected: ctrl.chatSelected.id === cht.id}"
+  <div ng-if="ctrl.createChat === false" class="chat-dialog"
+  ng-class="{selected: ctrl.chatSelected.id === cht.id, notified: ctrl.currentUserNotifications.includes(cht.id)}"
   ng-repeat="cht in ctrl.chats" ng-click="ctrl.selectChat(cht)">
     <div class="chat-image">
       <img ng-src={{::cht.getImageURL()}} height="60" width="60"  />

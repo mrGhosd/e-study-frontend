@@ -22,7 +22,6 @@ export default class NavigationController{
 
     messageNotificationsExists() {
       let currentUser = this.AuthService.currentUserValue;
-      console.log(currentUser);
       if (currentUser) {
         let notifications = currentUser.notifications;
         return currentUser && notifications && notifications.length > 0;
@@ -33,8 +32,7 @@ export default class NavigationController{
     messageNotificationsCount() {
       let currentUser = this.AuthService.currentUserValue;
       if (currentUser && currentUser.notifications) {
-        console.log(currentUser.notifications.length);
-        return currentUser.notifications.length
+        return currentUser.notifications.length;
       }
     }
 }

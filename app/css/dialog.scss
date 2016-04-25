@@ -50,6 +50,10 @@
     .chat-dialog {
       padding: 10px;
 
+      &.notified {
+          background-color: red;
+      }
+
       &.selected {
         background-color: #7293b6;
         color: white;

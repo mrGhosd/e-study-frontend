@@ -17,6 +17,8 @@ export default class DialogListController {
     this.handleSockets();
     this.handleChatSelecting();
     this.createChat = false;
+    this.currentUserNotifications = this.AuthService.currentUserValue.notifications.map(item => item.notificationable_id);
+    console.log(this.currentUserNotifications);
 
     $rootScope.$on('newChatWasCreated', (event, args) => {
       const chat = args.chat;
