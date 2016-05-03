@@ -30,4 +30,8 @@ export default class UsersController {
             this.$scope.users = data;
         });
     }
+
+    loadMore() {
+      console.log('loadMore');
+    }
 }

@@ -28,10 +28,11 @@ import './index.html';
 import 'css/main.scss';
 import runConfig from 'run_configuration/index';
 import angularSanitize from 'angular-sanitize';
+import list from 'util/list';
 
 angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users, chat,
    ApiRequest, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name,
-   notifications, angularElastic, angularSanitize, countries])
+   notifications, angularElastic, angularSanitize, countries, list])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)
