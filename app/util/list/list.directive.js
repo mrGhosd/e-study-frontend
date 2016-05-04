@@ -10,14 +10,16 @@ export default function listDirective($window) {
     restrict:"E",
     replace: true,
     scope: {
-      func: '='
+      func: '@'
     },
     link: function($scope, element, attr) {
       $($window).on('scroll', function() {
         const currentValue = $($window).scrollTop();
         const listHeight = $(element).height();
 
-        if (listHeight >= currentValue && listHeight - currentValue <= 600) {
+        if ($(element).height() > 0 && listHeight >= currentValue && listHeight - currentValue <= 600) {
+          console.log(listHeight >= currentValue && listHeight - currentValue <= 600);
+          console.log($scope);
           $scope.$parent.$apply(attr.func);
         }
       });
