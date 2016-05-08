@@ -9,6 +9,8 @@ export default class UsersController {
         this.$state = $state;
         $scope.users = users;
         $scope.popoverTemplate = "/users/popover.html";
+        this.canLoadMore = false;
+        this.page = this.userFactory.defaultPage;
     }
 
     search(){
@@ -32,6 +34,12 @@ export default class UsersController {
     }
 
     loadMore() {
-      console.log('loadMore');
+      this.userFactory.getAll(++this.page)
+      .then(response => {
+        response.map(item => {
+          this.$scope.users.push(item);
+        });
+        console.log(response);
+      });
     }
 }

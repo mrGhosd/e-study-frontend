@@ -3,6 +3,7 @@ import angular from 'angular';
 
 export default class UsersService {
     constructor($http, $q, ApiRequest) {
+        this.defaultPage = 1;
         this.$http = $http;
         this.$q = $q;
         this.ApiRequest = ApiRequest;
@@ -12,9 +13,12 @@ export default class UsersService {
         }
     }
 
-    getAll() {
+    getAll(page) {
         let def = this.$q.defer();
-        this.ApiRequest.get('/users.json/', {})
+        if (!page) {
+          page = 1;
+        }
+        this.ApiRequest.get('/users.json/', { page })
             .then((response) => {
                 let newUsers = [];
                 for (let i = 0; i < response.data.users.length; i++) {

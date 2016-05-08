@@ -10,7 +10,7 @@
           <input type="submit" value="{{ 'users.search_button' | translate }}" class="btn btn-info"/>
       </form>
   </div>
-  <list func="usr.loadMore">
+  <list func="loadMore" ctrl="usr">
     <div ng-repeat="user in users" class="user-item panel panel-primary">
         <div class="panel-heading">
             <span><a ui-sref="user({id: user.id})" >{{ user.correctNaming() }}</a></span>
