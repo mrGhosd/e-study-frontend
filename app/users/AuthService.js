@@ -71,6 +71,10 @@ export default class AuthService{
         this.$rootScope.$broadcast('signedIn');
     }
 
+    vkAuth(params) {
+      return this.ApiRequest.post('/oauth/vkontakte', params);
+    }
+
     authData() {
       return {
         platform: getOSName(),

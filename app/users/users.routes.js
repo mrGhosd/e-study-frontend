@@ -1,7 +1,7 @@
 'use strict';
 import User from 'users/user.model'
 
-routes.$inject = ['$stateProvider', '$urlRouterProvider'];
+routes.$inject = ['$stateProvider', '$stateParamsProvider', '$urlRouterProvider'];
 
 export function routes($stateProvider, $urlRouterProvider) {
     $stateProvider
@@ -38,6 +38,22 @@ export function routes($stateProvider, $urlRouterProvider) {
                 users: ['UserService', (UserService) => {
                     return UserService.getAll();
                 }]
+            }
+        })
+        .state('vk_auth', {
+            url: '/oauth/vk?code',
+            onEnter: ['$stateParams', 'AuthService', '$state', function($stateParams, AuthService, $state) {
+              AuthService.vkAuth({ code: $stateParams.code, auth: AuthService.authData() })
+                .then(response => {
+                  AuthService.receiveUserData(response.data);
+                  $state.go('profile');
+                })
+                .catch(error => {
+                  $state.go('users');
+                });
+            }],
+            controller: ($state, $stateParams) => {
+              console.log($state, $stateParams);
             }
         })
         .state('user', {

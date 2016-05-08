@@ -1,6 +1,7 @@
 export default class AuthorizationController {
     constructor($scope, $rootScope, $state, $modal, $modalInstance,
-      currentTab, UserService, AuthService, CountryService){
+      currentTab, UserService, AuthService, CountryService, ApiRequest){
+        this.ApiRequest = ApiRequest;
         this.$scope = $scope;
         this.$rootScope = $rootScope;
         this.$state = $state;
@@ -83,5 +84,23 @@ export default class AuthorizationController {
             this.regForm.$invalid = true;
             this.regForm.$valid = false;
         });
+    }
+
+    vkAuth() {
+      window.location.href = "https://oauth.vk.com/authorize?client_id=5084096&display=popup&redirect_uri=http://localhost:9000/oauth/vk&scope=email&response_type=code&v=5.52"
+      // VK.init({
+      //   apiId: 5084096
+      // });
+      // VK.Auth.login(response => {
+      //   console.log(response);
+      //   // this.ApiRequest.get(https://api.vk.com/method/account.getProfileInfo?user_id=#{id}&v=5.52&access_token=#{token}&fields=#{VK_FIELDS}&scope=email')
+      //   VK.Api.call('account.getProfileInfo',{user_id: response.session.mid, access_token: response.session.mid}, (user) => {
+      //     console.log(user);
+      //   });
+        // this.authService.vkAuth(response)
+        // .then(response => {
+        //   console.log(response);
+        // });
+      // });
     }
 }
