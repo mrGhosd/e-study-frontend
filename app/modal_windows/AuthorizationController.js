@@ -91,24 +91,6 @@ export default class AuthorizationController {
     }
 
     vkAuth() {
-      // OAuth.popup('vk').done(function(result) {
-      //   result.me().done((data) => {
-      //     console.log(data);
-      //   });
-      //   console.log(result)
-      //     // do some stuff with result
-      // });
       window.location.href = "https://oauth.vk.com/authorize?client_id=5084096&display=popup&redirect_uri=http://localhost:9000/oauth/vk&scope=email&response_type=code&v=5.52"
-      // VK.init({
-      //   apiId: 5084096
-      // });
-      // console.log(VK);
-      // VK.Auth.login(response => {
-      //   console.log(response);
-      //   // this.ApiRequest.get(https://api.vk.com/method/account.getProfileInfo?user_id=#{id}&v=5.52&access_token=#{token}&fields=#{VK_FIELDS}&scope=email')
-        // VK.Api.call('users.get',{user_id: response.session.mid, access_token: response.session.mid, scope: 'email'}, (user) => {
-        //   console.log(user);
-        // });
-      // });
     }
 }
