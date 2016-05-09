@@ -1,3 +1,5 @@
+import { OAuth } from 'oauthio-web';
+
 export default class AuthorizationController {
     constructor($scope, $rootScope, $state, $modal, $modalInstance,
       currentTab, UserService, AuthService, CountryService, ApiRequest){
@@ -19,6 +21,8 @@ export default class AuthorizationController {
             this.activeTabAuth = true;
         }
         this.objectSelect = "";
+        console.log(OAuth);
+        OAuth.initialize('k4sZKSrefwQdAg7wenNOHBb48b0');
     }
 
     cancel(){
@@ -87,19 +91,23 @@ export default class AuthorizationController {
     }
 
     vkAuth() {
+      // OAuth.popup('vk').done(function(result) {
+      //   result.me().done((data) => {
+      //     console.log(data);
+      //   });
+      //   console.log(result)
+      //     // do some stuff with result
+      // });
       window.location.href = "https://oauth.vk.com/authorize?client_id=5084096&display=popup&redirect_uri=http://localhost:9000/oauth/vk&scope=email&response_type=code&v=5.52"
       // VK.init({
       //   apiId: 5084096
       // });
+      // console.log(VK);
       // VK.Auth.login(response => {
       //   console.log(response);
       //   // this.ApiRequest.get(https://api.vk.com/method/account.getProfileInfo?user_id=#{id}&v=5.52&access_token=#{token}&fields=#{VK_FIELDS}&scope=email')
-      //   VK.Api.call('account.getProfileInfo',{user_id: response.session.mid, access_token: response.session.mid}, (user) => {
-      //     console.log(user);
-      //   });
-        // this.authService.vkAuth(response)
-        // .then(response => {
-        //   console.log(response);
+        // VK.Api.call('users.get',{user_id: response.session.mid, access_token: response.session.mid, scope: 'email'}, (user) => {
+        //   console.log(user);
         // });
       // });
     }
