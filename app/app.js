@@ -32,7 +32,7 @@ import list from 'util/list';
 
 angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users, chat,
    ApiRequest, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name,
-   notifications, angularElastic, angularSanitize, countries, list])
+   notifications, angularElastic, angularSanitize, countries, list,])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)

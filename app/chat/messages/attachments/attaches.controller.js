@@ -20,5 +20,4 @@ export default class AttachesController {
     formCorrectURL() {
       return this.attach.url;
     }
-
 }
