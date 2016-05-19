@@ -40,6 +40,7 @@ export default class AuthService{
 
     login(session){
         session.authorization = this.authData();
+        console.log(session);
         return this.ApiRequest.post("/sessions", { session })
         .then((response) => {
             this.receiveUserData(response.data);
@@ -50,7 +51,7 @@ export default class AuthService{
         user.authorization = this.authData();
         return this.ApiRequest.post("/registrations", { user })
         .then( (response) => {
-            this.receiveUserData(response);
+            this.receiveUserData(response.data);
         });
     }
 

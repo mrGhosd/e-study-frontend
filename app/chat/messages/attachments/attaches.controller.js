@@ -18,13 +18,7 @@ export default class AttachesController {
     }
 
     formCorrectURL() {
-      if (!this.attach.fileData) {
-        return `http://${this.hostName}:${this.portName}${this.attach.url}`;
-      }
-      else {
-        console.log(this.attach.fileData);
-        return `http://${this.hostName}:${this.portName}${this.attach.fileData.attach.url}`;
-      }
+      return this.attach.url;
     }
 
 }

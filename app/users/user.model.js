@@ -56,7 +56,7 @@ export default class User{
           return `http://${hostName}:${portName}${this.imageData.image.url}`;
         }
         else {
-          return imageKeys ? `http://${hostName}:${portName}${this.image.url}` : '/images/empty-user.png';
+          return imageKeys ? this.image.url : '/images/empty-user.png';
         }
     }
 }

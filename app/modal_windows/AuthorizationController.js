@@ -1,5 +1,3 @@
-import { OAuth } from 'oauthio-web';
-
 export default class AuthorizationController {
     constructor($scope, $rootScope, $state, $modal, $modalInstance,
       currentTab, UserService, AuthService, CountryService, ApiRequest){
@@ -21,8 +19,6 @@ export default class AuthorizationController {
             this.activeTabAuth = true;
         }
         this.objectSelect = "";
-        console.log(OAuth);
-        OAuth.initialize('k4sZKSrefwQdAg7wenNOHBb48b0');
     }
 
     cancel(){
@@ -35,7 +31,6 @@ export default class AuthorizationController {
 
     selectCountry(country) {
       this.objectSelect = country;
-      console.log(this.objectSelect);
     }
 
     defineCurrentForm(){
@@ -84,7 +79,7 @@ export default class AuthorizationController {
         })
         .catch((error) => {
             this.regForm.$submitted = true;
-            this.regForm.$errors = error.data;
+            this.regForm.$errors = error.data.errors;
             this.regForm.$invalid = true;
             this.regForm.$valid = false;
         });
