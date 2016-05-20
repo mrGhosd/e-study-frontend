@@ -6,6 +6,11 @@
     "password_recovery": "Восстановление пароля",
     "country": "Страна"
   },
+  "nav": {
+    "profile": "Профиль",
+    "users": "Пользователи",
+    "chats": "Сообщения"
+  },
   "users": {
     "search_button": "Поиск",
     "profile": "Профиль"

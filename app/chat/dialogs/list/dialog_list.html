@@ -1,6 +1,6 @@
 <div class="dialogs-list block">
   <div class="search-chat-form">
-    <i ng-if="ctrl.createChat === false">search</i>
+    <img ng-if="ctrl.createChat === false" ng-src="/images/search-icon.png" />
     <input ng-if="ctrl.createChat === false" type="text" placeholder="Search.." class="dialog-search-field"
     ng-change="ctrl.searchDialog()" ng-model="ctrl.searchField"/>
     <button ng-click="ctrl.renderCreateChatView()" class="toggleDialogForm">+</button>
