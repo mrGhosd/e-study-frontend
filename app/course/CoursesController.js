@@ -1,5 +1,6 @@
 export default class CoursesController {
-  constructor($scope) {
-    // this.courses = courses;
+  constructor($scope, courses) {
+    this.courses = courses;
+    console.log(this);
   }
 }

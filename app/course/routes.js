@@ -8,6 +8,7 @@ export function routes($stateProvider, $urlRouterProvider) {
             url: '/courses',
             template: require('./courses.html'),
             controller: 'CoursesController',
+            controllerAs: 'ctrl',
             resolve: {
                 courses: ['CourseFactory', (CourseFactory) => {
                     return CourseFactory.getList();

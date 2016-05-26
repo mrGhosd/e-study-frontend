@@ -5,6 +5,11 @@ export default class CourseFactory {
   }
 
   getList() {
-    return this.ApiRequest.get('/courses');
+    let def = this.$q.defer();
+    this.ApiRequest.get('/courses')
+        .then((response) => {
+          def.resolve(response.data.courses);
+        });
+    return def.promise;
   }
 }
