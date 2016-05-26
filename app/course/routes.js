@@ -14,5 +14,17 @@ export function routes($stateProvider, $urlRouterProvider) {
                     return CourseFactory.getList();
                 }]
             }
+        })
+        .state('new_course', {
+            url: '/courses/new',
+            template: require('./form.html'),
+            controller: 'CourseFormController',
+            controllerAs: 'ctrl',
+            resolve: {
+              course: () => {
+                return null;
+              }
+            }
+
         });
 }

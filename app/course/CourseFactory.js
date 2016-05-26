@@ -12,4 +12,13 @@ export default class CourseFactory {
         });
     return def.promise;
   }
+
+  create(course) {
+    let def = this.$q.defer();
+    this.ApiRequest.post('/courses', { course })
+        .then((response) => {
+          def.resolve(response.data.courses);
+        });
+    return def.promise;
+  }
 }
