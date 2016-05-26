@@ -14,6 +14,12 @@ export default class CourseFormController {
     this.CourseFactory.create(params)
         .then((response) => {
           this.$state.go('courses');
+        })
+        .catch((error) => {
+          this.courseForm.$submitted = true;
+          this.courseForm.$errors = error;
+          this.courseForm.$invalid = true;
+          console.log(this);
         });
   }
 }

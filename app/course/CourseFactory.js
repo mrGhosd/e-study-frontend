@@ -18,6 +18,10 @@ export default class CourseFactory {
     this.ApiRequest.post('/courses', { course })
         .then((response) => {
           def.resolve(response.data.courses);
+        })
+        .catch((errors) => {
+          console.log(errors);
+          def.reject(errors.data.errors);
         });
     return def.promise;
   }
