@@ -8,6 +8,7 @@ import home from 'home/index';
 import users from 'users/main';
 import chat from 'chat/index';
 import countries from 'countries/index';
+import course from 'course/index';
 
 import notifications from 'modal_windows/notification/index';
 import I18n from 'i18n-js';
@@ -31,7 +32,7 @@ import angularSanitize from 'angular-sanitize';
 import list from 'util/list';
 
 angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users, chat,
-   ApiRequest, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name,
+   ApiRequest, course, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name,
    notifications, angularElastic, angularSanitize, countries, list,])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
