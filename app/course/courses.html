@@ -2,6 +2,17 @@
 <h2>List of courses</h2>
 <a class="btn btn-info" ui-sref="new_course">New</a>
 <div class="list">
+  <list func="loadMore" ctrl="ctrl">
+    <div ng-repeat="course in ctrl.courses" class="course-item panel panel-primary">
+        <div class="panel-heading">
+            <span><a ui-sref="course({id: course.id})" >{{ course.title }}</a></span>
+            <span class="pull-right">{{course.created_at }}</span>
+        </div>
+        <div class="panel-body">
+            {{course.description}}
+        </div>
+    </div>
+  </list>
   <h3 ng-if="ctrl.courses.length < 1">There is no courses</h3>
 </div>
 </div>

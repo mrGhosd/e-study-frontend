@@ -37,6 +37,8 @@
     }
   },
   "course": {
+    "index_title": "Список курсов",
+    "form_title": "Форма курса",
     "title": "Название",
     "description": "Описание",
     "save": "Сохранить",

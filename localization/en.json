@@ -47,7 +47,11 @@
     }
   },
   "course": {
+    "index_title": "Course list",
+    "form_title": "Course form",
     "title": "Title",
-    "description": "Description"
+    "description": "Description",
+    "save": "Save",
+    "cancel": "Cancel"
   }
 }
