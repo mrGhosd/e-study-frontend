@@ -5,10 +5,10 @@
     <li ng-class="{active: navCtrl.isActive('/users')}">
       <a ui-sref="users">{{'nav.users' | translate}}</a>
     </li>
-    <li ng-show="navCtrl.isSignedIn()" ng-class="{active: navCtrl.isActive('/chats')}">
+    <!-- <li ng-show="navCtrl.isSignedIn()" ng-class="{active: navCtrl.isActive('/chats')}">
       <a ui-sref="chats">{{'nav.chats' | translate}}</a>
       <span ng-show="navCtrl.messageNotificationsExists()">
         {{navCtrl.messageNotificationsCount()}}
       </span>
-    </li>
+    </li> -->
 </ul>

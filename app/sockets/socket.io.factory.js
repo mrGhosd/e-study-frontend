@@ -5,7 +5,7 @@ export default class WebSockets {
   constructor($rootScope) {
     const hostName = envConfig[process.env.NODE_ENV].host;
     const chatURL = envConfig[process.env.NODE_ENV].chat_url;
-    this.socket = io.connect(`http://${chatURL}`);
+    // this.socket = io.connect(`http://${chatURL}`);
     this.rootScope = $rootScope;
   }
 
