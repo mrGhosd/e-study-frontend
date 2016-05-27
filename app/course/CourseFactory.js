@@ -17,7 +17,7 @@ export default class CourseFactory {
     let def = this.$q.defer();
     this.ApiRequest.post('/courses', { course })
         .then((response) => {
-          def.resolve(response.data.courses);
+          def.resolve(response.data.course);
         })
         .catch((errors) => {
           def.reject(errors.data.errors);
@@ -39,6 +39,18 @@ export default class CourseFactory {
     this.ApiRequest.put(`/courses/${id}`, { course })
         .then((response) => {
           def.resolve(response.data.course);
+        })
+        .catch((errors) => {
+          def.reject(errors.data.errors);
+        });
+    return def.promise;
+  }
+
+  destroy(id) {
+    let def = this.$q.defer();
+    this.ApiRequest.destroy(`/courses/${id}`)
+        .then((response) => {
+          def.resolve(response.data.deleted);
         })
         .catch((errors) => {
           def.reject(errors.data.errors);
