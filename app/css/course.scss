@@ -5,3 +5,23 @@
 .courses {
   width: 100%;
 }
+
+.icon {
+  background-repeat: no-repeat;
+  &.small {
+    height: 24px;
+    width: 24px;
+  }
+
+  &.inline {
+    display: inline-block;
+  }
+
+  &.pointer {
+    cursor: pointer;
+  }
+}
+
+.course-edit {
+  background-image: url("../images/edit.svg");
+}

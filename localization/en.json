@@ -52,6 +52,7 @@
     "title": "Title",
     "description": "Description",
     "save": "Save",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "edit": "Edit"
   }
 }
