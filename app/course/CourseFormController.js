@@ -6,12 +6,20 @@ export default class CourseFormController {
   }
 
   makeRequest() {
+    let promise = {};
     const params = {
       title: this.course.title,
       description: this.course.description
     };
 
-    this.CourseFactory.create(params)
+    if (this.course.id) {
+      promise = this.CourseFactory.update(this.course.id, params);
+    }
+    else {
+      promise = this.CourseFactory.create(params);
+    }
+
+    promise
         .then((response) => {
           this.$state.go('courses');
         })

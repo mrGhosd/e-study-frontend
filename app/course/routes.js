@@ -25,6 +25,16 @@ export function routes($stateProvider, $urlRouterProvider) {
                 return {};
               }
             }
-
+        })
+        .state('edit_course', {
+            url: '/courses/:id/edit',
+            template: require('./form.html'),
+            controller: 'CourseFormController',
+            controllerAs: 'ctrl',
+            resolve: {
+              course: ['$stateParams', 'CourseFactory', ($stateParams, CourseFactory) => {
+                return CourseFactory.get($stateParams.id);
+              }]
+            }
         });
 }

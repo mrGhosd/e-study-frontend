@@ -20,7 +20,27 @@ export default class CourseFactory {
           def.resolve(response.data.courses);
         })
         .catch((errors) => {
-          console.log(errors);
+          def.reject(errors.data.errors);
+        });
+    return def.promise;
+  }
+
+  get(id) {
+    let def = this.$q.defer();
+    this.ApiRequest.get(`/courses/${id}`)
+        .then((response) => {
+          def.resolve(response.data.course);
+        });
+    return def.promise;
+  }
+
+  update(id, course) {
+    let def = this.$q.defer();
+    this.ApiRequest.put(`/courses/${id}`, { course })
+        .then((response) => {
+          def.resolve(response.data.course);
+        })
+        .catch((errors) => {
           def.reject(errors.data.errors);
         });
     return def.promise;
