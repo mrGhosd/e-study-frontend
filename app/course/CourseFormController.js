@@ -8,7 +8,7 @@ export default class CourseFormController {
   }
 
   trixInitialize(e, editor) {
-    editor.insertString(this.course.description);
+    editor.insertHTML(this.course.description);
   }
 
   makeRequest() {
