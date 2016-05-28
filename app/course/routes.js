@@ -22,7 +22,7 @@ export function routes($stateProvider, $urlRouterProvider) {
             controllerAs: 'ctrl',
             resolve: {
               course: () => {
-                return {};
+                return { description: '' };
               }
             }
         })

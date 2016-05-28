@@ -57,9 +57,8 @@ module.exports = {
         { test: /\.scss$/, loaders: ["style", "css", "sass"] },
         { test: /bootstrap\/js\//, loader: 'imports?jQuery=jquery' },
         { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css?sourceMap!postcss')},
-        { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,   loader: "url?limit=10000&mimetype=application/font-woff" },
-        { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=application/octet-stream" },
-        { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file" },
+        { test: /\.(otf|eot|png|ttf|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=1000000000', exclude: /app\/images/ },
+        // { test: /.svg$/, loader: 'svg-url', exclude: /node_modules/ },
         { test: /\.json$/, exclude: /node_modules/, loaders: ['json-loader'] }
       ]
   },

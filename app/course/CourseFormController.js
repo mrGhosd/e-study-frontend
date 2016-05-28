@@ -1,15 +1,21 @@
 export default class CourseFormController {
   constructor($scope, $state, CourseFactory, course) {
+    this.$scope = $scope;
+    this.$scope.courseDesc = course.description;
     this.course = course;
     this.$state = $state;
     this.CourseFactory = CourseFactory;
+  }
+
+  trixInitialize(e, editor) {
+    editor.insertString(this.course.description);
   }
 
   makeRequest() {
     let promise = {};
     const params = {
       title: this.course.title,
-      description: this.course.description
+      description: this.$scope.courseDesc
     };
 
     if (this.course.id) {

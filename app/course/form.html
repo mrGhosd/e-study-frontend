@@ -1,40 +1,38 @@
 <div class="course-form">
   <h2>{{ 'course.form_title' | translate }}</h2>
-  <div>
-    <form ng-submit="ctrl.makeRequest()" name="ctrl.courseForm" class="form-horizontal">
-      <fieldset>
-          <div class="row">
-              <div class="col-md-6">
-                  <div class="form-group" ng-class="{ 'has-error': ctrl.courseForm.$submitted && ctrl.courseForm.$errors.title }">
-                      <label class="control-label col-md-4">{{ 'course.title' | translate }}</label>
-                      <div class="col-md-8">
-                          <input type="text" class="form-control" ng-model="ctrl.course.title" required>
-                          <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.title" class="error">
-                              <p ng-repeat="error in ctrl.courseForm.$errors.title">
-                                  {{error}}
-                              </p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="form-group" ng-class="{ 'has-error': ctrl.courseForm.$submitted && ctrl.courseForm.$errors.description }">
-                      <label class="control-label col-md-4"> {{ 'course.description' | translate }} </label>
-                      <div class="col-md-8">
-                          <textarea type="text" class="form-control" ng-model="ctrl.course.description" required> </textarea>
-                          <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.description" class="error">
-                              <p ng-repeat="error in ctrl.courseForm.$errors.description">
-                                  {{error}}
-                              </p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="form-actions">
-                      <input type="submit" class="btn btn-success" value="{{ 'course.save' | translate }}" >
-                      <a ui-sref="courses" class="btn btn-default">{{ 'course.cancel' | translate }}</a>
-                  </div>
-              </div>
+  <form ng-submit="ctrl.makeRequest()" name="ctrl.courseForm" class="form-horizontal">
+    <fieldset>
+        <div class="row">
+            <div class="col-sm-12 fields">
+                <div class="form-field" ng-class="{ 'has-error': ctrl.courseForm.$submitted && ctrl.courseForm.$errors.title }">
+                    <label class="col-sm-1">{{ 'course.title' | translate }}</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" ng-model="ctrl.course.title" required>
+                        <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.title" class="error">
+                            <p ng-repeat="error in ctrl.courseForm.$errors.title">
+                                {{error}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-field" ng-class="{ 'has-error': ctrl.courseForm.$submitted && ctrl.courseForm.$errors.description }">
+                    <div class="col-md-8">
+                        <trix-editor angular-trix ng-model="courseDesc" trix-initialize="ctrl.trixInitialize(e, editor)"></trix-editor>
+                        <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.description" class="error">
+                            <p ng-repeat="error in ctrl.courseForm.$errors.description">
+                                {{error}}
+                            </p>
+                        </div>
+                    </div>
 
-          </div>
-      </fieldset>
-    </form>
-  </div>
+                </div>
+                <div class="form-actions form-field">
+                    <input type="submit" class="btn btn-success" value="{{ 'course.save' | translate }}" >
+                    <a ui-sref="courses" class="btn btn-default">{{ 'course.cancel' | translate }}</a>
+                </div>
+            </div>
+
+        </div>
+    </fieldset>
+  </form>
 </div>

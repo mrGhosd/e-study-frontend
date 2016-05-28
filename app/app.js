@@ -28,12 +28,16 @@ import angularElastic from 'angular-elastic';
 import './index.html';
 import 'css/main.scss';
 import runConfig from 'run_configuration/index';
-import angularSanitize from 'angular-sanitize';
 import list from 'util/list';
+import angularSanitize from 'angular-sanitize';
+require("font-awesome-webpack");
+import 'script!trix';
+import 'angular-trix';
+
 
 angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users, chat,
    ApiRequest, course, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name,
-   notifications, angularElastic, angularSanitize, countries, list,])
+   notifications, angularElastic, countries, list, 'angularTrix', angularSanitize])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)
