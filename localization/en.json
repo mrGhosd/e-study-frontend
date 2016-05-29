@@ -53,6 +53,7 @@
     "description": "Description",
     "save": "Save",
     "cancel": "Cancel",
-    "edit": "Edit"
+    "edit": "Edit",
+    "empty_homework": "Course don't have homeworks"
   }
 }

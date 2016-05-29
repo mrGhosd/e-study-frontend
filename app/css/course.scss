@@ -46,3 +46,8 @@
 .course-delete {
   background-image: url("../images/eraser.svg");
 }
+
+.course-page {
+  display: flex;
+  flex-direction: column;
+}
