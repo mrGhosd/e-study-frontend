@@ -54,6 +54,11 @@
     "save": "Save",
     "cancel": "Cancel",
     "edit": "Edit",
-    "empty_homework": "Course don't have homeworks"
+    "homework": {
+      "add": "Add",
+      "edit": "Edit",
+      "delete": "Remove",
+      "empty": "Course don't have homeworks"
+    }
   }
 }

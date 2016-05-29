@@ -1,7 +1,15 @@
 <div class="course-page">
   <h3>{{ctrl.course.title}}</h3>
   <div ng-bind-html="ctrl.course.description"></div>
-  <div ng-if="ctrl.course.homeworks.length < 1" class="empty-homeworks-list">
-    <i>{{ 'course.empty_homework' | translate }}</i>
+  <div class="homeworks-list">
+    <a class="btn btn-info fa fa-plus"
+       ui-sref="new_homework({course_id: ctrl.course.id})">{{ 'course.homework.add' | translate }}</a>
+       <div class="course-homework-item" ng-repeat="homework in ctrl.course.homeworks">
+         <div class="date">{{homework.created_at}}</div>
+         <div class="text" ng-bind-html="homework.text"></vi>
+       </div>
+    <div ng-if="ctrl.course.homeworks.length < 1" class="empty-homeworks-list">
+      <i>{{ 'course.homework.empty' | translate }}</i>
+    </div>
   </div>
 </div>

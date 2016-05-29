@@ -1,0 +1,14 @@
+<div class="homework-form" ng-submit="ctrl.makeRequest()">
+  <form name="homeworkForm">
+    <trix-editor angular-trix ng-model="homeworkText" trix-initialize="ctrl.trixInitialize(e, editor)"></trix-editor>
+    <div ng-if="ctrl.homeworkForm.$submitted && ctrl.homeworkForm.$errors.text" class="error">
+        <p ng-repeat="error in ctrl.homeworkForm.$errors.text">
+            {{error}}
+        </p>
+    </div>
+    <div class="actions">
+      <input type="submit" class="btn btn-success" value="{{ 'course.save' | translate }}" >
+      <a ui-sref="course({id: ctrl.courseId})" class="btn btn-default">{{ 'course.cancel' | translate }}</a>
+    </div>
+  </form>
+</div>

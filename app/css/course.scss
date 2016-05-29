@@ -50,4 +50,13 @@
 .course-page {
   display: flex;
   flex-direction: column;
+
+  .course-homework-item {
+    display: flex;
+    flex-direction: row;
+
+    .date {
+      margin-right: 20px;
+    }
+  }
 }

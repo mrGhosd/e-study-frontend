@@ -6,7 +6,9 @@ import CourseFormController from './CourseFormController';
 import CourseController from './CourseController';
 import { routes } from './routes.js';
 
-export default angular.module('course', [])
+import homework from './homework/index';
+
+export default angular.module('estudy.course', [homework])
                       .controller('CoursesController', CoursesController)
                       .controller('CourseFormController', CourseFormController)
                       .controller('CourseController', CourseController)

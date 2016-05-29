@@ -29,7 +29,6 @@ export default class CourseFactory {
     let def = this.$q.defer();
     this.ApiRequest.get(`/courses/${id}`)
         .then((response) => {
-          console.log(response);
           def.resolve(response.data.course);
         });
     return def.promise;
