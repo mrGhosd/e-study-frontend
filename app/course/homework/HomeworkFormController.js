@@ -23,7 +23,7 @@ export default class HomeworkFormController {
     };
 
     if (this.homework.id) {
-
+      promise = this.HomeworkFactory.update(this.courseId, this.homework.id, params);
     }
     else {
       promise = this.HomeworkFactory.create(this.courseId, params);

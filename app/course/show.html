@@ -6,7 +6,10 @@
        ui-sref="new_homework({course_id: ctrl.course.id})">{{ 'course.homework.add' | translate }}</a>
        <div class="course-homework-item" ng-repeat="homework in ctrl.course.homeworks">
          <div class="date">{{homework.created_at}}</div>
-         <div class="text" ng-bind-html="homework.text"></vi>
+         <div class="text" ng-bind-html="homework.text.substr(0, 30)"></div>
+         <a class="btn btn-primary fa fa-pencil-square-o"
+            ui-sref="edit_homework({course_id: ctrl.course.id, id: homework.id})"></a>
+         <a class="btn btn-primary fa fa-trash"></a>
        </div>
     <div ng-if="ctrl.course.homeworks.length < 1" class="empty-homeworks-list">
       <i>{{ 'course.homework.empty' | translate }}</i>

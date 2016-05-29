@@ -15,4 +15,28 @@ export default class HomeworkFactory {
         });
       return def.promise;
   }
+
+  get(courseId, homeworkId) {
+    let def = this.$q.defer();
+    this.ApiRequest.get(`/courses/${courseId}/homeworks/${homeworkId}`)
+        .then((response) => {
+          def.resolve(response.data.homework);
+        })
+        .catch((error) => {
+          def.reject(error.data.errors);
+        });
+      return def.promise;
+  }
+
+  update(courseId, homeworkId, homework) {
+    let def = this.$q.defer();
+    this.ApiRequest.put(`/courses/${courseId}/homeworks/${homeworkId}`, { homework })
+        .then((response) => {
+          def.resolve(response.data.homework);
+        })
+        .catch((error) => {
+          def.reject(error.data.errors);
+        });
+      return def.promise;
+  }
 }
