@@ -26,6 +26,37 @@
                     </div>
 
                 </div>
+                <div class="lessons-list">
+                  <div class="form-actions">
+                    <a class="btn btn-default fa fa-plus"
+                       ng-click="ctrl.addLesson()">{{ 'course.form.add_lesson' | translate }}</a>
+                  </div>
+                  <div class="lesson-item" ng-repeat="lesson in lessons">
+                    <div class="form-field">
+                      <label class="col-sm-1">{{ 'course.title' | translate }}</label>
+                      <div class="col-md-6">
+                        <input type="text" class="form-control" ng-model="lesson.title" required>
+                        <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons[$index].title" class="error">
+                            <p ng-repeat="error in ctrl.courseForm.$errors.lessons[$index].title">
+                              {{error}}
+                            </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-field">
+                      <label class="col-sm-1">{{ 'course.description' | translate }}</label>
+                      <div class="col-md-6">
+                        <textarea class="form-control" ng-model="lesson.description"></textarea>
+                        <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons[$index].description" class="error">
+                            <p ng-repeat="error in ctrl.courseForm.$errors.lessons[$index].description">
+                                {{error}}
+                            </p>
+                        </div>
+                      </div>
+                    </div>
+                    <a class="btn btn-warning fa fa-minus" ng-click="ctrl.removeLesson($index)"></a>
+                  </div>
+                </div>
                 <div class="form-actions form-field">
                     <input type="submit" class="btn btn-success" value="{{ 'course.save' | translate }}" >
                     <a ui-sref="courses" class="btn btn-default">{{ 'course.cancel' | translate }}</a>

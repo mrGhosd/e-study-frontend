@@ -5,17 +5,24 @@ export default class CourseFormController {
     this.course = course;
     this.$state = $state;
     this.CourseFactory = CourseFactory;
+    this.$scope.lessons = course.lessons;
   }
 
   trixInitialize(e, editor) {
     editor.insertHTML(this.course.description);
   }
 
+  trixInitializeForLesson(e, editor, $index) {
+    let lesson = this.$scope.lessons[$index];
+    editor.insertHTML(lesson.description);
+  }
+
   makeRequest() {
     let promise = {};
     const params = {
       title: this.course.title,
-      description: this.$scope.courseDesc
+      description: this.$scope.courseDesc,
+      lessons: this.$scope.lessons
     };
 
     if (this.course.id) {
@@ -35,5 +42,20 @@ export default class CourseFormController {
           this.courseForm.$invalid = true;
           console.log(this);
         });
+  }
+
+  addLesson() {
+    this.$scope.lessons.push({
+      title: '',
+      description: ''
+    });
+    console.log(this.$scope.lessons);
+  }
+
+  removeLesson(index) {
+    let lesson = this.$scope.lessons[index];
+    if (!lesson.id) {
+      this.$scope.lessons.splice(index, 1);
+    }
   }
 }

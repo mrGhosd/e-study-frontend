@@ -1,0 +1,9 @@
+.lessons-list {
+  display: flex;
+  flex-direction: column;
+
+  .lesson-item {
+    display: flex;
+    flex-direction: column;
+  }
+}
