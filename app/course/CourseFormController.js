@@ -21,7 +21,7 @@ export default class CourseFormController {
     let promise = {};
     const params = {
       title: this.course.title,
-      description: this.$scope.courseDesc,
+      description: this.$scope.courseDesc || this.course.description,
       lessons: this.$scope.lessons
     };
 
@@ -37,10 +37,21 @@ export default class CourseFormController {
           this.$state.go('courses');
         })
         .catch((error) => {
-          this.courseForm.$submitted = true;
-          this.courseForm.$errors = error;
-          this.courseForm.$invalid = true;
-          console.log(this);
+          this.courseForm.$errors = {};
+          // this.courseForm.$submitted = true;
+          // this.courseForm.$errors = error;
+          // this.courseForm.$invalid = true;
+          console.log(error);
+          if (error.lessons) {
+            this.courseForm.$errors['lessons'] = [];
+            error.lessons.map((item, index) => {
+              const keys = Object.keys(item);
+              const indexValue = keys.first;
+              const value = item[indexValue];
+              this.courseForm.$errors.lessons[keys.first] = value;
+              // console.log(Object.keys(item));
+            });
+          }
         });
   }
 
@@ -49,7 +60,6 @@ export default class CourseFormController {
       title: '',
       description: ''
     });
-    console.log(this.$scope.lessons);
   }
 
   removeLesson(index) {

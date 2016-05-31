@@ -35,7 +35,7 @@
                     <div class="form-field">
                       <label class="col-sm-1">{{ 'course.title' | translate }}</label>
                       <div class="col-md-6">
-                        <input type="text" class="form-control" ng-model="lesson.title" required>
+                        <input type="text" class="form-control" ng-model="lesson.title">
                         <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons[$index].title" class="error">
                             <p ng-repeat="error in ctrl.courseForm.$errors.lessons[$index].title">
                               {{error}}
