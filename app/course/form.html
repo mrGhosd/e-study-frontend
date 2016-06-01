@@ -16,15 +16,27 @@
                     </div>
                 </div>
                 <div class="form-field" ng-class="{ 'has-error': ctrl.courseForm.$submitted && ctrl.courseForm.$errors.description }">
+                  <div class="col-md-8">
+                      <trix-editor angular-trix ng-model="courseDesc" trix-initialize="ctrl.trixInitialize(e, editor)"></trix-editor>
+                      <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.description" class="error">
+                          <p ng-repeat="error in ctrl.courseForm.$errors.description">
+                              {{error}}
+                          </p>
+                      </div>
+                  </div>
+                </div>
+                <div class="form-field" ng-class="{ 'has-error': ctrl.courseForm.$submitted && ctrl.courseForm.$errors.slug }">
+                  <div class="col-md-8">
+                    <label class="col-sm-1">{{ 'course.slug' | translate }}</label>
                     <div class="col-md-8">
-                        <trix-editor angular-trix ng-model="courseDesc" trix-initialize="ctrl.trixInitialize(e, editor)"></trix-editor>
-                        <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.description" class="error">
-                            <p ng-repeat="error in ctrl.courseForm.$errors.description">
-                                {{error}}
-                            </p>
-                        </div>
+                      <input type="text" class="form-control" ng-model="ctrl.course.slug" required>
+                      <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.slug" class="error">
+                          <p ng-repeat="error in ctrl.courseForm.$errors.slug">
+                              {{error}}
+                          </p>
+                      </div>
                     </div>
-
+                  </div>
                 </div>
                 <div class="lessons-list">
                   <div class="form-actions">
@@ -38,6 +50,17 @@
                         <input type="text" class="form-control" ng-model="lesson.title">
                         <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons[$index].title" class="error">
                             <p ng-repeat="error in ctrl.courseForm.$errors.lessons[$index].title">
+                              {{error}}
+                            </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-field">
+                      <label class="col-sm-1">{{ 'course.slug' | translate }}</label>
+                      <div class="col-md-6">
+                        <input type="text" class="form-control" ng-model="lesson.slug">
+                        <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons[$index].slug" class="error">
+                            <p ng-repeat="error in ctrl.courseForm.$errors.lessons[$index].slug">
                               {{error}}
                             </p>
                         </div>

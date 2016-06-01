@@ -3,6 +3,7 @@ export default class CourseFormController {
     this.$scope = $scope;
     this.$scope.courseDesc = course.description;
     this.course = course;
+    console.log(this.course);
     this.$state = $state;
     this.CourseFactory = CourseFactory;
     this.$scope.lessons = course.lessons;
@@ -23,6 +24,7 @@ export default class CourseFormController {
     const params = {
       title: this.course.title,
       description: this.$scope.courseDesc || this.course.description,
+      slug: this.course.slug,
       lessons: this.$scope.lessons
     };
 
@@ -39,16 +41,19 @@ export default class CourseFormController {
         })
         .catch((error) => {
           this.courseForm.$errors = {};
-          this.courseForm.$submitted = true;
-          this.courseForm.$errors = error;
-          this.courseForm.$invalid = true;
-          console.log(error);
-          if (error.lessons) {
+          let keys = Object.keys(error);
+          keys.map((item, index) => {
+            if (item !== 'lesson') {
+              this.courseForm.$errors[item] = error[item];
+            }
+          });
+          if (error.lessons.length > 0) {
             this.courseForm.$errors['lessons'] = [];
-            error.lessons.map((item, index) => {
+            error.lessons.forEach((item, index) => {
               const keys = Object.keys(item);
               const indexValue = keys.first;
               const value = item[indexValue];
+              console.log(value);
               this.courseForm.$errors.lessons[keys.first] = value;
             });
           }

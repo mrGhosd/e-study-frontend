@@ -5,7 +5,7 @@
   <list func="loadMore" ctrl="ctrl">
     <div ng-repeat="course in ctrl.courses" class="course-item panel panel-primary">
         <div class="panel-heading">
-            <span><a ui-sref="course({id: course.id})" >{{ course.title }}</a></span>
+            <span><a ui-sref="course({id: course.slug || course.id})" >{{ course.title }}</a></span>
             <span class="pull-right">{{course.created_at }}</span>
             <span><a ui-sref="edit_course({id: course.id})" class="course-edit inline icon small pointer"></a></span>
             <span><a class="course-delete inline icon small pointer" ng-click="ctrl.destroy(course)"></a></span>

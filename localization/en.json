@@ -54,6 +54,7 @@
     "save": "Save",
     "cancel": "Cancel",
     "edit": "Edit",
+    "slug": "slug",
     "form": {
       "add_lesson": "Add lesson"
     },
