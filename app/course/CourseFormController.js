@@ -3,7 +3,6 @@ export default class CourseFormController {
     this.$scope = $scope;
     this.$scope.courseDesc = course.description;
     this.course = course;
-    console.log(this.course);
     this.$state = $state;
     this.CourseFactory = CourseFactory;
     this.$scope.lessons = course.lessons;
@@ -50,10 +49,13 @@ export default class CourseFormController {
           if (error.lessons.length > 0) {
             this.courseForm.$errors['lessons'] = [];
             error.lessons.forEach((item, index) => {
+              if (typeof item === 'string') {
+                  this.courseForm.$errors.lessons_length = item;
+                  return;
+              }
               const keys = Object.keys(item);
               const indexValue = keys.first;
               const value = item[indexValue];
-              console.log(value);
               this.courseForm.$errors.lessons[keys.first] = value;
             });
           }

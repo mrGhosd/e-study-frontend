@@ -39,6 +39,10 @@
                   </div>
                 </div>
                 <div class="lessons-list">
+                  <div ng-class="{ 'field-error': ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons_length }"
+                       ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons_length">
+                    {{ctrl.courseForm.$errors.lessons_length}}
+                  </div>
                   <div class="form-actions">
                     <a class="btn btn-default fa fa-plus"
                        ng-click="ctrl.addLesson()">{{ 'course.form.add_lesson' | translate }}</a>
