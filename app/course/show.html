@@ -1,9 +1,8 @@
 <div class="course-page">
   <h3>{{ctrl.course.title}}</h3>
   <div ng-bind-html="ctrl.course.description"></div>
-  <div class="homeworks-list">
-    <div ng-if="ctrl.course.homeworks.length < 1" class="empty-homeworks-list">
-      <i>{{ 'course.homework.empty' | translate }}</i>
-    </div>
+  <div class="comments-list">
+    <comments-list > </comments-list>
+    <comments-form />
   </div>
 </div>

@@ -9,6 +9,7 @@ import users from 'users/main';
 import chat from 'chat/index';
 import countries from 'countries/index';
 import course from 'course/index';
+import comment from 'comment/index';
 
 import notifications from 'modal_windows/notification/index';
 import I18n from 'i18n-js';
@@ -37,7 +38,8 @@ import 'angular-trix';
 
 angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users, chat,
    ApiRequest, course, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name,
-   notifications, angularElastic, countries, list, 'angularTrix', angularSanitize])
+   notifications, angularElastic, countries, list, 'angularTrix', angularSanitize,
+   comment])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)

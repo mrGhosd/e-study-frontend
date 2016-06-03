@@ -1,0 +1,14 @@
+<form name="commentForm" ng-submit="createComment()" class="form-horizontal">
+  <div class="col-md-10">
+      <trix-editor angular-trix ng-model="commentText" trix-initialize="trixInitialize(e, editor)"></trix-editor>
+      <div ng-if="commentForm.$submitted && commentForm.$errors.text" class="error">
+          <p ng-repeat="error in commentForm.$errors.text">
+              {{error}}
+          </p>
+      </div>
+  </div>
+  <div class="form-actions">
+    <input type="submit" class="btn btn-success" value="{{ 'course.save' | translate }}" >
+    <a ui-sref="courses" class="btn btn-default">{{ 'course.cancel' | translate }}</a>
+  </div>
+</form>
