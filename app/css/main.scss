@@ -11,6 +11,7 @@
 @import 'course';
 @import 'homework';
 @import 'lesson.scss';
+@import 'comment';
 
 .btn-actions{
   margin-top:5px;
@@ -111,4 +112,29 @@ body {
 
 ul.navigation-view {
   list-style: none;
+}
+
+.icon {
+  background-repeat: no-repeat;
+  &.small {
+    height: 24px;
+    width: 24px;
+  }
+
+  &.medium {
+    height: 32px;
+    width: 32px;
+  }
+
+  &.resized {
+    background-size: 100%;
+  }
+
+  &.inline {
+    display: inline-block;
+  }
+
+  &.pointer {
+    cursor: pointer;
+  }
 }

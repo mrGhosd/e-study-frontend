@@ -1,0 +1,16 @@
+.comment-item {
+  display: flex;
+  flex-direction: row;
+  
+  .comment-actions {
+    display: inline-block;
+  }
+}
+
+.comment-edit {
+  background-image: url("/images/edit.png");
+}
+
+.comment-remove {
+  background-image: url("/images/remove.png");
+}
