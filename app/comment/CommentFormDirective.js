@@ -13,14 +13,14 @@ export default function commentsFormDirective(CommentFactory, $location) {
       $scope.formComment = {};
 
       $scope.createComment = function() {
-        createComment();
+        makeComment();
       };
 
       $scope.trixInitialize = function(e, editor) {
 
       }
 
-      function createComment() {
+      function makeComment() {
         let promise = {};
         const params = {
           text: $scope.commentText,
@@ -29,31 +29,38 @@ export default function commentsFormDirective(CommentFactory, $location) {
         };
 
         if ($scope.formComment.id) {
-          // promise =
           $scope.formComment.text = $scope.commentText;
-          let ids = $scope.comments.map(v => v.id);
-          let index = ids.indexOf($scope.formComment.id);
-          $scope.comments.splice(index, 1, $scope.formComment)
-          if ($location.hash() !== $scope.formComment.id ) {
-              $location.hash($scope.formComment.id);
-          }
-          $scope.commentText = null;
+          promise = CommentFactory.update($scope.formComment.id, params)
         }
         else {
-          // promise = CommentFactory.create(params)
+          promise = CommentFactory.create(params)
         }
 
-        // promise
-        // .then((comment) => {
-        //   $scope.comments.push(comment);
-        //   $scope.commentText = '';
-        // })
-        // .catch((error) => {
-        //   $scope.commentForm.$submitted = true;
-        //   $scope.commentForm.$errors = error;
-        //   $scope.commentForm.$invalid = true;
-        //   console.log($scope.commentForm);
-        // });
+        promise
+        .then((comment) => {
+          $scope.formComment.id ? successUpdateCallback(comment) :  successCreateCallback(comment);
+        })
+        .catch((error) => {
+          $scope.commentForm.$submitted = true;
+          $scope.commentForm.$errors = error;
+          $scope.commentForm.$invalid = true;
+          console.log($scope.commentForm);
+        });
+      }
+
+      function successUpdateCallback(comment) {
+        let ids = $scope.comments.map(v => v.id);
+        let index = ids.indexOf($scope.formComment.id);
+        $scope.comments.splice(index, 1, $scope.formComment)
+        if ($location.hash() !== $scope.formComment.id ) {
+            $location.hash($scope.formComment.id);
+        }
+        $scope.commentText = null;
+      }
+
+      function successCreateCallback(comment) {
+        $scope.comments.push(comment);
+        $scope.commentText = '';
       }
     }
   };

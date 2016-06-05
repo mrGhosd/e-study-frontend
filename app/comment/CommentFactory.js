@@ -15,4 +15,16 @@ export default class CommentFactory {
         });
     return def.promise;
   }
+
+  update(id, comment) {
+    let def = this.$q.defer();
+    this.ApiRequest.put(`/comments/${id}`, { comment })
+        .then((response) => {
+          def.resolve(response.data.comment);
+        })
+        .catch((response) => {
+          def.reject(response.data.errors);
+        });
+    return def.promise;
+  }
 }
