@@ -27,4 +27,17 @@ export default class CommentFactory {
         });
     return def.promise;
   }
+
+  destroy(commentId) {
+    let def = this.$q.defer();
+    this.ApiRequest.destroy(`/comments/${commentId}`)
+        .then((response) => {
+          console.log(response);
+          def.resolve(response.data.deleted);
+        })
+        .catch((response) => {
+          def.reject(response.data.errors);
+        });
+    return def.promise;
+  }
 }

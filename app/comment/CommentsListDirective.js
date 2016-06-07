@@ -1,8 +1,8 @@
 import template from './comments_list.html';
 
-commentsListDirective.$inject = ['$anchorScroll', '$location'];
+commentsListDirective.$inject = ['$anchorScroll', '$location', 'CommentFactory'];
 
-export default function commentsListDirective($anchorScroll, $location) {
+export default function commentsListDirective($anchorScroll, $location, CommentFactory) {
   return {
     restrict: "E",
     template: template,
@@ -20,7 +20,21 @@ export default function commentsListDirective($anchorScroll, $location) {
         else {
           $anchorScroll();
         }
+      }
 
+      $scope.deleteComment = function(comment) {
+        CommentFactory.destroy(comment.id)
+        .then((response) => {
+          console.log(response);
+          removeFromList(comment);
+        });
+      };
+
+      function removeFromList(comment) {
+        if ($scope.comments.includes(comment)) {
+          let index = $scope.comments.indexOf(comment);
+          $scope.comments.splice(index, 1);
+        }
       }
     }
   };
