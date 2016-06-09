@@ -1,6 +1,11 @@
 <div class="course-page">
   <h3>{{ctrl.course.title}}</h3>
   <div ng-bind-html="ctrl.course.description"></div>
+  <div ng-repeat="lesson in ctrl.course.lessons">
+    <a ui-sref="lesson({course_id: ctrl.course.slug || ctrl.course.id, id: lesson.slug || lesson.id})">
+      {{lesson.title}}
+    </a>
+  </div>
   <div class="comments-list">
     <comments-list > </comments-list>
     <comments-form id="commentForm"/>

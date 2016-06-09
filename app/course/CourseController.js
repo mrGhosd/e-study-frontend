@@ -5,6 +5,8 @@ export default class CourseController {
     this.$scope.course = course;
     this.$scope.comments = course.comments;
     this.HomeworkFactory = HomeworkFactory;
+    $scope.object = course;
+    $scope.type = 'course';
   }
 
   deleteHomework(homework) {

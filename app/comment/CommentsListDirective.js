@@ -25,7 +25,6 @@ export default function commentsListDirective($anchorScroll, $location, CommentF
       $scope.deleteComment = function(comment) {
         CommentFactory.destroy(comment.id)
         .then((response) => {
-          console.log(response);
           removeFromList(comment);
         });
       };

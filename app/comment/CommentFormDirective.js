@@ -24,8 +24,8 @@ export default function commentsFormDirective(CommentFactory, $location) {
         let promise = {};
         const params = {
           text: $scope.commentText,
-          id: $scope.course.id,
-          type: 'course'
+          id: $scope.object.id,
+          type: $scope.type
         };
 
         if ($scope.formComment.id) {
@@ -56,6 +56,8 @@ export default function commentsFormDirective(CommentFactory, $location) {
             $location.hash($scope.formComment.id);
         }
         $scope.commentText = null;
+        $scope.formComment = {};
+        $location.hash();
       }
 
       function successCreateCallback(comment) {
