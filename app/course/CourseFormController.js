@@ -18,6 +18,10 @@ export default class CourseFormController {
     editor.insertHTML(lesson.description);
   }
 
+  changedValue(event, editor) {
+    this.$scope.courseDesc = editor.getDocument().toString();
+  }
+
   makeRequest() {
     let promise = {};
     const params = {

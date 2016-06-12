@@ -14,7 +14,6 @@ export default function formFieldDirective($translate) {
       field: '='
     },
     link: function($scope, element, attr) {
-      console.log($scope.title);
       $translate($scope.title).then((translated) => {
           $scope.translatedTitle = translated;
       });

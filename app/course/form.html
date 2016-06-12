@@ -7,29 +7,12 @@
                <form-field title="'course.title'" form="ctrl.courseForm" field="'title'">
                  <input type="text" class="form-control" ng-model="ctrl.course.title" required>
                </form-field>
-                <div class="form-field" ng-class="{ 'has-error': ctrl.courseForm.$submitted && ctrl.courseForm.$errors.description }">
-                  <div class="col-md-8">
-                      <trix-editor angular-trix ng-model="courseDesc" trix-initialize="ctrl.trixInitialize(e, editor)"></trix-editor>
-                      <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.description" class="error">
-                          <p ng-repeat="error in ctrl.courseForm.$errors.description">
-                              {{error}}
-                          </p>
-                      </div>
-                  </div>
-                </div>
-                <div class="form-field" ng-class="{ 'has-error': ctrl.courseForm.$submitted && ctrl.courseForm.$errors.slug }">
-                  <div class="col-md-8">
-                    <label class="col-sm-1">{{ 'course.slug' | translate }}</label>
-                    <div class="col-md-8">
-                      <input type="text" class="form-control" ng-model="ctrl.course.slug" required>
-                      <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.slug" class="error">
-                          <p ng-repeat="error in ctrl.courseForm.$errors.slug">
-                              {{error}}
-                          </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+               <form-field title="false" form="ctrl.courseForm" field="'description'">
+                 <trix-editor angular-trix ng-model="courseDesc" trix-change="ctrl.changedValue(e, editor)" trix-initialize="ctrl.trixInitialize(e, editor)"></trix-editor>
+               </form-field>
+               <form-field title="'course.slug'" form="ctrl.courseForm" field="'slug'">
+                 <input type="text" class="form-control" ng-model="ctrl.course.slug" required>
+               </form-field>
                 <div class="lessons-list">
                   <div ng-class="{ 'field-error': ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons_length }"
                        ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons_length">
