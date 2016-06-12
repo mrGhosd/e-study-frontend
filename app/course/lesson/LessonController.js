@@ -1,10 +1,24 @@
 export default class LessonController {
-  constructor($scope, lesson) {
+  constructor($scope, lesson, HomeworkFactory) {
     this.lesson = lesson;
     this.$scope = $scope;
     $scope.lesson = lesson;
     $scope.comments = lesson.comments;
     $scope.object = lesson;
     $scope.type = 'lesson';
+    this.HomeworkFactory = HomeworkFactory;
+  }
+
+  deleteHomework(homework) {
+    this.HomeworkFactory.delete(this.lesson.course.id, this.lesson.id, homework.id).then((response) => {
+      this.removeFromList(homework);
+    });
+  }
+
+  removeFromList(homework) {
+    if (this.lesson.homeworks.includes(homework)) {
+      let index = this.lesson.homeworks.indexOf(homework);
+      this.lesson.homeworks.splice(index, 1);
+    }
   }
 }

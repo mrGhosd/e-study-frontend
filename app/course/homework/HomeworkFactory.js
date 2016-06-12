@@ -41,7 +41,7 @@ export default class HomeworkFactory {
       return def.promise;
   }
 
-  delete(courseId, homeworkId) {
-    return this.ApiRequest.destroy(`/courses/${courseId}/homeworks/${homeworkId}`);
+  delete(courseId, lessonId, homeworkId) {
+    return this.ApiRequest.destroy(`/courses/${courseId}/lessons/${lessonId}/homeworks/${homeworkId}`);
   }
 }
