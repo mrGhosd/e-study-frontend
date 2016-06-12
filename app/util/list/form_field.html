@@ -1,0 +1,11 @@
+<div class="form-field" ng-class="{ 'has-error': form.$submitted && form.$errors[field] }">
+    <label class="col-sm-1">{{ translatedTitle }}</label>
+    <div class="col-md-8">
+        <div ng-transclude></div>
+        <div ng-if="form.$submitted && form.$errors[field]" class="error">
+            <p ng-repeat="error in form.$errors[field]">
+                {{error}}
+            </p>
+        </div>
+    </div>
+</div>

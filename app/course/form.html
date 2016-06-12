@@ -4,17 +4,9 @@
     <fieldset>
         <div class="row">
             <div class="col-sm-12 fields">
-                <div class="form-field" ng-class="{ 'has-error': ctrl.courseForm.$submitted && ctrl.courseForm.$errors.title }">
-                    <label class="col-sm-1">{{ 'course.title' | translate }}</label>
-                    <div class="col-md-8">
-                        <input type="text" class="form-control" ng-model="ctrl.course.title" required>
-                        <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.title" class="error">
-                            <p ng-repeat="error in ctrl.courseForm.$errors.title">
-                                {{error}}
-                            </p>
-                        </div>
-                    </div>
-                </div>
+               <form-field title="'course.title'" form="ctrl.courseForm" field="'title'">
+                 <input type="text" class="form-control" ng-model="ctrl.course.title" required>
+               </form-field>
                 <div class="form-field" ng-class="{ 'has-error': ctrl.courseForm.$submitted && ctrl.courseForm.$errors.description }">
                   <div class="col-md-8">
                       <trix-editor angular-trix ng-model="courseDesc" trix-initialize="ctrl.trixInitialize(e, editor)"></trix-editor>
