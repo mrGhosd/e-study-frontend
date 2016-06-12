@@ -4,9 +4,10 @@ export default class HomeworkFactory {
     this.$q = $q;
   }
 
-  create(courseId, homework) {
+  create(courseId, lessonId, homework) {
     let def = this.$q.defer();
-    this.ApiRequest.post(`/courses/${courseId}/homeworks`, { homework })
+    console.log(courseId, lessonId);
+    this.ApiRequest.post(`/courses/${courseId}/lessons/${lessonId}/homeworks`, { homework })
         .then((response) => {
             def.resolve(response.data.homework);
         })
@@ -16,9 +17,9 @@ export default class HomeworkFactory {
       return def.promise;
   }
 
-  get(courseId, homeworkId) {
+  get(courseId, lessonId, homeworkId) {
     let def = this.$q.defer();
-    this.ApiRequest.get(`/courses/${courseId}/homeworks/${homeworkId}`)
+    this.ApiRequest.get(`/courses/${courseId}/lessons/${lessonId}/homeworks/${homeworkId}`)
         .then((response) => {
           def.resolve(response.data.homework);
         })
@@ -28,9 +29,9 @@ export default class HomeworkFactory {
       return def.promise;
   }
 
-  update(courseId, homeworkId, homework) {
+  update(courseId, lessonId, homeworkId, homework) {
     let def = this.$q.defer();
-    this.ApiRequest.put(`/courses/${courseId}/homeworks/${homeworkId}`, { homework })
+    this.ApiRequest.put(`/courses/${courseId}/lessons/${lessonId}/homeworks/${homeworkId}`, { homework })
         .then((response) => {
           def.resolve(response.data.homework);
         })

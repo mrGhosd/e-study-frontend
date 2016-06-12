@@ -6,6 +6,7 @@ export default class HomeworkFormController {
     $scope.homeworkText = homework.text;
     this.$stateParams = $stateParams;
     this.courseId = $stateParams.course_id;
+    this.lessonId = $stateParams.lesson_id;
     this.$state = $state;
     this.HomeworkFactory = HomeworkFactory;
   }
@@ -23,18 +24,17 @@ export default class HomeworkFormController {
     };
 
     if (this.homework.id) {
-      promise = this.HomeworkFactory.update(this.courseId, this.homework.id, params);
+      promise = this.HomeworkFactory.update(this.courseId, this.lessonId, this.homework.id, params);
     }
     else {
-      promise = this.HomeworkFactory.create(this.courseId, params);
+      promise = this.HomeworkFactory.create(this.courseId, this.lessonId, params);
     }
 
     promise
       .then((response) => {
-        this.$state.go('course', { id: this.courseId });
+        this.$state.go('lesson', { course_id: this.courseId, id: this.lessonId });
       })
       .catch((error) => {
-        console.log(this);
         this.homeworkForm.$submitted = true;
         this.homeworkForm.$errors = error;
         this.homeworkForm.$invalid = true;
