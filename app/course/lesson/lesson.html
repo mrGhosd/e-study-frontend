@@ -7,7 +7,11 @@
 </a>
 <div class="homeworks-list">
   <div class="homework-item" ng-repeat="homework in lesson.homeworks">
-    <div ng-bind-html="homework.text"></div>
+    <a ui-sref="homework({
+      course_id: lesson.course.slug || lesson.course.id,
+      lesson_id: lesson.slug || lesson.id,
+      id: homework.id
+    })">{{homework.id}}</a>
     <a ui-sref="edit_homework({course_id: lesson.course.slug || lesson.course.id,
                               lesson_id: lesson.slug || lesson.id,
                               id: homework.id

@@ -25,5 +25,16 @@ export function routes($stateProvider, $urlRouterProvider) {
                 return HomeworkFactory.get($stateParams.course_id, $stateParams.lesson_id, $stateParams.id);
               }]
             }
+        })
+        .state('homework', {
+          url: '/courses/:course_id/lesson/:lesson_id/homeworks/:id',
+          template: require('./homework.html'),
+          controller: 'HomeworkController',
+          controllerAs: 'ctrl',
+          resolve: {
+            homework: ['$stateParams', 'HomeworkFactory', ($stateParams, HomeworkFactory) => {
+              return HomeworkFactory.get($stateParams.course_id, $stateParams.lesson_id, $stateParams.id);
+            }]
+          }
         });
 }
