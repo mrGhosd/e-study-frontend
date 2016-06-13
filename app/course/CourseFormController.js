@@ -27,6 +27,7 @@ export default class CourseFormController {
     const params = {
       title: this.course.title,
       description: this.$scope.courseDesc || this.course.description,
+      short_description: this.course.short_description,
       slug: this.course.slug,
       lessons: this.$scope.lessons
     };

@@ -51,6 +51,7 @@
     "form_title": "Course form",
     "title": "Title",
     "description": "Description",
+    "short_description": "Short description",
     "save": "Save",
     "cancel": "Cancel",
     "edit": "Edit",
