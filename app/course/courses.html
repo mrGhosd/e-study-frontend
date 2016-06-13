@@ -10,7 +10,8 @@
             <span><a ui-sref="edit_course({id: course.id})" class="course-edit inline icon small pointer"></a></span>
             <span><a class="course-delete inline icon small pointer" ng-click="ctrl.destroy(course)"></a></span>
         </div>
-        <div class="panel-body" ng-bind-html="course.description">
+        <div class="panel-body">
+          {{course.short_description}}
         </div>
     </div>
   </list>
