@@ -7,6 +7,9 @@ export default class CourseFormController {
     this.CourseFactory = CourseFactory;
     this.$scope.lessons = course.lessons;
     this.LessonFactory = LessonFactory;
+    this.beginDatePopupOpened = null;
+    this.endDatePopupOpened = null;
+    this.rateMax = 3;
   }
 
   trixInitialize(e, editor) {
@@ -29,7 +32,10 @@ export default class CourseFormController {
       description: this.$scope.courseDesc || this.course.description,
       short_description: this.course.short_description,
       slug: this.course.slug,
-      lessons: this.$scope.lessons
+      lessons: this.$scope.lessons,
+      begin_date: this.course.begin_date,
+      end_date: this.course.end_date,
+      difficult: this.parseDifficultValue(this.course.difficult)
     };
 
     if (this.course.id) {
@@ -87,7 +93,37 @@ export default class CourseFormController {
     }
   }
 
+  openDatepicker(id) {
+    if (id === 'begin') {
+      this.beginDatePopupOpened = true;
+      this.endDatePopupOpened = false;
+    }
+    else {
+      this.beginDatePopupOpened = false;
+      this.endDatePopupOpened = true;
+    }
+
+  }
+
   removeLessonFromList(index) {
     this.$scope.lessons.splice(index, 1);
+  }
+
+  parseDifficultValue(difficult) {
+    var returnStr;
+
+    switch (difficult) {
+      case 0:
+        returnStr = 'easy';
+        break;
+      case 1:
+        returnStr = 'medium';
+        break;
+      case 2:
+        returnStr = 'hard';
+        break;
+    }
+
+    return returnStr;
   }
 }

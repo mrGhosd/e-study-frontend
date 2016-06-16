@@ -59,6 +59,9 @@
     "form": {
       "add_lesson": "Add lesson"
     },
+    "begin_date": "Begin date",
+    "end_date": "End date",
+    "difficult": "Difficult",
     "homework": {
       "add": "Add",
       "edit": "Edit",

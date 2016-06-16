@@ -16,6 +16,39 @@
                <form-field title="'course.slug'" form="ctrl.courseForm" field="'slug'">
                  <input type="text" class="form-control" ng-model="ctrl.course.slug" required>
                </form-field>
+               <form-field title="'course.slug'" form="ctrl.courseForm" field="'slug'">
+                 <input type="text" class="form-control" ng-model="ctrl.course.slug" required>
+               </form-field>
+               <div class="form-field">
+                 <label class="col-sm-2 control-label">{{'course.begin_date' | translate}}</label>
+                 <p class="col-md-6 input-group">
+                   <input type="text" uib-datepicker-popup is-open="ctrl.beginDatePopupOpened"
+                          class="form-control"
+                          ng-model="ctrl.course.begin_date" required
+                          datepicker-options="ctrl.dateOptions"
+                          close-text="Close" disabled>
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" ng-click="ctrl.openDatepicker('begin')">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                      </button>
+                    </span>
+                  </p>
+               </div>
+               <div class="form-field">
+                 <label class="col-sm-2 control-label">{{'course.end_date' | translate}}</label>
+                 <p class="col-md-6 input-group">
+                   <input type="text" uib-datepicker-popup is-open="ctrl.endDatePopupOpened"
+                          class="form-control"
+                          ng-model="ctrl.course.end_date" required
+                          close-text="Close" disabled>
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" ng-click="ctrl.openDatepicker('end')">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                      </button>
+                    </span>
+                  </p>
+               </div>
+               <uib-rating ng-model="ctrl.course.difficult" max="ctrl.rateMax" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
                 <div class="lessons-list">
                   <div ng-class="{ 'field-error': ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons_length }"
                        ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons_length">
