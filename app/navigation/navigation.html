@@ -5,7 +5,7 @@
     <li ng-class="{active: navCtrl.isActive('/users')}">
       <a ui-sref="users">{{'nav.users' | translate}}</a>
     </li>
-    <li ng-show="navCtrl.isSignedIn()"  ng-class="{active: navCtrl.isActive('/courses')}">
+    <li ng-class="{active: navCtrl.isActive('/courses')}">
       <a ui-sref="courses">{{'nav.courses' | translate}}</a>
     </li>
     <!-- <li ng-show="navCtrl.isSignedIn()" ng-class="{active: navCtrl.isActive('/chats')}">

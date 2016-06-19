@@ -53,11 +53,22 @@ module.exports = {
           exclude: /node_modules/
         },
         { test: /\.html$/, loader: "raw"},
-        { test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|mp3)$/, loader: 'file'},
-        { test: /\.scss$/, loaders: ["style", "css", "sass"] },
+        { test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|mp3)$/, loader: 'file', exclude: /bootstrap/},
         { test: /bootstrap\/js\//, loader: 'imports?jQuery=jquery' },
         { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css?sourceMap!postcss')},
-        { test: /\.(otf|eot|png|ttf|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=1000000000', exclude: /app\/images/ },
+
+        { test: /\.woff|woff2(\?v=\d+\.\d+\.\d+)?$/,   loader: "url?limit=10000000000000000", exclude: /font-awesome/ },
+        { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000000000000000000", exclude: /font-awesome/ },
+        { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file", exclude: /font-awesome/ },
+        { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=image/svg+xml", exclude: /font-awesome/ },
+
+        { test: /\.scss$/, loaders: ["style", "css", "sass"] },
+
+        {
+          test: /\.(otf|eot|png|ttf|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          loader: 'url?limit=1000000000',
+          include: /font-awesome/,
+          exclude: /bootstrap/ },
         { test: /\.json$/, exclude: /node_modules/, loaders: ['json-loader'] }
       ]
   },
