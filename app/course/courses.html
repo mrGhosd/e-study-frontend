@@ -7,8 +7,8 @@
         <div class="panel-heading">
             <span><a ui-sref="course({id: course.slug || course.id})" >{{ course.title }}</a></span>
             <span class="pull-right">{{course.created_at }}</span>
-            <span><a ui-sref="edit_course({id: course.id})" class="course-edit inline icon small pointer"></a></span>
-            <span><a class="course-delete inline icon small pointer" ng-click="ctrl.destroy(course)"></a></span>
+            <span><a ui-sref="edit_course({id: course.id})" class="icon inline small resized comment-edit pointer"></a></span>
+            <span><a class="icon inline small resized comment-remove pointer" ng-click="ctrl.destroy(course)"></a></span>
         </div>
         <div class="panel-body">
           {{course.short_description}}

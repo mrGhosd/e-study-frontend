@@ -113,13 +113,13 @@ export default class CourseFormController {
     var returnStr;
 
     switch (difficult) {
-      case 0:
+      case 1:
         returnStr = 'easy';
         break;
-      case 1:
+      case 2:
         returnStr = 'medium';
         break;
-      case 2:
+      case 3:
         returnStr = 'hard';
         break;
     }
