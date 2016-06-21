@@ -11,7 +11,7 @@
   </a>
   <div class="homeworks-list">
     <h3>Homeworks</h3>
-    <div class="homework-item" ng-repeat="homework in lesson.homeworks">
+    <div class="homework-item" ng-repeat="homework in lesson.homeworks" ng-if="currentUser.canEdit(homework)">
       <a ui-sref="homework({
         course_id: lesson.course.slug || lesson.course.id,
         lesson_id: lesson.slug || lesson.id,

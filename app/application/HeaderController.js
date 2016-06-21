@@ -17,7 +17,6 @@ export default class HeaderController{
         $rootScope.$on('profileUpdated', (event, args) =>{
             this.user = args;
         });
-
         if(this.AuthService.isSignedIn()){
             this.AuthService.currentUser()
                 .then((user) => {

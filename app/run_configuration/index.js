@@ -5,8 +5,8 @@ import { onSignedIn } from './signed_in';
 import { currentUser } from './current_user';
 
 export default function($rootScope, AuthService, $location, $state, $modal,
-      usSpinnerService, Notification, $cookies, WebSockets, PopupMessage) {
-      currentUser($rootScope, WebSockets, PopupMessage, AuthService, $state);
+      usSpinnerService, Notification, $cookies, WebSockets, PopupMessage, currentUserFactory) {
+      currentUser($rootScope, WebSockets, PopupMessage, AuthService, $state, currentUserFactory);
       onSignedIn($rootScope, $state);
       onSignOut($state, $rootScope);
       onStateChange($rootScope, usSpinnerService);

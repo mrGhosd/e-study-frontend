@@ -1,4 +1,5 @@
 import envConfig from '../../config/env.config.js';
+const userIdKey = 'user_id';
 
 export default class User{
     constructor(attributes){
@@ -59,4 +60,13 @@ export default class User{
           return imageKeys ? this.image.url : '/images/empty-user.png';
         }
     }
+
+    canEdit(object) {
+      let value;
+      if (object.hasOwnProperty(userIdKey)) {
+        value = object[userIdKey] === this.id;
+      }
+      return value;
+    }
+
 }

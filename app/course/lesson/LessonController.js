@@ -1,5 +1,5 @@
 export default class LessonController {
-  constructor($scope, lesson, HomeworkFactory) {
+  constructor($scope, lesson, HomeworkFactory, AuthService, currentUserFactory) {
     this.lesson = lesson;
     this.$scope = $scope;
     $scope.lesson = lesson;
@@ -8,6 +8,8 @@ export default class LessonController {
     $scope.type = 'lesson';
     $scope.courseId = lesson.course.slug || lesson.course.id;
     this.HomeworkFactory = HomeworkFactory;
+    $scope.currentUser = currentUserFactory.getUser();
+    console.log($scope.currentUser);
   }
 
   deleteHomework(homework) {
