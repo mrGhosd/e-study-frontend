@@ -1,4 +1,8 @@
 <div class="course-page">
+  <div class="back-actions">
+    <a class="btn btn-default glyphicon glyphicon-arrow-left"
+       ui-sref="courses">{{ 'common.back' | translate }}</a>
+  </div>
   <h3>{{ctrl.course.title}}</h3>
   <div ng-bind-html="ctrl.course.description"></div>
   <div ng-repeat="lesson in ctrl.course.lessons">

@@ -68,5 +68,8 @@
       "delete": "Remove",
       "empty": "Course don't have homeworks"
     }
+  },
+  "common": {
+    "back": "Back"
   }
 }

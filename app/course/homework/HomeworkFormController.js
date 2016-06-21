@@ -7,6 +7,7 @@ export default class HomeworkFormController {
     this.$stateParams = $stateParams;
     this.courseId = $stateParams.course_id;
     this.lessonId = $stateParams.lesson_id;
+    this.homeworkId = $stateParams.id;
     this.$state = $state;
     this.HomeworkFactory = HomeworkFactory;
   }
@@ -32,7 +33,9 @@ export default class HomeworkFormController {
 
     promise
       .then((response) => {
-        this.$state.go('lesson', { course_id: this.courseId, id: this.lessonId });
+        this.$state.go('homework', { course_id: this.courseId,
+                                     lesson_id: this.lessonId,
+                                     id: this.homeworkId });
       })
       .catch((error) => {
         this.homeworkForm.$submitted = true;

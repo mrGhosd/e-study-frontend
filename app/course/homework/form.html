@@ -8,7 +8,7 @@
     </div>
     <div class="actions">
       <input type="submit" class="btn btn-success" value="{{ 'course.save' | translate }}" >
-      <a ui-sref="course({id: ctrl.courseId})" class="btn btn-default">{{ 'course.cancel' | translate }}</a>
+      <a ui-sref="lesson({course_id: ctrl.courseId, id: ctrl.lessonId})" class="btn btn-default">{{ 'course.cancel' | translate }}</a>
     </div>
   </form>
 </div>

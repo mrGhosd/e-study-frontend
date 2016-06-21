@@ -1,28 +1,33 @@
 <div class="lesson-page">
-<h3>Lesson page</h3>
-<h3>{{lesson.title}}</h3>
-<div ng-bind-html="lesson.description"></div>
-<a  ui-sref="new_homework({course_id: lesson.course.slug || lesson.course.id, lesson_id: lesson.slug || lesson.id})">
-  {{ 'course.homework.add' | translate }}
-</a>
-<div class="homeworks-list">
-  <div class="homework-item" ng-repeat="homework in lesson.homeworks">
-    <a ui-sref="homework({
-      course_id: lesson.course.slug || lesson.course.id,
-      lesson_id: lesson.slug || lesson.id,
-      id: homework.id
-    })">{{homework.id}}</a>
-    <a ui-sref="edit_homework({course_id: lesson.course.slug || lesson.course.id,
-                              lesson_id: lesson.slug || lesson.id,
-                              id: homework.id
-                             })"
-       class="icon inline small resized comment-edit pointer"></a>
-    <a ng-click="ctrl.deleteHomework(homework)"
-       class="icon inline small resized comment-remove pointer"></a>
+  <div class="back-actions">
+    <a class="btn btn-default glyphicon glyphicon-arrow-left"
+       ui-sref="course({id: courseId})">{{ 'common.back' | translate }}</a>
   </div>
-</div>
-<div class="comments-list">
-  <comments-list > </comments-list>
-  <comments-form id="commentForm"/>
-</div>
+  <h3>Lesson page</h3>
+  <h3>{{lesson.title}}</h3>
+  <div ng-bind-html="lesson.description"></div>
+  <a  ui-sref="new_homework({course_id: lesson.course.slug || lesson.course.id, lesson_id: lesson.slug || lesson.id})">
+    {{ 'course.homework.add' | translate }}
+  </a>
+  <div class="homeworks-list">
+    <h3>Homeworks</h3>
+    <div class="homework-item" ng-repeat="homework in lesson.homeworks">
+      <a ui-sref="homework({
+        course_id: lesson.course.slug || lesson.course.id,
+        lesson_id: lesson.slug || lesson.id,
+        id: homework.id
+      })">{{homework.id}}</a>
+      <a ui-sref="edit_homework({course_id: lesson.course.slug || lesson.course.id,
+                                lesson_id: lesson.slug || lesson.id,
+                                id: homework.id
+                               })"
+         class="icon inline small resized comment-edit pointer"></a>
+      <a ng-click="ctrl.deleteHomework(homework)"
+         class="icon inline small resized comment-remove pointer"></a>
+    </div>
+  </div>
+  <div class="comments-list">
+    <comments-list > </comments-list>
+    <comments-form id="commentForm"/>
+  </div>
 </div>

@@ -6,6 +6,7 @@ export default class LessonController {
     $scope.comments = lesson.comments;
     $scope.object = lesson;
     $scope.type = 'lesson';
+    $scope.courseId = lesson.course.slug || lesson.course.id;
     this.HomeworkFactory = HomeworkFactory;
   }
 
