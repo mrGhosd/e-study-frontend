@@ -1,6 +1,6 @@
-currentUserFactory.$inject = [];
+currentUserFactory.$inject = ['$rootScope'];
 
-export default function currentUserFactory() {
+export default function currentUserFactory($rootScope) {
   var user = null;
   return {
     getUser() {

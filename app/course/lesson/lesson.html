@@ -6,11 +6,11 @@
   <h3>Lesson page</h3>
   <h3>{{lesson.title}}</h3>
   <div ng-bind-html="lesson.description"></div>
-  <a  ui-sref="new_homework({course_id: lesson.course.slug || lesson.course.id, lesson_id: lesson.slug || lesson.id})">
-    {{ 'course.homework.add' | translate }}
-  </a>
-  <div class="homeworks-list">
+  <div class="homeworks-list" ng-if="currentUser !== null">
     <h3>Homeworks</h3>
+    <a  ui-sref="new_homework({course_id: lesson.course.slug || lesson.course.id, lesson_id: lesson.slug || lesson.id})">
+      {{ 'course.homework.add' | translate }}
+    </a>
     <div class="homework-item" ng-repeat="homework in lesson.homeworks" ng-if="currentUser.canEdit(homework)">
       <a ui-sref="homework({
         course_id: lesson.course.slug || lesson.course.id,

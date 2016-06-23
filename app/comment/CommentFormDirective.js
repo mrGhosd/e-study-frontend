@@ -1,14 +1,15 @@
 import template from './comment_form.html';
 
-commentsFormDirective.$inject = ['CommentFactory', '$location'];
+commentsFormDirective.$inject = ['CommentFactory', '$location', 'currentUserFactory'];
 
-export default function commentsFormDirective(CommentFactory, $location) {
+export default function commentsFormDirective(CommentFactory, $location, currentUserFactory) {
   return {
     restrict: "E",
     template: template,
     replace: true,
     scope: false,
     link: function($scope, element, attrs) {
+      $scope.currentUser = currentUserFactory.getUser();
       $scope.commentText = '';
       $scope.formComment = {};
 
@@ -27,6 +28,7 @@ export default function commentsFormDirective(CommentFactory, $location) {
           id: $scope.object.id,
           type: $scope.type
         };
+
 
         if ($scope.formComment.id) {
           $scope.formComment.text = $scope.commentText;
