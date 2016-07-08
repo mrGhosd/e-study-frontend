@@ -1,7 +1,7 @@
 import I18n from 'i18n-js';
 
 export default class HeaderController{
-    constructor($scope, $translate, $modal, AuthService, $rootScope, $window){
+    constructor($scope, $translate, $modal, AuthService, $rootScope, $window, currentUserFactory){
         this.$modal = $modal;
         this.$scope = $scope;
         this.locale = I18n.currentLocale();
@@ -10,7 +10,6 @@ export default class HeaderController{
         $rootScope.$on('signedIn', () => {
             this.AuthService.currentUser()
                 .then((user) => {
-                  console.log(user);
                     this.user = user;
                 })
         });

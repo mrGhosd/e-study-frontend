@@ -27,7 +27,7 @@ export default class AuthService{
         let def = this.$q.defer();
         this.ApiRequest.get('/sessions/current', {})
         .then((res) => {
-            const user = new User(res.data.current_user);
+            const user = new User(res.data.user);
             this.currentUserValue = user;
             this.$rootScope.$broadcast('currentUser', {user: user});
             def.resolve(user);
