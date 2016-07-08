@@ -1,5 +1,7 @@
+import envConfig from '../../config/env.config.js';
+
 export default class CourseFormController {
-  constructor($scope, $state, CourseFactory, course, LessonFactory) {
+  constructor($scope, $state, CourseFactory, course, LessonFactory, Upload) {
     this.$scope = $scope;
     this.$scope.courseDesc = course.description;
     this.course = course;
@@ -10,6 +12,10 @@ export default class CourseFormController {
     this.beginDatePopupOpened = null;
     this.endDatePopupOpened = null;
     this.rateMax = 3;
+    this.Upload = Upload;
+    this.host = envConfig[process.env.NODE_ENV].host;
+    this.port = envConfig[process.env.NODE_ENV].port;
+    this.imageUrl = `http://${this.host}:${this.port}/api/v0/attaches`;
   }
 
   trixInitialize(e, editor) {
@@ -27,7 +33,7 @@ export default class CourseFormController {
 
   makeRequest() {
     let promise = {};
-    const params = {
+    let params = {
       title: this.course.title,
       description: this.$scope.courseDesc || this.course.description,
       short_description: this.course.short_description,
@@ -38,6 +44,14 @@ export default class CourseFormController {
       difficult: this.parseDifficultValue(this.course.difficult)
     };
 
+    if(this.course.image){
+        params.image = {
+            attachable_type: "Course",
+            id: this.course.image.id
+        };
+    }
+
+    // console.log(this.course);
     if (this.course.id) {
       promise = this.CourseFactory.update(this.course.id, params);
     }
@@ -125,5 +139,27 @@ export default class CourseFormController {
     }
 
     return returnStr;
+  }
+
+  upload(file){
+      // this.setDefaultLoadNotifications();
+      // this.usSpinnerService.spin('user-form-image');
+      this.Upload.upload({
+          url: this.imageUrl,
+          fields: {'attachable_type': "Course", 'type': "Image"},
+          file: file
+      }).then( (object) => {
+          this.course.image = object.data.attach;
+          // this.usSpinnerService.stop('user-form-image');
+          this.loadedSuccessfully = true;
+          this.loadedFailure = false;
+      },
+      (error) => {
+          // this.usSpinnerService.stop('user-form-image');
+          this.loadedSuccessfully = false;
+          this.loadedFailure = true;
+          // this.Notification.alert('notifications.profile_update_image_failure');
+      })
+
   }
 }

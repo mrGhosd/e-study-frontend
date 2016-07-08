@@ -1,3 +1,5 @@
+import Course from './course.model';
+
 export default class CourseFactory {
   constructor(ApiRequest, $q) {
     this.ApiRequest = ApiRequest;
@@ -29,7 +31,8 @@ export default class CourseFactory {
     let def = this.$q.defer();
     this.ApiRequest.get(`/courses/${id}`)
         .then((response) => {
-          def.resolve(response.data.course);
+          const course = new Course(response.data.course);
+          def.resolve(course);
         });
     return def.promise;
   }
