@@ -15,7 +15,7 @@ export default class Course {
         return this.image.url;
       }
       else {
-        return '/images/empty-user.png';
+        return '/images/empty-course.png';
       }
   }
 }
