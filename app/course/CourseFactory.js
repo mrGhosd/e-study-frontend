@@ -10,7 +10,10 @@ export default class CourseFactory {
     let def = this.$q.defer();
     this.ApiRequest.get('/courses')
         .then((response) => {
-          def.resolve(response.data.courses);
+          let list = response.data.courses.map((item) => {
+            return new Course(item);
+          });
+          def.resolve(list);
         });
     return def.promise;
   }
