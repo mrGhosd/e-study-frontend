@@ -43,9 +43,19 @@
       margin-right: 20px;
     }
   }
-}
 
-.course-title-info {
-  display: flex;
-  flex-direction: row;
+  .course-title-info {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .course-title-info {
+    margin: 10px;
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      margin-left: 10px;
+    }
+  }
 }

@@ -145,3 +145,15 @@ ul.navigation-view {
 
   }
 }
+
+.card {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 3px rgba(0,0,0,.3);
+  transition: box-shadow .26s, width .26s;
+
+  &:hover {
+    box-shadow: 0 3px 8px rgba(0,0,0,.2);
+  }
+}
