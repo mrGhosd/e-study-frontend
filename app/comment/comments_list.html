@@ -1,4 +1,4 @@
-<div class="comments">
+<div class="comments card">
   <h3>Comments list</h3>
   <div ng-repeat="comment in comments" class="comment-item" id={{comment.id}}>
     <div class="text" ng-if="commentFormVisible === false" ng-bind-html="comment.text"></div>

@@ -1,13 +1,15 @@
-<form name="commentForm" ng-submit="createComment()" class="form-horizontal" ng-show="currentUser !== null">
-  <div class="col-md-10">
-      <trix-editor angular-trix ng-model="commentText" trix-initialize="trixInitialize(e, editor)"></trix-editor>
-      <div ng-if="commentForm.$submitted && commentForm.$errors.text" class="error">
-          <p ng-repeat="error in commentForm.$errors.text">
-              {{error}}
-          </p>
-      </div>
-  </div>
-  <div class="form-actions">
-    <input type="submit" class="btn btn-success" value="{{ 'course.save' | translate }}" >
-  </div>
-</form>
+<div class="commentForm card">
+  <form name="commentForm" ng-submit="createComment()" class="form-horizontal" ng-show="currentUser !== null">
+    <div class="col-md-10">
+        <trix-editor angular-trix ng-model="commentText" trix-initialize="trixInitialize(e, editor)"></trix-editor>
+        <div ng-if="commentForm.$submitted && commentForm.$errors.text" class="error">
+            <p ng-repeat="error in commentForm.$errors.text">
+                {{error}}
+            </p>
+        </div>
+    </div>
+    <div class="form-actions">
+      <input type="submit" class="btn btn-success" value="{{ 'course.save' | translate }}" >
+    </div>
+  </form>
+</div>

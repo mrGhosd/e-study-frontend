@@ -1,7 +1,7 @@
 .comment-item {
   display: flex;
   flex-direction: row;
-  
+
   .comment-actions {
     display: inline-block;
   }
@@ -13,4 +13,10 @@
 
 .comment-remove {
   background-image: url("/images/remove.png");
+}
+
+.commentForm {
+  form {
+    display: flex;
+  }
 }
