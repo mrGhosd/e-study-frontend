@@ -3,8 +3,19 @@
     <a class="btn btn-default glyphicon glyphicon-arrow-left"
        ui-sref="courses">{{ 'common.back' | translate }}</a>
   </div>
-  <h3>{{ctrl.course.title}}</h3>
-  <div ng-bind-html="ctrl.course.description"></div>
+  <div class="course-base-info">
+    <img ng-src="{{ctrl.course.avatarURL()}}" height="100" width="100" />
+    <div class="course-title-info">
+      <h3>{{ctrl.course.title}}</h3>
+      <div class="author">
+        <a ui-sref="user({id: ctrl.course.author.id})">
+          <img ng-src="{{ctrl.course.author.avatarURL()}}" class="img-circle" height="30" width="30" />
+          <span class="author-name">{{ctrl.course.author.correctNaming()}}</span>
+        </a>
+      </div>
+    </div>
+    <div ng-bind-html="ctrl.course.description"></div>
+  </div>
   <div ng-repeat="lesson in ctrl.course.lessons">
     <a ui-sref="lesson({course_id: ctrl.course.slug || ctrl.course.id, id: lesson.slug || lesson.id})">
       {{lesson.title}}
