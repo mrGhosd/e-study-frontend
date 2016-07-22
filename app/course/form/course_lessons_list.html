@@ -1,0 +1,48 @@
+<div class="lessons-list">
+  <div ng-class="{ 'field-error': ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons_length }"
+       ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons_length">
+    {{ctrl.courseForm.$errors.lessons_length}}
+  </div>
+  <div class="form-actions">
+    <a class="btn btn-default fa fa-plus"
+       ng-click="ctrl.addLesson()">{{ 'course.form.add_lesson' | translate }}</a>
+  </div>
+  <div class="lesson-item" ng-repeat="lesson in lessons">
+    <div class="form-field">
+      <label class="col-sm-1">{{ 'course.title' | translate }}</label>
+      <div class="col-md-6">
+        <input type="text" class="form-control" ng-model="lesson.title">
+        <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons[$index].title" class="error">
+            <p ng-repeat="error in ctrl.courseForm.$errors.lessons[$index].title">
+              {{error}}
+            </p>
+        </div>
+      </div>
+    </div>
+    <div class="form-field">
+      <label class="col-sm-1">{{ 'course.slug' | translate }}</label>
+      <div class="col-md-6">
+        <input type="text" class="form-control" ng-model="lesson.slug">
+        <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons[$index].slug" class="error">
+            <p ng-repeat="error in ctrl.courseForm.$errors.lessons[$index].slug">
+              {{error}}
+            </p>
+        </div>
+      </div>
+    </div>
+    <div class="form-field">
+      <label class="col-sm-1">{{ 'course.description' | translate }}</label>
+      <div class="col-md-6">
+        <textarea class="form-control" ng-model="lesson.description"></textarea>
+        <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons[$index].description" class="error">
+            <p ng-repeat="error in ctrl.courseForm.$errors.lessons[$index].description">
+                {{error}}
+            </p>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-actions">
+      <a class="btn btn-danger fa fa-minus" ng-click="ctrl.removeLesson($index)"></a>
+    </div>
+  </div>
+</div>

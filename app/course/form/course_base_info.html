@@ -1,0 +1,17 @@
+<div class="base-form-fields">
+  <form-field labelClass="'base-field'" title="'course.title'" form="ctrl.courseForm" field="'title'">
+    <input type="text" class="form-control" ng-model="ctrl.course.title" required>
+  </form-field>
+  <form-field labelClass="'base-field'" title="'course.slug'" form="ctrl.courseForm" field="'slug'">
+    <input type="text" class="form-control" ng-model="ctrl.course.slug" required>
+  </form-field>
+  <form-field labelClass="'base-field'" title="'course.short_description'" form="ctrl.courseForm" field="'short_description'">
+    <textarea rows="5" class="form-control" ng-model="ctrl.course.short_description"></textarea>
+  </form-field>
+  <form-field labelClass="'base-field'" title="'course.difficult'" form="ctrl.courseForm" field="'difficult'">
+    <uib-rating ng-model="ctrl.course.difficult" max="ctrl.rateMax"
+       on-hover="ctrl.hoveringOver(value)"
+       on-leave="ctrl.overStar = null"
+       titles="['Easy','Medium','Hard']" aria-labelledby="default-rating"></uib-rating>
+  </form-field>
+</div>

@@ -1,0 +1,31 @@
+<div class="course-form">
+  <h2>{{ 'course.form_title' | translate }}</h2>
+  <form ng-submit="ctrl.makeRequest()" name="ctrl.courseForm" class="form-horizontal">
+    <fieldset>
+      <div class="base-form-info">
+        <div ng-include="'/course/form/course_image.html'" class="course-image-template card"></div>
+        <div ng-include="'/course/form/course_base_info.html'" class="course-base-info-template card"></div>
+      </div>
+
+        <div class="row">
+            <div class="col-sm-12 fields">
+               <div ng-include="'/course/form/course_dates.html'" class="card"></div>
+
+               <div class="course-full-description-panel card">
+                 <form-field title="false" form="ctrl.courseForm" field="'description'">
+                   <trix-editor angular-trix ng-model="courseDesc" trix-change="ctrl.changedValue(e, editor)" trix-initialize="ctrl.trixInitialize(e, editor)"></trix-editor>
+                 </form-field>
+               </div>
+
+              <div ng-include="'/course/form/course_lessons_list.html'" class="card"></div>
+
+                <div class="form-actions form-field">
+                    <input type="submit" class="btn btn-success" value="{{ 'course.save' | translate }}" >
+                    <a ui-sref="courses" class="btn btn-default">{{ 'course.cancel' | translate }}</a>
+                </div>
+            </div>
+
+        </div>
+    </fieldset>
+  </form>
+</div>

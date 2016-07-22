@@ -17,7 +17,7 @@ export function routes($stateProvider, $urlRouterProvider) {
         })
         .state('new_course', {
             url: '/courses/new',
-            template: require('./form.html'),
+            template: require('./form/base.html'),
             controller: 'CourseFormController',
             controllerAs: 'ctrl',
             resolve: {
@@ -28,7 +28,7 @@ export function routes($stateProvider, $urlRouterProvider) {
         })
         .state('edit_course', {
             url: '/courses/:id/edit',
-            template: require('./form.html'),
+            template: require('./form/base.html'),
             controller: 'CourseFormController',
             controllerAs: 'ctrl',
             resolve: {
