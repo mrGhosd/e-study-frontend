@@ -3,7 +3,7 @@
   <form ng-submit="ctrl.makeRequest()" name="ctrl.courseForm" class="form-horizontal">
     <fieldset>
       <div class="base-form-info">
-        <div class="col-md-3 image-block">
+        <div class="col-md-3 image-block card">
             <div ng-class="{'image-placeholder': !ctrl.course.image.hasOwnProperty('url')}" ngf-drop="upload($file)">
                 <img ng-src="{{ ctrl.course.avatarURL() }}" height="200" width="200" ng-if="ctrl.course.image.hasOwnProperty('url')"/>
             </div>
@@ -15,9 +15,12 @@
                 <img ng-src="/images/failureLoad.png" height="32" width="32" ng-if="profile.loadedFailure"/>
             </div>
         </div>
-        <div class="base-form-fields">
+        <div class="base-form-fields card">
           <form-field labelClass="'base-field'" title="'course.title'" form="ctrl.courseForm" field="'title'">
             <input type="text" class="form-control" ng-model="ctrl.course.title" required>
+          </form-field>
+          <form-field labelClass="'base-field'" title="'course.slug'" form="ctrl.courseForm" field="'slug'">
+            <input type="text" class="form-control" ng-model="ctrl.course.slug" required>
           </form-field>
           <form-field labelClass="'base-field'" title="'course.short_description'" form="ctrl.courseForm" field="'short_description'">
             <textarea rows="5" class="form-control" ng-model="ctrl.course.short_description"></textarea>
@@ -27,41 +30,40 @@
 
         <div class="row">
             <div class="col-sm-12 fields">
+               <div class="time-picker card">
+                 <div class="form-field">
+                   <label class="col-sm-2 control-label">{{'course.begin_date' | translate}}</label>
+                   <p class="col-md-6 input-group">
+                     <input type="text" uib-datepicker-popup is-open="ctrl.beginDatePopupOpened"
+                            class="form-control"
+                            ng-model="ctrl.course.begin_date" required
+                            datepicker-options="ctrl.dateOptions"
+                            close-text="Close" disabled>
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="ctrl.openDatepicker('begin')">
+                          <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                      </span>
+                    </p>
+                 </div>
+                 <div class="form-field">
+                   <label class="col-sm-2 control-label">{{'course.end_date' | translate}}</label>
+                   <p class="col-md-6 input-group">
+                     <input type="text" uib-datepicker-popup is-open="ctrl.endDatePopupOpened"
+                            class="form-control"
+                            ng-model="ctrl.course.end_date" required
+                            close-text="Close" disabled>
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="ctrl.openDatepicker('end')">
+                          <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                      </span>
+                    </p>
+                 </div>
+               </div>
                <form-field title="false" form="ctrl.courseForm" field="'description'">
                  <trix-editor angular-trix ng-model="courseDesc" trix-change="ctrl.changedValue(e, editor)" trix-initialize="ctrl.trixInitialize(e, editor)"></trix-editor>
                </form-field>
-               <form-field title="'course.slug'" form="ctrl.courseForm" field="'slug'">
-                 <input type="text" class="form-control" ng-model="ctrl.course.slug" required>
-               </form-field>
-               <div class="form-field">
-                 <label class="col-sm-2 control-label">{{'course.begin_date' | translate}}</label>
-                 <p class="col-md-6 input-group">
-                   <input type="text" uib-datepicker-popup is-open="ctrl.beginDatePopupOpened"
-                          class="form-control"
-                          ng-model="ctrl.course.begin_date" required
-                          datepicker-options="ctrl.dateOptions"
-                          close-text="Close" disabled>
-                    <span class="input-group-btn">
-                      <button type="button" class="btn btn-default" ng-click="ctrl.openDatepicker('begin')">
-                        <i class="glyphicon glyphicon-calendar"></i>
-                      </button>
-                    </span>
-                  </p>
-               </div>
-               <div class="form-field">
-                 <label class="col-sm-2 control-label">{{'course.end_date' | translate}}</label>
-                 <p class="col-md-6 input-group">
-                   <input type="text" uib-datepicker-popup is-open="ctrl.endDatePopupOpened"
-                          class="form-control"
-                          ng-model="ctrl.course.end_date" required
-                          close-text="Close" disabled>
-                    <span class="input-group-btn">
-                      <button type="button" class="btn btn-default" ng-click="ctrl.openDatepicker('end')">
-                        <i class="glyphicon glyphicon-calendar"></i>
-                      </button>
-                    </span>
-                  </p>
-               </div>
                <uib-rating ng-model="ctrl.course.difficult" max="ctrl.rateMax" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
                 <div class="lessons-list">
                   <div ng-class="{ 'field-error': ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons_length }"
