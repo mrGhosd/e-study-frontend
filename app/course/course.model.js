@@ -12,6 +12,9 @@ export default class Course {
       if (attributes.author) {
         this.author = new User(attributes.author);
       }
+      if (attributes.difficult) {
+        this.difficult = this.getDifficultNumber();
+      }
   }
 
   avatarURL() {
@@ -21,5 +24,25 @@ export default class Course {
       else {
         return '/images/empty-course.png';
       }
+  }
+
+  getDifficultNumber() {
+    let value;
+    switch (this.difficult) {
+      case 'easy':
+        value = 1;
+        break;
+      case 'medium':
+        value = 2;
+        break;
+      case 'hard':
+        value = 3;
+        break
+      default:
+        value = 1;
+        break;
+    }
+
+    return value;
   }
 }

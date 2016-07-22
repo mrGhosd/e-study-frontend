@@ -16,6 +16,7 @@ export default class CourseFormController {
     this.host = envConfig[process.env.NODE_ENV].host;
     this.port = envConfig[process.env.NODE_ENV].port;
     this.imageUrl = `http://${this.host}:${this.port}/api/v0/attaches`;
+    this.$scope.isReadonly = false;
   }
 
   trixInitialize(e, editor) {
@@ -161,5 +162,10 @@ export default class CourseFormController {
           // this.Notification.alert('notifications.profile_update_image_failure');
       })
 
+  }
+
+  hoveringOver(value) {
+    this.overStar = value;
+    this.ratingTitle = this.parseDifficultValue(value);
   }
 }

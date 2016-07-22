@@ -25,6 +25,12 @@
           <form-field labelClass="'base-field'" title="'course.short_description'" form="ctrl.courseForm" field="'short_description'">
             <textarea rows="5" class="form-control" ng-model="ctrl.course.short_description"></textarea>
           </form-field>
+          <form-field labelClass="'base-field'" title="'course.difficult'" form="ctrl.courseForm" field="'difficult'">
+            <uib-rating ng-model="ctrl.course.difficult" max="ctrl.rateMax"
+               on-hover="ctrl.hoveringOver(value)"
+               on-leave="ctrl.overStar = null"
+               titles="['Easy','Medium','Hard']" aria-labelledby="default-rating"></uib-rating>
+          </form-field>
         </div>
       </div>
 
@@ -64,7 +70,6 @@
                <form-field title="false" form="ctrl.courseForm" field="'description'">
                  <trix-editor angular-trix ng-model="courseDesc" trix-change="ctrl.changedValue(e, editor)" trix-initialize="ctrl.trixInitialize(e, editor)"></trix-editor>
                </form-field>
-               <uib-rating ng-model="ctrl.course.difficult" max="ctrl.rateMax" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
                 <div class="lessons-list">
                   <div ng-class="{ 'field-error': ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons_length }"
                        ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons_length">
