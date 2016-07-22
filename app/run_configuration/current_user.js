@@ -8,8 +8,7 @@ export function currentUser($rootScope, WebSockets, PopupMessage, AuthService,
           })
   });
   $rootScope.$on('currentUser', (event, args) => {
-
-
+    currentUserFactory.setUser(args.user);
     // WebSockets.on(`user${args.user.id}chatmessage`, (event, data) => {
     //   const message = angular.fromJson(data.obj);
     //   if (!queue.map(message => message.id).includes(message.id)) {
