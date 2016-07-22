@@ -2,26 +2,31 @@
   <h2>{{ 'course.form_title' | translate }}</h2>
   <form ng-submit="ctrl.makeRequest()" name="ctrl.courseForm" class="form-horizontal">
     <fieldset>
-      <div class="col-md-3 image-block">
-          <div ng-class="{'image-placeholder': !ctrl.course.image.hasOwnProperty('url')}" ngf-drop="upload($file)">
-              <img ng-src="{{ ctrl.course.avatarURL() }}" height="200" width="200" ng-if="ctrl.course.image.hasOwnProperty('url')"/>
-          </div>
-          <button class="btn btn-info load-image" ngf-select="ctrl.upload($file)" ng-model="ctrl.course.files" name="image"
-                  accept="image/*" ngf-max-size="10MB" value="{{ctrl.course.image }}">Upload</button>
-          <span us-spinner spinner-key="course-form-image" class="user-form-image-spinner"></span>
-          <div class="load-images">
-              <img ng-src="/images/successLoad.png" height="32" width="32" ng-if="profile.loadedSuccessfully"/>
-              <img ng-src="/images/failureLoad.png" height="32" width="32" ng-if="profile.loadedFailure"/>
-          </div>
+      <div class="base-form-info">
+        <div class="col-md-3 image-block">
+            <div ng-class="{'image-placeholder': !ctrl.course.image.hasOwnProperty('url')}" ngf-drop="upload($file)">
+                <img ng-src="{{ ctrl.course.avatarURL() }}" height="200" width="200" ng-if="ctrl.course.image.hasOwnProperty('url')"/>
+            </div>
+            <button class="btn btn-info load-image" ngf-select="ctrl.upload($file)" ng-model="ctrl.course.files" name="image"
+                    accept="image/*" ngf-max-size="10MB" value="{{ctrl.course.image }}">Upload</button>
+            <span us-spinner spinner-key="course-form-image" class="user-form-image-spinner"></span>
+            <div class="load-images">
+                <img ng-src="/images/successLoad.png" height="32" width="32" ng-if="profile.loadedSuccessfully"/>
+                <img ng-src="/images/failureLoad.png" height="32" width="32" ng-if="profile.loadedFailure"/>
+            </div>
+        </div>
+        <div class="base-form-fields">
+          <form-field labelClass="'base-field'" title="'course.title'" form="ctrl.courseForm" field="'title'">
+            <input type="text" class="form-control" ng-model="ctrl.course.title" required>
+          </form-field>
+          <form-field labelClass="'base-field'" title="'course.short_description'" form="ctrl.courseForm" field="'short_description'">
+            <textarea rows="5" class="form-control" ng-model="ctrl.course.short_description"></textarea>
+          </form-field>
+        </div>
       </div>
+
         <div class="row">
             <div class="col-sm-12 fields">
-               <form-field title="'course.title'" form="ctrl.courseForm" field="'title'">
-                 <input type="text" class="form-control" ng-model="ctrl.course.title" required>
-               </form-field>
-               <form-field title="'course.short_description'" form="ctrl.courseForm" field="'short_description'">
-                 <textarea class="form-control" ng-model="ctrl.course.short_description"></textarea>
-               </form-field>
                <form-field title="false" form="ctrl.courseForm" field="'description'">
                  <trix-editor angular-trix ng-model="courseDesc" trix-change="ctrl.changedValue(e, editor)" trix-initialize="ctrl.trixInitialize(e, editor)"></trix-editor>
                </form-field>

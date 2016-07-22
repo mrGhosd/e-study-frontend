@@ -11,11 +11,13 @@ export default function formFieldDirective($translate) {
     scope: {
       title: '=',
       form: '=',
-      field: '='
+      field: '=',
+      labelclass: '='
     },
     link: function($scope, element, attr) {
       $translate($scope.title).then((translated) => {
           $scope.translatedTitle = translated;
+          console.log($scope.labelclass);
       });
     }
   };

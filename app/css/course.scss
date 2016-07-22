@@ -1,6 +1,29 @@
 .course-form {
   width: 100%;
 
+  .base-form-info {
+    display: flex;
+    flex-direction: row;
+
+    .base-form-fields {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      form-field {
+        margin-bottom: 10px;
+
+        textarea {
+          resize: none;
+        }
+      }
+
+      .base-field {
+        width: 10em;
+      }
+    }
+  }
+
   .fields {
     display: flex;
     flex-direction: column;
@@ -17,6 +40,11 @@
       margin-top: 10px;
     }
   }
+}
+
+.form-field {
+  display: flex;
+  flex-direction: row;
 }
 
 .courses {
