@@ -107,4 +107,35 @@
       margin-left: 10px;
     }
   }
+
+  .lessons {
+    .list {
+      .lesson-item {
+        display: flex;
+        flex-direction: row;
+
+        .info {
+          margin-left: 10px;
+          display: flex;
+          flex-direction: row;
+
+          .text-info {
+            margin-left: 15px;
+            display: flex;
+            flex-direction: column;
+          }
+        }
+
+        .lesson-number {
+          border: 3px solid #c8c8c8;
+          border-radius: 1em;
+          font-size: 35px;
+          width: 2em;
+          text-align: center;
+          margin: 0;
+          padding-top: 7px;
+        }
+      }
+    }
+  }
 }

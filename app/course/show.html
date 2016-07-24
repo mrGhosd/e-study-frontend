@@ -36,10 +36,18 @@
   <div class="lessons">
     <div class="list card">
       <h4>{{'course.lessons' | translate}}</h4>
-      <div ng-repeat="lesson in ctrl.course.lessons">
-        <a ui-sref="lesson({course_id: ctrl.course.slug || ctrl.course.id, id: lesson.slug || lesson.id})">
-          {{lesson.title}}
-        </a>
+      <div class="lesson-item" ng-repeat="lesson in ctrl.course.lessons">
+        <p class="lesson-number">{{$index + 1}}</p>
+        <div class="info">
+          <img ng-src="{{lesson.avatarURL()}}" height="75" width="75" class="img-circle" />
+          <div class="text-info">
+            <a ui-sref="lesson({course_id: ctrl.course.slug || ctrl.course.id, id: lesson.slug || lesson.id})">
+              {{lesson.title}}
+            </a>
+            <p>{{lesson.description}}</p>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
