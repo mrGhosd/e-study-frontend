@@ -12,6 +12,10 @@
       </div>
       <div class="text-info card">
         <h3>{{lesson.title}}</h3>
+        <div class="lesson-author">
+          <img ng-src="{{lesson.user.avatarURL()}}" class="img-circle" height="30" width="30" />
+          <span class="author-name">{{lesson.user.correctNaming()}}</span>
+        </div>
       </div>
     </div>
 

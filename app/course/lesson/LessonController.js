@@ -9,7 +9,7 @@ export default class LessonController {
     $scope.courseId = lesson.course.slug || lesson.course.id;
     this.HomeworkFactory = HomeworkFactory;
     $scope.currentUser = currentUserFactory.getUser();
-    console.log($scope.currentUser);
+    console.log($scope.lesson);
   }
 
   deleteHomework(homework) {
