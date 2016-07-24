@@ -13,6 +13,18 @@
 }
 
 .lesson-page {
-  display: flex;
-  flex-direction: column;
+
+  .main-information {
+    display: flex;
+    flex-direction: column;
+
+    .base-information {
+      display: flex;
+      flex-direction: row;
+
+      .text-info  {
+        width: 100%;
+      }
+    }
+  }
 }

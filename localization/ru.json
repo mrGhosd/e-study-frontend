@@ -49,6 +49,7 @@
     "begin_date": "Дата начала",
     "end_date": "Дата окончания",
     "difficult": "Сложность",
+    "homeworks": "Домашнии задания",
     "lessons": "Занятия",
     "difficult_value": {
         "easy": "Легко",

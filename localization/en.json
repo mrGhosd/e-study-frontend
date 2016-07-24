@@ -60,6 +60,7 @@
       "add_lesson": "Add lesson"
     },
     "lessons": "Lessons",
+    "homeworks": "Homeworks",
     "begin_date": "Begin date",
     "end_date": "End date",
     "difficult": "Difficult",

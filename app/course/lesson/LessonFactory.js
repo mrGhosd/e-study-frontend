@@ -1,3 +1,5 @@
+import Lesson from './lesson.model';
+
 export default class LessonFactory {
   constructor(ApiRequest, $q) {
     this.ApiRequest = ApiRequest;
@@ -8,7 +10,7 @@ export default class LessonFactory {
     let def = this.$q.defer();
     this.ApiRequest.get(`/courses/${courseId}/lessons/${lessonId}`)
         .then((response) => {
-          def.resolve(response.data.lesson);
+          def.resolve(new Lesson(response.data.lesson));
         })
         .catch((errors) => {
           def.reject(errors.data.errors);
