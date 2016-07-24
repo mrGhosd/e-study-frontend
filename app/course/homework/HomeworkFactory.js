@@ -1,3 +1,5 @@
+import Homework from 'course/homework/homework.model.js';
+
 export default class HomeworkFactory {
   constructor(ApiRequest, $q) {
     this.ApiRequest = ApiRequest;

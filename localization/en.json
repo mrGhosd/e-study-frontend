@@ -70,6 +70,7 @@
         "hard": "Hard"
     },
     "homework": {
+      "form_title": "Create homework",
       "add": "Add",
       "edit": "Edit",
       "delete": "Remove",

@@ -1,5 +1,6 @@
-<div class="homework-form" ng-submit="ctrl.makeRequest()">
-  <form name="homeworkForm">
+<div class="homework-form card">
+  <h3>{{'course.homework.form_title' | translate}}</h3>
+  <form name="homeworkForm" ng-submit="ctrl.makeRequest()">
     <trix-editor angular-trix ng-model="homeworkText" trix-initialize="ctrl.trixInitialize(e, editor)"></trix-editor>
     <div ng-if="ctrl.homeworkForm.$submitted && ctrl.homeworkForm.$errors.text" class="error">
         <p ng-repeat="error in ctrl.homeworkForm.$errors.text">
