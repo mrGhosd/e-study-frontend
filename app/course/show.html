@@ -35,7 +35,7 @@
   </div>
   <div class="lessons">
     <div class="list card">
-      <h5>Lessons list</h5>
+      <h4>{{'course.lessons' | translate}}</h4>
       <div ng-repeat="lesson in ctrl.course.lessons">
         <a ui-sref="lesson({course_id: ctrl.course.slug || ctrl.course.id, id: lesson.slug || lesson.id})">
           {{lesson.title}}

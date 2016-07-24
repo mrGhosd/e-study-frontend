@@ -1,4 +1,5 @@
 import User from 'users/user.model.js';
+import Lesson from 'course/lesson/lesson.model.js';
 
 export default class Course {
   constructor(attributes){
@@ -14,6 +15,11 @@ export default class Course {
       }
       if (attributes.difficult) {
         this.difficult = this.getDifficultNumber();
+      }
+      if (attributes.lessons) {
+        this.lessons = attributes.lessons.map((item) => {
+          return new Lesson(item);
+        });
       }
   }
 

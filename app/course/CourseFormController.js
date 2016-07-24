@@ -52,7 +52,7 @@ export default class CourseFormController {
         };
     }
 
-    // console.log(this.course);
+    console.log(this.course);
     if (this.course.id) {
       promise = this.CourseFactory.update(this.course.id, params);
     }
@@ -161,7 +161,20 @@ export default class CourseFormController {
           this.loadedFailure = true;
           // this.Notification.alert('notifications.profile_update_image_failure');
       })
+  }
 
+  uploadImageForLesson(file, lesson) {
+    this.Upload.upload({
+        url: this.imageUrl,
+        fields: {'attachable_type': "Lesson", 'type': "Image"},
+        file: file
+    }).then( (object) => {
+        lesson.image = object.data.attach;
+    },
+    (error) => {
+        this.loadedSuccessfully = false;
+        this.loadedFailure = true;
+    })
   }
 
   hoveringOver(value) {
