@@ -49,6 +49,11 @@
     "begin_date": "Дата начала",
     "end_date": "Дата окончания",
     "difficult": "Сложность",
+    "difficult_value": {
+        "easy": "Легко",
+        "medium": "Средне",
+        "hard": "Тяжело"
+    },
     "form": {
       "add_lesson": "Добавить урок"
     },

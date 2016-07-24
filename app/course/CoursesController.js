@@ -1,7 +1,6 @@
 export default class CoursesController {
   constructor($scope, courses, CourseFactory, currentUserFactory) {
     this.courses = courses;
-    console.log(currentUserFactory.getUser());
     this.CourseFactory = CourseFactory;
     this.currentUser = currentUserFactory.getUser();
   }

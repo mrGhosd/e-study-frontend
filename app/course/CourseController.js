@@ -7,5 +7,7 @@ export default class CourseController {
     this.HomeworkFactory = HomeworkFactory;
     $scope.object = course;
     $scope.type = 'course';
+    this.rateMax = 3;
+    $scope.isReadOnly = true;
   }
 }

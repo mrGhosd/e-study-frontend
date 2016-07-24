@@ -26,6 +26,24 @@ export default class Course {
       }
   }
 
+  getDifficultName() {
+    var returnStr;
+
+    switch (this.difficult) {
+      case 1:
+        returnStr = 'course.difficult_value.easy';
+        break;
+      case 2:
+        returnStr = 'course.difficult_value.medium';
+        break;
+      case 3:
+        returnStr = 'course.difficult_value.hard';
+        break;
+    }
+
+    return returnStr;
+  }
+
   getDifficultNumber() {
     let value;
     switch (this.difficult) {

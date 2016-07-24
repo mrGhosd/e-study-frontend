@@ -66,6 +66,24 @@
 .course-page {
   display: flex;
   flex-direction: column;
+  min-width: 50em;
+
+  .course-base-info {
+    margin-top: 20px;
+
+    .course-main {
+      display: flex;
+      flex-direction: row;
+
+      .course-title-info {
+        width: 100%;
+
+        .main-course-field {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
 
   .course-homework-item {
     display: flex;
