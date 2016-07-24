@@ -1,8 +1,8 @@
 import User from 'users/user.model.js';
+import Lesson from 'course/lesson/lesson.model.js';
 import Course from 'course/course.model.js';
-import Homework from 'course/homework/homework.model.js';
 
-export default class Lesson {
+export default class Homework {
   constructor(attributes){
       this.setAttributes(attributes);
   }
@@ -17,19 +17,8 @@ export default class Lesson {
       if (attributes.course) {
         this.course = new Course(attributes.course);
       }
-      if (attributes.homeworks) {
-        this.homeworks = attributes.homeworks.map(item => {
-          return new Homework(item);
-        });
-      }
-  }
-
-  avatarURL() {
-      if (this.image) {
-        return this.image.url;
-      }
-      else {
-        return '/images/empty-course.png';
+      if (attributes.lesson) {
+        this.lesson = new Lesson(attributes.lesson);
       }
   }
 }

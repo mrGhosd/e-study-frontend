@@ -26,7 +26,7 @@
     <div class="homeworks-info card">
       <div class="homeworks-list" ng-if="currentUser !== null">
         <h3>{{'course.homeworks' | translate}}</h3>
-        <a  ui-sref="new_homework({course_id: lesson.course.slug || lesson.course.id, lesson_id: lesson.slug || lesson.id})">
+        <a class="btn btn-primary" ui-sref="new_homework({course_id: lesson.course.slug || lesson.course.id, lesson_id: lesson.slug || lesson.id})">
           {{ 'course.homework.add' | translate }}
         </a>
         <div class="homework-item" ng-repeat="homework in lesson.homeworks" ng-if="currentUser.canEdit(homework)">
@@ -34,7 +34,11 @@
             course_id: lesson.course.slug || lesson.course.id,
             lesson_id: lesson.slug || lesson.id,
             id: homework.id
-          })">{{homework.id}}</a>
+          })">
+          <img ng-src="{{homework.user.avatarURL()}}" class="img-circle" width="50" height="50" />
+          <span class="user-name">{{homework.user.correctNaming()}}</span>
+          <span class="creation-date">{{homework.created_at}}</span>
+        </a>
           <a ui-sref="edit_homework({course_id: lesson.course.slug || lesson.course.id,
                                     lesson_id: lesson.slug || lesson.id,
                                     id: homework.id
