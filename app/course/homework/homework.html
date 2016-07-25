@@ -1,6 +1,8 @@
 <div class="homework-page">
   <a class="btn btn-default glyphicon glyphicon-arrow-left" ui-sref="lesson({course_id: courseId, id: lessonId})">{{ 'common.back' | translate }}</a>
-  <div class="homework-text" ng-bind-html="homework.text"></div>
+  <div class="homework-block card">
+    <div class="homework-text" ng-bind-html="homework.text"></div>
+  </div>
   <div class="comments-list">
     <comments-list > </comments-list>
     <comments-form id="commentForm"/>
