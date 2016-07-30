@@ -17,9 +17,12 @@ export default class UserFormController {
         this.host = envConfig[process.env.NODE_ENV].host;
         this.port = envConfig[process.env.NODE_ENV].port;
         this.imageUrl = `http://${this.host}:${this.port}/api/v0/attaches`;
-        if($scope.user.hasOwnProperty("date_of_birth")){
-            $scope.user.date_of_birth = new Date($filter("date")(Date.now(), 'yyyy-MM-dd'));
-        }
+        // if($scope.user.hasOwnProperty("date_of_birth")){
+        //     $scope.user.date_of_birth = new Date($filter("date")(Date.now(), 'yyyy-MM-dd'));
+        // }
+        this.beginDatePopupOpened = null;
+        this.endDatePopupOpened = null;
+        this.datePickerFormat = 'dd.MM.yyyy';
     }
 
     update(){
@@ -29,7 +32,7 @@ export default class UserFormController {
             first_name: user.first_name,
             email: user.email,
             middle_name: user.middle_name,
-            date_of_birth: user.date_of_birth,
+            date_of_birth: this.$filter('date')(user.date_of_birth,'dd.MM.yyyy'),
             description: user.description
         }};
         if(user.image){
@@ -77,5 +80,16 @@ export default class UserFormController {
     setDefaultLoadNotifications(){
         this.loadedSuccessfully = false;
         this.loadedFailure = false;
+    }
+
+    openDatepicker(id) {
+      if (id === 'begin') {
+        this.beginDatePopupOpened = true;
+        this.endDatePopupOpened = false;
+      }
+      else {
+        this.beginDatePopupOpened = false;
+        this.endDatePopupOpened = true;
+      }
     }
 }

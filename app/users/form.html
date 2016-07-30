@@ -50,7 +50,16 @@
                 <div class="form-group" ng-class="{ 'has-error': userForm.$submitted && userForm.$errors.date_of_birth }">
                     <label class="control-label col-md-4">{{ 'users.date_of_birth' | translate }}</label>
                     <div class="col-md-6">
-                        <input type="date" class="form-control" placeholder="Date of birth" ng-model="user.date_of_birth" required>
+                      <input uib-datepicker-popup="{{profile.datePickerFormat}}" is-open="profile.beginDatePopupOpened"
+                             class="form-control"
+                             ng-model="user.date_of_birth" required
+                             datepicker-options="profile.dateOptions"
+                             close-text="Close">
+                             <span class="input-group-btn">
+                               <button type="button" class="btn btn-default" ng-click="profile.openDatepicker('begin')">
+                                 <i class="glyphicon glyphicon-calendar"></i>
+                               </button>
+                             </span>
                         <div ng-if="userForm.$submitted && userForm.$errors.date_of_birth" class="error">
                             <p ng-repeat="error in userForm.$errors.date_of_birth">
                                 {{error}}
