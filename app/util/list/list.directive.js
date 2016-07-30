@@ -12,22 +12,40 @@ export default function listDirective($window) {
     replace: true,
     link: function($scope, element, attr) {
       $($window).on('scroll', function() {
-        const currentValue = $(window).scrollTop();
-        const listHeight = $(element).height();
-        if ($(element).height() > 0 &&
-            (elementInViewport(element) || listHeight >= currentValue) &&
-            listHeight - currentValue <= 600) {
-              if (!canLoadMore) {
-                canLoadMore = true;
-                attr.ctrl ? $scope[attr.ctrl][attr.func]() : $scope[attr.func]();
-                setTimeout(() => {
-                  canLoadMore = false;
-                }, 3000);
+        $scope.counts = 0;
+        if (isViewOnBottom(element)) {
+              if (!$scope.canLoadMore) {
+                $scope.canLoadMore = true;
+                loadList($scope, attr, element);
               }
         }
       });
     }
   };
+
+  function loadList($scope, attr, element) {
+    // if ($scope.counts < 2) {
+      applyElementsLoading($scope, attr);
+      setTimeout(() => {
+        $scope.canLoadMore = false;
+        if (isViewOnBottom(element)) {
+          loadList($scope, attr, element);
+          $scope.counts++;
+        }
+      }, 3000);
+    // }
+  }
+
+  function applyElementsLoading($scope, attr) {
+    attr.ctrl ? $scope[attr.ctrl][attr.func]() : $scope[attr.func]();
+  }
+
+
+  function isViewOnBottom(element) {
+    const currentValue = $(window).scrollTop();
+    const listHeight = $(element).height();
+    return $(element).height() > 0 && (elementInViewport(element) || listHeight >= currentValue) && listHeight - currentValue <= 600;
+  }
 
   function elementInViewport(elem) {
     var docViewTop = $(window).scrollTop();

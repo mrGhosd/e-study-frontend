@@ -11,6 +11,7 @@ export default class UsersController {
         $scope.popoverTemplate = "/users/popover.html";
         this.canLoadMore = false;
         this.page = this.userFactory.defaultPage;
+        this.lastRequest;
     }
 
     search(){
@@ -34,8 +35,13 @@ export default class UsersController {
     }
 
     loadMore() {
+      if (this.lastRequest && this.lastRequest.length === 0)  {
+        return;
+      }
+
       this.userFactory.getAll(++this.page)
       .then(response => {
+        this.lastRequest = response;
         response.map(item => {
           this.$scope.users.push(item);
         });
