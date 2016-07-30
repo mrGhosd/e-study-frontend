@@ -14,7 +14,14 @@
   },
   "users": {
     "search_button": "Поиск",
-    "profile": "Профиль"
+    "profile": "Профиль",
+    "email": "Электронный адрес",
+    "last_name": "Фамилия",
+    "first_name": "Имя",
+    "middle_name": "Отчество",
+    "date_of_birth": "Дата рождения",
+    "save": "Сохранить",
+    "cancel": "Отменить"
   },
   "errors": {
     "401": {

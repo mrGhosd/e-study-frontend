@@ -24,7 +24,9 @@
     "last_name": "Last name",
     "first_name": "First name",
     "middle_name": "Middle name",
-    "date_of_birth": "Birthday"
+    "date_of_birth": "Birthday",
+    "save": "Save",
+    "cancel": "Cancel"
   },
   "errors": {
     "401": {
