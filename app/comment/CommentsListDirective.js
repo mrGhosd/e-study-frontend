@@ -11,7 +11,7 @@ export default function commentsListDirective($anchorScroll, $location, CommentF
     link: function($scope, element, attrs) {
       let page = 1;
       $scope.commentFormVisible = false;
-      let lastListRequest;
+      $scope.lastListRequest;
 
       $scope.editComment = function(comment) {
         $scope.formComment = comment;
@@ -32,10 +32,14 @@ export default function commentsListDirective($anchorScroll, $location, CommentF
       };
 
       $scope.loadMore = function() {
+        if ($scope.lastListRequest && $scope.lastListRequest.length === 0) {
+          return;
+        }
         const type = $scope.type;
         const id = $scope.object.id;
         CommentFactory.getList(type, id, ++page)
           .then(response => {
+            $scope.lastListRequest = response;
             console.log(response);
             response.map(item => {
               $scope.comments.push(item);
