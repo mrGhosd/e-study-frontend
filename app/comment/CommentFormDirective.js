@@ -63,7 +63,7 @@ export default function commentsFormDirective(CommentFactory, $location, current
       }
 
       function successCreateCallback(comment) {
-        $scope.comments.push(comment);
+        $scope.comments.unshift(comment);
         $scope.commentText = '';
       }
     }
