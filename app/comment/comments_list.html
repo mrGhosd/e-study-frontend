@@ -1,10 +1,12 @@
 <div class="comments card">
   <h3>Comments list</h3>
-  <div ng-repeat="comment in comments" class="comment-item" id={{comment.id}}>
-    <div class="text" ng-if="commentFormVisible === false" ng-bind-html="comment.text"></div>
-    <div class="comment-actions">
-      <a ng-click="editComment(comment)" class="icon inline medium comment-edit pointer"></a>
-      <a ng-click="deleteComment(comment)" class="icon inline medium comment-remove pointer"></a>
+  <list func="loadMore">
+    <div ng-repeat="comment in comments" class="comment-item" id={{comment.id}}>
+      <div class="text" ng-if="commentFormVisible === false" ng-bind-html="comment.text"></div>
+      <div class="comment-actions">
+        <a ng-click="editComment(comment)" class="icon inline medium comment-edit pointer"></a>
+        <a ng-click="deleteComment(comment)" class="icon inline medium comment-remove pointer"></a>
+      </div>
     </div>
-  </div>
+  </list>
 </div>

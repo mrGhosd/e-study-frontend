@@ -4,6 +4,24 @@ export default class CommentFactory {
     this.$q = $q;
   }
 
+  getList(type, id, page) {
+    let def = this.$q.defer();
+    if (!page) {
+      page = 1;
+    }
+    this.ApiRequest.get('/comments', { type, id, page })
+        .then((response) => {
+            let newComments = [];
+            for (let i = 0; i < response.data.comments.length; i++) {
+                // let user = new User(response.data.users[i]);
+                let comment = response.data.comments[i];
+                newComments.push(comment);
+            }
+            def.resolve(newComments);
+        });
+    return def.promise;
+  }
+
   create(comment) {
     let def = this.$q.defer();
     this.ApiRequest.post(`/comments`, { comment })

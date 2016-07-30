@@ -9,7 +9,9 @@ export default function commentsListDirective($anchorScroll, $location, CommentF
     replace: true,
     scope: false,
     link: function($scope, element, attrs) {
+      let page = 1;
       $scope.commentFormVisible = false;
+      let lastListRequest;
 
       $scope.editComment = function(comment) {
         $scope.formComment = comment;
@@ -28,6 +30,18 @@ export default function commentsListDirective($anchorScroll, $location, CommentF
           removeFromList(comment);
         });
       };
+
+      $scope.loadMore = function() {
+        const type = $scope.type;
+        const id = $scope.object.id;
+        CommentFactory.getList(type, id, ++page)
+          .then(response => {
+            console.log(response);
+            response.map(item => {
+              $scope.comments.push(item);
+            });
+          });
+      }
 
       function removeFromList(comment) {
         if ($scope.comments.includes(comment)) {
