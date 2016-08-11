@@ -28,6 +28,10 @@
               <a class="delete-teacher-link" ng-click="ctrl.removeTeacher(lesson)">
                 {{'course.lesson.delete' | translate}}
               </a>
+              <div class="checked-for-all-lessons">
+                <input type="checkbox" ng-model="lesson.selectedForAll" ng-click="ctrl.selectTeacherForAllLessons(lesson)" />
+                <span>{{'course.lesson.teacher_for_every_lesson' | translate}}</span>
+              </div>
           </div>
           <input type="text" uib-typeahead="user for users in ctrl.getUsers($viewValue)"
           typeahead-template-url="teacherTemplate.html"

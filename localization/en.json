@@ -73,7 +73,8 @@
     },
     "lesson": {
       "teacher": "Teacher",
-      "delete": "Delete"
+      "delete": "Delete",
+      "teacher_for_every_lesson": "Set this teacher for every lesson"
     },
     "homework": {
       "form_title": "Create homework",

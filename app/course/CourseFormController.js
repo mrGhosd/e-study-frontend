@@ -196,4 +196,14 @@ export default class CourseFormController {
     lesson.teacher = undefined;
     lesson.teacher_name = '';
   }
+
+  selectTeacherForAllLessons(lesson) {
+    const index = this.course.lessons.indexOf(lesson);
+
+    for (let i = index; i < this.course.lessons.length; i++) {
+        let les = this.course.lessons[i];
+        les.teacher = lesson.teacher;
+        les.teacher_name = lesson.teacher.correctNaming();
+    }
+  }
 }
