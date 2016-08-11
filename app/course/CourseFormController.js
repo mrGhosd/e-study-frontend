@@ -35,12 +35,19 @@ export default class CourseFormController {
 
   makeRequest() {
     let promise = {};
+    let lessons = this.$scope.lessons.map(item => {
+      item.teacher_id = item.teacher.id;
+      delete item.teacher;
+      delete item.teacher_name;
+      return item;
+    });
+    console.log(lessons);
     let params = {
       title: this.course.title,
       description: this.$scope.courseDesc || this.course.description,
       short_description: this.course.short_description,
       slug: this.course.slug,
-      lessons: this.$scope.lessons,
+      lessons: lessons,
       begin_date: this.course.begin_date,
       end_date: this.course.end_date,
       difficult: this.parseDifficultValue(this.course.difficult)
@@ -53,7 +60,6 @@ export default class CourseFormController {
         };
     }
 
-    console.log(this.course);
     if (this.course.id) {
       promise = this.CourseFactory.update(this.course.id, params);
     }
