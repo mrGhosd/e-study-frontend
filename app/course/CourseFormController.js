@@ -190,6 +190,10 @@ export default class CourseFormController {
   selectTeacher($item, lesson) {
     lesson.teacher = $item;
     lesson.teacher_name = $item.correctNaming();
-    console.log(lesson);
+  }
+
+  removeTeacher(lesson) {
+    lesson.teacher = undefined;
+    lesson.teacher_name = '';
   }
 }

@@ -72,7 +72,8 @@
         "hard": "Hard"
     },
     "lesson": {
-      "teacher": "Teacher"
+      "teacher": "Teacher",
+      "delete": "Delete"
     },
     "homework": {
       "form_title": "Create homework",

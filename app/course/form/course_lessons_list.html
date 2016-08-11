@@ -22,10 +22,13 @@
       <div class="form-field">
         <label class="col-sm-2">{{ 'course.lesson.teacher' | translate }}</label>
         <div class="col-md-6">
-          <a ng-if="lesson.teacher">
+          <div ng-if="lesson.teacher !== undefined">
               <img ng-src="{{lesson.teacher.avatarURL()}}" width="30" height="30">
               <span ng-bind-html="lesson.teacher_name"></span>
-          </a>
+              <a class="delete-teacher-link" ng-click="ctrl.removeTeacher(lesson)">
+                {{'course.lesson.delete' | translate}}
+              </a>
+          </div>
           <input type="text" uib-typeahead="user for users in ctrl.getUsers($viewValue)"
           typeahead-template-url="teacherTemplate.html"
           typeahead-on-select="ctrl.selectTeacher($item, lesson)"
