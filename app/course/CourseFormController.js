@@ -41,6 +41,7 @@ export default class CourseFormController {
       delete item.teacher_name;
       return item;
     });
+    
     console.log(lessons);
     let params = {
       title: this.course.title,
