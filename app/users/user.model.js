@@ -52,7 +52,7 @@ export default class User{
         const portName = envConfig[process.env.NODE_ENV].port;
         const imageKeys = this.image && Object.keys(this.image).length > 0;
         const imageDataKeys = this.imageData && Object.keys(this.imageData).length > 0;
-
+        
         if (imageDataKeys) {
           return `http://${hostName}:${portName}${this.imageData.image.url}`;
         }

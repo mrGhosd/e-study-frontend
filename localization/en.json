@@ -71,6 +71,9 @@
         "medium": "Medium",
         "hard": "Hard"
     },
+    "lesson": {
+      "teacher": "Teacher"
+    },
     "homework": {
       "form_title": "Create homework",
       "add": "Add",

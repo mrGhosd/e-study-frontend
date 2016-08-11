@@ -1,7 +1,7 @@
 import envConfig from '../../config/env.config.js';
 
 export default class CourseFormController {
-  constructor($scope, $state, CourseFactory, course, LessonFactory, Upload) {
+  constructor($scope, $state, CourseFactory, course, LessonFactory, Upload, UserService) {
     this.$scope = $scope;
     this.$scope.courseDesc = course.description;
     this.course = course;
@@ -17,6 +17,7 @@ export default class CourseFormController {
     this.port = envConfig[process.env.NODE_ENV].port;
     this.imageUrl = `http://${this.host}:${this.port}/api/v0/attaches`;
     this.$scope.isReadonly = false;
+    this.UserService = UserService;
   }
 
   trixInitialize(e, editor) {
@@ -180,5 +181,15 @@ export default class CourseFormController {
   hoveringOver(value) {
     this.overStar = value;
     this.ratingTitle = this.parseDifficultValue(value);
+  }
+
+  getUsers(query) {
+    return this.UserService.search(query);
+  }
+
+  selectTeacher($item, lesson) {
+    lesson.teacher = $item;
+    lesson.teacher_name = $item.correctNaming();
+    console.log(lesson);
   }
 }

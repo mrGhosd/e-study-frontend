@@ -1,0 +1,6 @@
+<script type="text/ng-template" id="teacherTemplate.html">
+  <a>
+      <img ng-src="{{match.model.avatarURL()}}" width="16">
+      <span ng-bind-html="match.model.correctNaming() | uibTypeaheadHighlight:query"></span>
+  </a>
+</script>

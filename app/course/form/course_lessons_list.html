@@ -20,7 +20,26 @@
     </div>
     <div class="base-fields">
       <div class="form-field">
-        <label class="col-sm-1">{{ 'course.title' | translate }}</label>
+        <label class="col-sm-2">{{ 'course.lesson.teacher' | translate }}</label>
+        <div class="col-md-6">
+          <a ng-if="lesson.teacher">
+              <img ng-src="{{lesson.teacher.avatarURL()}}" width="30" height="30">
+              <span ng-bind-html="lesson.teacher_name"></span>
+          </a>
+          <input type="text" uib-typeahead="user for users in ctrl.getUsers($viewValue)"
+          typeahead-template-url="teacherTemplate.html"
+          typeahead-on-select="ctrl.selectTeacher($item, lesson)"
+          class="form-control" ng-model="lesson.teacher_name">
+
+          <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons[$index].teacher_id" class="error">
+              <p ng-repeat="error in ctrl.courseForm.$errors.lessons[$index].teacher_id">
+                {{error}}
+              </p>
+          </div>
+        </div>
+      </div>
+      <div class="form-field">
+        <label class="col-sm-2">{{ 'course.title' | translate }}</label>
         <div class="col-md-6">
           <input type="text" class="form-control" ng-model="lesson.title">
           <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons[$index].title" class="error">
@@ -31,7 +50,7 @@
         </div>
       </div>
       <div class="form-field">
-        <label class="col-sm-1">{{ 'course.slug' | translate }}</label>
+        <label class="col-sm-2">{{ 'course.slug' | translate }}</label>
         <div class="col-md-6">
           <input type="text" class="form-control" ng-model="lesson.slug">
           <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons[$index].slug" class="error">
@@ -42,7 +61,7 @@
         </div>
       </div>
       <div class="form-field">
-        <label class="col-sm-1">{{ 'course.description' | translate }}</label>
+        <label class="col-sm-2">{{ 'course.description' | translate }}</label>
         <div class="col-md-6">
           <textarea class="form-control" ng-model="lesson.description"></textarea>
           <div ng-if="ctrl.courseForm.$submitted && ctrl.courseForm.$errors.lessons[$index].description" class="error">
@@ -58,3 +77,5 @@
     </div>
   </div>
 </div>
+
+<div ng-include="'/course/form/_teacher_template.html'"  />

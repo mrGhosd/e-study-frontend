@@ -22,6 +22,10 @@ export default class Lesson {
           return new Homework(item);
         });
       }
+      if (attributes.teacher) {
+        this.teacher = new User(attributes.teacher);
+        this.teacher_name = this.teacher.correctNaming();
+      }
   }
 
   avatarURL() {
