@@ -26,8 +26,13 @@
             </dvi>
           </div>
         </div>
-        <div class="enroll main-course-field" ng-if="ctrl.course.author.id !== ctrl.currentUser.id">
-          <a class="btn btn-primary" ng-click="ctrl.enrollCourse()">{{ 'course.lesson.enroll' | translate }}</a>
+        <div class="enroll main-course-field">
+          <a class="btn btn-primary" ng-if="ctrl.displayEnrollButton()" ng-click="ctrl.enrollCourse()">
+            {{ 'course.lesson.enroll' | translate }}
+          </a>
+          <a class="btn btn-success disabled" ng-if="!ctrl.displayEnrollButton()">
+            {{ 'course.lesson.enrolled' | translate }}
+          </a>
         </div>
       </div>
     </div>

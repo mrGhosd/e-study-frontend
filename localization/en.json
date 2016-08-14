@@ -79,7 +79,8 @@
       "teacher": "Teacher",
       "delete": "Delete",
       "teacher_for_every_lesson": "Set this teacher for every lesson",
-      "enroll": "Enroll"
+      "enroll": "Enroll",
+      "enrolled": "Enrolled"
     },
     "homework": {
       "form_title": "Create homework",

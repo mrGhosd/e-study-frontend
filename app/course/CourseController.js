@@ -18,10 +18,20 @@ export default class CourseController {
   enrollCourse() {
     this.CourseFactory.enroll(this.course.id)
       .then((course) => {
+        this.currentUser.studying_courses.push(course.id);
+        this.currentUserFactory.setUser(this.currentUser);
         this.Notification.info('notifications.course_enrolled');
       })
       .catch(errors => {
-        
+
       });
+  }
+
+  courseEnrolled() {
+    return !this.currentUser.studying_courses.includes(this.course.id);
+  }
+
+  displayEnrollButton() {
+    return this.courseEnrolled() && this.course.author.id !== this.currentUser.id;
   }
 }
