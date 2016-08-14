@@ -75,6 +75,7 @@
         "medium": "Medium",
         "hard": "Hard"
     },
+    "students": "Students",
     "lesson": {
       "teacher": "Teacher",
       "delete": "Delete",

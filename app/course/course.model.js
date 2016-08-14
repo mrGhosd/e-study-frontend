@@ -21,6 +21,12 @@ export default class Course {
           return new Lesson(item);
         });
       }
+
+      if (attributes.students) {
+        this.students = attributes.students.map(item => {
+          return new User(item);
+        });
+      }
   }
 
   avatarURL() {

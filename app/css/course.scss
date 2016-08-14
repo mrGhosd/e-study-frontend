@@ -85,6 +85,13 @@
     }
   }
 
+  .course-students-info {
+    .course-students-list {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
   .course-homework-item {
     display: flex;
     flex-direction: row;

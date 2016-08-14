@@ -41,6 +41,16 @@
     <h4>{{'course.description' | translate}}</h4>
     <div class="course=description" ng-bind-html="ctrl.course.description"></div>
   </div>
+  <div class="course-students-info card" ng-if="ctrl.course.students.length !== 0">
+    <h4>{{'course.students' | translate}}</h4>
+    <div class="course-students-list">
+      <div class="student-item" ng-repeat="user in ctrl.course.students">
+        <a ui-sref="user({id: user.id})">
+          <img ng-src="{{user.avatarURL()}}" height="40" width="40" />
+        </a>
+      </div>
+    </div>
+  </div>
   <div class="lessons">
     <div class="list card">
       <h4>{{'course.lessons' | translate}}</h4>
