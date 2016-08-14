@@ -36,13 +36,14 @@ export default class CourseFormController {
   makeRequest() {
     let promise = {};
     let lessons = this.$scope.lessons.map(item => {
-      item.teacher_id = item.teacher.id;
+      if (item.teacher) {
+        item.teacher_id = item.teacher.id;
+      }
       delete item.teacher;
       delete item.teacher_name;
       return item;
     });
-    
-    console.log(lessons);
+
     let params = {
       title: this.course.title,
       description: this.$scope.courseDesc || this.course.description,

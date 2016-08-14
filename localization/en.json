@@ -46,6 +46,10 @@
     "profile_update_image_failure": {
       "title": "Error",
       "text": "Uploading failed. Please try later"
+    },
+    "course_enrolled": {
+      "title": "Success",
+      "text": "Course was succesfully enrolled"
     }
   },
   "course": {
@@ -74,7 +78,8 @@
     "lesson": {
       "teacher": "Teacher",
       "delete": "Delete",
-      "teacher_for_every_lesson": "Set this teacher for every lesson"
+      "teacher_for_every_lesson": "Set this teacher for every lesson",
+      "enroll": "Enroll"
     },
     "homework": {
       "form_title": "Create homework",

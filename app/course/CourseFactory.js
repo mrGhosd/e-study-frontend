@@ -63,4 +63,16 @@ export default class CourseFactory {
         });
     return def.promise;
   }
+
+  enroll(id) {
+    let def = this.$q.defer();
+    this.ApiRequest.put(`/courses/${id}/enroll`)
+        .then((response) => {
+          def.resolve(new Course(response.data.course));
+        })
+        .catch((errors) => {
+          def.reject(errors.data.errors);
+        });
+    return def.promise;
+  }
 }
