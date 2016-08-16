@@ -25,6 +25,7 @@ export default class AuthService{
 
     currentUser(){
         let def = this.$q.defer();
+
         this.ApiRequest.get('/sessions/current', {})
         .then((res) => {
             const user = new User(res.data.current_user);

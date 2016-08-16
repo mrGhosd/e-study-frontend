@@ -14,7 +14,8 @@ export default class HomeworkFactory {
             def.resolve(response.data.homework);
         })
         .catch((error) => {
-          def.reject(error.data.errors);
+          const err = error.data.errors || error;
+          def.reject(err);
         });
       return def.promise;
   }
@@ -26,7 +27,8 @@ export default class HomeworkFactory {
           def.resolve(response.data.homework);
         })
         .catch((error) => {
-          def.reject(error.data.errors);
+          const err = error.data.errors || error;
+          def.reject(err);
         });
       return def.promise;
   }
@@ -38,7 +40,8 @@ export default class HomeworkFactory {
           def.resolve(response.data.homework);
         })
         .catch((error) => {
-          def.reject(error.data.errors);
+          const err = error.data.errors || error;
+          def.reject(err);
         });
       return def.promise;
   }

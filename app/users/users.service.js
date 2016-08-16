@@ -33,9 +33,14 @@ export default class UsersService {
 
     getUser(id) {
         let def = this.$q.defer();
-        this.ApiRequest.get(`/users/${id}.json`).then((res) => {
+        this.ApiRequest.get(`/users/${id}.json`)
+          .then((res) => {
             def.resolve(new User(res.data.user));
-        });
+          })
+          .catch((error) => {
+            console.log(error);
+            def.reject(error);
+          });
         return def.promise;
     }
 

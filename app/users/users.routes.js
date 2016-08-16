@@ -61,9 +61,11 @@ export function routes($stateProvider, $urlRouterProvider) {
             template: require('./user.html'),
             controller: 'UserController',
             onEnter: ['$state', '$stateParams', '$location', 'AuthService', function($state, $stateParams, $location, AuthService) {
+              if (localStorage.remember_token) {
                 AuthService.currentUser().then((data) => {
                     if(data.id == $stateParams.id) $location.path('/profile').replace("user", new User(data));
                 })
+              }
             }],
             resolve: {
                 user: ['$stateParams', 'UserService', ($stateParams, UserService) => {

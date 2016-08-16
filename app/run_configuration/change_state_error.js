@@ -2,8 +2,9 @@ export function onChangeStateError($rootScope, $state, Notification, usSpinnerSe
   $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
       usSpinnerService.stop('main-spinner');
       event.preventDefault();
-
+      
       if(error.status === 401) {
+        console.log(toState.name);
           if (fromState.name !== "") {
               $state.go(fromState.name);
           } else {
@@ -24,6 +25,18 @@ export function onChangeStateError($rootScope, $state, Notification, usSpinnerSe
           const user = currentUserFactory.getUser();
 
           if (toState.name === 'lesson') {
+            $state.go('course', {id: toParams.course_id});
+          }
+
+          if (toState.name === 'homework') {
+            $state.go('course', {id: toParams.course_id});
+          }
+
+          if (toState.name === 'new_lesson') {
+            $state.go('course', {id: toParams.course_id});
+          }
+
+          if (toState.name === 'edit_lesson') {
             $state.go('course', {id: toParams.course_id});
           }
 
