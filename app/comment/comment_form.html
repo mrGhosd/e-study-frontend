@@ -1,4 +1,4 @@
-<div class="commentForm card" ng-if="emptyInfo">
+<div class="commentForm card" ng-if="!emptyInfo">
   <form name="commentForm" ng-submit="createComment()" class="form-horizontal" ng-show="currentUser !== null">
     <div class="col-md-10">
         <trix-editor angular-trix ng-model="commentText" trix-initialize="trixInitialize(e, editor)"></trix-editor>

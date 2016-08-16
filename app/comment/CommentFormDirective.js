@@ -23,8 +23,8 @@ export default function commentsFormDirective(CommentFactory, $location, current
       }
 
       function emptyInfo() {
-        const keys = Object.keys($scope.currentUser).length;
-        return keys === 1 && keys.first === 'studying_courses';
+        const keys = Object.keys($scope.currentUser);
+        return keys.length === 1, keys.first === 'studying_courses';
       }
 
       function makeComment() {
