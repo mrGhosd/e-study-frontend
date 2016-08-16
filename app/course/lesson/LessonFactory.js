@@ -13,7 +13,7 @@ export default class LessonFactory {
           def.resolve(new Lesson(response.data.lesson));
         })
         .catch((errors) => {
-          def.reject(errors.data.errors);
+          def.reject(errors);
         });
     return def.promise;
   }

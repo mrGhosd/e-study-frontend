@@ -15,6 +15,18 @@ export default class CourseController {
     this.Notification = Notification;
   }
 
+  currentUserInStudents() {
+    let students = this.course.students;
+    if (students.length > 0) {
+      const mappedStudents = students.map((item) => {
+        return item.id
+      });
+      return mappedStudents.includes(this.currentUser.id);
+    } else {
+      return false;
+    }
+  }
+
   enrollCourse() {
     this.CourseFactory.enroll(this.course.id)
       .then((course) => {

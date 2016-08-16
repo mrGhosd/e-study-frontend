@@ -33,6 +33,10 @@
       "title": "Unauthorized",
       "text": "You must authenticate before continue"
     },
+    "403": {
+      "title": "Access denied",
+      "text": "You don't have rights to access this resource"
+    },
     "profile_update": {
       "title": "Error",
       "text": "Unforutanetelly, your profile wasn't updated. Please try later"

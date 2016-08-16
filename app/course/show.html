@@ -59,9 +59,10 @@
         <div class="info">
           <img ng-src="{{lesson.avatarURL()}}" height="75" width="75" class="img-circle" />
           <div class="text-info">
-            <a ui-sref="lesson({course_id: ctrl.course.slug || ctrl.course.id, id: lesson.slug || lesson.id})">
+            <a ng-if="ctrl.currentUserInStudents()" ui-sref="lesson({course_id: ctrl.course.slug || ctrl.course.id, id: lesson.slug || lesson.id})">
               {{lesson.title}}
             </a>
+            <span ng-if="!ctrl.currentUserInStudents()">{{lesson.title}}</span>
             <p>{{lesson.description}}</p>
           </div>
 
