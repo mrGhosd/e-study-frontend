@@ -12,6 +12,7 @@ export default function commentsFormDirective(CommentFactory, $location, current
       $scope.currentUser = currentUserFactory.getUser();
       $scope.commentText = '';
       $scope.formComment = {};
+      $scope.emptyInfo = emptyInfo();
 
       $scope.createComment = function() {
         makeComment();
@@ -19,6 +20,11 @@ export default function commentsFormDirective(CommentFactory, $location, current
 
       $scope.trixInitialize = function(e, editor) {
 
+      }
+
+      function emptyInfo() {
+        const keys = Object.keys($scope.currentUser).length;
+        return keys === 1 && keys.first === 'studying_courses';
       }
 
       function makeComment() {

@@ -1,6 +1,6 @@
 import User from 'users/user.model';
 
-export default class CommentModel {
+export default class Comment {
   constructor(attributes) {
       this.setAttributes(attributes);
   }
