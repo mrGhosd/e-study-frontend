@@ -1,8 +1,11 @@
 <div class="comments card">
   <comments-form id="commentForm"/>
-  
+
   <list func="loadMore">
     <div ng-repeat="comment in comments" class="comment-item" id={{comment.id}}>
+      <div class="image">
+        <img ng-src="{{comment.user.avatarURL()}}" class="img-circle" height="50" width="50" />
+      </div>
       <div class="text" ng-if="commentFormVisible === false" ng-bind-html="comment.text"></div>
       <div class="comment-actions">
         <a ng-click="editComment(comment)" class="icon inline medium comment-edit pointer"></a>

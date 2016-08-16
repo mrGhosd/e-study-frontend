@@ -1,3 +1,5 @@
+import Comment from './comment.model';
+
 export default class CommentFactory {
   constructor(ApiRequest, $q) {
     this.ApiRequest = ApiRequest;
@@ -14,7 +16,7 @@ export default class CommentFactory {
             let newComments = [];
             for (let i = 0; i < response.data.comments.length; i++) {
                 // let user = new User(response.data.users[i]);
-                let comment = response.data.comments[i];
+                let comment = new Comment(response.data.comments[i]);
                 newComments.push(comment);
             }
             def.resolve(newComments);
@@ -26,7 +28,7 @@ export default class CommentFactory {
     let def = this.$q.defer();
     this.ApiRequest.post(`/comments`, { comment })
         .then((response) => {
-          def.resolve(response.data.comment);
+          def.resolve(new Comment(response.data.comment));
         })
         .catch((response) => {
           def.reject(response.data.errors);
@@ -38,7 +40,7 @@ export default class CommentFactory {
     let def = this.$q.defer();
     this.ApiRequest.put(`/comments/${id}`, { comment })
         .then((response) => {
-          def.resolve(response.data.comment);
+          def.resolve(new Comment(response.data.comment));
         })
         .catch((response) => {
           def.reject(response.data.errors);
@@ -51,7 +53,7 @@ export default class CommentFactory {
     this.ApiRequest.destroy(`/comments/${commentId}`)
         .then((response) => {
           console.log(response);
-          def.resolve(response.data.deleted);
+          def.resolve(new Comment(response.data.deleted));
         })
         .catch((response) => {
           def.reject(response.data.errors);

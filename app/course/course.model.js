@@ -1,5 +1,6 @@
 import User from 'users/user.model.js';
 import Lesson from 'course/lesson/lesson.model.js';
+import Comment from 'comment/comment.model';
 
 export default class Course {
   constructor(attributes){
@@ -21,7 +22,11 @@ export default class Course {
           return new Lesson(item);
         });
       }
-
+      if (attributes.comments) {
+        this.comments = attributes.comments.map((item) => {
+          return new Comment(item);
+        });
+      }
       if (attributes.students) {
         this.students = attributes.students.map(item => {
           return new User(item);
