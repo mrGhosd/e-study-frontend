@@ -17,14 +17,16 @@ export default class CourseController {
 
   currentUserInStudents() {
     let students = this.course.students;
+    let result;
     if (students.length > 0) {
       const mappedStudents = students.map((item) => {
         return item.id
       });
-      return mappedStudents.includes(this.currentUser.id);
+      result = mappedStudents.includes(this.currentUser.id)
     } else {
-      return false;
+      result = false;
     }
+    return result || this.course.author.id === this.currentUser.id;
   }
 
   enrollCourse() {
