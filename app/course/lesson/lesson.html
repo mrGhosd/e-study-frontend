@@ -26,8 +26,8 @@
       <div ng-bind-html="lesson.description"></div>
     </div>
 
-    <div class="homeworks-info card">
-      <div class="homeworks-list" ng-if="currentUser !== null">
+    <div class="homeworks-info card" ng-if="!emptyInfo">
+      <div class="homeworks-list">
         <h3>{{'course.homeworks' | translate}}</h3>
         <a class="btn btn-primary" ui-sref="new_homework({course_id: lesson.course.slug || lesson.course.id, lesson_id: lesson.slug || lesson.id})">
           {{ 'course.homework.add' | translate }}

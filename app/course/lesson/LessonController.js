@@ -12,7 +12,8 @@ export default class LessonController {
     this.currentUserFactory = currentUserFactory;
     this.$state = $state;
     this.$rootScope = $rootScope;
-    $scope.currentUser = currentUserFactory.getUser();
+    this.$scope.currentUser = currentUserFactory.getUser();
+    this.emptyInfo = this.emptyUserInfo();
     this.handleCurrentUser();
   }
 
@@ -29,11 +30,17 @@ export default class LessonController {
     }
   }
 
+  emptyUserInfo() {
+    const keys = Object.keys(this.$scope.currentUser);
+    return keys.length === 1, keys.first === 'studying_courses';
+  }
+
   handleCurrentUser() {
     let self = this;
     this.$rootScope.$on('currentUser', (event, args) => {
       this.currentUserFactory.setUser(args.user);
-      this.currentUser = this.currentUserFactory.getUser();
+      this.$scope.currentUser= this.currentUserFactory.getUser();
+      this.emptyInfo = this.emptyUserInfo();
       this.$state.go('lesson', { course_id: this.lesson.course.slug || this.lesson.course.id,
                                  id: this.lesson.slug || this.lesson.id });
     });
@@ -42,6 +49,7 @@ export default class LessonController {
           studying_courses: []
         };
         this.currentUserFactory.setUser(defaultUser);
+        this.emptyInfo = this.emptyUserInfo();
         this.$state.go('course', { id: this.lesson.course.slug || this.lesson.course.id });
     });
   }
