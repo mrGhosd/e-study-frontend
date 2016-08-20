@@ -1,5 +1,6 @@
 export default class HomeworkFormController {
-  constructor($scope, homework, $stateParams, $state, HomeworkFactory) {
+  constructor($scope, homework, $stateParams, $state, HomeworkFactory,
+              $rootScope, currentUserFactory) {
     this.$scope = $scope;
     this.homework = homework;
     this.homeworkForm = {};
@@ -10,6 +11,9 @@ export default class HomeworkFormController {
     this.homeworkId = $stateParams.id;
     this.$state = $state;
     this.HomeworkFactory = HomeworkFactory;
+    this.$rootScope = $rootScope;
+    this.currentUserFactory = currentUserFactory;
+    this.handleCurrentUser();
   }
 
   trixInitialize(e, editor) {
@@ -41,5 +45,19 @@ export default class HomeworkFormController {
         this.homeworkForm.$errors = error;
         this.homeworkForm.$invalid = true;
       });
+  }
+
+  handleCurrentUser() {
+    let self = this;
+    this.$rootScope.$on('currentUser', (event, args) => {
+      this.currentUserFactory.setUser(args.user);
+    });
+    this.$rootScope.$on('signedOut', (event, args) => {
+        const defaultUser = {
+          studying_courses: []
+        };
+        this.currentUserFactory.setUser(defaultUser);
+        this.$state.go('course', { id: this.$stateParams.course_id });
+    });
   }
 }

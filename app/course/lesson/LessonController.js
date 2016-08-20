@@ -38,8 +38,8 @@ export default class LessonController {
   handleCurrentUser() {
     let self = this;
     this.$rootScope.$on('currentUser', (event, args) => {
-      this.currentUserFactory.setUser(args.user);
-      this.$scope.currentUser= this.currentUserFactory.getUser();
+      self.currentUserFactory.setUser(args.user);
+      this.$scope.currentUser= self.currentUserFactory.getUser();
       this.emptyInfo = this.emptyUserInfo();
       this.$state.go('lesson', { course_id: this.lesson.course.slug || this.lesson.course.id,
                                  id: this.lesson.slug || this.lesson.id });
