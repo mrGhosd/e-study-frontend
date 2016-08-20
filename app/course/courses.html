@@ -1,6 +1,6 @@
 <div class="courses">
 <h2>{{ 'course.index_title' | translate }}</h2>
-<a class="btn btn-info" ui-sref="new_course">New</a>
+<a class="btn btn-info" ng-if="!ctrl.emptyInfo" ui-sref="new_course">New</a>
 <div class="list">
   <list func="loadMore" ctrl="ctrl">
     <div ng-repeat="course in ctrl.courses" class="course-item panel panel-primary">

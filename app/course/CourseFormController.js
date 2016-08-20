@@ -1,7 +1,8 @@
 import envConfig from '../../config/env.config.js';
 
 export default class CourseFormController {
-  constructor($scope, $state, CourseFactory, course, LessonFactory, Upload, UserService) {
+  constructor($scope, $state, CourseFactory, course, LessonFactory, Upload,
+              UserService, $rootScope, currentUserFactory) {
     this.$scope = $scope;
     this.$scope.courseDesc = course.description;
     this.course = course;
@@ -18,6 +19,9 @@ export default class CourseFormController {
     this.imageUrl = `http://${this.host}:${this.port}/api/v0/attaches`;
     this.$scope.isReadonly = false;
     this.UserService = UserService;
+    this.$rootScope = $rootScope;
+    this.currentUserFactory = currentUserFactory;
+    this.handleCurrentUser();
   }
 
   trixInitialize(e, editor) {
@@ -213,5 +217,26 @@ export default class CourseFormController {
         les.teacher = lesson.teacher;
         les.teacher_name = lesson.teacher.correctNaming();
     }
+  }
+
+  handleCurrentUser() {
+    let self = this;
+    this.$rootScope.$on('currentUser', (event, args) => {
+      this.currentUserFactory.setUser(args.user);
+      this.$scope.currentUser= this.currentUserFactory.getUser();
+    });
+    this.$rootScope.$on('signedOut', (event, args) => {
+        const defaultUser = {
+          studying_courses: []
+        };
+        this.currentUserFactory.setUser(defaultUser);
+
+        if (self.course.isEmpty) {
+          self.$state.go('courses');
+        }
+        else {
+            self.$state.go('course', { id: self.course.slug || self.course.id });
+        }
+    });
   }
 }
