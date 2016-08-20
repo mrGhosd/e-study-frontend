@@ -7,7 +7,7 @@
         <div class="panel-heading">
             <span><a ui-sref="course({id: course.slug || course.id})" >{{ course.title }}</a></span>
             <span class="pull-right">{{course.created_at }}</span>
-            <div class="head-acitons" ng-if="ctrl.currentUser !== null && ctrl.currentUser.canEdit(course)">
+            <div class="head-acitons" ng-if="!ctrl.emptyInfo && ctrl.currentUser.canEdit(course)">
               <span><a ui-sref="edit_course({id: course.id})" class="icon inline small resized comment-edit pointer"></a></span>
               <span><a class="icon inline small resized comment-remove pointer" ng-click="ctrl.destroy(course)"></a></span>
             </div>
