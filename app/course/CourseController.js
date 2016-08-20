@@ -1,11 +1,12 @@
 export default class CourseController {
   constructor($scope, course, HomeworkFactory, currentUserFactory,
-    CourseFactory, Notification) {
+    CourseFactory, Notification, $rootScope) {
     this.$scope = $scope;
     this.course = course;
     this.$scope.course = course;
     this.$scope.comments = course.comments;
     this.HomeworkFactory = HomeworkFactory;
+    this.currentUserFactory = currentUserFactory;
     this.currentUser = currentUserFactory.getUser();
     $scope.object = course;
     $scope.type = 'course';
@@ -13,6 +14,8 @@ export default class CourseController {
     $scope.isReadOnly = true;
     this.CourseFactory = CourseFactory;
     this.Notification = Notification;
+    this.$rootScope = $rootScope;
+    this.handleCurrentUser();
   }
 
   currentUserInStudents() {
@@ -47,5 +50,20 @@ export default class CourseController {
 
   displayEnrollButton() {
     return this.courseEnrolled() && this.course.author.id !== this.currentUser.id;
+  }
+
+  handleCurrentUser() {
+    this.$rootScope.$on('currentUser', (event, args) => {
+      this.currentUserFactory.setUser(args.user);
+      this.currentUser = this.currentUserFactory.getUser();
+      console.log(this.currentUser);
+    });
+    this.$rootScope.$on('signedOut', (event, args) => {
+        const defaultUser = {
+          studying_courses: []
+        };
+        this.currentUserFactory.setUser(defaultUser);
+        this.currentUser = this.currentUserFactory.getUser();
+    });
   }
 }

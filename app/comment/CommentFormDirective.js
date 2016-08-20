@@ -1,8 +1,8 @@
 import template from './comment_form.html';
 
-commentsFormDirective.$inject = ['CommentFactory', '$location', 'currentUserFactory'];
+commentsFormDirective.$inject = ['CommentFactory', '$location', 'currentUserFactory', '$rootScope'];
 
-export default function commentsFormDirective(CommentFactory, $location, currentUserFactory) {
+export default function commentsFormDirective(CommentFactory, $location, currentUserFactory, $rootScope) {
   return {
     restrict: "E",
     template: template,
@@ -13,6 +13,7 @@ export default function commentsFormDirective(CommentFactory, $location, current
       $scope.commentText = '';
       $scope.formComment = {};
       $scope.emptyInfo = emptyInfo();
+      handleCurrentUser();
 
       $scope.createComment = function() {
         makeComment();
@@ -71,6 +72,22 @@ export default function commentsFormDirective(CommentFactory, $location, current
       function successCreateCallback(comment) {
         $scope.comments.unshift(comment);
         $scope.commentText = '';
+      }
+
+      function handleCurrentUser() {
+        $rootScope.$on('currentUser', (event, args) => {
+          currentUserFactory.setUser(args.user);
+          $scope.currentUser = currentUserFactory.getUser();
+          $scope.emptyInfo = emptyInfo();
+        });
+        $rootScope.$on('signedOut', (event, args) => {
+            const defaultUser = {
+              studying_courses: []
+            };
+            currentUserFactory.setUser(defaultUser);
+            $scope.currentUser = currentUserFactory.getUser();
+            $scope.emptyInfo = emptyInfo();
+        });
       }
     }
   };
