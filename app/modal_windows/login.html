@@ -20,7 +20,7 @@
       </div>
 
       <div ng-if="modalView.authForm.$submitted && modalView.authForm.$errors" class="pull-right error">
-          {{modalView.authForm.$errors}}
+          {{modalView.authForm.$errors.email.first}}
       </div>
     </fieldset>
 </form>

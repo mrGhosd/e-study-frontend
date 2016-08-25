@@ -60,7 +60,7 @@ export default class AuthorizationController {
         })
         .catch((error) => {
             this.authForm.$submitted = true;
-            this.authForm.$errors = error;
+            this.authForm.$errors = error.data.errors;
             this.authForm.$invalid = true;
             this.authForm.$valid = false;
         });
