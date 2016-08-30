@@ -58,6 +58,7 @@ export default class CourseFormController {
       end_date: this.course.end_date,
       difficult: this.parseDifficultValue(this.course.difficult)
     };
+    console.log(params);
 
     if(this.course.image){
         params.image = {
@@ -238,5 +239,9 @@ export default class CourseFormController {
             self.$state.go('course', { id: self.course.slug || self.course.id });
         }
     });
+  }
+
+  onTimeSet(newDate, oldDate) {
+    console.log(newDate, oldDate);
   }
 }

@@ -28,9 +28,24 @@
     }
   }
 
+  .time-picker {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
   .fields {
     display: flex;
     flex-direction: column;
+
+    .form-field.datepicker {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        text-align: center;
+      }
+    }
 
     .ta-text.ta-editor {
       height: 100px;

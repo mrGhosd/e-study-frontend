@@ -32,6 +32,10 @@ import runConfig from 'run_configuration/index';
 import list from 'util/list';
 import angularSanitize from 'angular-sanitize';
 require("font-awesome-webpack");
+import 'angular-bootstrap-datetimepicker';
+import 'angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js';
+import 'angular-bootstrap-datetimepicker/src/scss/datetimepicker.scss';
+import 'moment';
 import 'script!trix';
 import 'angular-trix';
 
@@ -39,7 +43,7 @@ import 'angular-trix';
 angular.module('estudy', [uirouter, angularTranslate, angularBootstrap, home, users, chat,
    ApiRequest, course, ngFileUpload, angularSpinner.name, angularCookies, ngStorage.name,
    notifications, angularElastic, countries, list, 'angularTrix', angularSanitize,
-   comment])
+   comment, 'ui.bootstrap.datetimepicker'])
     .controller('NavigationController', NavigationController)
     .controller('HeaderController', HeaderController)
     .controller('AuthorizationController', AuthorizationController)
