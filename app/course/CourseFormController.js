@@ -2,7 +2,7 @@ import envConfig from '../../config/env.config.js';
 
 export default class CourseFormController {
   constructor($scope, $state, CourseFactory, course, LessonFactory, Upload,
-              UserService, $rootScope, currentUserFactory) {
+              UserService, $rootScope, currentUserFactory, $translate) {
     this.$scope = $scope;
     this.$scope.courseDesc = course.description;
     this.course = course;
