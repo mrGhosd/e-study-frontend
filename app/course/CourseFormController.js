@@ -44,7 +44,7 @@ export default class CourseFormController {
       if (item.teacher) {
         item.teacher_id = item.teacher.id;
       }
-      if (!item.is_repeated) {
+      if (!item.repeated) {
         delete item.begin_date;
         delete item.period;
       }

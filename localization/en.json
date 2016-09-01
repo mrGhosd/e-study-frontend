@@ -88,8 +88,7 @@
       "enroll": "Enroll",
       "enrolled": "Enrolled",
       "repeated": "Repeated",
-      "period": "Period of repeat",
-      "period_unit": "day"
+      "period": "Period of repeat (days)"
     },
     "homework": {
       "form_title": "Create homework",

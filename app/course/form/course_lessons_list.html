@@ -81,11 +81,11 @@
       <div class="form-field">
         <label class="col-sm-2">{{ 'course.lesson.repeated' | translate }}</label>
         <div class="col-md-2">
-          <input type="checkbox" ng-model="lesson.is_repeated" />
+          <input type="checkbox" ng-model="lesson.repeated" />
         </div>
       </div>
 
-      <div class="form-field" ng-if="lesson.is_repeated">
+      <div class="form-field" ng-if="lesson.repeated">
         <label class="col-sm-2">{{ 'course.lesson.begin_date' | translate }}</label>
         <div class="col-md-6">
           <div class="dropdown">
@@ -99,12 +99,10 @@
           </div>
         </div>
       </div>
-      <div class="form-field" ng-if="lesson.is_repeated">
+      <div class="form-field" ng-if="lesson.repeated">
         <label class="col-sm-2">{{ 'course.lesson.period' | translate }}</label>
         <div class="col-md-6">
-          <select ng-model="lesson.period" class="form-control">
-            <option ng-repeat="value in ctrl.availableRange" value="value">
-              {{value}} {{'course.lesson.period_unit' | translate}}
+          <select ng-model="lesson.period" ng-options="value for value in ctrl.availableRange" class="form-control">
             </option>
           </select>
         </div>
