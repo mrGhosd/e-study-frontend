@@ -73,11 +73,15 @@
     },
     "students": "Студенты",
     "lesson": {
+      "begin_date": "Дата начала",
       "teacher": "Преподаватель",
       "delete": "Удалить",
       "teacher_for_every_lesson": "Установить этого преподавателя для всех уроков",
       "enroll": "Подписаться",
-      "enrolled": "Подписан"
+      "enrolled": "Подписан",
+      "repeated": "Повторяется",
+      "period": "Период повторений",
+      "period_unit": "день"
     },
     "form": {
       "add_lesson": "Добавить урок"

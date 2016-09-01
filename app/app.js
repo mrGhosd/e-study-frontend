@@ -10,6 +10,8 @@ import chat from 'chat/index';
 import countries from 'countries/index';
 import course from 'course/index';
 import comment from 'comment/index';
+import 'jquery';
+import 'bootstrap';
 
 import notifications from 'modal_windows/notification/index';
 import I18n from 'i18n-js';

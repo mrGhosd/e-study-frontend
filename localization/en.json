@@ -81,11 +81,15 @@
     },
     "students": "Students",
     "lesson": {
+      "begin_date": "Begin date",
       "teacher": "Teacher",
       "delete": "Delete",
       "teacher_for_every_lesson": "Set this teacher for every lesson",
       "enroll": "Enroll",
-      "enrolled": "Enrolled"
+      "enrolled": "Enrolled",
+      "repeated": "Repeated",
+      "period": "Period of repeat",
+      "period_unit": "day"
     },
     "homework": {
       "form_title": "Create homework",

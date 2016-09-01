@@ -21,6 +21,7 @@ export default class CourseFormController {
     this.UserService = UserService;
     this.$rootScope = $rootScope;
     this.currentUserFactory = currentUserFactory;
+    this.availableRange = Array(30).fill().map((item, index) => index + 1);
     this.handleCurrentUser();
   }
 
@@ -43,6 +44,10 @@ export default class CourseFormController {
       if (item.teacher) {
         item.teacher_id = item.teacher.id;
       }
+      if (!item.is_repeated) {
+        delete item.begin_date;
+        delete item.period;
+      }
       delete item.teacher;
       delete item.teacher_name;
       return item;
@@ -58,7 +63,6 @@ export default class CourseFormController {
       end_date: this.course.end_date,
       difficult: this.parseDifficultValue(this.course.difficult)
     };
-    console.log(params);
 
     if(this.course.image){
         params.image = {
@@ -239,9 +243,5 @@ export default class CourseFormController {
             self.$state.go('course', { id: self.course.slug || self.course.id });
         }
     });
-  }
-
-  onTimeSet(newDate, oldDate) {
-    console.log(newDate, oldDate);
   }
 }
