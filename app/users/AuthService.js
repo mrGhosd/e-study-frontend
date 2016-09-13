@@ -34,14 +34,18 @@ export default class AuthService{
             def.resolve(user);
         })
         .catch((error) => {
-            def.reject(error);
+            if (error.status === 401) {
+              this.removeUserInfo();
+            }
+            else {
+              def.reject(error);
+            }
         });
         return def.promise;
     }
 
     login(session){
         session.authorization = this.authData();
-        console.log(session);
         return this.ApiRequest.post("/sessions", { session })
         .then((response) => {
             this.receiveUserData(response.data);
@@ -59,11 +63,15 @@ export default class AuthService{
     signOut(){
       return this.ApiRequest.destroy("/sessions")
           .then((response) => {
-              this.signedIn = false;
-              delete this.$sessionStorage.remember_token;
-              delete this.$localStorage.remember_token;
-              this.$rootScope.$broadcast('signedOut');
+              this.removeUserInfo();
       });
+    }
+
+    removeUserInfo() {
+      this.signedIn = false;
+      delete this.$sessionStorage.remember_token;
+      delete this.$localStorage.remember_token;
+      this.$rootScope.$broadcast('signedOut');
     }
 
     receiveUserData(response){
