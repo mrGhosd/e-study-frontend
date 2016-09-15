@@ -18,6 +18,7 @@
     "chats": "Messages"
   },
   "users": {
+    "list_page": "Users",
     "search_button": "Search",
     "profile": "Profile",
     "email": "Email",
@@ -58,6 +59,8 @@
   },
   "course": {
     "index_title": "Course list",
+    "new": "Create",
+    "empty": "There is no courses",
     "form_title": "Course form",
     "title": "Title",
     "description": "Description",

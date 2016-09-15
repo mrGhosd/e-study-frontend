@@ -13,6 +13,7 @@
     "courses": "Курсы"
   },
   "users": {
+    "list_page": "Пользователи",
     "search_button": "Поиск",
     "profile": "Профиль",
     "email": "Электронный адрес",
@@ -53,6 +54,8 @@
   },
   "course": {
     "index_title": "Список курсов",
+    "new": "Создать",
+    "empty": "Нет курсов",
     "form_title": "Форма курса",
     "title": "Название",
     "description": "Описание",
