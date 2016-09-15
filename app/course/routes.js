@@ -1,5 +1,7 @@
 'use strict';
 
+import Course from './course.model';
+
 routes.$inject = ['$stateProvider', '$stateParamsProvider', '$urlRouterProvider'];
 
 export function routes($stateProvider, $urlRouterProvider) {
@@ -22,7 +24,7 @@ export function routes($stateProvider, $urlRouterProvider) {
             controllerAs: 'ctrl',
             resolve: {
               course: () => {
-                return { description: '', lessons: [] };
+                return new Course({ description: '', lessons: [] });
               }
             }
         })

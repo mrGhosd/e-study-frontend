@@ -1,6 +1,6 @@
 <div class="col-md-3 image-block">
     <div ng-class="{'image-placeholder': !ctrl.course.image.hasOwnProperty('url')}" ngf-drop="upload($file)">
-        <img ng-src="{{ ctrl.course.avatarURL() }}" height="200" width="200" ng-if="ctrl.course.image.hasOwnProperty('url')"/>
+        <img ng-src="{{ ctrl.course.avatarURL() }}" height="200" width="200" ng-if="ctrl.course.image.hasOwnProperty('url') === true"/>
     </div>
     <button class="btn btn-info load-image" ngf-select="ctrl.upload($file)" ng-model="ctrl.course.files" name="image"
             accept="image/*" ngf-max-size="10MB" value="{{ctrl.course.image }}">Upload</button>

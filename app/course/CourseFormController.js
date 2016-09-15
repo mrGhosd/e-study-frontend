@@ -1,4 +1,5 @@
 import envConfig from '../../config/env.config.js';
+import Lesson from './lesson/lesson.model';
 
 export default class CourseFormController {
   constructor($scope, $state, CourseFactory, course, LessonFactory, Upload,
@@ -90,7 +91,7 @@ export default class CourseFormController {
               this.courseForm.$errors[item] = error[item];
             }
           });
-          if (error.lessons.length > 0) {
+          if (error.lessons && error.lessons.length > 0) {
             this.courseForm.$errors['lessons'] = [];
             error.lessons.forEach((item, index) => {
               if (typeof item === 'string') {
@@ -107,10 +108,11 @@ export default class CourseFormController {
   }
 
   addLesson() {
-    this.$scope.lessons.push({
+    const lesson = new Lesson({
       title: '',
       description: ''
     });
+    this.$scope.lessons.push(lesson);
   }
 
   removeLesson(index) {
