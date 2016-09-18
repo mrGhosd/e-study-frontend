@@ -46,7 +46,6 @@ export default class CourseFormController {
         item.teacher_id = item.teacher.id;
       }
       if (!item.repeated) {
-        delete item.begin_date;
         delete item.period;
       }
       delete item.teacher;
@@ -245,5 +244,9 @@ export default class CourseFormController {
             self.$state.go('course', { id: self.course.slug || self.course.id });
         }
     });
+  }
+
+  formDatepickerParams(type, index) {
+    return { dropdownSelector: `#dropdown_${type}${index}` };
   }
 }

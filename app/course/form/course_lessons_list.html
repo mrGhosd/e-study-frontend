@@ -85,16 +85,30 @@
         </div>
       </div>
 
-      <div class="form-field" ng-if="lesson.repeated">
+      <div class="form-field" ng-init="dropdownId = ctrl.formDatepickerParams('begin', $index)">
         <label class="col-sm-2">{{ 'course.lesson.begin_date' | translate }}</label>
         <div class="col-md-6">
           <div class="dropdown">
-            <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
+            <a class="dropdown-toggle" id="dropdown_begin{{$index}}" role="button" data-toggle="dropdown" data-target="#" href="#">
               <div class="input-group"><input type="text" class="form-control" ng-model="lesson.begin_date"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
               </div>
             </a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-              <datetimepicker data-ng-model="lesson.begin_date" data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }"/>
+              <datetimepicker data-ng-model="lesson.begin_date" data-datetimepicker-config="dropdownId"/>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="form-field" ng-init="dropdownId = ctrl.formDatepickerParams('end', $index)">
+        <label class="col-sm-2">{{ 'course.lesson.end_date' | translate }}</label>
+        <div class="col-md-6">
+          <div class="dropdown">
+            <a class="dropdown-toggle" id="dropdown_end{{$index}}" role="button" data-toggle="dropdown" data-target="#" href="#">
+              <div class="input-group"><input type="text" class="form-control" ng-model="lesson.end_date"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+              </div>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <datetimepicker data-ng-model="lesson.end_date" data-datetimepicker-config="dropdownId"/>
             </ul>
           </div>
         </div>

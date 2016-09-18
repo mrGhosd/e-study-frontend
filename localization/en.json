@@ -85,6 +85,7 @@
     "students": "Students",
     "lesson": {
       "begin_date": "Begin date",
+      "begin_date": "End date",
       "teacher": "Teacher",
       "delete": "Delete",
       "teacher_for_every_lesson": "Set this teacher for every lesson",
